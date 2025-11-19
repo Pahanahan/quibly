@@ -3,6 +3,7 @@ import { useState } from "react";
 import Form from "./components/Form/Form";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
 import { generateId } from "@/src/lib/utils";
+import { quizAvatars } from "@/src/data/quizAvatars";
 
 import styles from "./Room.module.scss";
 
@@ -13,11 +14,17 @@ interface RoomProps {
 function Room({ roomId }: RoomProps) {
   const [userName, setUserName] = useState<string>("");
   const [ready, setReady] = useState<boolean>(false);
+  const [randomAvatar] = useState(() => {
+    const index = Math.floor(Math.random() * quizAvatars.length - 1);
+    return quizAvatars[index].name;
+  });
 
   const playerId = {
     userName: userName,
     ready: true,
     id: `${userName}${generateId()}`,
+    score: 0,
+    avatar: randomAvatar,
   };
 
   const joinToRoom = async () => {

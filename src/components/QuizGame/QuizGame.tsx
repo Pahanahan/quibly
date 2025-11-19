@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { ref, onValue } from "firebase/database";
 
 import QuestionNumber from "./components/QuestionNumber/QuestionNumber";
 import Question from "./components/Question/Question";
@@ -8,8 +9,17 @@ import RightAnswer from "./components/RightAnswer/RightAnswer";
 import JoinRoom from "./components/JoinRoom/JoinRoom";
 import questions from "@/src/data/quizQuestions";
 import { generateId, shuffleQuestions } from "@/src/lib/utils";
+import { database } from "@/src/lib/firebase";
 
 import styles from "./QuizGame.module.scss";
+
+interface Player {
+  userName: string;
+  ready: boolean;
+  id: string;
+  score: number;
+  avatar: string;
+}
 
 interface RoomInterface {
   currentQuestionIndex: number;
@@ -17,7 +27,7 @@ interface RoomInterface {
   isGameStarted: boolean;
   maxPlayers: number;
   minPlayers: number;
-  players: object;
+  players?: Player[];
   questions: object[];
   roomId: string;
 }
@@ -25,6 +35,7 @@ interface RoomInterface {
 function QuizGame() {
   // const [createdRoom, setCreatedRoom] = useState<boolean>(false);
   const [room, setRoom] = useState<RoomInterface | null>(null);
+  const [players, setPlayers] = useState<Player[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [startGame, setStartGame] = useState<boolean>(false);
   const [time, setTime] = useState<number>(100);
@@ -51,14 +62,31 @@ function QuizGame() {
   }, []);
 
   useEffect(() => {
+    if (!room?.roomId) return;
+
+    const playersRef = ref(database, `rooms/${room.roomId}/players`);
+
+    const unsubscribe = onValue(playersRef, (snapshot) => {
+      const data = snapshot.val();
+
+      if (!data) {
+        setPlayers([]);
+        return;
+      }
+
+      const playersArray: Player[] = Object.values(data);
+      setPlayers(playersArray);
+    });
+
+    return () => unsubscribe();
+  }, [room?.roomId]);
+
+  useEffect(() => {
     const roomId = generateId();
     const initRoom = async () => {
       try {
         const roomData = {
           roomId: roomId,
-          players: {
-            count: 0,
-          },
           isActive: true,
           currentQuestionIndex: 0,
           isGameStarted: false,
@@ -121,7 +149,7 @@ function QuizGame() {
   }, [startGame, showRight, endGame, newRound]);
 
   const roomConnectElement = !startGame && !endGame && room && (
-    <JoinRoom roomId={room.roomId} players={room.players} />
+    <JoinRoom roomId={room.roomId} players={players} />
   );
 
   const currentQuestionElement = startGame && (

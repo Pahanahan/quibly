@@ -55,6 +55,33 @@ $text-secondary: #795e65;
     }
   }
 
+  &__players {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  &__added-players {
+    font-size: 20px;
+    color: $text-secondary;
+  }
+
+  &__player {
+    font-size: 30px;
+    font-weight: 600;
+    color: $text-main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid $accent-secondary;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 $accent-secondary;
+  }
+
   &__spinner {
     height: 50px;
     width: 50px;
