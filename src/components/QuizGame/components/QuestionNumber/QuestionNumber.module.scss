@@ -1,0 +1,25 @@
+$bg-main: #a0d2eb;
+$accent-primary: #e5eaf5;
+$accent-secondary: #d0bdf4;
+$text-main: #553974;
+$text-secondary: #a28089;
+
+.title {
+  font-size: 40px;
+  font-weight: 600;
+  color: $text-main;
+  text-shadow: 1px 1px $accent-primary;
+
+  animation: fadeSlide 0.7s ease forwards;
+}
+
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

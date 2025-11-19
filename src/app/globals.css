@@ -1,0 +1,36 @@
+:root {
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+
+  --font-sans: var(--font-inter-sans);
+}
+
+/* @theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+
+  --font-sans: var(--font-inter-sans);
+} */
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-inter-sans);
+
+  font-size: 20px;
+  font-weight: 400;
+
+  margin: 0;
+}
+
+.container {
+  max-width: 1380px;
+  margin: 0 aut0;
+  padding: 0 10px;
+}
