@@ -1,3 +1,4 @@
+import { SetStateAction } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 
@@ -22,7 +23,6 @@ import turtle from "@/public/quiz-avatar/turtle.svg";
 import tiger from "@/public/quiz-avatar/tiger.svg";
 import zebra from "@/public/quiz-avatar/zebra.svg";
 import styles from "./JoinRoom.module.scss";
-import { SetStateAction } from "react";
 
 interface Player {
   userName: string;

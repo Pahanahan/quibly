@@ -14,6 +14,7 @@ interface RoomProps {
 function Room({ roomId }: RoomProps) {
   const [userName, setUserName] = useState<string>("");
   const [ready, setReady] = useState<boolean>(false);
+  // const [startGame, setStartGame] = useState<boolean>(false);
   const [randomAvatar] = useState(() => {
     const index = Math.floor(Math.random() * quizAvatars.length - 1);
     return quizAvatars[index].name;
