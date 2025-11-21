@@ -2,21 +2,14 @@ import { useState, useEffect } from "react";
 import { ref, onValue } from "firebase/database";
 
 import { database } from "@/src/lib/firebase";
-
-interface Player {
-  userName: string;
-  ready: boolean;
-  id: string;
-  score: number;
-  avatar: string;
-}
+import { QuizPlayer } from "../types/types";
 
 interface UsePalyersProps {
   roomId?: string;
 }
 
 export function usePlayers({ roomId }: UsePalyersProps) {
-  const [players, setPlayers] = useState<Player[]>([]);
+  const [players, setPlayers] = useState<QuizPlayer[]>([]);
 
   useEffect(() => {
     if (!roomId) return;

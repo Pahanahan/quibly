@@ -2,35 +2,10 @@ import { useState, useEffect } from "react";
 
 import { generateId, shuffleQuestions } from "@/src/lib/utils";
 import questions from "@/src/data/quizQuestions";
-
-interface Question {
-  question: string;
-  id: number;
-  answers: string[];
-  rightAnswer: string;
-}
-
-interface Player {
-  userName: string;
-  ready: boolean;
-  id: string;
-  score: number;
-  avatar: string;
-}
-
-interface RoomInterface {
-  currentQuestionIndex: number;
-  isActive: boolean;
-  isGameStarted: boolean;
-  maxPlayers: number;
-  minPlayers: number;
-  players?: Record<string, Player>;
-  questions: Question[];
-  roomId: string;
-}
+import type { QuizRoom } from "../types/types";
 
 export function useInitRoom() {
-  const [room, setRoom] = useState<RoomInterface | null>(null);
+  const [room, setRoom] = useState<QuizRoom | null>(null);
 
   useEffect(() => {
     const roomId = generateId();
