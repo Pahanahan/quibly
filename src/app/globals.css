@@ -1,5 +1,5 @@
 :root {
-  --color-background: #ffffff;
+  --color-background: #fff7e6;
   --color-foreground: #000000;
 
   --font-sans: var(--font-inter-sans);
@@ -33,4 +33,14 @@ body {
   max-width: 1380px;
   margin: 0 aut0;
   padding: 0 10px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 100px;
 }

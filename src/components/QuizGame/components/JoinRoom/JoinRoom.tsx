@@ -22,6 +22,7 @@ import turtle from "@/public/quiz-avatar/turtle.svg";
 import tiger from "@/public/quiz-avatar/tiger.svg";
 import zebra from "@/public/quiz-avatar/zebra.svg";
 import styles from "./JoinRoom.module.scss";
+import { SetStateAction } from "react";
 
 interface Player {
   userName: string;
@@ -34,9 +35,11 @@ interface Player {
 interface JoinRoomProps {
   roomId: string;
   players: Player[];
+  disabled: boolean;
+  setStartGame: React.Dispatch<SetStateAction<boolean>>;
 }
 
-function JoinRoom({ roomId, players }: JoinRoomProps) {
+function JoinRoom({ roomId, players, disabled, setStartGame }: JoinRoomProps) {
   const avatarMap: Record<string, StaticImageData> = {
     ape,
     bird,
@@ -59,12 +62,14 @@ function JoinRoom({ roomId, players }: JoinRoomProps) {
     zebra,
   };
 
+  const handleStartGame = () => {
+    setStartGame(true);
+  };
+
   const playersElement = players.map((player) => {
     return (
       <div key={player.id} className={styles.join__player}>
         {player.userName}
-        {/* <Image src={ape} width={50} height={50} alt="avatar" />
-        {player.avatar} */}
         <Image
           src={avatarMap[player.avatar]}
           width={50}
@@ -84,7 +89,11 @@ function JoinRoom({ roomId, players }: JoinRoomProps) {
         <div className={styles.join__room}>
           Введите id комнаты: <span>{roomId}</span>
         </div>
-        <button disabled className={styles.join__btn}>
+        <button
+          onClick={handleStartGame}
+          disabled={disabled}
+          className={styles.join__btn}
+        >
           Начать игру
         </button>
         <div className={styles["join__added-players"]}>

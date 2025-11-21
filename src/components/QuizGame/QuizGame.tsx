@@ -7,6 +7,7 @@ import QuestionNumber from "./components/QuestionNumber/QuestionNumber";
 import Question from "./components/Question/Question";
 import RightAnswer from "./components/RightAnswer/RightAnswer";
 import JoinRoom from "./components/JoinRoom/JoinRoom";
+import EndGame from "./components/EndGame/EndGame";
 import questions from "@/src/data/quizQuestions";
 import { generateId, shuffleQuestions } from "@/src/lib/utils";
 import { database } from "@/src/lib/firebase";
@@ -27,15 +28,15 @@ interface RoomInterface {
   isGameStarted: boolean;
   maxPlayers: number;
   minPlayers: number;
-  players?: Player[];
+  players?: Record<string, Player>;
   questions: object[];
   roomId: string;
 }
 
 function QuizGame() {
-  // const [createdRoom, setCreatedRoom] = useState<boolean>(false);
   const [room, setRoom] = useState<RoomInterface | null>(null);
   const [players, setPlayers] = useState<Player[]>([]);
+  const [disabledButton, setDisabledButton] = useState<boolean>(true);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [startGame, setStartGame] = useState<boolean>(false);
   const [time, setTime] = useState<number>(100);
@@ -46,8 +47,14 @@ function QuizGame() {
 
   console.log(room);
 
+  useEffect(() => {
+    if (players.length >= 2 && players.length <= 8) {
+      setDisabledButton(false);
+    }
+  }, [players, disabledButton]);
+
   const newRound = useCallback(() => {
-    setStartGame(false);
+    // setStartGame(false);
     setShowRight(false);
     setTime(100);
 
@@ -93,6 +100,36 @@ function QuizGame() {
           minPlayers: 2,
           maxPlayers: 8,
           questions: shuffleQuestions(questions).slice(0, 10),
+          players: {
+            player1: {
+              userName: "Vitaly",
+              ready: true,
+              id: "id1",
+              score: 2000,
+              avatar: "cow",
+            },
+            player2: {
+              userName: "Tosha",
+              ready: true,
+              id: "id2",
+              score: 100,
+              avatar: "bull",
+            },
+            player3: {
+              userName: "Pavel",
+              ready: true,
+              id: "id3",
+              score: 300,
+              avatar: "camel",
+            },
+            player4: {
+              userName: "Vasily",
+              ready: true,
+              id: "id4",
+              score: 500,
+              avatar: "fish",
+            },
+          },
         };
 
         const response = await fetch(
@@ -137,7 +174,7 @@ function QuizGame() {
 
           setTimeout(() => {
             newRound();
-          }, 3000);
+          }, 7000);
 
           return 0;
         }
@@ -149,10 +186,15 @@ function QuizGame() {
   }, [startGame, showRight, endGame, newRound]);
 
   const roomConnectElement = !startGame && !endGame && room && (
-    <JoinRoom roomId={room.roomId} players={players} />
+    <JoinRoom
+      roomId={room.roomId}
+      players={players}
+      disabled={disabledButton}
+      setStartGame={setStartGame}
+    />
   );
 
-  const currentQuestionElement = startGame && (
+  const currentQuestionElement = startGame && !showRight && (
     <QuestionNumber currentQuestion={currentQuestion} />
   );
 
@@ -161,8 +203,10 @@ function QuizGame() {
   );
 
   const rightAnswerElement = showRight && (
-    <RightAnswer rightAnswer={rightAnswer} />
+    <RightAnswer rightAnswer={rightAnswer} roomId={room?.roomId} />
   );
+
+  const endGameElement = endGame && <EndGame />;
 
   return (
     <div className={styles.quiz}>
@@ -176,7 +220,7 @@ function QuizGame() {
               {rightAnswerElement}
             </div>
           )}
-          {endGame && <div className={styles.quiz__end}>End Game!</div>}
+          {endGameElement}
         </div>
       </div>
     </div>

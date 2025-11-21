@@ -30,7 +30,6 @@ const games = [
 
 function Games() {
   const [game, setGame] = useState<string>("");
-  console.log(game);
 
   const gamesElements = games.map((game) => {
     return (
