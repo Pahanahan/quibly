@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Form from "./components/Form/Form";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
 import { generateId } from "@/src/lib/utils";
+import {
+  getToLocalStorage,
+  saveToLocalStorage,
+} from "@/src/lib/getSetlocalStorage";
 import { quizAvatars } from "@/src/data/quizAvatars";
 
 import styles from "./Room.module.scss";
@@ -12,23 +16,33 @@ interface RoomProps {
 }
 
 function Room({ roomId }: RoomProps) {
+  const [, setId] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("");
   const [ready, setReady] = useState<boolean>(false);
-  // const [startGame, setStartGame] = useState<boolean>(false);
   const [randomAvatar] = useState(() => {
-    const index = Math.floor(Math.random() * quizAvatars.length - 1);
+    const index = Math.floor(Math.random() * quizAvatars.length);
     return quizAvatars[index].name;
   });
 
-  const playerId = {
-    userName: userName,
-    ready: true,
-    id: `${userName}${generateId()}`,
-    score: 0,
-    avatar: randomAvatar,
-  };
+  useEffect(() => {
+    const storedRoomId = getToLocalStorage("QuizGame");
+    if (storedRoomId) {
+      setTimeout(() => {
+        setId(storedRoomId);
+        setReady(storedRoomId !== false);
+      }, 0);
+    }
+  }, [roomId]);
 
   const joinToRoom = async () => {
+    const playerId = {
+      userName: userName,
+      ready: true,
+      id: `${userName}${generateId()}`,
+      score: 0,
+      avatar: randomAvatar,
+    };
+
     const response = await fetch(
       `https://quizgame-30deb-default-rtdb.firebaseio.com/rooms/${roomId}/players/${playerId.id}.json`,
       {
@@ -50,25 +64,26 @@ function Room({ roomId }: RoomProps) {
     e.preventDefault();
     setReady(true);
     joinToRoom();
+    saveToLocalStorage("QuizGame", roomId);
   };
 
-  console.log(ready);
+  const disabled = userName.trim().length === 0;
 
-  const disabled = userName.trim().length > 0 ? false : true;
+  const formElement = !ready && (
+    <Form
+      joinGame={joinGame}
+      roomId={roomId}
+      userName={userName}
+      changeName={changeName}
+      disabled={disabled}
+    />
+  );
 
   return (
     <div className={styles.room}>
       <div className="container">
         <div className={styles.room__inner}>
-          {!ready && (
-            <Form
-              joinGame={joinGame}
-              roomId={roomId}
-              userName={userName}
-              changeName={changeName}
-              disabled={disabled}
-            />
-          )}
+          {formElement}
           {ready && <ReadyGame />}
         </div>
       </div>

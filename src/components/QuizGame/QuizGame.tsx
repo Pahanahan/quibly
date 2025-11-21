@@ -79,6 +79,7 @@ function QuizGame() {
       roomId={room.roomId}
       players={players}
       disabled={disabledButton}
+      startGame={startGame}
       setStartGame={setStartGame}
     />
   );

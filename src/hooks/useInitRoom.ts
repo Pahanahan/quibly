@@ -20,34 +20,35 @@ export function useInitRoom() {
           maxPlayers: 8,
           questions: shuffleQuestions(questions).slice(0, 10),
           players: {
-            player1: {
-              userName: "Vitaly",
+            fakePlayer: {
+              userName: "Fake",
               ready: true,
-              id: "id1",
-              score: 2000,
+              id: "idFake",
+              score: 0,
               avatar: "cow",
+              isFake: true,
             },
-            player2: {
-              userName: "Tosha",
-              ready: true,
-              id: "id2",
-              score: 100,
-              avatar: "bull",
-            },
-            player3: {
-              userName: "Pavel",
-              ready: true,
-              id: "id3",
-              score: 300,
-              avatar: "camel",
-            },
-            player4: {
-              userName: "Vasily",
-              ready: true,
-              id: "id4",
-              score: 500,
-              avatar: "zebra",
-            },
+            //   player2: {
+            //     userName: "Tosha",
+            //     ready: true,
+            //     id: "id2",
+            //     score: 100,
+            //     avatar: "bull",
+            //   },
+            //   player3: {
+            //     userName: "Pavel",
+            //     ready: true,
+            //     id: "id3",
+            //     score: 300,
+            //     avatar: "camel",
+            //   },
+            //   player4: {
+            //     userName: "Vasily",
+            //     ready: true,
+            //     id: "id4",
+            //     score: 500,
+            //     avatar: "zebra",
+            //   },
           },
         };
 

@@ -1,16 +1,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+import type { QuizPlayer } from "@/src/types/types";
 import cat from "@/public/quiz-avatar/cat.svg";
 import styles from "./RightAnswer.module.scss";
-
-interface Player {
-  userName: string;
-  ready: boolean;
-  id: string;
-  score: number;
-  avatar: string;
-}
 
 interface RightAnswerProps {
   rightAnswer: string;
@@ -18,7 +11,7 @@ interface RightAnswerProps {
 }
 
 function RightAnswer({ rightAnswer, roomId }: RightAnswerProps) {
-  const [players, setPlayers] = useState<Player[] | null>(null);
+  const [players, setPlayers] = useState<QuizPlayer[] | null>(null);
 
   useEffect(() => {
     const getRoom = async () => {
@@ -30,7 +23,7 @@ function RightAnswer({ rightAnswer, roomId }: RightAnswerProps) {
         if (!response.ok) throw new Error("Ошибка");
 
         const data = await response.json();
-        const players: Player[] = data.players;
+        const players: QuizPlayer[] = data.players;
 
         setPlayers(players);
       } catch (error) {
@@ -45,6 +38,7 @@ function RightAnswer({ rightAnswer, roomId }: RightAnswerProps) {
     players &&
     Object.entries(players)
       .sort((a, b) => b[1].score - a[1].score)
+      .filter((player) => !player[1].isFake)
       .map((player) => {
         console.log(player);
         return (

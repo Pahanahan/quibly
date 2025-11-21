@@ -11,6 +11,7 @@ export interface QuizPlayer {
   id: string;
   score: number;
   avatar: string;
+  isFake?: boolean;
 }
 
 export interface QuizRoom {

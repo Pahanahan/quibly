@@ -2,6 +2,8 @@ import { SetStateAction } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 
+import { useStartGame } from "@/src/hooks/useStartGame";
+
 import spinner from "@/public/quiz-circle.svg";
 import ape from "@/public/quiz-avatar/ape.svg";
 import bird from "@/public/quiz-avatar/bird.svg";
@@ -36,10 +38,17 @@ interface JoinRoomProps {
   roomId: string;
   players: Player[];
   disabled: boolean;
+  startGame: boolean;
   setStartGame: React.Dispatch<SetStateAction<boolean>>;
 }
 
-function JoinRoom({ roomId, players, disabled, setStartGame }: JoinRoomProps) {
+function JoinRoom({
+  roomId,
+  players,
+  disabled,
+  startGame,
+  setStartGame,
+}: JoinRoomProps) {
   const avatarMap: Record<string, StaticImageData> = {
     ape,
     bird,
@@ -62,22 +71,33 @@ function JoinRoom({ roomId, players, disabled, setStartGame }: JoinRoomProps) {
     zebra,
   };
 
+  useStartGame({ roomId: roomId, start: startGame });
+
   const handleStartGame = () => {
+    if (!roomId) {
+      console.warn("Нельзя начать игру - нет roomId");
+      return;
+    }
+
     setStartGame(true);
   };
 
   const playersElement = players.map((player) => {
-    return (
-      <div key={player.id} className={styles.join__player}>
-        {player.userName}
-        <Image
-          src={avatarMap[player.avatar]}
-          width={50}
-          height={50}
-          alt="avatar"
-        />
-      </div>
-    );
+    if (player.userName === "Fake" && player.id === "idFake") {
+      return;
+    } else {
+      return (
+        <div key={player.id} className={styles.join__player}>
+          {player.userName}
+          <Image
+            src={avatarMap[player.avatar]}
+            width={50}
+            height={50}
+            alt="avatar"
+          />
+        </div>
+      );
+    }
   });
 
   return (
