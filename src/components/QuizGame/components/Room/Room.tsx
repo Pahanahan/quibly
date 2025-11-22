@@ -26,7 +26,7 @@ function Room({ roomId }: RoomProps) {
 
   useEffect(() => {
     const storedRoomId = getToLocalStorage("QuizGame");
-    if (storedRoomId) {
+    if (storedRoomId === roomId) {
       setTimeout(() => {
         setId(storedRoomId);
         setReady(storedRoomId !== false);

@@ -28,27 +28,27 @@ export function useInitRoom() {
               avatar: "cow",
               isFake: true,
             },
-            //   player2: {
-            //     userName: "Tosha",
-            //     ready: true,
-            //     id: "id2",
-            //     score: 100,
-            //     avatar: "bull",
-            //   },
-            //   player3: {
-            //     userName: "Pavel",
-            //     ready: true,
-            //     id: "id3",
-            //     score: 300,
-            //     avatar: "camel",
-            //   },
-            //   player4: {
-            //     userName: "Vasily",
-            //     ready: true,
-            //     id: "id4",
-            //     score: 500,
-            //     avatar: "zebra",
-            //   },
+            player2: {
+              userName: "Tosha",
+              ready: true,
+              id: "id2",
+              score: 100,
+              avatar: "bull",
+            },
+            player3: {
+              userName: "Pavel",
+              ready: true,
+              id: "id3",
+              score: 300,
+              avatar: "camel",
+            },
+            player4: {
+              userName: "Vasily",
+              ready: true,
+              id: "id4",
+              score: 500,
+              avatar: "zebra",
+            },
           },
         };
 
