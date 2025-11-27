@@ -1,0 +1,13 @@
+$bg-main: #ebe6a0;
+$accent-primary: #f3f5e5;
+$accent-secondary: #c2f4bd;
+$text-main: #394c74;
+$text-secondary: #f8acac;
+
+.room {
+  height: 100%;
+  background-color: $bg-main;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
