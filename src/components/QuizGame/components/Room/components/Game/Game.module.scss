@@ -1,6 +1,7 @@
 .game {
   &__question {
     font-size: 30px;
+    text-align: center;
   }
 
   &__answers {
@@ -14,7 +15,7 @@
     padding: 10px;
     border: 2px solid #000;
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
     background-color: #fff;
     text-align: center;
     font-size: 20px;
@@ -29,4 +30,17 @@
 
 .chosen {
   background-color: rgb(246, 248, 99);
+}
+
+@media (max-width: 500px) {
+  .game {
+    &__question {
+      font-size: 20px;
+    }
+
+    &__answer {
+      padding: 5px;
+      font-size: 16px;
+    }
+  }
 }

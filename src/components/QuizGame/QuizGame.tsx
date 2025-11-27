@@ -127,7 +127,7 @@ function QuizGame() {
 
           setTimeout(() => {
             newRound();
-          }, 7000);
+          }, 10000);
 
           return 0;
         }
