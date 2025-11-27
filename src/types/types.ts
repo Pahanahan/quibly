@@ -19,7 +19,7 @@ export interface QuizPlayer {
 
 export interface QuizRoom {
   currentQuestionIndex: number;
-  isActive: boolean;
+  isGameEnd: boolean;
   isGameStarted: boolean;
   maxPlayers: number;
   minPlayers: number;

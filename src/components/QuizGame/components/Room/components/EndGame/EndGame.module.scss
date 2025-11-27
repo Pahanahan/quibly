@@ -1,0 +1,33 @@
+$bg-main: #ebe6a0;
+$accent-primary: #f3f5e5;
+$accent-secondary: #c2f4bd;
+$text-main: #394c74;
+$text-secondary: #f8acac;
+
+.end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  &__text {
+    font-size: 30px;
+    color: $text-main;
+  }
+
+  &__btn {
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}

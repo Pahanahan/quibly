@@ -33,7 +33,10 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
 
     const differentTime = endTime - startTime;
 
-    const score = isCorrect ? Math.floor(500000 / differentTime + 100) : 0;
+    const score =
+      isCorrect && differentTime < 10000
+        ? Math.floor(500000 / differentTime + 100)
+        : 0;
 
     const playerScore = player?.score || 0;
 

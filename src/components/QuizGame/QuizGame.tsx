@@ -74,6 +74,18 @@ function QuizGame() {
       const next = prev + 1;
       if (next >= questions.length) {
         setEndGame(true);
+
+        editRoom({
+          roomId: roomId || null,
+          key: "isGameEnd",
+          value: true,
+        });
+        editRoom({
+          roomId: roomId || null,
+          key: "isGameStarted",
+          value: false,
+        });
+
         return prev;
       }
 

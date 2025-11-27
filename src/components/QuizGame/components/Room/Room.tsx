@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Form from "./components/Form/Form";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
 import Game from "./components/Game/Game";
+import EndGame from "./components/EndGame/EndGame";
 import { generateId } from "@/src/lib/utils";
 import {
   getToLocalStorage,
@@ -30,14 +31,16 @@ function Room({ roomId }: RoomProps) {
     return quizAvatars[index].name;
   });
 
-  console.log(userName);
-  console.log(userId);
-  console.log(randomAvatar);
-
   const isGameStarted: boolean | null =
     useRoomFields({
       roomId: roomId,
       key: "isGameStarted",
+    }) || false;
+
+  const isGameEnd: boolean | null =
+    useRoomFields({
+      roomId: roomId,
+      key: "isGameEnd",
     }) || false;
 
   const currentQuestionIndex: number | null = useRoomFields({
@@ -118,7 +121,7 @@ function Room({ roomId }: RoomProps) {
 
   const disabled = userName.trim().length === 0;
 
-  const formElement = !ready && (
+  const formElement = !ready && !isGameStarted && (
     <Form
       joinGame={joinGame}
       roomId={roomId}
@@ -144,8 +147,9 @@ function Room({ roomId }: RoomProps) {
       <div className="container">
         <div className={styles.room__inner}>
           {formElement}
-          {ready && !isGameStarted && <ReadyGame />}
+          {ready && !isGameStarted && !isGameEnd && <ReadyGame />}
           {questionElement}
+          {isGameEnd && <EndGame />}
         </div>
       </div>
     </div>
