@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { avatars } from "@/src/lib/utils/avatars";
+
 import { QuizPlayer } from "@/src/types/types";
-import cat from "@/public/quiz-avatar/cat.svg";
 import styles from "./EndGame.module.scss";
 
 interface EndGameProps {
@@ -39,10 +40,11 @@ function EndGame({ roomId }: EndGameProps) {
     Object.entries(players)
       .sort((a, b) => b[1].score - a[1].score)
       .map((player) => {
+        console.log(player);
         return (
           <div key={player[0]} className={styles.end__user}>
             <Image
-              src={cat}
+              src={avatars[player[1].avatar]}
               width={40}
               height={40}
               alt="animal"

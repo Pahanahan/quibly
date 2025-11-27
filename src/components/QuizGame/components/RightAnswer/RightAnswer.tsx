@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-// import { useRoom } from "@/src/hooks/useRoom";
+import { avatars } from "@/src/lib/utils/avatars";
 
 import type { QuizPlayer } from "@/src/types/types";
-import cat from "@/public/quiz-avatar/cat.svg";
 import styles from "./RightAnswer.module.scss";
 
 interface RightAnswerProps {
@@ -36,8 +35,6 @@ function RightAnswer({ rightAnswer, roomId }: RightAnswerProps) {
     getRoom();
   }, [roomId]);
 
-  // const room = useRoom({ roomId: roomId });
-
   const playersScoreElement =
     players &&
     Object.entries(players)
@@ -46,7 +43,7 @@ function RightAnswer({ rightAnswer, roomId }: RightAnswerProps) {
         return (
           <div key={player[0]} className={styles.right__user}>
             <Image
-              src={cat}
+              src={avatars[player[1].avatar]}
               width={40}
               height={40}
               alt="animal"
