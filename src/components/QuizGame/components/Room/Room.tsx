@@ -88,7 +88,7 @@ function Room({ roomId }: RoomProps) {
     };
 
     const response = await fetch(
-      `https://quizgame-30deb-default-rtdb.firebaseio.com/rooms/${roomId}/players/${playerId.id}.json`,
+      `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/rooms/${roomId}/players/${playerId.id}.json`,
       {
         method: "PATCH",
         body: JSON.stringify(playerId),

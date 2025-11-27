@@ -19,7 +19,7 @@ function RightAnswer({ rightAnswer, roomId }: RightAnswerProps) {
     const getRoom = async () => {
       try {
         const response = await fetch(
-          `https://quizgame-30deb-default-rtdb.firebaseio.com/rooms/${roomId}.json`
+          `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/rooms/${roomId}.json`
         );
 
         if (!response.ok) throw new Error("Ошибка");

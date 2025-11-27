@@ -39,17 +39,10 @@ interface JoinRoomProps {
   roomId: string;
   players: Player[];
   disabled: boolean;
-  startGame: boolean;
   setStartGame: React.Dispatch<SetStateAction<boolean>>;
 }
 
-function JoinRoom({
-  roomId,
-  players,
-  disabled,
-  startGame,
-  setStartGame,
-}: JoinRoomProps) {
+function JoinRoom({ roomId, players, disabled, setStartGame }: JoinRoomProps) {
   const avatarMap: Record<string, StaticImageData> = {
     ape,
     bird,
@@ -105,7 +98,8 @@ function JoinRoom({
     <div className={styles.join}>
       <div className={styles.join__inner}>
         <div className={styles.join__site}>
-          Зайдите на сайт: <span>{`http://localhost:3000/quiz/${roomId}`}</span>
+          Зайдите на сайт:{" "}
+          <span>{`${process.env.NEXT_PUBLIC_BASE_URL}/quiz/${roomId}`}</span>
         </div>
         <div className={styles.join__room}>
           Введите id комнаты: <span>{roomId}</span>
