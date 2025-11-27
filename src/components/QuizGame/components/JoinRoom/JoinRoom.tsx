@@ -1,8 +1,8 @@
 import { SetStateAction } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
+import { QRCodeSVG } from "qrcode.react";
 
-// import { useStartGame } from "@/src/hooks/useStartGame";
 import { editRoom } from "@/src/lib/editRoom";
 
 import spinner from "@/public/quiz-circle.svg";
@@ -104,6 +104,10 @@ function JoinRoom({ roomId, players, disabled, setStartGame }: JoinRoomProps) {
         <div className={styles.join__room}>
           Введите id комнаты: <span>{roomId}</span>
         </div>
+        <QRCodeSVG
+          value={`${process.env.NEXT_PUBLIC_BASE_URL}/quiz/${roomId}`}
+          size={300}
+        />
         <button
           onClick={handleStartGame}
           disabled={disabled}
