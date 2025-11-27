@@ -18,6 +18,7 @@ export interface QuizPlayer {
 }
 
 export interface QuizRoom {
+  createDate: string;
   currentQuestionIndex: number;
   isGameEnd: boolean;
   isGameStarted: boolean;

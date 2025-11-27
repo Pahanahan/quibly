@@ -16,6 +16,7 @@ export function useInitRoom() {
       try {
         const roomData: QuizRoom = {
           roomId: roomId,
+          createDate: new Date().toLocaleString(),
           isGameEnd: false,
           currentQuestionIndex: 0,
           isGameStarted: false,
