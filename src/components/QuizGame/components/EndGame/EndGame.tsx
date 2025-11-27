@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { avatars } from "@/src/lib/utils/avatars";
+import { generateJoke } from "@/src/lib/utils/generateJoke";
 
 import { QuizPlayer } from "@/src/types/types";
 import styles from "./EndGame.module.scss";
@@ -39,21 +40,25 @@ function EndGame({ roomId }: EndGameProps) {
     players &&
     Object.entries(players)
       .sort((a, b) => b[1].score - a[1].score)
-      .map((player) => {
-        console.log(player);
+      .map((player, place) => {
         return (
           <div key={player[0]} className={styles.end__user}>
-            <Image
-              src={avatars[player[1].avatar]}
-              width={40}
-              height={40}
-              alt="animal"
-              className={styles.end__avatar}
-            />
-            <div className={styles.end__name}>{player[1].userName}:</div>
-            <div className={styles["end__total-score"]}>
-              {player[1].score}
-              <span>очков</span>
+            <div className={styles["end__user-top"]}>
+              <Image
+                src={avatars[player[1].avatar]}
+                width={40}
+                height={40}
+                alt="animal"
+                className={styles.end__avatar}
+              />
+              <div className={styles.end__name}>{player[1].userName}:</div>
+              <div className={styles["end__total-score"]}>
+                {player[1].score}
+                <span>очков</span>
+              </div>
+            </div>
+            <div className={styles["end__user-congratulation"]}>
+              {generateJoke(place, player[1].avatar)}
             </div>
           </div>
         );

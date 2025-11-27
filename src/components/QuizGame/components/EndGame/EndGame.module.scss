@@ -28,16 +28,13 @@ $text-secondary: #a28089;
 
   &__user {
     font-size: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 5px;
     padding: 5px 10px;
     border: 2px solid $accent-secondary;
     border-radius: 5px;
 
     &:nth-child(1) {
-      color: gold;
+      color: rgb(230, 195, 0);
       font-weight: 800;
     }
     &:nth-child(2) {
@@ -48,6 +45,17 @@ $text-secondary: #a28089;
       color: #cd7f32;
       font-weight: 600;
     }
+  }
+
+  &__user-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__user-congratulation {
+    font-size: 24px;
+    text-align: center;
   }
 
   &__total-score {
