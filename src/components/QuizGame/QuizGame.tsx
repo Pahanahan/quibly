@@ -32,7 +32,18 @@ function QuizGame() {
   const [endGame, setEndGame] = useState<boolean>(false);
 
   useEffect(() => {
-    const music = quizMusic("/quiz-sound/jazz_in_paris.mp3", true, 0.5);
+    const musics = [
+      "/quiz-sound/jazz_in_paris.mp3",
+      "/quiz-sound/spring_in_my_step.mp3",
+      "/quiz-sound/mr_turtle.mp3",
+      "/quiz-sound/pink_lemonade.mp3",
+    ];
+
+    const randomMusicIndex = Math.floor(Math.random() * 4);
+    console.log(randomMusicIndex);
+
+    const music = quizMusic(musics[randomMusicIndex], true, 0.5);
+    // const music = quizMusic("/quiz-sound/jazz_in_paris.mp3", true, 0.5);
     // const music = quizMusic("/quiz-sound/spring_in_my_step.mp3", true, 0.5);
     // const music = quizMusic("/quiz-sound/mr_turtle.mp3", true, 0.5);
     // const music = quizMusic("/quiz-sound/pink_lemonade.mp3", true, 0.5);
