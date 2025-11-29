@@ -33,6 +33,9 @@ function QuizGame() {
 
   useEffect(() => {
     const music = quizMusic("/quiz-sound/jazz_in_paris.mp3", true, 0.5);
+    // const music = quizMusic("/quiz-sound/spring_in_my_step.mp3", true, 0.5);
+    // const music = quizMusic("/quiz-sound/mr_turtle.mp3", true, 0.5);
+    // const music = quizMusic("/quiz-sound/pink_lemonade.mp3", true, 0.5);
 
     music.play();
 
