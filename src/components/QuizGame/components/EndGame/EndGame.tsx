@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { avatars } from "@/src/lib/utils/avatars";
 import { generateJoke } from "@/src/lib/utils/generateJoke";
+import { quizMusic } from "@/src/lib/utils/quizMusic";
 
 import { QuizPlayer } from "@/src/types/types";
 import styles from "./EndGame.module.scss";
@@ -14,6 +15,16 @@ interface EndGameProps {
 
 function EndGame({ roomId }: EndGameProps) {
   const [players, setPlayers] = useState<QuizPlayer[] | null>(null);
+
+  useEffect(() => {
+    const music = quizMusic("/quiz-sound/end-game.wav", false, 1);
+
+    music.play();
+
+    return () => {
+      music.stop();
+    };
+  }, []);
 
   useEffect(() => {
     const getRoom = async () => {

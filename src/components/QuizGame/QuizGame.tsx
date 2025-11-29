@@ -13,8 +13,16 @@ import { useQuestions } from "@/src/hooks/useQuestions";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { editRoom } from "@/src/lib/editRoom";
 import { resetCurrentScore } from "@/src/lib/resetCurrentScore";
+import { quizMusic } from "@/src/lib/utils/quizMusic";
 
 import styles from "./QuizGame.module.scss";
+
+////////////////////////////////////////////////
+// import questions from "@/src/data/quizQuestions";
+// import { testUniqQuistion } from "../../test/testUniqQuistion";
+// console.log(testUniqQuistion(questions));
+// console.log(questions);
+////////////////////////////////////////////////
 
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -22,6 +30,16 @@ function QuizGame() {
   const [time, setTime] = useState<number>(100);
   const [showRight, setShowRight] = useState<boolean>(false);
   const [endGame, setEndGame] = useState<boolean>(false);
+
+  useEffect(() => {
+    const music = quizMusic("/quiz-sound/jazz_in_paris.mp3", true, 0.5);
+
+    music.play();
+
+    return () => {
+      music.stop();
+    };
+  }, []);
 
   const initialRoom = useInitRoom();
   const roomId: string | null = useRoomFields({

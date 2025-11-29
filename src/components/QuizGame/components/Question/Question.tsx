@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+
+import { quizMusic } from "@/src/lib/utils/quizMusic";
+
 import styles from "./Question.module.scss";
 
 interface QuestionProps {
@@ -7,6 +11,16 @@ interface QuestionProps {
 }
 
 function Question({ question, answers, time }: QuestionProps) {
+  useEffect(() => {
+    const music = quizMusic("/quiz-sound/tick-tock-timer.wav", true, 0.7);
+
+    music.play();
+
+    return () => {
+      music.stop();
+    };
+  }, []);
+
   const answersElements = answers.map((answer: string) => {
     return (
       <div key={answer} className={styles.question__item}>
