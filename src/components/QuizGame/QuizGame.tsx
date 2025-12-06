@@ -18,14 +18,14 @@ import { quizMusic } from "@/src/lib/utils/quizMusic";
 import styles from "./QuizGame.module.scss";
 
 ////////////////////////////////////////////////
-import questions from "@/src/data/quizQuestions";
-import { testUniqQuestion } from "../../test/testUniqQuestion";
-import { testCountQuestion } from "../../test/testCountQuestion";
-import { testIncludesRightAnswerWithAnswers } from "../../test/testIncludesRightAnswerWithAnswers";
-console.log("Количество повторяемых вопросов", testUniqQuestion(questions));
-testCountQuestion(questions);
-testIncludesRightAnswerWithAnswers(questions);
-console.log(questions);
+// import questions from "@/src/data/quizQuestions";
+// import { testUniqQuestion } from "../../test/testUniqQuestion";
+// import { testCountQuestion } from "../../test/testCountQuestion";
+// import { testIncludesRightAnswerWithAnswers } from "../../test/testIncludesRightAnswerWithAnswers";
+// console.log("Количество повторяемых вопросов", testUniqQuestion(questions));
+// testCountQuestion(questions);
+// testIncludesRightAnswerWithAnswers(questions);
+// console.log(questions);
 ////////////////////////////////////////////////
 
 function QuizGame() {
