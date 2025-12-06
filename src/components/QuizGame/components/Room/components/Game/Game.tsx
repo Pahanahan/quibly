@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { getDateNow } from "@/src/lib/getDateNow";
 import { editPlayer } from "@/src/lib/editPlayer";
@@ -17,10 +17,24 @@ interface GameProps {
 function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const [oneTry, setOneTry] = useState<boolean>(true);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [time, setTime] = useState<number>(100);
+  const [startTime, setStartTime] = useState<number>(0);
 
   const player = usePlayer({ roomId: roomId, userId: userId });
 
-  const startTime = getDateNow();
+  useEffect(() => {
+    setTimeout(() => {
+      setStartTime(getDateNow());
+    }, 0);
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTime((prev) => {
+        return (prev -= 10);
+      });
+    }, 1000);
+  }, [time]);
 
   const handleChooseAnswer = (answer: string) => {
     if (!oneTry) return;
@@ -34,7 +48,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
     const differentTime = endTime - startTime;
 
     const score =
-      isCorrect && differentTime < 10000
+      isCorrect && differentTime < 12000
         ? Math.floor(500000 / differentTime + 100)
         : 0;
 
@@ -89,6 +103,12 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
     <div className={styles.game}>
       <h2 className={styles.game__question}>{question}</h2>
       <div className={styles.game__answers}>{answersElements}</div>
+      <div className={styles.game__bar}>
+        <div
+          style={{ width: `${time}%` }}
+          className={styles["game__bar--active"]}
+        ></div>
+      </div>
     </div>
   );
 }

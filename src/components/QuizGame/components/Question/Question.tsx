@@ -7,10 +7,9 @@ import styles from "./Question.module.scss";
 interface QuestionProps {
   question: string;
   answers: string[];
-  time: number;
 }
 
-function Question({ question, answers, time }: QuestionProps) {
+function Question({ question, answers }: QuestionProps) {
   useEffect(() => {
     const music = quizMusic("/quiz-sound/tick-tock-timer.wav", true, 0.7);
 
@@ -33,12 +32,6 @@ function Question({ question, answers, time }: QuestionProps) {
     <div className={styles.question}>
       <h2 className={styles.question__title}>{question}</h2>
       <div className={styles.question__answers}>{answersElements}</div>
-      <div className={styles.question__bar}>
-        <div
-          style={{ width: `${time}%` }}
-          className={styles["question__bar--active"]}
-        ></div>
-      </div>
     </div>
   );
 }

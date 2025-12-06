@@ -1,3 +1,9 @@
+$bg-main: #a0d2eb;
+$accent-primary: #e5eaf5;
+$accent-secondary: #d0bdf4;
+$text-main: #553974;
+$text-secondary: #a28089;
+
 .game {
   &__question {
     font-size: 30px;
@@ -9,6 +15,7 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin-bottom: 30px;
   }
 
   &__answer {
@@ -25,6 +32,23 @@
     &:active {
       transform: scale(0.9);
     }
+  }
+
+  &__bar {
+    max-width: 400px;
+    height: 15px;
+    background-color: #f3e963;
+    border: 2px solid #000;
+    border-radius: 5px;
+    margin: 0 auto;
+  }
+
+  &__bar--active {
+    height: 100%;
+    border: 0 solid $text-secondary;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: width 1s linear;
   }
 }
 

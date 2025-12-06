@@ -47,23 +47,6 @@ $text-secondary: #a28089;
       animation-delay: 0.4s;
     }
   }
-
-  &__bar {
-    width: 100%;
-    height: 15px;
-    background-color: $text-secondary;
-    border: 2px solid $text-secondary;
-    border-radius: 5px;
-    margin-bottom: 30px;
-  }
-
-  &__bar--active {
-    height: 100%;
-    border: 0 solid $text-secondary;
-    border-radius: 5px;
-    background-color: $accent-primary;
-    transition: width 1s linear;
-  }
 }
 
 @keyframes fadeSlide {

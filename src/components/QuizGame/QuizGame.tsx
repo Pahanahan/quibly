@@ -31,7 +31,7 @@ import styles from "./QuizGame.module.scss";
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [startGame, setStartGame] = useState<boolean>(false);
-  const [time, setTime] = useState<number>(100);
+  const [, setTime] = useState<number>(100);
   const [showRight, setShowRight] = useState<boolean>(false);
   const [endGame, setEndGame] = useState<boolean>(false);
 
@@ -164,7 +164,7 @@ function QuizGame() {
         }
         return prev - 10;
       });
-    }, 1000);
+    }, 1100);
 
     return () => clearInterval(interval);
   }, [startGame, showRight, endGame, newRound]);
@@ -183,7 +183,7 @@ function QuizGame() {
   );
 
   const questionTitleAndAnswers = startGame && !showRight && (
-    <Question question={question} answers={answers} time={time} />
+    <Question question={question} answers={answers} />
   );
 
   const rightAnswerElement = showRight && (
