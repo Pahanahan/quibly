@@ -1,4 +1,4 @@
-export function testUniqQuistion(arr) {
+export function testUniqQuestion(arr) {
   const countMap = {};
   const duplicates = [];
 

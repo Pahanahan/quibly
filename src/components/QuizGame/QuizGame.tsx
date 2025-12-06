@@ -18,10 +18,14 @@ import { quizMusic } from "@/src/lib/utils/quizMusic";
 import styles from "./QuizGame.module.scss";
 
 ////////////////////////////////////////////////
-// import questions from "@/src/data/quizQuestions";
-// import { testUniqQuistion } from "../../test/testUniqQuistion";
-// console.log(testUniqQuistion(questions));
-// console.log(questions);
+import questions from "@/src/data/quizQuestions";
+import { testUniqQuestion } from "../../test/testUniqQuestion";
+import { testCountQuestion } from "../../test/testCountQuestion";
+import { testIncludesRightAnswerWithAnswers } from "../../test/testIncludesRightAnswerWithAnswers";
+console.log("Количество повторяемых вопросов", testUniqQuestion(questions));
+testCountQuestion(questions);
+testIncludesRightAnswerWithAnswers(questions);
+console.log(questions);
 ////////////////////////////////////////////////
 
 function QuizGame() {
@@ -40,13 +44,8 @@ function QuizGame() {
     ];
 
     const randomMusicIndex = Math.floor(Math.random() * 4);
-    console.log(randomMusicIndex);
 
     const music = quizMusic(musics[randomMusicIndex], true, 0.5);
-    // const music = quizMusic("/quiz-sound/jazz_in_paris.mp3", true, 0.5);
-    // const music = quizMusic("/quiz-sound/spring_in_my_step.mp3", true, 0.5);
-    // const music = quizMusic("/quiz-sound/mr_turtle.mp3", true, 0.5);
-    // const music = quizMusic("/quiz-sound/pink_lemonade.mp3", true, 0.5);
 
     music.play();
 

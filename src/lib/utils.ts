@@ -14,19 +14,18 @@ export const generateId = () => {
 };
 
 export const shuffleQuestions = (questions: QuizQuestion[]) => {
-  const shuffleArray = <T>(arr: T[]): T[] => {
-    const result = [...arr];
-    for (let i = result.length - 1; i > 0; i--) {
+  const shuffleArray = <T>(arr: T[]): void => {
+    for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [result[i], result[j]] = [result[j], result[i]];
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    return result;
   };
 
-  return questions
-    .map((q) => ({
-      ...q,
-      answers: shuffleArray(q.answers) as [string, string, string, string],
-    }))
-    .sort(() => Math.random() - 0.5);
+  for (const question of questions) {
+    shuffleArray(question.answers);
+  }
+
+  shuffleArray(questions);
+
+  return questions;
 };
