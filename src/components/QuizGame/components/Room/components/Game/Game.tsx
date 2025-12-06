@@ -15,7 +15,6 @@ interface GameProps {
 }
 
 function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
-  const [oneTry, setOneTry] = useState<boolean>(true);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [time, setTime] = useState<number>(100);
   const [startTime, setStartTime] = useState<number>(0);
@@ -37,8 +36,6 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   }, [time]);
 
   const handleChooseAnswer = (answer: string) => {
-    if (!oneTry) return;
-
     setSelectedAnswer(answer);
 
     const isCorrect = answer === rightAnswer;
@@ -69,8 +66,6 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
       key: "currentScore",
       value: score,
     });
-
-    setOneTry(false);
   };
 
   if (!answers) {
@@ -84,9 +79,9 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const answersElements = answers.map((answer) => {
     const activeAnswer = answer === selectedAnswer;
 
-    const className = oneTry
-      ? styles.game__answer
-      : `${styles.game__answer} ${activeAnswer ? styles.chosen : ""}`;
+    const className = `${styles.game__answer} ${
+      activeAnswer ? styles.chosen : ""
+    }`;
 
     return (
       <div
