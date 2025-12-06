@@ -5,6 +5,12 @@ $text-main: #553974;
 $text-secondary: #a28089;
 
 .game {
+  &__category {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
   &__question {
     font-size: 30px;
     text-align: center;

@@ -59,37 +59,37 @@ function QuizGame() {
     roomId: initialRoom?.roomId,
     key: "roomId",
   });
-  const maxPlayers: number | null = useRoomFields({
-    roomId: initialRoom?.roomId,
-    key: "maxPlayers",
-  });
-  const minPlayers: number | null = useRoomFields({
-    roomId: initialRoom?.roomId,
-    key: "minPlayers",
-  });
-  const maxQuestions: number | null = useRoomFields({
-    roomId: initialRoom?.roomId,
-    key: "maxQuestions",
-  });
-  const currentQuestionIndex: number | null = useRoomFields({
-    roomId: initialRoom?.roomId,
-    key: "currentQuestionIndex",
-  });
-  const isGameStarted: boolean | null = useRoomFields({
-    roomId: initialRoom?.roomId,
-    key: "isGameStarted",
-  });
+  // const maxPlayers: number | null = useRoomFields({
+  //   roomId: initialRoom?.roomId,
+  //   key: "maxPlayers",
+  // });
+  // const minPlayers: number | null = useRoomFields({
+  //   roomId: initialRoom?.roomId,
+  //   key: "minPlayers",
+  // });
+  // const maxQuestions: number | null = useRoomFields({
+  //   roomId: initialRoom?.roomId,
+  //   key: "maxQuestions",
+  // });
+  // const currentQuestionIndex: number | null = useRoomFields({
+  //   roomId: initialRoom?.roomId,
+  //   key: "currentQuestionIndex",
+  // });
+  // const isGameStarted: boolean | null = useRoomFields({
+  //   roomId: initialRoom?.roomId,
+  //   key: "isGameStarted",
+  // });
   const players = usePlayers({ roomId: initialRoom?.roomId });
   const questions = useQuestions({ roomId: initialRoom?.roomId });
 
-  console.log("roomId:", roomId);
-  console.log("isGameStarted:", isGameStarted);
-  console.log("maxPlayers:", maxPlayers);
-  console.log("minPlayers:", minPlayers);
-  console.log("maxQuestions:", maxQuestions);
-  console.log("currentQuestionIndex:", currentQuestionIndex);
-  console.log("players:", players);
-  console.log("questions:", questions);
+  // console.log("roomId:", roomId);
+  // console.log("isGameStarted:", isGameStarted);
+  // console.log("maxPlayers:", maxPlayers);
+  // console.log("minPlayers:", minPlayers);
+  // console.log("maxQuestions:", maxQuestions);
+  // console.log("currentQuestionIndex:", currentQuestionIndex);
+  // console.log("players:", players);
+  // console.log("questions:", questions);
 
   const question = questions[currentQuestion]?.question || "";
   const answers = questions[currentQuestion]?.answers || [];
@@ -174,7 +174,10 @@ function QuizGame() {
   );
 
   const currentQuestionElement = startGame && !showRight && (
-    <QuestionNumber currentQuestion={currentQuestion} />
+    <QuestionNumber
+      currentQuestion={currentQuestion}
+      category={questions[currentQuestion].category}
+    />
   );
 
   const questionTitleAndAnswers = startGame && !showRight && (

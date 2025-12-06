@@ -9,6 +9,9 @@ $text-secondary: #a28089;
   font-weight: 600;
   color: $text-main;
   text-shadow: 1px 1px $accent-primary;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
   animation: fadeSlide 0.7s ease forwards;
 }
