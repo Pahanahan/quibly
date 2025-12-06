@@ -75,10 +75,14 @@ function EndGame({ roomId }: EndGameProps) {
         );
       });
 
+  const finalElement = playersScoreElement && (
+    <div className={styles.end__users}>{playersScoreElement}</div>
+  );
+
   return (
     <div className={styles.end}>
       <div className={styles.end__text}>Игра окончена!</div>
-      <div className={styles.end__users}>{playersScoreElement}</div>
+      {finalElement}
       <Link href="/" className={styles.end__back}>
         Назад в Меню
       </Link>
