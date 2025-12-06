@@ -151,22 +151,17 @@ function QuizGame() {
   useEffect(() => {
     if (!startGame || showRight || endGame) return;
 
-    const interval = setInterval(() => {
-      setTime((prev) => {
-        if (prev <= 0) {
-          setShowRight(true);
+    const timeout = setTimeout(() => {
+      setTime(0);
 
-          setTimeout(() => {
-            newRound();
-          }, 10000);
+      setShowRight(true);
 
-          return 0;
-        }
-        return prev - 10;
-      });
-    }, 1100);
+      setTimeout(() => {
+        newRound();
+      }, 10000);
+    }, 12000);
 
-    return () => clearInterval(interval);
+    return () => clearTimeout(timeout);
   }, [startGame, showRight, endGame, newRound]);
 
   const roomConnectElement = !startGame && !endGame && roomId && (
