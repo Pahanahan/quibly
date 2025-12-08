@@ -5,6 +5,8 @@ import { QRCodeSVG } from "qrcode.react";
 import { editRoom } from "@/src/lib/editRoom";
 import { avatars } from "@/src/lib/utils/avatars";
 
+import musicOn from "@/public/quiz-icons/music-on.svg";
+import musicOff from "@/public/quiz-icons/music-off.svg";
 import spinner from "@/public/quiz-circle.svg";
 import styles from "./JoinRoom.module.scss";
 
@@ -21,9 +23,25 @@ interface JoinRoomProps {
   players: Player[];
   disabled: boolean;
   setStartGame: React.Dispatch<SetStateAction<boolean>>;
+  musicState: boolean;
+  setMusicState: React.Dispatch<SetStateAction<boolean>>;
 }
 
-function JoinRoom({ roomId, players, disabled, setStartGame }: JoinRoomProps) {
+function JoinRoom({
+  roomId,
+  players,
+  disabled,
+  setStartGame,
+  musicState,
+  setMusicState,
+}: JoinRoomProps) {
+  const imageSound = musicState ? musicOff : musicOn;
+  const soundText = musicState ? "Выключить музыку" : "Включить музыку";
+
+  const handleSetMusicState = () => {
+    setMusicState(!musicState);
+  };
+
   const handleStartGame = () => {
     if (!roomId) {
       console.warn("Нельзя начать игру - нет roomId");
@@ -78,6 +96,10 @@ function JoinRoom({ roomId, players, disabled, setStartGame }: JoinRoomProps) {
           Игроки добавившиеся в игру...
         </div>
         <div className={styles.join__players}>{playersElement}</div>
+        <button onClick={handleSetMusicState} className={styles.join__music}>
+          {soundText}
+          <Image src={imageSound} width={30} height={30} alt="sound" />
+        </button>
       </div>
       <div className={styles.join__spinner}>
         <Image src={spinner} height={50} width={50} alt="spinner" />

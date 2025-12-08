@@ -34,6 +34,7 @@ function QuizGame() {
   const [, setTime] = useState<number>(100);
   const [showRight, setShowRight] = useState<boolean>(false);
   const [endGame, setEndGame] = useState<boolean>(false);
+  const [musicState, setMusicState] = useState<boolean>(false);
 
   useEffect(() => {
     const musics = [
@@ -47,12 +48,16 @@ function QuizGame() {
 
     const music = quizMusic(musics[randomMusicIndex], true, 0.5);
 
-    music.play();
+    if (musicState) {
+      music.play();
 
-    return () => {
+      return () => {
+        music.stop();
+      };
+    } else {
       music.stop();
-    };
-  }, []);
+    }
+  }, [musicState]);
 
   const initialRoom = useInitRoom();
   const roomId: string | null = useRoomFields({
@@ -170,6 +175,8 @@ function QuizGame() {
       players={players}
       disabled={disabledButton}
       setStartGame={setStartGame}
+      musicState={musicState}
+      setMusicState={setMusicState}
     />
   );
 

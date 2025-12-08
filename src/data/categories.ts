@@ -24,6 +24,8 @@
 // Религия true;
 // Философия true;
 
+// Животные
+
 // Сгенерируй вопросы по вот такому шаблону type Question = {
 //   id: number;
 //   category: string;
