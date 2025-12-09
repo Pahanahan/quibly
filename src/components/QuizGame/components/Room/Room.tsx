@@ -26,6 +26,7 @@ function Room({ roomId }: RoomProps) {
   const [, setId] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
+  // const [topics, setTopics] = useState<boolean>(false);
   const [ready, setReady] = useState<boolean>(false);
   const [randomAvatar, setRandomAvatar] = useState(() => {
     const index = Math.floor(Math.random() * quizAvatars.length);
@@ -113,6 +114,8 @@ function Room({ roomId }: RoomProps) {
     const id = `${userName}${generateId()}`;
     setUserId(id);
     setReady(true);
+    // setTopics(true);
+
     joinToRoom(id);
     saveToLocalStorage("QuizGameRoom", roomId);
     saveToLocalStorage("QuizGameUserName", userName);
@@ -147,8 +150,8 @@ function Room({ roomId }: RoomProps) {
     <div className={styles.room}>
       <div className="container">
         <div className={styles.room__inner}>
-          {/* <EnterTopic /> */}
           {formElement}
+          {/* {topics && <EnterTopic />} */}
           {ready && !isGameStarted && !isGameEnd && <ReadyGame />}
           {questionElement}
           {isGameEnd && <EndGame />}
