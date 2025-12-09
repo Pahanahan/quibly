@@ -27,5 +27,6 @@ export interface QuizRoom {
   maxQuestions: number;
   players?: Record<string, QuizPlayer>;
   questions: QuizQuestion[];
+  topics: string[];
   roomId: string;
 }

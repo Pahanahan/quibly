@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 import Form from "./components/Form/Form";
+// import EnterTopic from "./components/EnterTopic/EnterTopic";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
 import Game from "./components/Game/Game";
 import EndGame from "./components/EndGame/EndGame";
@@ -146,6 +147,7 @@ function Room({ roomId }: RoomProps) {
     <div className={styles.room}>
       <div className="container">
         <div className={styles.room__inner}>
+          {/* <EnterTopic /> */}
           {formElement}
           {ready && !isGameStarted && !isGameEnd && <ReadyGame />}
           {questionElement}
