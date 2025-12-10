@@ -31,7 +31,6 @@ import styles from "./QuizGame.module.scss";
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [startGame, setStartGame] = useState<boolean>(false);
-  const [, setTime] = useState<number>(100);
   const [showRight, setShowRight] = useState<boolean>(false);
   const [endGame, setEndGame] = useState<boolean>(false);
   const [musicState, setMusicState] = useState<boolean>(false);
@@ -64,37 +63,9 @@ function QuizGame() {
     roomId: initialRoom?.roomId,
     key: "roomId",
   });
-  // const maxPlayers: number | null = useRoomFields({
-  //   roomId: initialRoom?.roomId,
-  //   key: "maxPlayers",
-  // });
-  // const minPlayers: number | null = useRoomFields({
-  //   roomId: initialRoom?.roomId,
-  //   key: "minPlayers",
-  // });
-  // const maxQuestions: number | null = useRoomFields({
-  //   roomId: initialRoom?.roomId,
-  //   key: "maxQuestions",
-  // });
-  // const currentQuestionIndex: number | null = useRoomFields({
-  //   roomId: initialRoom?.roomId,
-  //   key: "currentQuestionIndex",
-  // });
-  // const isGameStarted: boolean | null = useRoomFields({
-  //   roomId: initialRoom?.roomId,
-  //   key: "isGameStarted",
-  // });
+
   const players = usePlayers({ roomId: initialRoom?.roomId });
   const questions = useQuestions({ roomId: initialRoom?.roomId });
-
-  // console.log("roomId:", roomId);
-  // console.log("isGameStarted:", isGameStarted);
-  // console.log("maxPlayers:", maxPlayers);
-  // console.log("minPlayers:", minPlayers);
-  // console.log("maxQuestions:", maxQuestions);
-  // console.log("currentQuestionIndex:", currentQuestionIndex);
-  // console.log("players:", players);
-  // console.log("questions:", questions);
 
   const question = questions[currentQuestion]?.question || "";
   const answers = questions[currentQuestion]?.answers || [];
@@ -104,7 +75,6 @@ function QuizGame() {
 
   const newRound = useCallback(() => {
     setShowRight(false);
-    setTime(100);
 
     setCurrentQuestion((prev) => {
       const next = prev + 1;
@@ -132,7 +102,6 @@ function QuizGame() {
       });
 
       players.forEach((player) => {
-        console.log(player);
         resetCurrentScore({
           roomId: roomId || null,
           player: player.id,
@@ -156,17 +125,28 @@ function QuizGame() {
   useEffect(() => {
     if (!startGame || showRight || endGame) return;
 
-    const timeout = setTimeout(() => {
-      setTime(0);
+    const duration = 12000;
+    const start = performance.now();
+    let rafId: number;
 
-      setShowRight(true);
+    function tick(now: number) {
+      if (now - start >= duration) {
+        setShowRight(true);
 
-      setTimeout(() => {
-        newRound();
-      }, 10000);
-    }, 12000);
+        setTimeout(() => {
+          newRound();
+        }, 7000);
+        return;
+      }
 
-    return () => clearTimeout(timeout);
+      rafId = requestAnimationFrame(tick);
+    }
+
+    rafId = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+    };
   }, [startGame, showRight, endGame, newRound]);
 
   const roomConnectElement = !startGame && !endGame && roomId && (
