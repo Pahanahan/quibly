@@ -26,22 +26,22 @@ export function useInitRoom() {
           topics: [],
           questions: shuffleQuestions(questions).slice(0, maxQuestions),
           players: {
-            Vasily: {
-              avatar: "fish",
-              currentScore: 0,
-              id: "Vasily",
-              ready: true,
-              score: 0,
-              userName: "Vasily",
-            },
-            Vitaly: {
-              avatar: "bull",
-              currentScore: 0,
-              id: "Vitaly",
-              ready: true,
-              score: 0,
-              userName: "Vitaly",
-            },
+            // Vasily: {
+            //   avatar: "fish",
+            //   currentScore: 0,
+            //   id: "Vasily",
+            //   ready: true,
+            //   score: 0,
+            //   userName: "Vasily",
+            // },
+            // Vitaly: {
+            //   avatar: "bull",
+            //   currentScore: 0,
+            //   id: "Vitaly",
+            //   ready: true,
+            //   score: 0,
+            //   userName: "Vitaly",
+            // },
             // Tosha: {
             //   avatar: "horse",
             //   currentScore: 0,
