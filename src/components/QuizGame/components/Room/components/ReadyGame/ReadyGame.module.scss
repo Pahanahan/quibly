@@ -7,4 +7,8 @@ $text-secondary: #f8acac;
 .ready {
   font-size: 30px;
   color: $text-main;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: #fff;
 }
