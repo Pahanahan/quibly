@@ -18,6 +18,9 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [time, setTime] = useState<number>(100);
   const [startTime, setStartTime] = useState<number>(0);
+  const [rightAnswerState, setRightAnswerState] = useState<boolean | string>(
+    "нет ответа"
+  );
 
   const player = usePlayer({ roomId: roomId, userId: userId });
 
@@ -38,13 +41,16 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const handleChooseAnswer = (answer: string) => {
     setSelectedAnswer(answer);
 
-    const isCorrect = answer === rightAnswer;
+    const isRight = answer === rightAnswer;
+    setRightAnswerState(isRight);
 
     const endTime = getDateNow();
 
     const differentTime = endTime - startTime;
 
-    const score = isCorrect ? Math.floor(500000 / differentTime + 100) : 0;
+    const score = rightAnswerState
+      ? Math.floor(500000 / differentTime + 100)
+      : 0;
 
     const playerScore = player?.score || 0;
 
@@ -107,7 +113,20 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
       )}
       {time <= -10 && (
         <div className={styles.game__right}>
-          Правильный ответ: <span>{rightAnswer}</span>
+          <h2>
+            Правильный ответ: <span>{rightAnswer}</span>
+          </h2>
+          {rightAnswerState === true ? (
+            <div className={styles["game__message--right"]}>
+              Вы ответили верно
+            </div>
+          ) : rightAnswerState === "нет ответа" ? (
+            <div className={styles["game__message--wrong"]}>Вы не ответили</div>
+          ) : (
+            <div className={styles["game__message--wrong"]}>
+              Ваш ответ неправильный
+            </div>
+          )}
         </div>
       )}
     </div>

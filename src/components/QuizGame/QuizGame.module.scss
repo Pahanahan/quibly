@@ -5,7 +5,9 @@ $text-main: #553974;
 $text-secondary: #a28089;
 
 .quiz {
-  background-color: $bg-main;
+  background-image: url("/quiz-backgrounds/bg2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100%;
   display: flex;
   justify-content: center;
