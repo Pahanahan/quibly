@@ -18,9 +18,9 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [time, setTime] = useState<number>(100);
   const [startTime, setStartTime] = useState<number>(0);
-  const [rightAnswerState, setRightAnswerState] = useState<boolean | string>(
-    "нет ответа"
-  );
+  const [rightAnswerState, setRightAnswerState] = useState<
+    boolean | "нет ответа"
+  >("нет ответа");
 
   const player = usePlayer({ roomId: roomId, userId: userId });
 
@@ -31,11 +31,13 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setTime((prev) => {
         return (prev -= 10);
       });
     }, 1000);
+
+    return () => clearTimeout(timer);
   }, [time]);
 
   const handleChooseAnswer = (answer: string) => {
@@ -48,9 +50,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
 
     const differentTime = endTime - startTime;
 
-    const score = rightAnswerState
-      ? Math.floor(500000 / differentTime + 100)
-      : 0;
+    const score = isRight ? Math.floor(500000 / differentTime + 100) : 0;
 
     const playerScore = player?.score || 0;
 
