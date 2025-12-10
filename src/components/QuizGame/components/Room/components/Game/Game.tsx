@@ -18,6 +18,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [time, setTime] = useState<number>(100);
   const [startTime, setStartTime] = useState<number>(0);
+  console.log(time);
 
   const player = usePlayer({ roomId: roomId, userId: userId });
 
@@ -96,14 +97,23 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
 
   return (
     <div className={styles.game}>
-      <h2 className={styles.game__question}>{question}</h2>
-      <div className={styles.game__answers}>{answersElements}</div>
-      <div className={styles.game__bar}>
-        <div
-          style={{ width: `${time}%` }}
-          className={styles["game__bar--active"]}
-        ></div>
-      </div>
+      {time > -10 && (
+        <div>
+          <h2 className={styles.game__question}>{question}</h2>
+          <div className={styles.game__answers}>{answersElements}</div>
+          <div className={styles.game__bar}>
+            <div
+              style={{ width: `${time}%` }}
+              className={styles["game__bar--active"]}
+            ></div>
+          </div>
+        </div>
+      )}
+      {time <= -10 && (
+        <div className={styles.game__right}>
+          Правильный ответ: <span>{rightAnswer}</span>
+        </div>
+      )}
     </div>
   );
 }
