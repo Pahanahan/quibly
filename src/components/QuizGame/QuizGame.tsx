@@ -30,6 +30,7 @@ import styles from "./QuizGame.module.scss";
 
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+  const [startTime, setStartTime] = useState<number>(0);
   const [startGame, setStartGame] = useState<boolean>(false);
   const [showRight, setShowRight] = useState<boolean>(false);
   const [endGame, setEndGame] = useState<boolean>(false);
@@ -75,6 +76,7 @@ function QuizGame() {
 
   const newRound = useCallback(() => {
     setShowRight(false);
+    setStartTime(0);
 
     setCurrentQuestion((prev) => {
       const next = prev + 1;
@@ -125,29 +127,23 @@ function QuizGame() {
   useEffect(() => {
     if (!startGame || showRight || endGame) return;
 
-    const duration = 12000;
-    const start = performance.now();
-    let rafId: number;
-
-    function tick(now: number) {
-      if (now - start >= duration) {
+    const timer = setTimeout(() => {
+      if (startTime >= 11000) {
         setShowRight(true);
 
         setTimeout(() => {
           newRound();
         }, 7000);
-        return;
       }
 
-      rafId = requestAnimationFrame(tick);
-    }
+      setStartTime((prevState) => {
+        return prevState + 1000;
+      });
+      return;
+    }, 1000);
 
-    rafId = requestAnimationFrame(tick);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-    };
-  }, [startGame, showRight, endGame, newRound]);
+    return () => clearTimeout(timer);
+  }, [startTime, startGame, showRight, endGame, newRound]);
 
   const roomConnectElement = !startGame && !endGame && roomId && (
     <JoinRoom
