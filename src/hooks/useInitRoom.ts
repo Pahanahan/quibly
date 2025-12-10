@@ -11,7 +11,7 @@ export function useInitRoom() {
 
   useEffect(() => {
     const roomId = generateId();
-    const maxQuestions = 10;
+    const maxQuestions = 20;
     const initRoom = async () => {
       try {
         const roomData: QuizRoom = {
