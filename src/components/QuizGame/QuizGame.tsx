@@ -14,6 +14,8 @@ import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { editRoom } from "@/src/lib/editRoom";
 import { resetCurrentScore } from "@/src/lib/resetCurrentScore";
 import { useMusic } from "@/src/hooks/useMusic";
+import { useTopics } from "@/src/hooks/useTopics";
+import { useInitQuestions } from "@/src/hooks/useInitQuestions";
 
 import styles from "./QuizGame.module.scss";
 
@@ -44,8 +46,14 @@ function QuizGame() {
     key: "roomId",
   });
 
+  const topics = useTopics({ roomId: initialRoom?.roomId });
   const players = usePlayers({ roomId: initialRoom?.roomId });
   const questions = useQuestions({ roomId: initialRoom?.roomId });
+
+  useInitQuestions({
+    roomId: initialRoom?.roomId,
+    topics,
+  });
 
   const question = questions[currentQuestion]?.question || "";
   const answers = questions[currentQuestion]?.answers || [];

@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { ref, set } from "firebase/database";
 import { database } from "../lib/firebase";
 
-import { generateId, shuffleQuestions } from "@/src/lib/utils";
-import questions from "../data/quizQuestions";
+import { generateId } from "@/src/lib/utils";
 import type { QuizRoom } from "../types/types";
 
 export function useInitRoom() {
@@ -24,7 +23,7 @@ export function useInitRoom() {
           maxPlayers: 8,
           maxQuestions: maxQuestions,
           topics: {},
-          questions: shuffleQuestions(questions).slice(0, maxQuestions),
+          questions: [],
           players: {
             // Vasily: {
             //   avatar: "fish",

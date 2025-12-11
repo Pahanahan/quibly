@@ -124,15 +124,17 @@ function Room({ roomId }: RoomProps) {
 
   const disabled = userName.trim().length === 0;
 
-  const formElement = stepGame === StepGame.ADDED_PLAYER && !isGameStarted && (
-    <Form
-      joinGame={joinGame}
-      roomId={roomId}
-      userName={userName}
-      changeName={changeName}
-      disabled={disabled}
-    />
-  );
+  const formElement = stepGame === StepGame.ADDED_PLAYER &&
+    !isGameStarted &&
+    !isGameEnd && (
+      <Form
+        joinGame={joinGame}
+        roomId={roomId}
+        userName={userName}
+        changeName={changeName}
+        disabled={disabled}
+      />
+    );
 
   const questionElement = isGameStarted && (
     <Game
