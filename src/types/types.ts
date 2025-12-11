@@ -27,6 +27,12 @@ export interface QuizRoom {
   maxQuestions: number;
   players?: Record<string, QuizPlayer>;
   questions: QuizQuestion[];
-  topics: string[];
+  topics: object;
   roomId: string;
+}
+
+export enum StepGame {
+  ADDED_PLAYER = "added",
+  TOPICS = "topics",
+  READY = "ready",
 }

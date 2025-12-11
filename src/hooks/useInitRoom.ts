@@ -23,7 +23,7 @@ export function useInitRoom() {
           minPlayers: 2,
           maxPlayers: 8,
           maxQuestions: maxQuestions,
-          topics: [],
+          topics: {},
           questions: shuffleQuestions(questions).slice(0, maxQuestions),
           players: {
             // Vasily: {

@@ -27,6 +27,9 @@ import styles from "./QuizGame.module.scss";
 // testIncludesRightAnswerWithAnswers(questions);
 // console.log(questions);
 ////////////////////////////////////////////////
+// import { clearDataBaseNode } from "@/src/lib/utils/clearDataBaseNode";
+// clearDataBaseNode("rooms");
+////////////////////////////////////////////////
 
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);

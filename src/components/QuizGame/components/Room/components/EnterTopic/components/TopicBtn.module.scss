@@ -8,6 +8,7 @@ $text-secondary: #f8acac;
   padding: 10px;
   border: 2px solid $text-main;
   border-radius: 10px;
+  background-color: #fff;
   cursor: pointer;
   transition: all 0.4s;
 
@@ -16,6 +17,6 @@ $text-secondary: #f8acac;
   }
 
   &__active {
-    background-color: $bg-main;
+    background-color: $accent-secondary;
   }
 }

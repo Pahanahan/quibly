@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 import Form from "./components/Form/Form";
-// import EnterTopic from "./components/EnterTopic/EnterTopic";
+import EnterTopic from "./components/EnterTopic/EnterTopic";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
 import Game from "./components/Game/Game";
 import EndGame from "./components/EndGame/EndGame";
@@ -16,6 +16,7 @@ import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { useQuestions } from "@/src/hooks/useQuestions";
 import { quizAvatars } from "@/src/data/quizAvatars";
 
+import { StepGame } from "@/src/types/types";
 import styles from "./Room.module.scss";
 
 interface RoomProps {
@@ -26,8 +27,7 @@ function Room({ roomId }: RoomProps) {
   const [, setId] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
-  // const [topics, setTopics] = useState<boolean>(false);
-  const [ready, setReady] = useState<boolean>(false);
+  const [stepGame, setStepGame] = useState<StepGame>(StepGame.ADDED_PLAYER);
   const [randomAvatar, setRandomAvatar] = useState(() => {
     const index = Math.floor(Math.random() * quizAvatars.length);
     return quizAvatars[index].name;
@@ -74,7 +74,7 @@ function Room({ roomId }: RoomProps) {
     if (storedRoomId === roomId) {
       setTimeout(() => {
         setId(storedRoomId);
-        setReady(storedRoomId !== false);
+        // setReady(storedRoomId !== false);
         setUserName(userName);
         setUserId(userId);
         setRandomAvatar(avatar);
@@ -100,7 +100,7 @@ function Room({ roomId }: RoomProps) {
       }
     );
 
-    if (!response.ok) throw new Error("Ошибка");
+    if (!response.ok) throw new Error("Ошибка подключения игрока");
 
     return await response.json();
   };
@@ -113,8 +113,7 @@ function Room({ roomId }: RoomProps) {
     e.preventDefault();
     const id = `${userName}${generateId()}`;
     setUserId(id);
-    setReady(true);
-    // setTopics(true);
+    setStepGame(StepGame.TOPICS);
 
     joinToRoom(id);
     saveToLocalStorage("QuizGameRoom", roomId);
@@ -125,7 +124,7 @@ function Room({ roomId }: RoomProps) {
 
   const disabled = userName.trim().length === 0;
 
-  const formElement = !ready && !isGameStarted && (
+  const formElement = stepGame === StepGame.ADDED_PLAYER && !isGameStarted && (
     <Form
       joinGame={joinGame}
       roomId={roomId}
@@ -146,13 +145,21 @@ function Room({ roomId }: RoomProps) {
     />
   );
 
+  const enterTopicElement = stepGame === StepGame.TOPICS && (
+    <EnterTopic roomId={roomId} setStepGame={setStepGame} />
+  );
+
+  const readyElement = stepGame === StepGame.READY &&
+    !isGameStarted &&
+    !isGameEnd && <ReadyGame />;
+
   return (
     <div className={styles.room}>
       <div className="container">
         <div className={styles.room__inner}>
           {formElement}
-          {/* {topics && <EnterTopic />} */}
-          {ready && !isGameStarted && !isGameEnd && <ReadyGame />}
+          {enterTopicElement}
+          {readyElement}
           {questionElement}
           {isGameEnd && <EndGame />}
         </div>
