@@ -13,7 +13,7 @@ import { useQuestions } from "@/src/hooks/useQuestions";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { editRoom } from "@/src/lib/editRoom";
 import { resetCurrentScore } from "@/src/lib/resetCurrentScore";
-import { quizMusic } from "@/src/lib/utils/quizMusic";
+import { useMusic } from "@/src/hooks/useMusic";
 
 import styles from "./QuizGame.module.scss";
 
@@ -27,9 +27,6 @@ import styles from "./QuizGame.module.scss";
 // testIncludesRightAnswerWithAnswers(questions);
 // console.log(questions);
 ////////////////////////////////////////////////
-// import { clearDataBaseNode } from "@/src/lib/utils/clearDataBaseNode";
-// clearDataBaseNode("rooms");
-////////////////////////////////////////////////
 
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -39,28 +36,7 @@ function QuizGame() {
   const [endGame, setEndGame] = useState<boolean>(false);
   const [musicState, setMusicState] = useState<boolean>(false);
 
-  useEffect(() => {
-    const musics = [
-      "/quiz-sound/jazz_in_paris.mp3",
-      "/quiz-sound/spring_in_my_step.mp3",
-      "/quiz-sound/mr_turtle.mp3",
-      "/quiz-sound/pink_lemonade.mp3",
-    ];
-
-    const randomMusicIndex = Math.floor(Math.random() * 4);
-
-    const music = quizMusic(musics[randomMusicIndex], true, 0.5);
-
-    if (musicState) {
-      music.play();
-
-      return () => {
-        music.stop();
-      };
-    } else {
-      music.stop();
-    }
-  }, [musicState]);
+  useMusic(musicState);
 
   const initialRoom = useInitRoom();
   const roomId: string | null = useRoomFields({
