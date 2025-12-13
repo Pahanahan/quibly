@@ -1,8 +1,13 @@
-import { SetStateAction } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import { QRCodeSVG } from "qrcode.react";
 
 import { editRoom } from "@/src/lib/editRoom";
+import { deleteRoom } from "@/src/lib/deleteRoom";
+import {
+  getToLocalStorage,
+  saveToLocalStorage,
+} from "@/src/lib/getSetlocalStorage";
 import { avatars } from "@/src/lib/utils/avatars";
 
 import musicOn from "@/public/quiz-icons/music-on.svg";
@@ -22,9 +27,9 @@ interface JoinRoomProps {
   roomId: string;
   players: Player[];
   disabled: boolean;
-  setStartGame: React.Dispatch<SetStateAction<boolean>>;
+  setStartGame: React.Dispatch<React.SetStateAction<boolean>>;
   musicState: boolean;
-  setMusicState: React.Dispatch<SetStateAction<boolean>>;
+  setMusicState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function JoinRoom({
@@ -37,6 +42,19 @@ function JoinRoom({
 }: JoinRoomProps) {
   const imageSound = musicState ? musicOff : musicOn;
   const soundText = musicState ? "Выключить музыку" : "Включить музыку";
+
+  useEffect(() => {
+    if (!roomId) return;
+
+    const roomIdLocalStorage = getToLocalStorage("QuizGameRoomIdMain");
+
+    if (roomIdLocalStorage && roomIdLocalStorage !== roomId) {
+      deleteRoom(roomIdLocalStorage);
+      saveToLocalStorage("QuizGameRoomIdMain", roomId);
+    } else {
+      saveToLocalStorage("QuizGameRoomIdMain", roomId);
+    }
+  }, [roomId]);
 
   const handleSetMusicState = () => {
     setMusicState(!musicState);
