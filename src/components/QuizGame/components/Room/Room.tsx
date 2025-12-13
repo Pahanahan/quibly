@@ -24,7 +24,6 @@ interface RoomProps {
 }
 
 function Room({ roomId }: RoomProps) {
-  const [, setId] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
   const [stepGame, setStepGame] = useState<StepGame>(StepGame.ADDED_PLAYER);
@@ -73,11 +72,11 @@ function Room({ roomId }: RoomProps) {
     const avatar = getToLocalStorage("QuizGameAvatar");
     if (storedRoomId === roomId) {
       setTimeout(() => {
-        setId(storedRoomId);
-        // setReady(storedRoomId !== false);
-        setUserName(userName);
-        setUserId(userId);
-        setRandomAvatar(avatar);
+        if (userName && userId && avatar) {
+          setUserName(userName);
+          setUserId(userId);
+          setRandomAvatar(avatar);
+        }
       }, 0);
     }
   }, [roomId]);
