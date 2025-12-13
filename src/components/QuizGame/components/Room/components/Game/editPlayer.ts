@@ -1,20 +1,24 @@
 import { update, ref } from "firebase/database";
-import { database } from "./firebase";
+import { database } from "../../../../../../lib/firebase";
 
-interface ResetCurrentScoreProps {
-  roomId: string | null;
+interface EditPlayerProps {
+  roomId: string;
   player: string;
+  key: string;
+  value: number;
 }
 
-export const resetCurrentScore = async ({
+export const editPlayer = async ({
   roomId,
   player,
-}: ResetCurrentScoreProps) => {
+  key,
+  value,
+}: EditPlayerProps) => {
   if (!roomId) return;
 
   try {
     await update(ref(database, `rooms/${roomId}/players/${player}`), {
-      currentScore: 0,
+      [key]: value,
     });
   } catch (error) {
     console.error(error);

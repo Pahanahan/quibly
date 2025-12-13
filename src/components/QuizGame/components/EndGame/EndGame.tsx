@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { avatars } from "@/src/lib/utils/avatars";
-import { generateJoke } from "@/src/lib/utils/generateJoke";
-import { quizMusic } from "@/src/lib/utils/quizMusic";
+import { avatars } from "@/src/lib/avatars";
+import { generateJoke } from "./generateJoke";
+import { quizMusic } from "@/src/lib/quizMusic";
 
 import { QuizPlayer } from "@/src/types/types";
 import styles from "./EndGame.module.scss";

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { quizMusic } from "@/src/lib/utils/quizMusic";
+import { quizMusic } from "@/src/lib/quizMusic";
 
 import styles from "./Question.module.scss";
 

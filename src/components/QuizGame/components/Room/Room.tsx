@@ -7,7 +7,7 @@ import EnterTopic from "./components/EnterTopic/EnterTopic";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
 import Game from "./components/Game/Game";
 import EndGame from "./components/EndGame/EndGame";
-import { generateId } from "@/src/lib/utils";
+import { generateId } from "@/src/lib/generateId";
 import {
   getToLocalStorage,
   saveToLocalStorage,

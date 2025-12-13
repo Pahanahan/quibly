@@ -1,4 +1,4 @@
-import { translateCategory } from "@/src/lib/utils/translateCategory";
+import { translateCategory } from "./translateCategory";
 
 import styles from "./QuestionNumber.module.scss";
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-import { avatars } from "@/src/lib/utils/avatars";
+import { avatars } from "@/src/lib/avatars";
 
 import type { QuizPlayer } from "@/src/types/types";
 import styles from "./RightAnswer.module.scss";

@@ -3,12 +3,12 @@ import Image from "next/image";
 import { QRCodeSVG } from "qrcode.react";
 
 import { editRoom } from "@/src/lib/editRoom";
-import { deleteRoom } from "@/src/lib/deleteRoom";
+import { deleteRoom } from "./deleteRoom";
 import {
   getToLocalStorage,
   saveToLocalStorage,
 } from "@/src/lib/getSetlocalStorage";
-import { avatars } from "@/src/lib/utils/avatars";
+import { avatars } from "@/src/lib/avatars";
 
 import musicOn from "@/public/quiz-icons/music-on.svg";
 import musicOff from "@/public/quiz-icons/music-off.svg";

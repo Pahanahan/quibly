@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import TopicBtn from "./components/TopicBtn";
-import { editTopics } from "@/src/lib/editTopics";
+import { editTopics } from "./editTopics";
 import { quizCategories } from "@/src/data/quizCategories";
 
 import { StepGame } from "@/src/types/types";

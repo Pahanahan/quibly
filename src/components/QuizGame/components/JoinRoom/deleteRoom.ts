@@ -1,5 +1,5 @@
 import { remove, ref } from "firebase/database";
-import { database } from "./firebase";
+import { database } from "../../../../lib/firebase";
 
 export const deleteRoom = async (roomId: string): Promise<void> => {
   try {

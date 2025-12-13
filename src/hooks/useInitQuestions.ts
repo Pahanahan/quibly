@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ref, set } from "firebase/database";
 import { database } from "../lib/firebase";
 
-import { shuffleQuestions } from "@/src/lib/utils";
+import { shuffleQuestions } from "@/src/lib/shuffleQuestions";
 import questions from "../data/quizQuestions";
 
 import { QuizQuestion } from "../types/types";

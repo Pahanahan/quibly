@@ -1,5 +1,5 @@
 import { update, ref } from "firebase/database";
-import { database } from "./firebase";
+import { database } from "../../../../../../lib/firebase";
 
 interface EditTopicsProps {
   roomId: string | null;

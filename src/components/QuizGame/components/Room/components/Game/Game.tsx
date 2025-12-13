@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { getDateNow } from "@/src/lib/getDateNow";
-import { editPlayer } from "@/src/lib/editPlayer";
+import { editPlayer } from "./editPlayer";
 import { usePlayer } from "@/src/hooks/usePlayer";
 
 import styles from "./Game.module.scss";

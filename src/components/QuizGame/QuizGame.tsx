@@ -12,7 +12,7 @@ import { usePlayers } from "@/src/hooks/usePlayers";
 import { useQuestions } from "@/src/hooks/useQuestions";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { editRoom } from "@/src/lib/editRoom";
-import { resetCurrentScore } from "@/src/lib/resetCurrentScore";
+import { resetCurrentScore } from "./resetCurrentScore";
 import { useMusic } from "@/src/hooks/useMusic";
 import { useTopics } from "@/src/hooks/useTopics";
 import { useInitQuestions } from "@/src/hooks/useInitQuestions";
