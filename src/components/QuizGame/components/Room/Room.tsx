@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import Form from "./components/Form/Form";
 import UndefinedRoom from "./components/UndefinedRoom/UndefinedRoom";
@@ -26,6 +27,7 @@ interface RoomProps {
 
 function Room({ roomId }: RoomProps) {
   const [existsRoomId, setExistsRoomId] = useState<boolean>(false);
+  const [roomIdState, setRoomIdState] = useState<string>(roomId);
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
   const [stepGame, setStepGame] = useState<StepGame>(StepGame.ADDED_PLAYER);
@@ -33,15 +35,12 @@ function Room({ roomId }: RoomProps) {
     const index = Math.floor(Math.random() * quizAvatars.length);
     return quizAvatars[index].name;
   });
-
-  console.log(roomId);
+  const router = useRouter();
 
   const isRoomId: string | null = useRoomFields({
     roomId: roomId,
     key: "roomId",
   });
-
-  console.log(isRoomId);
 
   const isGameStarted: boolean | null =
     useRoomFields({
@@ -89,6 +88,12 @@ function Room({ roomId }: RoomProps) {
   }, [isRoomId, roomId]);
 
   useEffect(() => {
+    setTimeout(() => {
+      setUserName(getToLocalStorage("QuizGameUserName") || "");
+    }, 0);
+  }, []);
+
+  useEffect(() => {
     const storedRoomId = getToLocalStorage("QuizGameRoom");
     const userName = getToLocalStorage("QuizGameUserName");
     const userId = getToLocalStorage("QuizGameUserId");
@@ -96,7 +101,6 @@ function Room({ roomId }: RoomProps) {
     if (storedRoomId === roomId) {
       setTimeout(() => {
         if (userName && userId && avatar) {
-          setUserName(userName);
           setUserId(userId);
           setRandomAvatar(avatar);
         }
@@ -129,6 +133,17 @@ function Room({ roomId }: RoomProps) {
 
   const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
+    saveToLocalStorage("QuizGameUserName", e.target.value);
+  };
+
+  const changeIdRoom = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newRoomId = e.target.value.toUpperCase();
+    setRoomIdState(newRoomId);
+    if (newRoomId.length > 0) {
+      router.push(`/quiz/${newRoomId}`);
+    } else {
+      return;
+    }
   };
 
   const joinGame = (e: React.FormEvent) => {
@@ -144,16 +159,17 @@ function Room({ roomId }: RoomProps) {
     saveToLocalStorage("QuizGameAvatar", randomAvatar);
   };
 
-  const disabled = userName.trim().length === 0;
+  const disabled = userName.trim().length === 0 || !existsRoomId;
 
   const formElement = stepGame === StepGame.ADDED_PLAYER &&
     !isGameStarted &&
     !isGameEnd && (
       <Form
         joinGame={joinGame}
-        roomId={roomId}
         userName={userName}
         changeName={changeName}
+        roomIdState={roomIdState}
+        changeIdRoom={changeIdRoom}
         disabled={disabled}
       />
     );

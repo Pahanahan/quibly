@@ -1,22 +1,39 @@
+import { useEffect, useRef } from "react";
+
 import styles from "./Form.module.scss";
 
 interface FormProps {
   joinGame: (e: React.FormEvent) => void;
-  roomId: string;
   userName: string;
   changeName: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  roomIdState: string;
+  changeIdRoom: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled: boolean;
 }
 
-function Form({ joinGame, roomId, userName, changeName, disabled }: FormProps) {
+function Form({
+  joinGame,
+  userName,
+  changeName,
+  roomIdState,
+  changeIdRoom,
+  disabled,
+}: FormProps) {
+  const inputRoomIdRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRoomIdRef.current?.focus();
+  }, [inputRoomIdRef]);
+
   return (
     <form onSubmit={joinGame} className={styles.form}>
       <label className={styles.form__label}>
         ID Комнаты:
         <input
           className={styles["form__input-room"]}
-          value={roomId}
-          readOnly
+          ref={inputRoomIdRef}
+          value={roomIdState}
+          onChange={changeIdRoom}
           name="room"
           type="text"
         />
