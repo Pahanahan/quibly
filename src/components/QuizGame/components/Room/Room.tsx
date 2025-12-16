@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 import Form from "./components/Form/Form";
+import UndefinedRoom from "./components/UndefinedRoom/UndefinedRoom";
 import EnterTopic from "./components/EnterTopic/EnterTopic";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
 import Game from "./components/Game/Game";
@@ -24,6 +25,7 @@ interface RoomProps {
 }
 
 function Room({ roomId }: RoomProps) {
+  const [existsRoomId, setExistsRoomId] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
   const [stepGame, setStepGame] = useState<StepGame>(StepGame.ADDED_PLAYER);
@@ -31,6 +33,15 @@ function Room({ roomId }: RoomProps) {
     const index = Math.floor(Math.random() * quizAvatars.length);
     return quizAvatars[index].name;
   });
+
+  console.log(roomId);
+
+  const isRoomId: string | null = useRoomFields({
+    roomId: roomId,
+    key: "roomId",
+  });
+
+  console.log(isRoomId);
 
   const isGameStarted: boolean | null =
     useRoomFields({
@@ -64,6 +75,18 @@ function Room({ roomId }: RoomProps) {
     currentQuestionIndex !== null
       ? questions[currentQuestionIndex]?.rightAnswer
       : "";
+
+  useEffect(() => {
+    if (isRoomId === roomId) {
+      setTimeout(() => {
+        setExistsRoomId(true);
+      }, 0);
+    } else {
+      setTimeout(() => {
+        setExistsRoomId(false);
+      }, 0);
+    }
+  }, [isRoomId, roomId]);
 
   useEffect(() => {
     const storedRoomId = getToLocalStorage("QuizGameRoom");
@@ -135,6 +158,8 @@ function Room({ roomId }: RoomProps) {
       />
     );
 
+  const undefinedRoom = !existsRoomId && <UndefinedRoom />;
+
   const questionElement = isGameStarted && (
     <Game
       key={currentQuestionIndex}
@@ -159,6 +184,7 @@ function Room({ roomId }: RoomProps) {
       <div className="container">
         <div className={styles.room__inner}>
           {formElement}
+          {undefinedRoom}
           {enterTopicElement}
           {readyElement}
           {questionElement}

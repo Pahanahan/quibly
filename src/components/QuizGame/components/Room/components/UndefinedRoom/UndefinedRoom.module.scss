@@ -1,0 +1,18 @@
+$bg-main: #ebe6a0;
+$accent-primary: #f3f5e5;
+$accent-secondary: #c2f4bd;
+$text-main: #394c74;
+$text-secondary: #f8acac;
+
+.undefined {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  color: #000;
+  background-color: $text-secondary;
+  border: 2px solid #000;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 30px;
+}
