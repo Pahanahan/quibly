@@ -7,15 +7,15 @@ import Question from "./components/Question/Question";
 import RightAnswer from "./components/RightAnswer/RightAnswer";
 import JoinRoom from "./components/JoinRoom/JoinRoom";
 import EndGame from "./components/EndGame/EndGame";
-import { useInitRoom } from "@/src/hooks/useInitRoom";
-import { usePlayers } from "@/src/hooks/usePlayers";
+import { useInitRoom } from "./hooks/useInitRoom";
+import { usePlayers } from "./hooks/usePlayers";
 import { useQuestions } from "@/src/hooks/useQuestions";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { editRoom } from "@/src/lib/editRoom";
-import { resetCurrentScore } from "./resetCurrentScore";
-import { useMusic } from "@/src/hooks/useMusic";
-import { useTopics } from "@/src/hooks/useTopics";
-import { useInitQuestions } from "@/src/hooks/useInitQuestions";
+import { resetCurrentScore } from "./utils/resetCurrentScore";
+import { useMusic } from "./hooks/useMusic";
+import { useTopics } from "./hooks/useTopics";
+import { useInitQuestions } from "./hooks/useInitQuestions";
 
 import styles from "./QuizGame.module.scss";
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { ref, set } from "firebase/database";
-import { database } from "../lib/firebase";
+import { database } from "../../../lib/firebase";
 
 import { generateId } from "@/src/lib/generateId";
-import type { QuizRoom } from "../types/types";
+import type { QuizRoom } from "../../../types/types";
 
 export function useInitRoom() {
   const [room, setRoom] = useState<QuizRoom | null>(null);

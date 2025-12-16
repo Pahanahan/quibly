@@ -1,4 +1,4 @@
-import { QuizQuestion } from "../types/types";
+import { QuizQuestion } from "../../../types/types";
 
 export const shuffleQuestions = (questions: QuizQuestion[]) => {
   const shuffleArray = <T>(arr: T[]): void => {
