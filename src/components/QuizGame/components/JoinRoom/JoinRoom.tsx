@@ -71,22 +71,18 @@ function JoinRoom({
     editRoom({ roomId: roomId, key: "isGameStarted", value: true });
   };
 
-  const playersElement = players.map((player) => {
-    if (player.userName === "Fake" && player.id === "idFake") {
-      return;
-    } else {
-      return (
-        <div key={player.id} className={styles.join__player}>
-          {player.userName}
-          <Image
-            src={avatars[player.avatar]}
-            width={50}
-            height={50}
-            alt="avatar"
-          />
-        </div>
-      );
-    }
+  const playersElement = players.map((player, i) => {
+    return (
+      <div key={player.id || i} className={styles.join__player}>
+        {player.userName}
+        <Image
+          src={avatars[player.avatar] ?? spinner}
+          width={50}
+          height={50}
+          alt="avatar"
+        />
+      </div>
+    );
   });
 
   return (

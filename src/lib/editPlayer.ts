@@ -1,11 +1,11 @@
 import { update, ref } from "firebase/database";
-import { database } from "../../../../../../lib/firebase";
+import { database } from "./firebase";
 
 interface EditPlayerProps {
   roomId: string;
   player: string;
   key: string;
-  value: number;
+  value: number | string;
 }
 
 export const editPlayer = async ({

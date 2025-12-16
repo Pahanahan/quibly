@@ -2,21 +2,26 @@ import { useState } from "react";
 
 import TopicBtn from "./components/TopicBtn";
 import { editTopics } from "./editTopics";
+import { editPlayer } from "@/src/lib/editPlayer";
 import { quizCategories } from "@/src/data/quizCategories";
 
-import { StepGame } from "@/src/types/types";
 import styles from "./EnterTopic.module.scss";
 
 interface EnterTopicProps {
   roomId: string;
-  setStepGame: React.Dispatch<React.SetStateAction<StepGame>>;
+  userId: string;
 }
 
-function EnterTopic({ roomId, setStepGame }: EnterTopicProps) {
+function EnterTopic({ roomId, userId }: EnterTopicProps) {
   const [topicsState, setTopicsState] = useState<string[]>([]);
 
   const handleSetTopics = () => {
-    setStepGame(StepGame.READY);
+    editPlayer({
+      roomId: roomId,
+      player: userId,
+      key: "ready",
+      value: "ready",
+    });
 
     topicsState.forEach((item) => {
       editTopics({

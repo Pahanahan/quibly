@@ -9,12 +9,11 @@ export interface QuizQuestion {
 
 export interface QuizPlayer {
   userName: string;
-  ready: boolean;
+  ready: string;
   id: string;
   currentScore: 0;
   score: number;
   avatar: string;
-  isFake?: boolean;
 }
 
 export interface QuizRoom {
