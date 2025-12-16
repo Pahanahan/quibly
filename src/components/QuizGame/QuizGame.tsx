@@ -59,7 +59,9 @@ function QuizGame() {
   const answers = questions[currentQuestion]?.answers || [];
   const rightAnswer = questions[currentQuestion]?.rightAnswer || "";
 
-  const disabledButton = players.length < 2 || players.length > 8;
+  const isButtonDisabled =
+    players.length < 2 ||
+    players.some((player) => player.ready === "addedTopics");
 
   const newRound = useCallback(() => {
     setShowRight(false);
@@ -136,7 +138,7 @@ function QuizGame() {
     <JoinRoom
       roomId={roomId}
       players={players}
-      disabled={disabledButton}
+      disabled={isButtonDisabled}
       setStartGame={setStartGame}
       musicState={musicState}
       setMusicState={setMusicState}

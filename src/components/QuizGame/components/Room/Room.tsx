@@ -61,8 +61,6 @@ function Room({ roomId }: RoomProps) {
 
   const player = usePlayer({ roomId: roomId, userId: userId });
 
-  console.log(player);
-
   const question =
     currentQuestionIndex !== null
       ? questions[currentQuestionIndex]?.question

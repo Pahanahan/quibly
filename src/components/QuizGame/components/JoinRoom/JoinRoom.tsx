@@ -10,22 +10,15 @@ import {
 } from "@/src/lib/getSetlocalStorage";
 import { avatars } from "@/src/lib/avatars";
 
+import { QuizPlayer } from "@/src/types/types";
 import musicOn from "@/public/quiz-icons/music-on.svg";
 import musicOff from "@/public/quiz-icons/music-off.svg";
 import spinner from "@/public/quiz-circle.svg";
 import styles from "./JoinRoom.module.scss";
 
-interface Player {
-  userName: string;
-  ready: boolean;
-  id: string;
-  score: number;
-  avatar: string;
-}
-
 interface JoinRoomProps {
   roomId: string;
-  players: Player[];
+  players: QuizPlayer[];
   disabled: boolean;
   setStartGame: React.Dispatch<React.SetStateAction<boolean>>;
   musicState: boolean;
