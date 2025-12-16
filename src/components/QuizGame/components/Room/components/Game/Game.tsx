@@ -100,7 +100,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   return (
     <div className={styles.game}>
       {time > -10 && (
-        <div>
+        <div className={styles.game__inner}>
           <h2 className={styles.game__question}>{question}</h2>
           <div className={styles.game__answers}>{answersElements}</div>
           <div className={styles.game__bar}>

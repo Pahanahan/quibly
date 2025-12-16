@@ -5,6 +5,13 @@ $text-main: #553974;
 $text-secondary: #a28089;
 
 .game {
+  &__inner {
+    padding: 20px;
+    background-color: $accent-primary;
+    border: 2px solid #000;
+    border-radius: 20px;
+  }
+
   &__category {
     font-size: 26px;
     margin-bottom: 20px;
