@@ -31,8 +31,4 @@ export interface QuizRoom {
   roomId: string;
 }
 
-export enum StepGame {
-  ADDED_PLAYER = "added",
-  TOPICS = "topics",
-  READY = "ready",
-}
+export type GamePhase = "lobby" | "question" | "answer" | "obstuction" | "end";

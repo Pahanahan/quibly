@@ -1,20 +1,20 @@
 import { useEffect } from "react";
 
+import { GamePhase } from "@/src/types/types";
+
 export const useRoundTimer = (
-  startGame: boolean,
-  showRight: boolean,
-  endGame: boolean,
   startTime: number,
-  setShowRight: React.Dispatch<React.SetStateAction<boolean>>,
   setStartTime: React.Dispatch<React.SetStateAction<number>>,
+  gamePhase: GamePhase,
+  setGamePhase: React.Dispatch<React.SetStateAction<GamePhase>>,
   newRound: () => void
 ) => {
   useEffect(() => {
-    if (!startGame || showRight || endGame) return;
+    if (gamePhase !== "question") return;
 
     const timer = setTimeout(() => {
       if (startTime >= 11) {
-        setShowRight(true);
+        setGamePhase("answer");
 
         /////////////////////////////////
         // const obstructionRounds = [1, 2, 3];
@@ -34,6 +34,7 @@ export const useRoundTimer = (
 
         setTimeout(() => {
           newRound();
+          setGamePhase("question");
         }, 7000);
       }
 
@@ -44,13 +45,5 @@ export const useRoundTimer = (
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [
-    startTime,
-    setStartTime,
-    startGame,
-    showRight,
-    setShowRight,
-    endGame,
-    newRound,
-  ]);
+  }, [startTime, setStartTime, gamePhase, setGamePhase, newRound]);
 };

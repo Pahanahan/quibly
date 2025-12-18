@@ -16,9 +16,10 @@ import { resetCurrentScore } from "./utils/resetCurrentScore";
 import { useMusic } from "./hooks/useMusic";
 import { useTopics } from "./hooks/useTopics";
 import { useInitQuestions } from "./hooks/useInitQuestions";
-
-import styles from "./QuizGame.module.scss";
 import { useRoundTimer } from "./hooks/useRoundTimer";
+
+import { GamePhase } from "@/src/types/types";
+import styles from "./QuizGame.module.scss";
 
 ////////////////////////////////////////////////
 // import questions from "@/src/data/quizQuestions";
@@ -34,10 +35,10 @@ import { useRoundTimer } from "./hooks/useRoundTimer";
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [startTime, setStartTime] = useState<number>(0);
-  const [startGame, setStartGame] = useState<boolean>(false);
-  const [showRight, setShowRight] = useState<boolean>(false);
-  const [endGame, setEndGame] = useState<boolean>(false);
+  const [gamePhase, setGamePhase] = useState<GamePhase>("lobby");
   const [musicState, setMusicState] = useState<boolean>(false);
+
+  console.log(gamePhase);
 
   useMusic(musicState);
 
@@ -65,13 +66,13 @@ function QuizGame() {
     players.some((player) => player.ready === "addedTopics");
 
   const newRound = useCallback(() => {
-    setShowRight(false);
+    setGamePhase("answer");
     setStartTime(0);
 
     setCurrentQuestion((prev) => {
       const next = prev + 1;
       if (next >= questions.length) {
-        setEndGame(true);
+        setGamePhase("end");
 
         editRoom({
           roomId: roomId || null,
@@ -104,28 +105,20 @@ function QuizGame() {
     });
   }, [roomId, questions, players]);
 
-  useRoundTimer(
-    startGame,
-    showRight,
-    endGame,
-    startTime,
-    setShowRight,
-    setStartTime,
-    newRound
-  );
+  useRoundTimer(startTime, setStartTime, gamePhase, setGamePhase, newRound);
 
-  const roomConnectElement = !startGame && !endGame && roomId && (
+  const roomConnectElement = gamePhase === "lobby" && (
     <JoinRoom
       roomId={roomId}
       players={players}
       disabled={isButtonDisabled}
-      setStartGame={setStartGame}
+      setGamePhase={setGamePhase}
       musicState={musicState}
       setMusicState={setMusicState}
     />
   );
 
-  const questionTitleAndAnswers = startGame && !showRight && (
+  const questionTitleAndAnswers = gamePhase === "question" && (
     <>
       <QuestionNumber
         currentQuestion={currentQuestion}
@@ -135,22 +128,22 @@ function QuizGame() {
     </>
   );
 
-  const rightAnswerElement = showRight && (
+  const rightAnswerElement = gamePhase === "answer" && (
     <RightAnswer rightAnswer={rightAnswer} roomId={roomId} />
   );
 
-  const endGameElement = endGame && <EndGame roomId={roomId} />;
+  const endGameElement = gamePhase === "end" && <EndGame roomId={roomId} />;
 
   return (
     <div className={styles.quiz}>
       <div className="container">
         <div className={styles.quiz__inner}>
           {roomConnectElement}
-          {!endGame && (
-            <div>
+          {gamePhase !== "end" && (
+            <>
               {questionTitleAndAnswers}
               {rightAnswerElement}
-            </div>
+            </>
           )}
           {endGameElement}
         </div>

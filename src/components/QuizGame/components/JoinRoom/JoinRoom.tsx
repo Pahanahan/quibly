@@ -10,17 +10,17 @@ import {
 } from "@/src/lib/getSetlocalStorage";
 import { avatars } from "@/src/lib/avatars";
 
-import { QuizPlayer } from "@/src/types/types";
+import { GamePhase, QuizPlayer } from "@/src/types/types";
 import musicOn from "@/public/quiz-icons/music-on.svg";
 import musicOff from "@/public/quiz-icons/music-off.svg";
 import spinner from "@/public/quiz-circle.svg";
 import styles from "./JoinRoom.module.scss";
 
 interface JoinRoomProps {
-  roomId: string;
+  roomId: string | null;
   players: QuizPlayer[];
   disabled: boolean;
-  setStartGame: React.Dispatch<React.SetStateAction<boolean>>;
+  setGamePhase: React.Dispatch<React.SetStateAction<GamePhase>>;
   musicState: boolean;
   setMusicState: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -29,7 +29,7 @@ function JoinRoom({
   roomId,
   players,
   disabled,
-  setStartGame,
+  setGamePhase,
   musicState,
   setMusicState,
 }: JoinRoomProps) {
@@ -59,7 +59,7 @@ function JoinRoom({
       return;
     }
 
-    setStartGame(true);
+    setGamePhase("question");
 
     editRoom({ roomId: roomId, key: "isGameStarted", value: true });
   };
