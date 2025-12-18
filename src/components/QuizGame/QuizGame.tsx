@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 import QuestionNumber from "./components/QuestionNumber/QuestionNumber";
 import Question from "./components/Question/Question";
@@ -18,6 +18,7 @@ import { useTopics } from "./hooks/useTopics";
 import { useInitQuestions } from "./hooks/useInitQuestions";
 
 import styles from "./QuizGame.module.scss";
+import { useRoundTimer } from "./hooks/useRoundTimer";
 
 ////////////////////////////////////////////////
 // import questions from "@/src/data/quizQuestions";
@@ -103,36 +104,15 @@ function QuizGame() {
     });
   }, [roomId, questions, players]);
 
-  useEffect(() => {
-    if (!startGame || endGame) return;
-
-    const timer = setTimeout(() => {
-      setStartGame(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [startGame, endGame]);
-
-  useEffect(() => {
-    if (!startGame || showRight || endGame) return;
-
-    const timer = setTimeout(() => {
-      if (startTime >= 11000) {
-        setShowRight(true);
-
-        setTimeout(() => {
-          newRound();
-        }, 7000);
-      }
-
-      setStartTime((prevState) => {
-        return prevState + 1000;
-      });
-      return;
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [startTime, startGame, showRight, endGame, newRound]);
+  useRoundTimer(
+    startGame,
+    showRight,
+    endGame,
+    startTime,
+    setShowRight,
+    setStartTime,
+    newRound
+  );
 
   const roomConnectElement = !startGame && !endGame && roomId && (
     <JoinRoom
@@ -145,15 +125,14 @@ function QuizGame() {
     />
   );
 
-  const currentQuestionElement = startGame && !showRight && (
-    <QuestionNumber
-      currentQuestion={currentQuestion}
-      category={questions[currentQuestion].category}
-    />
-  );
-
   const questionTitleAndAnswers = startGame && !showRight && (
-    <Question question={question} answers={answers} />
+    <>
+      <QuestionNumber
+        currentQuestion={currentQuestion}
+        category={questions[currentQuestion].category}
+      />
+      <Question question={question} answers={answers} />
+    </>
   );
 
   const rightAnswerElement = showRight && (
@@ -169,7 +148,6 @@ function QuizGame() {
           {roomConnectElement}
           {!endGame && (
             <div>
-              {currentQuestionElement}
               {questionTitleAndAnswers}
               {rightAnswerElement}
             </div>
