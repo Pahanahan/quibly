@@ -107,7 +107,7 @@ function QuizGame() {
 
   useRoundTimer(startTime, setStartTime, gamePhase, setGamePhase, newRound);
 
-  const roomConnectElement = gamePhase === "lobby" && (
+  const roomConnectElement = gamePhase === "lobby" && roomId && (
     <JoinRoom
       roomId={roomId}
       players={players}

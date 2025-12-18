@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { ref, set } from "firebase/database";
 import { database } from "../../../lib/firebase";
 
+import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { shuffleQuestions } from "../utils/shuffleQuestions";
 import questions from "../../../data/quizQuestions";
 
@@ -15,8 +16,13 @@ interface useInitQuestionsProps {
 export function useInitQuestions({ roomId, topics }: useInitQuestionsProps) {
   const [topicsState, setTopicsState] = useState<QuizQuestion[] | undefined>();
 
+  const maxQuestions: number =
+    useRoomFields({
+      roomId: roomId,
+      key: "maxQuestions",
+    }) || 20;
+
   useEffect(() => {
-    const maxQuestions = 20;
     const initQuestions = async () => {
       try {
         const quizQuestions = questions.filter((category) =>
@@ -42,7 +48,7 @@ export function useInitQuestions({ roomId, topics }: useInitQuestionsProps) {
     };
 
     initQuestions();
-  }, [roomId, topics]);
+  }, [roomId, topics, maxQuestions]);
 
   return topicsState;
 }

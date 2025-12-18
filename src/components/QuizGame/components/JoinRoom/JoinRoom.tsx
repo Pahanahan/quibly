@@ -17,7 +17,7 @@ import spinner from "@/public/quiz-circle.svg";
 import styles from "./JoinRoom.module.scss";
 
 interface JoinRoomProps {
-  roomId: string | null;
+  roomId: string;
   players: QuizPlayer[];
   disabled: boolean;
   setGamePhase: React.Dispatch<React.SetStateAction<GamePhase>>;
