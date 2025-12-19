@@ -14,6 +14,7 @@ export interface QuizPlayer {
   currentScore: 0;
   score: number;
   avatar: string;
+  obstructions: [];
 }
 
 export interface QuizRoom {
@@ -21,7 +22,7 @@ export interface QuizRoom {
   currentQuestionIndex: number;
   isGameEnd: boolean;
   isGameStarted: boolean;
-  isObstration: boolean;
+  isObstruction: boolean;
   maxPlayers: number;
   minPlayers: number;
   maxQuestions: number;
@@ -31,4 +32,4 @@ export interface QuizRoom {
   roomId: string;
 }
 
-export type GamePhase = "lobby" | "question" | "answer" | "obstuction" | "end";
+export type GamePhase = "lobby" | "question" | "answer" | "obstruction" | "end";

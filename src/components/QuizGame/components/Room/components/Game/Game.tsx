@@ -5,6 +5,8 @@ import { editPlayer } from "@/src/lib/editPlayer";
 import { usePlayer } from "./usePlayer";
 
 import styles from "./Game.module.scss";
+import GameQuestion from "./components/GameQuestion/GameQuestion";
+import GameAnswer from "./components/GameAnswer/GameAnswer";
 
 interface GameProps {
   roomId: string;
@@ -23,6 +25,9 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   >("нет ответа");
 
   const player = usePlayer({ roomId: roomId, userId: userId });
+
+  const obstructions = player?.obstructions;
+  const obstructionsArr = obstructions ? Object.values(obstructions) : [];
 
   useEffect(() => {
     setTimeout(() => {
@@ -79,55 +84,23 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
     );
   }
 
-  const answersElements = answers.map((answer) => {
-    const activeAnswer = answer === selectedAnswer;
-
-    const className = `${styles.game__answer} ${
-      activeAnswer ? styles.chosen : ""
-    }`;
-
-    return (
-      <div
-        onClick={() => handleChooseAnswer(answer)}
-        key={answer}
-        className={className}
-      >
-        {answer}
-      </div>
-    );
-  });
-
   return (
     <div className={styles.game}>
       {time > -10 && (
-        <div className={styles.game__inner}>
-          <h2 className={styles.game__question}>{question}</h2>
-          <div className={styles.game__answers}>{answersElements}</div>
-          <div className={styles.game__bar}>
-            <div
-              style={{ width: `${time}%` }}
-              className={styles["game__bar--active"]}
-            ></div>
-          </div>
-        </div>
+        <GameQuestion
+          question={question}
+          handleChooseAnswer={handleChooseAnswer}
+          selectedAnswer={selectedAnswer}
+          answers={answers}
+          time={time}
+          obstructionsArr={obstructionsArr}
+        />
       )}
       {time <= -10 && (
-        <div className={styles.game__right}>
-          <h2>
-            Правильный ответ: <span>{rightAnswer}</span>
-          </h2>
-          {rightAnswerState === true ? (
-            <div className={styles["game__message--right"]}>
-              Вы ответили верно
-            </div>
-          ) : rightAnswerState === "нет ответа" ? (
-            <div className={styles["game__message--wrong"]}>Вы не ответили</div>
-          ) : (
-            <div className={styles["game__message--wrong"]}>
-              Ваш ответ неправильный
-            </div>
-          )}
-        </div>
+        <GameAnswer
+          rightAnswer={rightAnswer}
+          rightAnswerState={rightAnswerState}
+        />
       )}
     </div>
   );

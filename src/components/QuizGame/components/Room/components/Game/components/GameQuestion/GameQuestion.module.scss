@@ -1,0 +1,206 @@
+$bg-main: #a0d2eb;
+$accent-primary: #e5eaf5;
+$accent-secondary: #d0bdf4;
+$text-main: #553974;
+$text-secondary: #a28089;
+
+.game {
+  padding: 20px;
+  background-color: $accent-primary;
+  border: 2px solid #000;
+  border-radius: 20px;
+
+  &__question {
+    font-size: 30px;
+    text-align: center;
+    padding: 10px 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+
+  &__answers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  &__answer {
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 90%;
+    background-color: #fff;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__bar {
+    max-width: 400px;
+    height: 15px;
+    background-color: #f3e963;
+    border: 2px solid #000;
+    border-radius: 5px;
+    margin: 0 auto;
+  }
+
+  &__bar--active {
+    height: 100%;
+    border: 0 solid $text-secondary;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: width 1s linear;
+  }
+}
+
+.chosen {
+  background-color: rgb(246, 248, 99);
+}
+
+.fadeIn {
+  animation: fadeIn 10s ease forwards;
+}
+
+.scale {
+  animation: scale 10s ease forwards;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.helicopter {
+  transition: all 5s;
+  animation: helicopter 5s ease forwards;
+}
+
+.pulse {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.shake {
+  animation: shake 0.4s ease infinite;
+}
+
+.blurIn {
+  animation: blurIn 2s ease infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes helicopter {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateY(-10px);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  65% {
+    transform: translateY(-10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  90% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes blurIn {
+  // from {
+  //   filter: blur(20px);
+  // }
+  // to {
+  //   filter: blur(0);
+  // }
+  0% {
+    filter: blur(10px);
+  }
+  50% {
+    filter: blur(0);
+  }
+  100% {
+    filter: blur(10px);
+  }
+}
+
+@media (max-width: 500px) {
+  .game {
+    &__question {
+      font-size: 20px;
+    }
+
+    &__answer {
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    &__right {
+      padding: 10px;
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  }
+}

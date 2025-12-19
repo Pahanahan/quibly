@@ -6,9 +6,10 @@ import QuestionNumber from "./components/QuestionNumber/QuestionNumber";
 import Question from "./components/Question/Question";
 import RightAnswer from "./components/RightAnswer/RightAnswer";
 import JoinRoom from "./components/JoinRoom/JoinRoom";
+import Obstruction from "./components/Obstruction/Obstruction";
 import EndGame from "./components/EndGame/EndGame";
 import { useInitRoom } from "./hooks/useInitRoom";
-import { usePlayers } from "./hooks/usePlayers";
+import { usePlayers } from "@/src/hooks/usePlayers";
 import { useQuestions } from "@/src/hooks/useQuestions";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { editRoom } from "@/src/lib/editRoom";
@@ -66,7 +67,6 @@ function QuizGame() {
     players.some((player) => player.ready === "addedTopics");
 
   const newRound = useCallback(() => {
-    setGamePhase("answer");
     setStartTime(0);
 
     setCurrentQuestion((prev) => {
@@ -105,7 +105,16 @@ function QuizGame() {
     });
   }, [roomId, questions, players]);
 
-  useRoundTimer(startTime, setStartTime, gamePhase, setGamePhase, newRound);
+  useRoundTimer(
+    roomId,
+    startTime,
+    setStartTime,
+    gamePhase,
+    setGamePhase,
+    currentQuestion,
+    newRound,
+    players
+  );
 
   const roomConnectElement = gamePhase === "lobby" && roomId && (
     <JoinRoom
@@ -132,6 +141,10 @@ function QuizGame() {
     <RightAnswer rightAnswer={rightAnswer} roomId={roomId} />
   );
 
+  const obstructionElement = gamePhase === "obstruction" && (
+    <Obstruction roomId={roomId} />
+  );
+
   const endGameElement = gamePhase === "end" && <EndGame roomId={roomId} />;
 
   return (
@@ -143,6 +156,7 @@ function QuizGame() {
             <>
               {questionTitleAndAnswers}
               {rightAnswerElement}
+              {obstructionElement}
             </>
           )}
           {endGameElement}

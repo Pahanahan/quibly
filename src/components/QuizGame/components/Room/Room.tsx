@@ -8,6 +8,7 @@ import UndefinedRoom from "./components/UndefinedRoom/UndefinedRoom";
 import EnterTopic from "./components/EnterTopic/EnterTopic";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
 import Game from "./components/Game/Game";
+import ChooseObstruction from "./components/ChooseObstruction/ChooseObstruction";
 import EndGame from "./components/EndGame/EndGame";
 import { generateId } from "@/src/lib/generateId";
 import {
@@ -45,6 +46,12 @@ function Room({ roomId }: RoomProps) {
     useRoomFields({
       roomId: roomId,
       key: "isGameStarted",
+    }) || false;
+
+  const isObstruction: boolean | null =
+    useRoomFields({
+      roomId: roomId,
+      key: "isObstruction",
     }) || false;
 
   const isGameEnd: boolean | null =
@@ -174,7 +181,15 @@ function Room({ roomId }: RoomProps) {
 
   const undefinedRoom = !existsRoomId && <UndefinedRoom />;
 
-  const questionElement = isGameStarted && (
+  const enterTopicElement = player?.ready === "addedTopics" && (
+    <EnterTopic roomId={roomId} userId={userId} />
+  );
+
+  const readyElement = player?.ready === "ready" &&
+    !isGameStarted &&
+    !isGameEnd && <ReadyGame />;
+
+  const questionElement = isGameStarted && !isObstruction && (
     <Game
       key={currentQuestionIndex}
       userId={userId}
@@ -185,13 +200,9 @@ function Room({ roomId }: RoomProps) {
     />
   );
 
-  const enterTopicElement = player?.ready === "addedTopics" && (
-    <EnterTopic roomId={roomId} userId={userId} />
+  const obstructionElement = isGameStarted && isObstruction && (
+    <ChooseObstruction roomId={roomId} />
   );
-
-  const readyElement = player?.ready === "ready" &&
-    !isGameStarted &&
-    !isGameEnd && <ReadyGame />;
 
   return (
     <div className={styles.room}>
@@ -202,6 +213,7 @@ function Room({ roomId }: RoomProps) {
           {enterTopicElement}
           {readyElement}
           {questionElement}
+          {obstructionElement}
           {isGameEnd && <EndGame />}
         </div>
       </div>
