@@ -35,6 +35,7 @@ function Room({ roomId }: RoomProps) {
     const index = Math.floor(Math.random() * quizAvatars.length);
     return quizAvatars[index].name;
   });
+  const [formHidden, setFormHidden] = useState<boolean>(false);
   const router = useRouter();
 
   const isRoomId: string | null = useRoomFields({
@@ -156,6 +157,7 @@ function Room({ roomId }: RoomProps) {
 
   const joinGame = (e: React.FormEvent) => {
     e.preventDefault();
+    setFormHidden(true);
     const id = `${userName}${generateId()}`;
     setUserId(id);
     joinToRoom(id);
@@ -176,6 +178,7 @@ function Room({ roomId }: RoomProps) {
       roomIdState={roomIdState}
       changeIdRoom={changeIdRoom}
       disabled={disabled}
+      formHidden={formHidden}
     />
   );
 

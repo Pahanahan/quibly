@@ -9,6 +9,7 @@ interface FormProps {
   roomIdState: string;
   changeIdRoom: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled: boolean;
+  formHidden: boolean;
 }
 
 function Form({
@@ -18,6 +19,7 @@ function Form({
   roomIdState,
   changeIdRoom,
   disabled,
+  formHidden,
 }: FormProps) {
   const inputRoomIdRef = useRef<HTMLInputElement>(null);
 
@@ -26,34 +28,36 @@ function Form({
   }, [inputRoomIdRef]);
 
   return (
-    <form onSubmit={joinGame} className={styles.form}>
-      <label className={styles.form__label}>
-        ID Комнаты:
-        <input
-          className={styles["form__input-room"]}
-          ref={inputRoomIdRef}
-          value={roomIdState}
-          onChange={changeIdRoom}
-          name="room"
-          type="text"
-        />
-      </label>
+    !formHidden && (
+      <form onSubmit={joinGame} className={styles.form}>
+        <label className={styles.form__label}>
+          ID Комнаты:
+          <input
+            className={styles["form__input-room"]}
+            ref={inputRoomIdRef}
+            value={roomIdState}
+            onChange={changeIdRoom}
+            name="room"
+            type="text"
+          />
+        </label>
 
-      <label className={styles.form__label}>
-        Ваше Имя:
-        <input
-          className={styles["form__input-name"]}
-          value={userName}
-          onChange={changeName}
-          name="name"
-          type="text"
-        />
-      </label>
+        <label className={styles.form__label}>
+          Ваше Имя:
+          <input
+            className={styles["form__input-name"]}
+            value={userName}
+            onChange={changeName}
+            name="name"
+            type="text"
+          />
+        </label>
 
-      <button type="submit" disabled={disabled} className={styles.form__btn}>
-        Присоединиться к игре!
-      </button>
-    </form>
+        <button type="submit" disabled={disabled} className={styles.form__btn}>
+          Присоединиться к игре!
+        </button>
+      </form>
+    )
   );
 }
 
