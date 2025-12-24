@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-import { getDateNow } from "@/src/lib/getDateNow";
+import GameQuestion from "./components/GameQuestion/GameQuestion";
+import GameAnswer from "./components/GameAnswer/GameAnswer";
 import { editPlayer } from "@/src/lib/editPlayer";
+import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { usePlayer } from "./usePlayer";
 
 import styles from "./Game.module.scss";
-import GameQuestion from "./components/GameQuestion/GameQuestion";
-import GameAnswer from "./components/GameAnswer/GameAnswer";
 
 interface GameProps {
   roomId: string;
@@ -19,7 +19,6 @@ interface GameProps {
 function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [time, setTime] = useState<number>(100);
-  const [startTime, setStartTime] = useState<number>(0);
   const [rightAnswerState, setRightAnswerState] = useState<
     boolean | "нет ответа"
   >("нет ответа");
@@ -30,11 +29,11 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const obstructions = player?.obstructions;
   const obstructionsArr = obstructions ? Object.values(obstructions) : [];
 
-  useEffect(() => {
-    setTimeout(() => {
-      setStartTime(getDateNow());
-    }, 0);
-  }, []);
+  const startTime: number =
+    useRoomFields({
+      roomId: roomId,
+      key: "startTimeRound",
+    }) || 0;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -65,7 +64,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
     const isRight = answer === rightAnswer;
     setRightAnswerState(isRight);
 
-    const endTime = getDateNow();
+    const endTime = Date.now();
 
     const differentTime = endTime - startTime;
 

@@ -23,6 +23,7 @@ export interface QuizRoom {
   isGameEnd: boolean;
   isGameStarted: boolean;
   isObstruction: boolean;
+  startTimeRound: number;
   maxPlayers: number;
   minPlayers: number;
   maxQuestions: number;

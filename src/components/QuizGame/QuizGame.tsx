@@ -94,6 +94,12 @@ function QuizGame() {
         value: next,
       });
 
+      editRoom({
+        roomId: roomId || null,
+        key: "startTimeRound",
+        value: Date.now(),
+      });
+
       players.forEach((player) => {
         resetCurrentScore({
           roomId: roomId || null,
