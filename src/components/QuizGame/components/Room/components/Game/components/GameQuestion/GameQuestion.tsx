@@ -17,8 +17,6 @@ function GameQuestion({
   time,
   obstructionsArr,
 }: GameQuestionProps) {
-  console.log(obstructionsArr);
-
   const answersElements = answers.map((answer) => {
     const activeAnswer = answer === selectedAnswer;
 
@@ -42,8 +40,6 @@ function GameQuestion({
     : obstructionsArr.map((obstruction: string) => {
         return styles[obstruction];
       });
-
-  console.log(obstructionsCss);
 
   return (
     <div className={[styles.game, ...obstructionsCss].join(" ")}>
