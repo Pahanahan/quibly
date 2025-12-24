@@ -5,6 +5,7 @@ import GameAnswer from "./components/GameAnswer/GameAnswer";
 import { editPlayer } from "@/src/lib/editPlayer";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { usePlayer } from "./usePlayer";
+import { getDateNow } from "@/src/lib/getDateNow";
 
 import styles from "./Game.module.scss";
 
@@ -18,30 +19,38 @@ interface GameProps {
 
 function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [time, setTime] = useState<number>(100);
   const [rightAnswerState, setRightAnswerState] = useState<
     boolean | "нет ответа"
   >("нет ответа");
   const [score, setScore] = useState<number>(0);
+  const [time, setTime] = useState<number>(100);
+  const [stopTimer, setStopTimer] = useState<boolean>(false);
 
   const player = usePlayer({ roomId: roomId, userId: userId });
 
   const obstructions = player?.obstructions;
   const obstructionsArr = obstructions ? Object.values(obstructions) : [];
 
+  const dateNow = getDateNow();
+
   const startTime: number =
     useRoomFields({
       roomId: roomId,
       key: "startTimeRound",
-    }) || 0;
+    }) || dateNow;
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTime((prev) => {
-        return (prev -= 10);
-      });
+    const timer = setInterval(() => {
+      if (stopTimer) return;
 
-      if (time === 0) {
+      if (time > 0) {
+        const differentTime = (startTime + 10000 - Date.now()) / 100;
+        setTime(differentTime);
+      }
+
+      if (time <= 0) {
+        setStopTimer(true);
+
         const playerScore = player?.score || 0;
 
         const totalScore = playerScore + score;
@@ -53,10 +62,10 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
           value: totalScore,
         });
       }
-    }, 1000);
+    }, 50);
 
     return () => clearTimeout(timer);
-  }, [roomId, userId, time, player, score]);
+  }, [roomId, userId, startTime, player, score, time, stopTimer]);
 
   const handleChooseAnswer = (answer: string) => {
     setSelectedAnswer(answer);
@@ -90,7 +99,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
 
   return (
     <div className={styles.game}>
-      {time > -10 && (
+      {!stopTimer && (
         <GameQuestion
           question={question}
           handleChooseAnswer={handleChooseAnswer}
@@ -100,7 +109,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
           obstructionsArr={obstructionsArr}
         />
       )}
-      {time <= -10 && (
+      {stopTimer && (
         <GameAnswer
           rightAnswer={rightAnswer}
           rightAnswerState={rightAnswerState}

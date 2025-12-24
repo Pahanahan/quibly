@@ -47,7 +47,7 @@ function GameQuestion({
       <div className={styles.game__answers}>{answersElements}</div>
       <div className={styles.game__bar}>
         <div
-          style={{ width: `${time}%` }}
+          style={{ width: `${time - 10}%` }}
           className={styles["game__bar--active"]}
         ></div>
       </div>
