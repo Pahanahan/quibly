@@ -62,6 +62,7 @@ function JoinRoom({
     setGamePhase("question");
 
     editRoom({ roomId: roomId, key: "isGameStarted", value: true });
+    editRoom({ roomId: roomId, key: "startTimeRound", value: Date.now() });
   };
 
   const playersElement = players.map((player, i) => {
