@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 import { usePlayers } from "@/src/hooks/usePlayers";
-// import { editPlayer } from "@/src/lib/editPlayer";
 import { editObstructions } from "./editObstructions";
 import { quizObstructions } from "@/src/data/quizObstructions";
 
 import styles from "./ChooseObstruction.module.scss";
+import ToolBarGame from "../ToolBarGame/ToolBarGame";
 
 interface ChooseObstructionProps {
   roomId: string;
@@ -122,6 +122,7 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
       <h2 className={styles.obstruction__title}>Выберите пакость или защиту</h2>
       <div className={styles.obstruction__items}>{obstructionsElement}</div>
       {button}
+      <ToolBarGame roomId={roomId} />
     </>
   );
 

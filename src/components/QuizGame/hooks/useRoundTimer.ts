@@ -5,16 +5,15 @@ import { resetObstructions } from "../utils/resetObstructions";
 
 import { GamePhase, QuizPlayer } from "@/src/types/types";
 
-const TIME = 11;
-const ANSWER_DURATION = 7;
-const OBSTRUCTION_DURATION = 15;
+const TIME = 11000;
+const ANSWER_DURATION = 7000;
+const OBSTRUCTION_DURATION = 10000;
 
-const obstructionRounds = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18];
+const obstructionRounds = [0, 2, 4, 6, 8, 10, 12, 14, 16];
 
 export const useRoundTimer = (
   roomId: string | null,
-  startTime: number,
-  setStartTime: React.Dispatch<React.SetStateAction<number>>,
+  startTimeRound: number,
   gamePhase: GamePhase,
   setGamePhase: React.Dispatch<React.SetStateAction<GamePhase>>,
   currentQuestion: number,
@@ -25,16 +24,12 @@ export const useRoundTimer = (
     if (gamePhase !== "question") return;
 
     const timer = setTimeout(() => {
-      if (startTime >= TIME) {
-        setGamePhase("answer");
-        return;
-      }
-
-      setStartTime((prev) => prev + 1);
-    }, 1000);
+      setGamePhase("answer");
+      return;
+    }, TIME);
 
     return () => clearTimeout(timer);
-  }, [startTime, setStartTime, gamePhase, setGamePhase]);
+  }, [gamePhase, setGamePhase]);
 
   useEffect(() => {
     if (gamePhase !== "answer") return;
@@ -49,6 +44,11 @@ export const useRoundTimer = (
           key: "isObstruction",
           value: true,
         });
+        editRoom({
+          roomId: roomId || null,
+          key: "startTimeRound",
+          value: Date.now(),
+        });
       } else {
         players.forEach((player) => {
           resetObstructions({
@@ -56,10 +56,10 @@ export const useRoundTimer = (
             player: player.id,
           });
         });
-        newRound();
         setGamePhase("question");
+        newRound();
       }
-    }, ANSWER_DURATION * 1000);
+    }, ANSWER_DURATION);
 
     return () => clearTimeout(timer);
   }, [roomId, gamePhase, currentQuestion, newRound, setGamePhase, players]);
@@ -75,7 +75,7 @@ export const useRoundTimer = (
         value: false,
       });
       setGamePhase("question");
-    }, OBSTRUCTION_DURATION * 1000);
+    }, OBSTRUCTION_DURATION);
 
     return () => clearTimeout(timer);
   }, [roomId, gamePhase, setGamePhase, newRound]);

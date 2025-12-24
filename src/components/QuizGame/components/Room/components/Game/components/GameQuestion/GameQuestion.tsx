@@ -3,20 +3,20 @@ import ToolBarGame from "../../../ToolBarGame/ToolBarGame";
 import styles from "./GameQuestion.module.scss";
 
 interface GameQuestionProps {
+  roomId: string;
   question: string;
   answers: string[];
   selectedAnswer: string | null;
   handleChooseAnswer: (answer: string) => void;
-  time: number;
   obstructionsArr: string[];
 }
 
 function GameQuestion({
+  roomId,
   question,
   answers,
   selectedAnswer,
   handleChooseAnswer,
-  time,
   obstructionsArr,
 }: GameQuestionProps) {
   const answersElements = answers.map((answer) => {
@@ -47,7 +47,7 @@ function GameQuestion({
     <div className={[styles.game, ...obstructionsCss].join(" ")}>
       <h2 className={styles.game__question}>{question}</h2>
       <div className={styles.game__answers}>{answersElements}</div>
-      <ToolBarGame time={time} />
+      <ToolBarGame roomId={roomId} />
     </div>
   );
 }

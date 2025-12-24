@@ -101,11 +101,11 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
     <div className={styles.game}>
       {!stopTimer && (
         <GameQuestion
+          roomId={roomId}
           question={question}
           handleChooseAnswer={handleChooseAnswer}
           selectedAnswer={selectedAnswer}
           answers={answers}
-          time={time}
           obstructionsArr={obstructionsArr}
         />
       )}

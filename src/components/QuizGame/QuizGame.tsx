@@ -22,6 +22,7 @@ import { useRoundTimer } from "./hooks/useRoundTimer";
 
 import { GamePhase } from "@/src/types/types";
 import styles from "./QuizGame.module.scss";
+import { getDateNow } from "@/src/lib/getDateNow";
 
 ////////////////////////////////////////////////
 // import questions from "@/src/data/quizQuestions";
@@ -36,7 +37,6 @@ import styles from "./QuizGame.module.scss";
 
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-  const [startTime, setStartTime] = useState<number>(0);
   const [gamePhase, setGamePhase] = useState<GamePhase>("lobby");
   const [musicState, setMusicState] = useState<boolean>(false);
 
@@ -63,13 +63,19 @@ function QuizGame() {
   const answers = questions[currentQuestion]?.answers || [];
   const rightAnswer = questions[currentQuestion]?.rightAnswer || "";
 
+  const dateNow = getDateNow();
+
+  const startTimeRound: number | null =
+    useRoomFields({
+      roomId: roomId,
+      key: "startTimeRound",
+    }) || dateNow;
+
   const isButtonDisabled =
     players.length < 2 ||
     players.some((player) => player.ready === "addedTopics");
 
   const newRound = useCallback(() => {
-    setStartTime(0);
-
     setCurrentQuestion((prev) => {
       const next = prev + 1;
       if (next >= questions.length) {
@@ -114,8 +120,7 @@ function QuizGame() {
 
   useRoundTimer(
     roomId,
-    startTime,
-    setStartTime,
+    startTimeRound,
     gamePhase,
     setGamePhase,
     currentQuestion,
@@ -141,7 +146,7 @@ function QuizGame() {
         category={questions[currentQuestion].category}
       />
       <Question question={question} answers={answers} />
-      {/* <ToolBar time={time}/> */}
+      <ToolBar time={startTimeRound} />
     </>
   );
 
@@ -150,7 +155,10 @@ function QuizGame() {
   );
 
   const obstructionElement = gamePhase === "obstruction" && (
-    <Obstruction roomId={roomId} />
+    <>
+      <Obstruction roomId={roomId} />
+      <ToolBar time={startTimeRound} />
+    </>
   );
 
   const endGameElement = gamePhase === "end" && <EndGame roomId={roomId} />;
