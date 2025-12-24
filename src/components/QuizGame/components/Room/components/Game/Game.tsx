@@ -4,7 +4,7 @@ import GameQuestion from "./components/GameQuestion/GameQuestion";
 import GameAnswer from "./components/GameAnswer/GameAnswer";
 import { editPlayer } from "@/src/lib/editPlayer";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
-import { usePlayer } from "./usePlayer";
+import { usePlayer } from "@/src/hooks/usePlayer";
 import { getDateNow } from "@/src/lib/getDateNow";
 
 import styles from "./Game.module.scss";

@@ -1,3 +1,5 @@
+import ToolBarGame from "../../../ToolBarGame/ToolBarGame";
+
 import styles from "./GameQuestion.module.scss";
 
 interface GameQuestionProps {
@@ -45,12 +47,7 @@ function GameQuestion({
     <div className={[styles.game, ...obstructionsCss].join(" ")}>
       <h2 className={styles.game__question}>{question}</h2>
       <div className={styles.game__answers}>{answersElements}</div>
-      <div className={styles.game__bar}>
-        <div
-          style={{ width: `${time - 10}%` }}
-          className={styles["game__bar--active"]}
-        ></div>
-      </div>
+      <ToolBarGame time={time} />
     </div>
   );
 }

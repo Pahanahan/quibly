@@ -4,7 +4,7 @@ import { ref, onValue } from "firebase/database";
 import { database } from "@/src/lib/firebase";
 
 interface useRoomFieldsProps {
-  roomId?: string;
+  roomId?: string | null;
   key: string;
 }
 

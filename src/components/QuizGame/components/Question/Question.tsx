@@ -10,6 +10,34 @@ interface QuestionProps {
 }
 
 function Question({ question, answers }: QuestionProps) {
+  // const [time, setTime] = useState<number>(100);
+  // const [stopTimer, setStopTimer] = useState<boolean>(false);
+
+  // const dateNow = getDateNow();
+
+  // const startTime: number =
+  //   useRoomFields({
+  //     roomId: roomId,
+  //     key: "startTimeRound",
+  //   }) || dateNow;
+
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     if (stopTimer) return;
+
+  //     if (time > 0) {
+  //       const differentTime = (startTime + 10000 - Date.now()) / 100;
+  //       setTime(differentTime);
+  //     }
+
+  //     if (time <= 0) {
+  //       setStopTimer(true);
+  //     }
+  //   }, 50);
+
+  //   return () => clearTimeout(timer);
+  // }, [roomId, startTime, time, stopTimer]);
+
   useEffect(() => {
     const music = quizMusic("/quiz-sound/tick-tock-timer.wav", true, 0.7);
 
@@ -32,6 +60,7 @@ function Question({ question, answers }: QuestionProps) {
     <div className={styles.question}>
       <h2 className={styles.question__title}>{question}</h2>
       <div className={styles.question__answers}>{answersElements}</div>
+      {/* <ToolBar time={time} /> */}
     </div>
   );
 }

@@ -17,7 +17,7 @@ import {
 } from "@/src/lib/getSetlocalStorage";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { useQuestions } from "@/src/hooks/useQuestions";
-import { usePlayer } from "./components/Game/usePlayer";
+import { usePlayer } from "@/src/hooks/usePlayer";
 import { quizAvatars } from "@/src/data/quizAvatars";
 
 import styles from "./Room.module.scss";
