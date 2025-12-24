@@ -23,6 +23,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const [rightAnswerState, setRightAnswerState] = useState<
     boolean | "нет ответа"
   >("нет ответа");
+  const [score, setScore] = useState<number>(0);
 
   const player = usePlayer({ roomId: roomId, userId: userId });
 
@@ -40,10 +41,23 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
       setTime((prev) => {
         return (prev -= 10);
       });
+
+      if (time === 0) {
+        const playerScore = player?.score || 0;
+
+        const totalScore = playerScore + score;
+
+        editPlayer({
+          roomId: roomId,
+          player: userId,
+          key: "score",
+          value: totalScore,
+        });
+      }
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [time]);
+  }, [roomId, userId, time, player, score]);
 
   const handleChooseAnswer = (answer: string) => {
     setSelectedAnswer(answer);
@@ -57,16 +71,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
 
     const score = isRight ? Math.floor(500000 / differentTime + 100) : 0;
 
-    const playerScore = player?.score || 0;
-
-    const totalScore = playerScore + score;
-
-    editPlayer({
-      roomId: roomId,
-      player: userId,
-      key: "score",
-      value: totalScore,
-    });
+    setScore(score);
 
     editPlayer({
       roomId: roomId,

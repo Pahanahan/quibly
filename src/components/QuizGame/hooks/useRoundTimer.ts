@@ -9,7 +9,8 @@ const TIME = 11;
 const ANSWER_DURATION = 7;
 const OBSTRUCTION_DURATION = 15;
 
-const obstructionRounds = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18];
+// const obstructionRounds = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18];
+const obstructionRounds = [100];
 
 export const useRoundTimer = (
   roomId: string | null,
