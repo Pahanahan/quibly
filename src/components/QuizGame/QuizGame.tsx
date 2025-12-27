@@ -6,7 +6,7 @@ import QuestionNumber from "./components/QuestionNumber/QuestionNumber";
 import Question from "./components/Question/Question";
 import RightAnswer from "./components/RightAnswer/RightAnswer";
 import JoinRoom from "./components/JoinRoom/JoinRoom";
-import ToolBar from "./components/ToolBar/ToolBar";
+// import ToolBar from "./components/ToolBar/ToolBar";
 import Obstruction from "./components/Obstruction/Obstruction";
 import EndGame from "./components/EndGame/EndGame";
 import { useInitRoom } from "./hooks/useInitRoom";
@@ -146,7 +146,7 @@ function QuizGame() {
         category={questions[currentQuestion].category}
       />
       <Question question={question} answers={answers} />
-      <ToolBar time={startTimeRound} />
+      {/* <ToolBar time={startTimeRound} /> */}
     </>
   );
 
@@ -157,7 +157,7 @@ function QuizGame() {
   const obstructionElement = gamePhase === "obstruction" && (
     <>
       <Obstruction roomId={roomId} />
-      <ToolBar time={startTimeRound} />
+      {/* <ToolBar time={startTimeRound} /> */}
     </>
   );
 
