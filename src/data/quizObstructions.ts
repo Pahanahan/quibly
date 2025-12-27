@@ -11,8 +11,8 @@ export const quizObstructions = [
   },
   {
     id: 3,
-    name: "defender",
-    rusName: "Защита от пакости",
+    name: "blurIn",
+    rusName: "Размытие",
   },
   {
     id: 4,
@@ -36,7 +36,22 @@ export const quizObstructions = [
   },
   {
     id: 8,
-    name: "blurIn",
-    rusName: "Размытие",
+    name: "defender",
+    rusName: "Защита от пакости",
   },
+  // {
+  //   id: 9,
+  //   name: "x2",
+  //   rusName: "Множитель x2",
+  // },
+  // {
+  //   id: 10,
+  //   name: "x5",
+  //   rusName: "Множитель x5",
+  // },
+  // {
+  //   id: 11,
+  //   name: "x10",
+  //   rusName: "Множитель x10",
+  // },
 ];

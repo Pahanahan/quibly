@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 import { usePlayers } from "@/src/hooks/usePlayers";
 import { editObstructions } from "./editObstructions";
@@ -57,43 +57,53 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
 
   const players = usePlayers({ roomId: roomId });
 
-  const playersElement = players.map((player) => {
-    const className = `${styles.obstruction__player} ${
-      activeBtnPlayer === player.id ? styles["obstruction__player--active"] : ""
-    }`;
+  const playersElement = useMemo(
+    () =>
+      players.map((player) => {
+        const className = `${styles.obstruction__player} ${
+          activeBtnPlayer === player.id
+            ? styles["obstruction__player--active"]
+            : ""
+        }`;
 
-    return (
-      <button
-        onClick={() => handleChoosePlayer(player.id, player.userName)}
-        type="button"
-        key={player.id}
-        className={className}
-      >
-        {player.userName}
-      </button>
-    );
-  });
+        return (
+          <button
+            onClick={() => handleChoosePlayer(player.id, player.userName)}
+            type="button"
+            key={player.id}
+            className={className}
+          >
+            {player.userName}
+          </button>
+        );
+      }),
+    [activeBtnPlayer, players]
+  );
 
-  const obstructionsElement = quizObstructions.map((obstruction) => {
-    const className = `${styles.obstruction__item} ${
-      activeBtnObstruction === obstruction.name
-        ? styles["obstruction__item--active"]
-        : ""
-    }`;
+  const obstructionsElement = useMemo(
+    () =>
+      quizObstructions.map((obstruction) => {
+        const className = `${styles.obstruction__item} ${
+          activeBtnObstruction === obstruction.name
+            ? styles["obstruction__item--active"]
+            : ""
+        }`;
 
-    return (
-      <button
-        onClick={() =>
-          handleChooseObstruction(obstruction.name, obstruction.rusName)
-        }
-        type="button"
-        key={obstruction.id}
-        className={className}
-      >
-        {obstruction.rusName}
-      </button>
-    );
-  });
+        return (
+          <button
+            onClick={() =>
+              handleChooseObstruction(obstruction.name, obstruction.rusName)
+            }
+            type="button"
+            key={obstruction.id}
+            className={className}
+          >
+            {obstruction.rusName}
+          </button>
+        );
+      }),
+    [activeBtnObstruction]
+  );
 
   const obstructionDescription = disabled && (
     <div className={styles.obstruction__descr}>
