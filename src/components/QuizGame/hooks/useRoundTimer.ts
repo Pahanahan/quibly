@@ -5,9 +5,9 @@ import { resetObstructions } from "../utils/resetObstructions";
 
 import { GamePhase, QuizPlayer } from "@/src/types/types";
 
-const TIME = 11000;
+const TIME = 13000;
 const ANSWER_DURATION = 7000;
-const OBSTRUCTION_DURATION = 11000;
+const OBSTRUCTION_DURATION = 13000;
 
 const obstructionRounds = [0, 2, 4, 6, 8, 10, 12, 14, 16];
 

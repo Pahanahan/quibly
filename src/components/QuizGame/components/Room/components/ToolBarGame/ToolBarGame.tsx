@@ -29,7 +29,7 @@ function ToolBarGame({ roomId, setOnFinish }: ToolBarGameProp) {
       }
 
       setTime(differentTime);
-    }, 50);
+    }, 100);
 
     return () => clearInterval(timeInterval);
   }, [startTimeRound, time, setOnFinish]);
