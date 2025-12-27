@@ -12,6 +12,7 @@ interface ChooseObstructionProps {
 }
 
 function ChooseObstruction({ roomId }: ChooseObstructionProps) {
+  const [onFinish, setOnFinish] = useState<boolean>(false);
   const [obstructionPlayer, setObstructionPlayer] = useState({
     obstruction: "",
     rusObstruction: "",
@@ -132,15 +133,17 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
       <h2 className={styles.obstruction__title}>Выберите пакость или защиту</h2>
       <div className={styles.obstruction__items}>{obstructionsElement}</div>
       {button}
-      <ToolBarGame roomId={roomId} />
+      <ToolBarGame roomId={roomId} setOnFinish={setOnFinish} />
     </>
   );
 
   return (
-    <div className={styles.obstruction}>
-      {mainElement}
-      {obstructionDescription}
-    </div>
+    !onFinish && (
+      <div className={styles.obstruction}>
+        {mainElement}
+        {obstructionDescription}
+      </div>
+    )
   );
 }
 

@@ -7,7 +7,7 @@ import { GamePhase, QuizPlayer } from "@/src/types/types";
 
 const TIME = 11000;
 const ANSWER_DURATION = 7000;
-const OBSTRUCTION_DURATION = 10000;
+const OBSTRUCTION_DURATION = 11000;
 
 const obstructionRounds = [0, 2, 4, 6, 8, 10, 12, 14, 16];
 
@@ -48,6 +48,8 @@ export const useRoundTimer = (
           key: "startTimeRound",
           value: Date.now(),
         });
+
+        return;
       } else {
         players.forEach((player) => {
           resetObstructions({
@@ -57,6 +59,8 @@ export const useRoundTimer = (
         });
         setGamePhase("question");
         newRound();
+
+        return;
       }
     }, ANSWER_DURATION);
 
@@ -67,13 +71,15 @@ export const useRoundTimer = (
     if (gamePhase !== "obstruction") return;
 
     const timer = setTimeout(() => {
-      newRound();
       editRoom({
         roomId: roomId || null,
         key: "isObstruction",
         value: false,
       });
       setGamePhase("question");
+      newRound();
+
+      return;
     }, OBSTRUCTION_DURATION);
 
     return () => clearTimeout(timer);
