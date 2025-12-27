@@ -39,19 +39,19 @@ export const quizObstructions = [
     name: "defender",
     rusName: "Защита от пакости",
   },
-  // {
-  //   id: 9,
-  //   name: "x2",
-  //   rusName: "Множитель x2",
-  // },
-  // {
-  //   id: 10,
-  //   name: "x5",
-  //   rusName: "Множитель x5",
-  // },
-  // {
-  //   id: 11,
-  //   name: "x10",
-  //   rusName: "Множитель x10",
-  // },
+  {
+    id: 9,
+    name: "x2",
+    rusName: "Множитель x2",
+  },
+  {
+    id: 10,
+    name: "x5",
+    rusName: "Множитель x5",
+  },
+  {
+    id: 11,
+    name: "x10",
+    rusName: "Множитель x10",
+  },
 ];

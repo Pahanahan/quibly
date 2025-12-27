@@ -1,11 +1,11 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 
-import { usePlayers } from "@/src/hooks/usePlayers";
+import ObstructionElements from "./components/ObstructionElements/ObstructionElements";
 import { editObstructions } from "./editObstructions";
-import { quizObstructions } from "@/src/data/quizObstructions";
 
 import styles from "./ChooseObstruction.module.scss";
 import ToolBarGame from "../ToolBarGame/ToolBarGame";
+import Players from "./components/Players/Players";
 
 interface ChooseObstructionProps {
   roomId: string;
@@ -56,56 +56,6 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
     });
   };
 
-  const players = usePlayers({ roomId: roomId });
-
-  const playersElement = useMemo(
-    () =>
-      players.map((player) => {
-        const className = `${styles.obstruction__player} ${
-          activeBtnPlayer === player.id
-            ? styles["obstruction__player--active"]
-            : ""
-        }`;
-
-        return (
-          <button
-            onClick={() => handleChoosePlayer(player.id, player.userName)}
-            type="button"
-            key={player.id}
-            className={className}
-          >
-            {player.userName}
-          </button>
-        );
-      }),
-    [activeBtnPlayer, players]
-  );
-
-  const obstructionsElement = useMemo(
-    () =>
-      quizObstructions.map((obstruction) => {
-        const className = `${styles.obstruction__item} ${
-          activeBtnObstruction === obstruction.name
-            ? styles["obstruction__item--active"]
-            : ""
-        }`;
-
-        return (
-          <button
-            onClick={() =>
-              handleChooseObstruction(obstruction.name, obstruction.rusName)
-            }
-            type="button"
-            key={obstruction.id}
-            className={className}
-          >
-            {obstruction.rusName}
-          </button>
-        );
-      }),
-    [activeBtnObstruction]
-  );
-
   const obstructionDescription = disabled && (
     <div className={styles.obstruction__descr}>
       Вы применили <span>{obstructionPlayer.rusObstruction}</span> на игроке{" "}
@@ -129,9 +79,18 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
       <h2 className={styles.obstruction__title}>
         Выберите игрока которому хотите сделать пакость или защиту
       </h2>
-      <div className={styles.obstruction__players}>{playersElement}</div>
+      <Players
+        roomId={roomId}
+        handleChoosePlayer={handleChoosePlayer}
+        activeBtnPlayer={activeBtnPlayer}
+      />
       <h2 className={styles.obstruction__title}>Выберите пакость или защиту</h2>
-      <div className={styles.obstruction__items}>{obstructionsElement}</div>
+      {
+        <ObstructionElements
+          activeBtnObstruction={activeBtnObstruction}
+          handleChooseObstruction={handleChooseObstruction}
+        />
+      }
       {button}
       <ToolBarGame roomId={roomId} setOnFinish={setOnFinish} />
     </>
