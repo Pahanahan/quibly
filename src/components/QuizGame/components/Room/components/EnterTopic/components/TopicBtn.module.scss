@@ -20,3 +20,15 @@ $text-secondary: #f8acac;
     background-color: $accent-secondary;
   }
 }
+
+@media (max-width: 756px) {
+  .btn {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 500px) {
+  .btn {
+    padding: 5px 8px;
+  }
+}

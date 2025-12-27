@@ -15,6 +15,9 @@ $text-secondary: #f8acac;
   background-color: $accent-primary;
 
   &__title {
+    font-size: 30px;
+    margin: 0;
+    margin-bottom: 30px;
     color: $text-main;
     text-align: center;
   }
@@ -52,14 +55,33 @@ $text-secondary: #f8acac;
 
 @media (max-width: 756px) {
   .topic {
+    padding: 16px;
+
+    &__title {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
     &__items {
       gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    &__btn {
+      font-size: 18px;
+      padding: 10px 15px;
     }
   }
 }
 
 @media (max-width: 500px) {
   .topic {
+    padding: 10px;
+
+    &__title {
+      font-size: 24px;
+    }
+
     &__items {
       gap: 10px;
     }
