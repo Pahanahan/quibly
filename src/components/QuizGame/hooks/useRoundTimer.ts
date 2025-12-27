@@ -13,7 +13,6 @@ const obstructionRounds = [0, 2, 4, 6, 8, 10, 12, 14, 16];
 
 export const useRoundTimer = (
   roomId: string | null,
-  startTimeRound: number,
   gamePhase: GamePhase,
   setGamePhase: React.Dispatch<React.SetStateAction<GamePhase>>,
   currentQuestion: number,

@@ -120,7 +120,6 @@ function QuizGame() {
 
   useRoundTimer(
     roomId,
-    startTimeRound,
     gamePhase,
     setGamePhase,
     currentQuestion,
