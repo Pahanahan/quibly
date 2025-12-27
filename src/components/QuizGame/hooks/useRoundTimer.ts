@@ -13,6 +13,7 @@ const obstructionRounds = [0, 2, 4, 6, 8, 10, 12, 14, 16];
 
 export const useRoundTimer = (
   roomId: string | null,
+  startTimeRound: number,
   gamePhase: GamePhase,
   setGamePhase: React.Dispatch<React.SetStateAction<GamePhase>>,
   currentQuestion: number,
@@ -24,7 +25,6 @@ export const useRoundTimer = (
 
     const timer = setTimeout(() => {
       setGamePhase("answer");
-      return;
     }, TIME);
 
     return () => clearTimeout(timer);
@@ -59,8 +59,6 @@ export const useRoundTimer = (
         });
         setGamePhase("question");
         newRound();
-
-        return;
       }
     }, ANSWER_DURATION);
 
@@ -70,18 +68,20 @@ export const useRoundTimer = (
   useEffect(() => {
     if (gamePhase !== "obstruction") return;
 
-    const timer = setTimeout(() => {
-      editRoom({
-        roomId: roomId || null,
-        key: "isObstruction",
-        value: false,
-      });
-      setGamePhase("question");
-      newRound();
+    const endTime = startTimeRound + OBSTRUCTION_DURATION;
 
-      return;
-    }, OBSTRUCTION_DURATION);
+    const interval = setInterval(() => {
+      if (Date.now() >= endTime) {
+        editRoom({
+          roomId: roomId || null,
+          key: "isObstruction",
+          value: false,
+        });
+        setGamePhase("question");
+        newRound();
+      }
+    }, 1000);
 
-    return () => clearTimeout(timer);
-  }, [roomId, gamePhase, setGamePhase, newRound]);
+    return () => clearInterval(interval);
+  }, [roomId, gamePhase, startTimeRound, setGamePhase, newRound]);
 };
