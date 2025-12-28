@@ -29,7 +29,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const player = usePlayer({ roomId: roomId, userId: userId });
 
   const obstructions = player?.obstructions;
-  const obstructionsArr = obstructions ? Object.values(obstructions) : [];
+  const obstructionsArr = obstructions ? Object.entries(obstructions) : [];
 
   const dateNow = getDateNow();
 

@@ -14,7 +14,19 @@ export interface QuizPlayer {
   currentScore: 0;
   score: number;
   avatar: string;
-  obstructions: [];
+  obstructions: {
+    x2: boolean;
+    x5: boolean;
+    x10: boolean;
+    fadeIn: boolean;
+    scale: boolean;
+    blurIn: boolean;
+    rotate: boolean;
+    helicopter: boolean;
+    pulse: boolean;
+    shake: boolean;
+    defender: boolean;
+  };
 }
 
 export interface QuizRoom {

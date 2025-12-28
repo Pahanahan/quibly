@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import ObstructionItem from "./components/ObstructionItem";
 import { usePlayers } from "@/src/hooks/usePlayers";
 import { avatars } from "@/src/lib/avatars";
 
@@ -13,6 +14,8 @@ function Obstruction({ roomId }: ObstructionProps) {
   const players = usePlayers({ roomId: roomId ?? undefined });
 
   const playersElement = players.map((player) => {
+    const obstructions = Object.entries(player.obstructions);
+
     return (
       <div key={player.id} className={styles.obstruction__item}>
         <Image
@@ -22,6 +25,9 @@ function Obstruction({ roomId }: ObstructionProps) {
           alt="animal"
         />
         <div>{player.userName}</div>
+        {obstructions.map((item) => (
+          <ObstructionItem key={item[0]} keyObstr={item[0]} value={item[1]} />
+        ))}
       </div>
     );
   });

@@ -5,7 +5,7 @@ interface EditObstructionsProps {
   roomId: string;
   player: string;
   key: string;
-  value: number | string;
+  value: number | string | boolean;
 }
 
 export const editObstructions = async ({

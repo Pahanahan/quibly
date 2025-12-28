@@ -125,6 +125,19 @@ function Room({ roomId }: RoomProps) {
       currentScore: 0,
       score: 0,
       avatar: randomAvatar,
+      obstructions: {
+        x2: false,
+        x5: false,
+        x10: false,
+        fadeIn: false,
+        scale: false,
+        blurIn: false,
+        rotate: false,
+        helicopter: false,
+        pulse: false,
+        shake: false,
+        defender: false,
+      },
     };
 
     const response = await fetch(

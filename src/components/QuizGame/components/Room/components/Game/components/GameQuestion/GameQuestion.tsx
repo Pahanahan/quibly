@@ -8,7 +8,7 @@ interface GameQuestionProps {
   answers: string[];
   selectedAnswer: string | null;
   handleChooseAnswer: (answer: string) => void;
-  obstructionsArr: string[];
+  obstructionsArr: [string, boolean][];
 }
 
 function GameQuestion({
@@ -37,10 +37,10 @@ function GameQuestion({
     );
   });
 
-  const obstructionsCss = obstructionsArr.includes("defender")
+  const obstructionsCss = obstructionsArr.includes(["defender", true])
     ? [""]
-    : obstructionsArr.map((obstruction: string) => {
-        return styles[obstruction];
+    : obstructionsArr.map(([key, value]: [string, boolean]) => {
+        return value ? styles[key] : "";
       });
 
   return (

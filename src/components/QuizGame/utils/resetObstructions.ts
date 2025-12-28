@@ -14,7 +14,19 @@ export const resetObstructions = async ({
 
   try {
     await update(ref(database, `rooms/${roomId}/players/${player}`), {
-      obstructions: [],
+      obstructions: {
+        x2: false,
+        x5: false,
+        x10: false,
+        fadeIn: false,
+        scale: false,
+        blurIn: false,
+        rotate: false,
+        helicopter: false,
+        pulse: false,
+        shake: false,
+        defender: false,
+      },
     });
   } catch (error) {
     console.error(error);

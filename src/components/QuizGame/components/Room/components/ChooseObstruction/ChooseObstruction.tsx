@@ -52,7 +52,7 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
       roomId: roomId,
       player: obstructionPlayer.userId,
       key: obstructionPlayer.obstruction,
-      value: obstructionPlayer.obstruction,
+      value: true,
     });
   };
 
