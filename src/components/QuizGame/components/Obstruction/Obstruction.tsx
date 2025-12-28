@@ -20,9 +20,8 @@ function Obstruction({ roomId }: ObstructionProps) {
           width={40}
           height={40}
           alt="animal"
-          className={styles.right__avatar}
         />
-        <div className={styles.right__name}>{player.userName}</div>
+        <div>{player.userName}</div>
       </div>
     );
   });
