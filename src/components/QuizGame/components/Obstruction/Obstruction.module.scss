@@ -1,16 +1,12 @@
-$bg-main: #a0d2eb;
-$accent-primary: #e5eaf5;
-$accent-secondary: #d0bdf4;
-$text-main: #553974;
-$text-secondary: #795e65;
+@use "../../colors.scss" as *;
 
 .obstruction {
   padding: 20px;
-  border: 2px solid $accent-secondary;
+  border: 2px solid $border-default;
   border-radius: 20px;
-  background-color: $accent-primary;
+  background-color: $bg-main;
   color: $text-main;
-  box-shadow: 0 0 10px 0 $accent-primary;
+  box-shadow: 0 0 10px 0 $shadow-main;
 
   &__title {
     font-size: 60px;
@@ -33,7 +29,7 @@ $text-secondary: #795e65;
     align-items: center;
     gap: 5px;
     padding: 5px 10px;
-    border: 2px solid $accent-secondary;
+    border: 2px solid $border-default;
     border-radius: 5px;
 
     opacity: 0;
