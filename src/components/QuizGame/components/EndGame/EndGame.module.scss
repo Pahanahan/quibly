@@ -1,8 +1,4 @@
-$bg-main: #a0d2eb;
-$accent-primary: #e5eaf5;
-$accent-secondary: #d0bdf4;
-$text-main: #553974;
-$text-secondary: #a28089;
+@use "../../colors.scss" as *;
 
 .end {
   display: flex;
@@ -14,9 +10,9 @@ $text-secondary: #a28089;
     font-size: 40px;
     color: $text-main;
     padding: 10px 20px;
-    border: 2px solid $text-main;
+    border: 2px solid $border-default;
     border-radius: 10px;
-    background-color: $accent-primary;
+    background-color: $bg-main;
   }
 
   &__users {
@@ -27,7 +23,7 @@ $text-secondary: #a28089;
     padding: 20px;
     border: 2px solid $text-main;
     border-radius: 20px;
-    background-color: $accent-primary;
+    background-color: $bg-main;
   }
 
   &__user-top {
@@ -39,7 +35,7 @@ $text-secondary: #a28089;
   &__user {
     font-size: 38px;
     padding: 3px 10px;
-    border: 2px solid $accent-secondary;
+    border: 2px solid $border-default;
     border-radius: 5px;
 
     &:nth-child(1) {
@@ -71,11 +67,11 @@ $text-secondary: #a28089;
   &__back {
     text-decoration: none;
     font-size: 30px;
-    color: $accent-secondary;
+    color: $text-main;
     padding: 10px;
-    border: 2px solid $accent-primary;
+    border: 2px solid $border-default;
     border-radius: 10px;
-    background-color: $text-main;
+    background-color: $bg-main;
     transition: all 0.3s;
 
     &:active {
