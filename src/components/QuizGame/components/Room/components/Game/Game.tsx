@@ -31,6 +31,12 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
   const obstructions = player?.obstructions;
   const obstructionsArr = obstructions ? Object.entries(obstructions) : [];
 
+  const [x2, x5, x10] = [
+    obstructions?.x2 ? 2 : 1,
+    obstructions?.x5 ? 5 : 1,
+    obstructions?.x10 ? 10 : 1,
+  ];
+
   const dateNow = getDateNow();
 
   const startTime: number =
@@ -62,7 +68,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
           value: totalScore,
         });
       }
-    }, 50);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [roomId, userId, startTime, player, score, time, stopTimer]);
@@ -77,7 +83,9 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
 
     const differentTime = endTime - startTime;
 
-    const score = isRight ? Math.floor(500000 / differentTime + 100) : 0;
+    const score = isRight
+      ? Math.floor(500000 / differentTime + 100) * x2 * x5 * x10
+      : 0;
 
     setScore(score);
 

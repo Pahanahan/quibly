@@ -11,40 +11,41 @@ import x5 from "public/quiz-icons/x5.svg";
 import x10 from "public/quiz-icons/x10.svg";
 
 export const formatObstruction = (key: string, value: boolean | number) => {
-  if (!value || value === 1) {
-    return "";
-  } else if (value === 2) {
-    return x2;
-  } else if (value === 5) {
-    return x5;
-  } else if (value === 10) {
-    return x10;
-  } else {
-    switch (key) {
-      case "fadeIn": {
-        return fadeIn;
-      }
-      case "scale": {
-        return scale;
-      }
-      case "blurIn": {
-        return blurIn;
-      }
-      case "rotate": {
-        return rotate;
-      }
-      case "helicopter": {
-        return helicopter;
-      }
-      case "pulse": {
-        return pulse;
-      }
-      case "shake": {
-        return shake;
-      }
-      case "defender": {
-        return defender;
-      }
+  if (!value) return "";
+
+  switch (key) {
+    case "fadeIn": {
+      return fadeIn;
+    }
+    case "scale": {
+      return scale;
+    }
+    case "blurIn": {
+      return blurIn;
+    }
+    case "rotate": {
+      return rotate;
+    }
+    case "helicopter": {
+      return helicopter;
+    }
+    case "pulse": {
+      return pulse;
+    }
+    case "shake": {
+      return shake;
+    }
+    case "defender": {
+      return defender;
+    }
+    case "x2": {
+      return x2;
+    }
+    case "x5": {
+      return x5;
+    }
+    case "x10": {
+      return x10;
     }
   }
 };
