@@ -15,6 +15,7 @@ import {
   getToLocalStorage,
   saveToLocalStorage,
 } from "@/src/lib/getSetlocalStorage";
+import { isValidRoomId } from "./isValidRoomId";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { useQuestions } from "@/src/hooks/useQuestions";
 import { usePlayer } from "@/src/hooks/usePlayer";
@@ -160,6 +161,9 @@ function Room({ roomId }: RoomProps) {
 
   const changeIdRoom = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newRoomId = e.target.value.toUpperCase();
+
+    if (!isValidRoomId(newRoomId) || newRoomId.length > 5) return;
+
     setRoomIdState(newRoomId);
     if (newRoomId.length > 0) {
       router.push(`/quiz/${newRoomId}`);
