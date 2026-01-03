@@ -39,6 +39,8 @@ function Room({ roomId }: RoomProps) {
   const [formHidden, setFormHidden] = useState<boolean>(false);
   const router = useRouter();
 
+  console.log(formHidden);
+
   const isRoomId: string | null = useRoomFields({
     roomId: roomId,
     key: "roomId",
@@ -224,6 +226,8 @@ function Room({ roomId }: RoomProps) {
     <ChooseObstruction roomId={roomId} />
   );
 
+  const endGameElement = isGameEnd && <EndGame setFormHidden={setFormHidden} />;
+
   return (
     <div className={styles.room}>
       <div className="container">
@@ -234,7 +238,7 @@ function Room({ roomId }: RoomProps) {
           {readyElement}
           {questionElement}
           {obstructionElement}
-          {isGameEnd && <EndGame />}
+          {endGameElement}
         </div>
       </div>
     </div>
