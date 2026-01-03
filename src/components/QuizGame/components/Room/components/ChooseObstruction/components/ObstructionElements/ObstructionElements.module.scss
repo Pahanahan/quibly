@@ -1,8 +1,4 @@
-$bg-main: #ebe6a0;
-$accent-primary: #f3f5e5;
-$accent-secondary: #c2f4bd;
-$text-main: #394c74;
-$text-secondary: #f8acac;
+@use "../../../../variables" as *;
 
 .obstruction {
   display: flex;
@@ -14,9 +10,9 @@ $text-secondary: #f8acac;
 
   &__item {
     padding: 10px;
-    border: 2px solid #000;
+    border: 2px solid $border-default;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: $bg-unselected;
     font-size: 20px;
     cursor: pointer;
     transition: all 0.4s;
@@ -27,6 +23,6 @@ $text-secondary: #f8acac;
   }
 
   &__item--active {
-    background-color: $bg-main;
+    background-color: $bg-active;
   }
 }

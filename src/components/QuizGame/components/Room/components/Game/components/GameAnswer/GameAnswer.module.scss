@@ -1,14 +1,10 @@
-$bg-main: #a0d2eb;
-$accent-primary: #e5eaf5;
-$accent-secondary: #d0bdf4;
-$text-main: #553974;
-$text-secondary: #a28089;
+@use "../../../../variables" as *;
 
 .right {
   margin: 0 10px;
   padding: 20px;
-  background-color: #fff;
-  border: 2px solid #000;
+  background-color: $bg-main;
+  border: 2px solid $border-default;
   border-radius: 10px;
 
   animation: boomIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -22,12 +18,13 @@ $text-secondary: #a28089;
   &__message--right {
     font-size: 16px;
     text-align: center;
-    color: green;
+    color: $text-right;
   }
+
   &__message--wrong {
     font-size: 16px;
     text-align: center;
-    color: red;
+    color: $text-wrong;
   }
 }
 

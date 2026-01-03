@@ -1,16 +1,12 @@
-$bg-main: #a0d2eb;
-$accent-primary: #e5eaf5;
-$accent-secondary: #d0bdf4;
-$text-main: #553974;
-$text-secondary: #a28089;
+@use "../../variables" as *;
 
 .game {
   &__question {
     font-size: 30px;
     text-align: center;
     padding: 10px 20px;
-    border: 2px solid #000;
+    border: 2px solid $border-default;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: $bg-main;
   }
 }

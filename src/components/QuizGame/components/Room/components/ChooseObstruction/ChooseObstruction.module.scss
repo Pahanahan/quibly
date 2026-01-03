@@ -1,8 +1,4 @@
-$bg-main: #ebe6a0;
-$accent-primary: #f3f5e5;
-$accent-secondary: #c2f4bd;
-$text-main: #394c74;
-$text-secondary: #f8acac;
+@use "../../variables" as *;
 
 .obstruction {
   display: flex;
@@ -10,9 +6,9 @@ $text-secondary: #f8acac;
   align-items: center;
   gap: 20px;
   padding: 20px;
-  border: 2px solid $text-main;
+  border: 2px solid $border-default;
   border-radius: 20px;
-  background-color: $accent-primary;
+  background-color: $bg-main;
 
   &__title {
     text-align: center;
@@ -21,10 +17,10 @@ $text-secondary: #f8acac;
 
   &__btn {
     font-size: 26px;
-    border: 2px solid #000;
+    border: 2px solid $border-default;
     border-radius: 10px;
     padding: 10px;
-    background-color: $accent-secondary;
+    background-color: $bg-active;
     cursor: pointer;
     transition: all 0.4s;
 
@@ -33,7 +29,7 @@ $text-secondary: #f8acac;
     }
 
     &:disabled {
-      background-color: $text-secondary;
+      background-color: $bg-error;
       cursor: not-allowed;
     }
   }
