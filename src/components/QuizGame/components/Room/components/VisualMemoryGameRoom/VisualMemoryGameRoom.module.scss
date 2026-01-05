@@ -1,0 +1,137 @@
+@use "../../variables" as *;
+
+.memory {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: $bg-main;
+  border: 2px solid $border-default;
+  border-radius: 10px;
+
+  &__answer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: $bg-main;
+    border: 2px solid $border-default;
+    border-radius: 10px;
+
+    animation: boomIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &__title {
+    font-size: 30px;
+    text-align: center;
+    color: $text-main;
+    margin: 0;
+  }
+
+  &__items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__item-start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    border: 2px solid $border-default;
+    border-radius: 10px;
+    background-color: $bg-unselected;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    border: 2px solid $border-default;
+    border-radius: 10px;
+    background-color: $bg-unselected;
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__item-name {
+    font-size: 20px;
+  }
+
+  &__btn {
+    padding: 10px;
+    border: 2px solid $border-default;
+    border-radius: 10px;
+    background-color: $bg-active;
+    color: $text-main;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &:disabled {
+      background-color: $bg-error;
+      cursor: not-allowed;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+.correct {
+  background-color: $bg-active;
+}
+
+.incorrect {
+  background-color: $bg-error;
+}
+
+@keyframes boomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) translateY(200px);
+    filter: blur(4px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-10px);
+    filter: blur(0);
+  }
+
+  70% {
+    transform: scale(1.25) translateY(0);
+  }
+
+  75% {
+    transform: scale(0.95) translateX(-8px);
+  }
+  80% {
+    transform: scale(1.05) translateX(8px);
+  }
+  85% {
+    transform: scale(0.97) translateX(-4px);
+  }
+  90% {
+    transform: scale(1.02) translateX(4px);
+  }
+
+  100% {
+    transform: scale(1) translateX(0);
+  }
+}

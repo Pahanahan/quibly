@@ -9,6 +9,7 @@ import EnterTopic from "./components/EnterTopic/EnterTopic";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
 import Game from "./components/Game/Game";
 import ChooseObstruction from "./components/ChooseObstruction/ChooseObstruction";
+import VisualMemoryGameRoom from "./components/VisualMemoryGameRoom/VisualMemoryGameRoom";
 import EndGame from "./components/EndGame/EndGame";
 import { generateId } from "@/src/lib/generateId";
 import {
@@ -39,8 +40,6 @@ function Room({ roomId }: RoomProps) {
   const [formHidden, setFormHidden] = useState<boolean>(false);
   const router = useRouter();
 
-  console.log(formHidden);
-
   const isRoomId: string | null = useRoomFields({
     roomId: roomId,
     key: "roomId",
@@ -56,6 +55,12 @@ function Room({ roomId }: RoomProps) {
     useRoomFields({
       roomId: roomId,
       key: "isObstruction",
+    }) || false;
+
+  const isMemoryGame: boolean | null =
+    useRoomFields({
+      roomId: roomId,
+      key: "isMemoryGame",
     }) || false;
 
   const isGameEnd: boolean | null =
@@ -211,7 +216,7 @@ function Room({ roomId }: RoomProps) {
     !isGameStarted &&
     !isGameEnd && <ReadyGame />;
 
-  const questionElement = isGameStarted && !isObstruction && (
+  const questionElement = isGameStarted && !isObstruction && !isMemoryGame && (
     <Game
       key={currentQuestionIndex}
       userId={userId}
@@ -226,6 +231,10 @@ function Room({ roomId }: RoomProps) {
     <ChooseObstruction roomId={roomId} />
   );
 
+  const memoriesElement = isGameStarted && isMemoryGame && (
+    <VisualMemoryGameRoom roomId={roomId} userId={userId} />
+  );
+
   const endGameElement = isGameEnd && <EndGame setFormHidden={setFormHidden} />;
 
   return (
@@ -238,6 +247,7 @@ function Room({ roomId }: RoomProps) {
           {readyElement}
           {questionElement}
           {obstructionElement}
+          {memoriesElement}
           {endGameElement}
         </div>
       </div>

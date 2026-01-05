@@ -8,8 +8,11 @@ import { GamePhase, QuizPlayer } from "@/src/types/types";
 const TIME = 13000;
 const ANSWER_DURATION = 7000;
 const OBSTRUCTION_DURATION = 13000;
+const MEMORY_DURATION = 20000;
+const MEMORY_ANSWER_DURATION = 7000;
 
-const obstructionRounds = [0, 2, 4, 6, 8, 10, 12, 14, 16];
+const obstructionRounds = [0, 2, 4, 6, 8, 12, 14, 16];
+const memoryRound = 10;
 
 export const useRoundTimer = (
   roomId: string | null,
@@ -35,12 +38,38 @@ export const useRoundTimer = (
 
     const isObstructionRound = obstructionRounds.includes(currentQuestion);
 
+    const isMemoryRound = memoryRound === currentQuestion;
+
     const timer = setTimeout(() => {
       if (isObstructionRound) {
         setGamePhase("obstruction");
         editRoom({
           roomId: roomId || null,
           key: "isObstruction",
+          value: true,
+        });
+        editRoom({
+          roomId: roomId || null,
+          key: "isMemoryGame",
+          value: false,
+        });
+        editRoom({
+          roomId: roomId || null,
+          key: "startTimeRound",
+          value: Date.now(),
+        });
+
+        return;
+      } else if (isMemoryRound) {
+        setGamePhase("memory");
+        editRoom({
+          roomId: roomId || null,
+          key: "isObstruction",
+          value: false,
+        });
+        editRoom({
+          roomId: roomId || null,
+          key: "isMemoryGame",
           value: true,
         });
         editRoom({
@@ -84,4 +113,44 @@ export const useRoundTimer = (
 
     return () => clearInterval(interval);
   }, [roomId, gamePhase, startTimeRound, setGamePhase, newRound]);
+
+  useEffect(() => {
+    if (gamePhase !== "memory") return;
+    const timer = setTimeout(() => {
+      setGamePhase("memoryAnswer");
+    }, MEMORY_DURATION);
+
+    return () => clearTimeout(timer);
+  }, [roomId, gamePhase, setGamePhase]);
+
+  useEffect(() => {
+    if (gamePhase !== "memoryAnswer") return;
+
+    const endTime = startTimeRound + MEMORY_ANSWER_DURATION;
+
+    const timer = setTimeout(() => {
+      if (Date.now() >= endTime) {
+        editRoom({
+          roomId: roomId || null,
+          key: "isMemoryGame",
+          value: false,
+        });
+        editRoom({
+          roomId: roomId || null,
+          key: "startTimeRound",
+          value: Date.now(),
+        });
+        players.forEach((player) => {
+          resetObstructions({
+            roomId: roomId || null,
+            player: player.id,
+          });
+        });
+        setGamePhase("question");
+        newRound();
+      }
+    }, MEMORY_ANSWER_DURATION);
+
+    return () => clearTimeout(timer);
+  }, [roomId, gamePhase, setGamePhase, startTimeRound, players, newRound]);
 };

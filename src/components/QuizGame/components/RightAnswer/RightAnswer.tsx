@@ -7,11 +7,12 @@ import type { QuizPlayer } from "@/src/types/types";
 import styles from "./RightAnswer.module.scss";
 
 interface RightAnswerProps {
-  rightAnswer: string;
+  rightAnswer?: string;
   roomId: string | null;
+  title: string;
 }
 
-function RightAnswer({ rightAnswer, roomId }: RightAnswerProps) {
+function RightAnswer({ rightAnswer, roomId, title }: RightAnswerProps) {
   const [players, setPlayers] = useState<QuizPlayer[] | null>(null);
 
   useEffect(() => {
@@ -65,8 +66,8 @@ function RightAnswer({ rightAnswer, roomId }: RightAnswerProps) {
   return (
     <div className={styles.right}>
       <div className={styles.right__answer}>
-        <span>Правильный ответ: </span>
-        {rightAnswer}
+        <span>{title}</span>
+        {rightAnswer && rightAnswer}
       </div>
       <div className={styles.right__players}>{playersScoreElement}</div>
     </div>

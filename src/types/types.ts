@@ -1,3 +1,9 @@
+export interface QuizMemories {
+  id: number;
+  name: string;
+  rusName: string;
+}
+
 export interface QuizQuestion {
   id: number;
   category: string;
@@ -9,7 +15,7 @@ export interface QuizQuestion {
 
 export interface QuizPlayer {
   userName: string;
-  ready: string;
+  ready: "addedTopics" | "ready" | "memory";
   id: string;
   currentScore: 0;
   score: number;
@@ -35,6 +41,7 @@ export interface QuizRoom {
   isGameEnd: boolean;
   isGameStarted: boolean;
   isObstruction: boolean;
+  isMemoryGame: boolean;
   startTimeRound: number;
   maxPlayers: number;
   minPlayers: number;
@@ -45,4 +52,11 @@ export interface QuizRoom {
   roomId: string;
 }
 
-export type GamePhase = "lobby" | "question" | "answer" | "obstruction" | "end";
+export type GamePhase =
+  | "lobby"
+  | "question"
+  | "answer"
+  | "obstruction"
+  | "memory"
+  | "memoryAnswer"
+  | "end";

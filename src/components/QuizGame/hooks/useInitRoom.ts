@@ -20,6 +20,7 @@ export function useInitRoom() {
           isGameStarted: false,
           currentQuestionIndex: 0,
           isObstruction: false,
+          isMemoryGame: false,
           startTimeRound: Date.now(),
           minPlayers: 2,
           maxPlayers: 8,

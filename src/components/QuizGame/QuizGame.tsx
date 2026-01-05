@@ -7,6 +7,7 @@ import Question from "./components/Question/Question";
 import RightAnswer from "./components/RightAnswer/RightAnswer";
 import JoinRoom from "./components/JoinRoom/JoinRoom";
 import Obstruction from "./components/Obstruction/Obstruction";
+import VisualMemoryLevel from "./components/VisualMemoryLevel/VisualMemoryLevel";
 import EndGame from "./components/EndGame/EndGame";
 import { useInitRoom } from "./hooks/useInitRoom";
 import { usePlayers } from "@/src/hooks/usePlayers";
@@ -18,10 +19,11 @@ import { useMusic } from "./hooks/useMusic";
 import { useTopics } from "./hooks/useTopics";
 import { useInitQuestions } from "./hooks/useInitQuestions";
 import { useRoundTimer } from "./hooks/useRoundTimer";
-
-import { GamePhase } from "@/src/types/types";
-import styles from "./QuizGame.module.scss";
+import { useInitMemories } from "./hooks/useInitMemories";
 import { getDateNow } from "@/src/lib/getDateNow";
+import { GamePhase } from "@/src/types/types";
+
+import styles from "./QuizGame.module.scss";
 
 ////////////////////////////////////////////////
 // import questions from "@/src/data/quizQuestions";
@@ -57,6 +59,8 @@ function QuizGame() {
     roomId: initialRoom?.roomId,
     topics,
   });
+
+  useInitMemories({ roomId: initialRoom?.roomId });
 
   const question = questions[currentQuestion]?.question || "";
   const answers = questions[currentQuestion]?.answers || [];
@@ -149,11 +153,23 @@ function QuizGame() {
   );
 
   const rightAnswerElement = gamePhase === "answer" && (
-    <RightAnswer rightAnswer={rightAnswer} roomId={roomId} />
+    <RightAnswer
+      rightAnswer={rightAnswer}
+      roomId={roomId}
+      title="Правильный ответ: "
+    />
   );
 
   const obstructionElement = gamePhase === "obstruction" && (
     <Obstruction roomId={roomId} />
+  );
+
+  const memoriesElement = gamePhase === "memory" && (
+    <VisualMemoryLevel roomId={roomId} />
+  );
+
+  const rightMemoryElement = gamePhase === "memoryAnswer" && (
+    <RightAnswer roomId={roomId} title="Набранные очки в этом раунде" />
   );
 
   const endGameElement = gamePhase === "end" && <EndGame roomId={roomId} />;
@@ -168,6 +184,8 @@ function QuizGame() {
               {questionTitleAndAnswers}
               {rightAnswerElement}
               {obstructionElement}
+              {memoriesElement}
+              {rightMemoryElement}
             </>
           )}
           {endGameElement}
