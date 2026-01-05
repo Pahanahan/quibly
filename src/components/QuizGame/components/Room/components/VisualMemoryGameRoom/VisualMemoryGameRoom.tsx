@@ -5,6 +5,7 @@ import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { usePlayer } from "@/src/hooks/usePlayer";
 import { editPlayer } from "@/src/lib/editPlayer";
 import { quizMemories } from "@/src/data/quizMemories";
+import { generateCorrectText } from "./generateCorrectText";
 
 import { QuizMemories } from "@/src/types/types";
 import styles from "./VisualMemoryGameRoom.module.scss";
@@ -151,7 +152,8 @@ function VisualMemoryGameRoom({ roomId, userId }: VisualMemoryGameRoomProps) {
       {memoryState === "finish" && (
         <div className={styles.memory__answer}>
           <h2 className={styles.memory__title}>
-            Зеленым отмечен правильный порядок
+            На своих местах {score / 100 || 0}{" "}
+            {generateCorrectText(score / 100 || 0)}
           </h2>
           <div className={styles.memory__items}>{finishMemoryElement}</div>
         </div>
