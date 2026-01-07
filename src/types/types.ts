@@ -38,10 +38,11 @@ export interface QuizPlayer {
 export interface QuizRoom {
   createDate: string;
   currentQuestionIndex: number;
-  isGameEnd: boolean;
-  isGameStarted: boolean;
-  isObstruction: boolean;
-  isMemoryGame: boolean;
+  // isGameEnd: boolean;
+  // isGameStarted: boolean;
+  // isObstruction: boolean;
+  // isMemoryGame: boolean;
+  gamePhase: GamePhase;
   startTimeRound: number;
   maxPlayers: number;
   minPlayers: number;
@@ -52,15 +53,26 @@ export interface QuizRoom {
   roomId: string;
 }
 
-export type GamePhase =
-  | "lobby"
-  | "question"
-  | "answer"
-  | "obstruction"
-  | "memory"
-  | "memoryChoose"
-  | "memoryAnswer"
-  | "end";
+// export type GamePhase =
+//   | "lobby"
+//   | "question"
+//   | "answer"
+//   | "obstruction"
+//   | "memory"
+//   | "memoryChoose"
+//   | "memoryAnswer"
+//   | "end";
+
+export enum GamePhase {
+  LOBBY = "lobby",
+  QUESTION = "question",
+  ANSWER = "answer",
+  OBSTRUCTION = "obstruction",
+  MEMORY = "memory",
+  MEMORY_CHOOSE = "memoryChoose",
+  MEMORY_ANSWER = "memoryAnswer",
+  GAME_END = "end",
+}
 
 export interface QuizObstruction {
   id: number;

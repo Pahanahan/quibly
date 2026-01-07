@@ -59,9 +59,9 @@ function JoinRoom({
       return;
     }
 
-    setGamePhase("question");
+    setGamePhase(GamePhase.QUESTION);
 
-    editRoom({ roomId: roomId, key: "isGameStarted", value: true });
+    editRoom({ roomId: roomId, key: "gamePhase", value: GamePhase.QUESTION });
     editRoom({ roomId: roomId, key: "startTimeRound", value: Date.now() });
   };
 

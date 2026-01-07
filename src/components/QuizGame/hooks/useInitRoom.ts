@@ -3,7 +3,7 @@ import { ref, set } from "firebase/database";
 import { database } from "../../../lib/firebase";
 
 import { generateId } from "@/src/lib/generateId";
-import type { QuizRoom } from "../../../types/types";
+import { GamePhase, QuizRoom } from "../../../types/types";
 
 export function useInitRoom() {
   const [room, setRoom] = useState<QuizRoom | null>(null);
@@ -16,11 +16,12 @@ export function useInitRoom() {
         const roomData: QuizRoom = {
           roomId: roomId,
           createDate: new Date().toLocaleString(),
-          isGameEnd: false,
-          isGameStarted: false,
           currentQuestionIndex: 0,
-          isObstruction: false,
-          isMemoryGame: false,
+          // isGameEnd: false,
+          // isGameStarted: false,
+          // isObstruction: false,
+          // isMemoryGame: false,
+          gamePhase: GamePhase.LOBBY,
           startTimeRound: Date.now(),
           minPlayers: 2,
           maxPlayers: 8,

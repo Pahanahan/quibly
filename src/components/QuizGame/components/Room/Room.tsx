@@ -22,6 +22,7 @@ import { useQuestions } from "@/src/hooks/useQuestions";
 import { usePlayer } from "@/src/hooks/usePlayer";
 import { quizAvatars } from "@/src/data/quizAvatars";
 
+import { GamePhase } from "@/src/types/types";
 import styles from "./Room.module.scss";
 
 interface RoomProps {
@@ -45,29 +46,13 @@ function Room({ roomId }: RoomProps) {
     key: "roomId",
   });
 
-  const isGameStarted: boolean | null =
+  const gamePhase: GamePhase | null =
     useRoomFields({
       roomId: roomId,
-      key: "isGameStarted",
-    }) || false;
+      key: "gamePhase",
+    }) || null;
 
-  const isObstruction: boolean | null =
-    useRoomFields({
-      roomId: roomId,
-      key: "isObstruction",
-    }) || false;
-
-  const isMemoryGame: boolean | null =
-    useRoomFields({
-      roomId: roomId,
-      key: "isMemoryGame",
-    }) || false;
-
-  const isGameEnd: boolean | null =
-    useRoomFields({
-      roomId: roomId,
-      key: "isGameEnd",
-    }) || false;
+  console.log(gamePhase);
 
   const currentQuestionIndex: number | null = useRoomFields({
     roomId: roomId,
@@ -194,7 +179,7 @@ function Room({ roomId }: RoomProps) {
 
   const disabled = userName.trim().length === 0 || !existsRoomId;
 
-  const formElement = !player?.ready && !isGameStarted && !isGameEnd && (
+  const formElement = !player?.ready && !formHidden && (
     <Form
       joinGame={joinGame}
       userName={userName}
@@ -213,10 +198,9 @@ function Room({ roomId }: RoomProps) {
   );
 
   const readyElement = player?.ready === "ready" &&
-    !isGameStarted &&
-    !isGameEnd && <ReadyGame />;
+    gamePhase === GamePhase.LOBBY && <ReadyGame />;
 
-  const questionElement = isGameStarted && !isObstruction && !isMemoryGame && (
+  const questionElement = gamePhase === GamePhase.QUESTION && (
     <Game
       key={currentQuestionIndex}
       userId={userId}
@@ -227,15 +211,17 @@ function Room({ roomId }: RoomProps) {
     />
   );
 
-  const obstructionElement = isGameStarted && isObstruction && (
+  const obstructionElement = gamePhase === GamePhase.OBSTRUCTION && (
     <ChooseObstruction roomId={roomId} />
   );
 
-  const memoriesElement = isGameStarted && isMemoryGame && (
+  const memoriesElement = gamePhase === GamePhase.MEMORY && (
     <VisualMemoryGameRoom roomId={roomId} userId={userId} />
   );
 
-  const endGameElement = isGameEnd && <EndGame setFormHidden={setFormHidden} />;
+  const endGameElement = gamePhase === GamePhase.GAME_END && (
+    <EndGame setFormHidden={setFormHidden} />
+  );
 
   return (
     <div className={styles.room}>

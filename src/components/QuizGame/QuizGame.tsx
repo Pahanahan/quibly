@@ -22,8 +22,8 @@ import { useInitQuestions } from "./hooks/useInitQuestions";
 import { useRoundTimer } from "./hooks/useRoundTimer";
 import { useInitMemories } from "./hooks/useInitMemories";
 import { getDateNow } from "@/src/lib/getDateNow";
-import { GamePhase } from "@/src/types/types";
 
+import { GamePhase } from "@/src/types/types";
 import styles from "./QuizGame.module.scss";
 
 ////////////////////////////////////////////////
@@ -39,7 +39,7 @@ import styles from "./QuizGame.module.scss";
 
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-  const [gamePhase, setGamePhase] = useState<GamePhase>("lobby");
+  const [gamePhase, setGamePhase] = useState<GamePhase>(GamePhase.LOBBY);
   const [musicState, setMusicState] = useState<boolean>(false);
 
   console.log(gamePhase);
@@ -83,17 +83,12 @@ function QuizGame() {
     setCurrentQuestion((prev) => {
       const next = prev + 1;
       if (next >= questions.length) {
-        setGamePhase("end");
+        setGamePhase(GamePhase.GAME_END);
 
         editRoom({
           roomId: roomId || null,
-          key: "isGameEnd",
-          value: true,
-        });
-        editRoom({
-          roomId: roomId || null,
-          key: "isGameStarted",
-          value: false,
+          key: "gamePhase",
+          value: GamePhase.GAME_END,
         });
 
         return prev;
@@ -132,7 +127,7 @@ function QuizGame() {
     players
   );
 
-  const roomConnectElement = gamePhase === "lobby" && roomId && (
+  const roomConnectElement = gamePhase === GamePhase.LOBBY && roomId && (
     <JoinRoom
       roomId={roomId}
       players={players}
@@ -143,7 +138,7 @@ function QuizGame() {
     />
   );
 
-  const questionTitleAndAnswers = gamePhase === "question" && (
+  const questionTitleAndAnswers = gamePhase === GamePhase.QUESTION && (
     <>
       <QuestionNumber
         currentQuestion={currentQuestion}
@@ -153,7 +148,7 @@ function QuizGame() {
     </>
   );
 
-  const rightAnswerElement = gamePhase === "answer" && (
+  const rightAnswerElement = gamePhase === GamePhase.ANSWER && (
     <RightAnswer
       rightAnswer={rightAnswer}
       roomId={roomId}
@@ -161,37 +156,37 @@ function QuizGame() {
     />
   );
 
-  const obstructionElement = gamePhase === "obstruction" && (
+  const obstructionElement = gamePhase === GamePhase.OBSTRUCTION && (
     <Obstruction roomId={roomId} />
   );
 
-  const memoriesElement = gamePhase === "memory" && (
+  const memoriesElement = gamePhase === GamePhase.MEMORY && (
     <VisualMemoryLevel roomId={roomId} />
   );
 
-  const memoryChooseElement = gamePhase === "memoryChoose" && <MemoryChoose />;
+  const memoryChooseElement = gamePhase === GamePhase.MEMORY_CHOOSE && (
+    <MemoryChoose />
+  );
 
-  const rightMemoryElement = gamePhase === "memoryAnswer" && (
+  const rightMemoryElement = gamePhase === GamePhase.MEMORY_ANSWER && (
     <RightAnswer roomId={roomId} title="Набранные очки в этом раунде" />
   );
 
-  const endGameElement = gamePhase === "end" && <EndGame roomId={roomId} />;
+  const endGameElement = gamePhase === GamePhase.GAME_END && (
+    <EndGame roomId={roomId} />
+  );
 
   return (
     <div className={styles.quiz}>
       <div className="container">
         <div className={styles.quiz__inner}>
           {roomConnectElement}
-          {gamePhase !== "end" && (
-            <>
-              {questionTitleAndAnswers}
-              {rightAnswerElement}
-              {obstructionElement}
-              {memoriesElement}
-              {memoryChooseElement}
-              {rightMemoryElement}
-            </>
-          )}
+          {questionTitleAndAnswers}
+          {rightAnswerElement}
+          {obstructionElement}
+          {memoriesElement}
+          {memoryChooseElement}
+          {rightMemoryElement}
           {endGameElement}
         </div>
       </div>

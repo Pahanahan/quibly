@@ -25,17 +25,17 @@ export const useRoundTimer = (
   players: QuizPlayer[]
 ) => {
   useEffect(() => {
-    if (gamePhase !== "question") return;
+    if (gamePhase !== GamePhase.QUESTION) return;
 
     const timer = setTimeout(() => {
-      setGamePhase("answer");
+      setGamePhase(GamePhase.ANSWER);
     }, QUESTION_DURATION);
 
     return () => clearTimeout(timer);
   }, [gamePhase, setGamePhase]);
 
   useEffect(() => {
-    if (gamePhase !== "answer") return;
+    if (gamePhase !== GamePhase.ANSWER) return;
 
     const isObstructionRound = obstructionRounds.includes(currentQuestion);
 
@@ -43,16 +43,11 @@ export const useRoundTimer = (
 
     const timer = setTimeout(() => {
       if (isObstructionRound) {
-        setGamePhase("obstruction");
+        setGamePhase(GamePhase.OBSTRUCTION);
         editRoom({
           roomId: roomId || null,
-          key: "isObstruction",
-          value: true,
-        });
-        editRoom({
-          roomId: roomId || null,
-          key: "isMemoryGame",
-          value: false,
+          key: "gamePhase",
+          value: GamePhase.OBSTRUCTION,
         });
         editRoom({
           roomId: roomId || null,
@@ -62,16 +57,11 @@ export const useRoundTimer = (
 
         return;
       } else if (isMemoryRound) {
-        setGamePhase("memory");
+        setGamePhase(GamePhase.MEMORY);
         editRoom({
           roomId: roomId || null,
-          key: "isObstruction",
-          value: false,
-        });
-        editRoom({
-          roomId: roomId || null,
-          key: "isMemoryGame",
-          value: true,
+          key: "gamePhase",
+          value: GamePhase.MEMORY,
         });
         editRoom({
           roomId: roomId || null,
@@ -87,7 +77,7 @@ export const useRoundTimer = (
             player: player.id,
           });
         });
-        setGamePhase("question");
+        setGamePhase(GamePhase.QUESTION);
         newRound();
       }
     }, ANSWER_DURATION);
@@ -96,7 +86,7 @@ export const useRoundTimer = (
   }, [roomId, gamePhase, currentQuestion, newRound, setGamePhase, players]);
 
   useEffect(() => {
-    if (gamePhase !== "obstruction") return;
+    if (gamePhase !== GamePhase.OBSTRUCTION) return;
 
     const endTime = startTimeRound + OBSTRUCTION_DURATION;
 
@@ -104,10 +94,10 @@ export const useRoundTimer = (
       if (Date.now() >= endTime) {
         editRoom({
           roomId: roomId || null,
-          key: "isObstruction",
-          value: false,
+          key: "gamePhase",
+          value: GamePhase.QUESTION,
         });
-        setGamePhase("question");
+        setGamePhase(GamePhase.QUESTION);
         newRound();
       }
     }, 1000);
@@ -116,26 +106,25 @@ export const useRoundTimer = (
   }, [roomId, gamePhase, startTimeRound, setGamePhase, newRound]);
 
   useEffect(() => {
-    if (gamePhase !== "memory") return;
+    if (gamePhase !== GamePhase.MEMORY) return;
     const timer = setTimeout(() => {
-      // setGamePhase("memoryAnswer");
-      setGamePhase("memoryChoose");
+      setGamePhase(GamePhase.MEMORY_CHOOSE);
     }, MEMORY_DURATION);
 
     return () => clearTimeout(timer);
   }, [roomId, gamePhase, setGamePhase]);
 
   useEffect(() => {
-    if (gamePhase !== "memoryChoose") return;
+    if (gamePhase !== GamePhase.MEMORY_CHOOSE) return;
     const timer = setTimeout(() => {
-      setGamePhase("memoryAnswer");
+      setGamePhase(GamePhase.MEMORY_ANSWER);
     }, MEMORY_CHOOSE_DURATION);
 
     return () => clearTimeout(timer);
   }, [roomId, gamePhase, setGamePhase]);
 
   useEffect(() => {
-    if (gamePhase !== "memoryAnswer") return;
+    if (gamePhase !== GamePhase.MEMORY_ANSWER) return;
 
     const endTime = startTimeRound + MEMORY_ANSWER_DURATION;
 
@@ -143,8 +132,8 @@ export const useRoundTimer = (
       if (Date.now() >= endTime) {
         editRoom({
           roomId: roomId || null,
-          key: "isMemoryGame",
-          value: false,
+          key: "gamePhase",
+          value: GamePhase.QUESTION,
         });
         editRoom({
           roomId: roomId || null,
@@ -157,7 +146,7 @@ export const useRoundTimer = (
             player: player.id,
           });
         });
-        setGamePhase("question");
+        setGamePhase(GamePhase.QUESTION);
         newRound();
       }
     }, MEMORY_ANSWER_DURATION);
