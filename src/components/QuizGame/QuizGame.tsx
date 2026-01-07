@@ -8,6 +8,7 @@ import RightAnswer from "./components/RightAnswer/RightAnswer";
 import JoinRoom from "./components/JoinRoom/JoinRoom";
 import Obstruction from "./components/Obstruction/Obstruction";
 import VisualMemoryLevel from "./components/VisualMemoryLevel/VisualMemoryLevel";
+import MemoryChoose from "./components/MemoryChoose/MemoryChoose";
 import EndGame from "./components/EndGame/EndGame";
 import { useInitRoom } from "./hooks/useInitRoom";
 import { usePlayers } from "@/src/hooks/usePlayers";
@@ -168,6 +169,8 @@ function QuizGame() {
     <VisualMemoryLevel roomId={roomId} />
   );
 
+  const memoryChooseElement = gamePhase === "memoryChoose" && <MemoryChoose />;
+
   const rightMemoryElement = gamePhase === "memoryAnswer" && (
     <RightAnswer roomId={roomId} title="Набранные очки в этом раунде" />
   );
@@ -185,6 +188,7 @@ function QuizGame() {
               {rightAnswerElement}
               {obstructionElement}
               {memoriesElement}
+              {memoryChooseElement}
               {rightMemoryElement}
             </>
           )}

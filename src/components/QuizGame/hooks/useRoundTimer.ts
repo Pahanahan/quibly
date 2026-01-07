@@ -5,10 +5,11 @@ import { resetObstructions } from "../utils/resetObstructions";
 
 import { GamePhase, QuizPlayer } from "@/src/types/types";
 
-const TIME = 13000;
+const QUESTION_DURATION = 13000;
 const ANSWER_DURATION = 7000;
 const OBSTRUCTION_DURATION = 13000;
-const MEMORY_DURATION = 20000;
+const MEMORY_DURATION = 10000;
+const MEMORY_CHOOSE_DURATION = 13000;
 const MEMORY_ANSWER_DURATION = 7000;
 
 const obstructionRounds = [0, 2, 4, 6, 8, 12, 14, 16];
@@ -28,7 +29,7 @@ export const useRoundTimer = (
 
     const timer = setTimeout(() => {
       setGamePhase("answer");
-    }, TIME);
+    }, QUESTION_DURATION);
 
     return () => clearTimeout(timer);
   }, [gamePhase, setGamePhase]);
@@ -117,8 +118,18 @@ export const useRoundTimer = (
   useEffect(() => {
     if (gamePhase !== "memory") return;
     const timer = setTimeout(() => {
-      setGamePhase("memoryAnswer");
+      // setGamePhase("memoryAnswer");
+      setGamePhase("memoryChoose");
     }, MEMORY_DURATION);
+
+    return () => clearTimeout(timer);
+  }, [roomId, gamePhase, setGamePhase]);
+
+  useEffect(() => {
+    if (gamePhase !== "memoryChoose") return;
+    const timer = setTimeout(() => {
+      setGamePhase("memoryAnswer");
+    }, MEMORY_CHOOSE_DURATION);
 
     return () => clearTimeout(timer);
   }, [roomId, gamePhase, setGamePhase]);

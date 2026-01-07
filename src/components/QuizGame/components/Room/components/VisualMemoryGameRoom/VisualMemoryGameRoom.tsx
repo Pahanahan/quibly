@@ -46,7 +46,7 @@ function VisualMemoryGameRoom({ roomId, userId }: VisualMemoryGameRoomProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setMemoryState("choice");
-    }, 7000);
+    }, 10000);
 
     return () => clearTimeout(timer);
   }, []);

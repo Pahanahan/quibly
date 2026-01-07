@@ -1,0 +1,16 @@
+@use "../../variables" as *;
+
+.memory-choose {
+  padding: 20px;
+  background-color: $bg-main;
+  border: 2px solid $border-default;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 0 $shadow-main;
+
+  h2 {
+    font-size: 60px;
+    text-align: center;
+    color: $text-main;
+    margin: 0 0 20px;
+  }
+}

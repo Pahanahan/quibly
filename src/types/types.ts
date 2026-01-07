@@ -58,6 +58,7 @@ export type GamePhase =
   | "answer"
   | "obstruction"
   | "memory"
+  | "memoryChoose"
   | "memoryAnswer"
   | "end";
 
