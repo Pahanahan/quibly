@@ -1,5 +1,6 @@
 import ToolBarGame from "../../../ToolBarGame/ToolBarGame";
 
+import { ObstructionsObj } from "@/src/types/types";
 import styles from "./GameQuestion.module.scss";
 
 interface GameQuestionProps {
@@ -8,7 +9,7 @@ interface GameQuestionProps {
   answers: string[];
   selectedAnswer: string | null;
   handleChooseAnswer: (answer: string) => void;
-  obstructionsArr: [string, boolean][];
+  obstructions: ObstructionsObj | undefined;
 }
 
 function GameQuestion({
@@ -17,7 +18,7 @@ function GameQuestion({
   answers,
   selectedAnswer,
   handleChooseAnswer,
-  obstructionsArr,
+  obstructions,
 }: GameQuestionProps) {
   const answersElements = answers.map((answer) => {
     const activeAnswer = answer === selectedAnswer;
@@ -37,11 +38,14 @@ function GameQuestion({
     );
   });
 
-  const obstructionsCss = obstructionsArr.includes(["defender", true])
-    ? [""]
-    : obstructionsArr.map(([key, value]: [string, boolean]) => {
-        return value ? styles[key] : "";
-      });
+  const obstructionsCss =
+    obstructions && obstructions.defender
+      ? [""]
+      : obstructions
+      ? Object.entries(obstructions).map(([key, value]: [string, boolean]) => {
+          return value ? styles[key] : "";
+        })
+      : "";
 
   return (
     <div className={[styles.game, ...obstructionsCss].join(" ")}>

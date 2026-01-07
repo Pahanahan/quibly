@@ -60,3 +60,23 @@ export type GamePhase =
   | "memory"
   | "memoryAnswer"
   | "end";
+
+export interface QuizObstruction {
+  id: number;
+  name: string;
+  rusName: string;
+}
+
+export interface ObstructionsObj {
+  x2: boolean;
+  x5: boolean;
+  x10: boolean;
+  fadeIn: boolean;
+  scale: boolean;
+  blurIn: boolean;
+  rotate: boolean;
+  helicopter: boolean;
+  pulse: boolean;
+  shake: boolean;
+  defender: boolean;
+}

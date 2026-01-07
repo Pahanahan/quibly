@@ -7,6 +7,7 @@ import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { usePlayer } from "@/src/hooks/usePlayer";
 import { getDateNow } from "@/src/lib/getDateNow";
 
+import { ObstructionsObj } from "@/src/types/types";
 import styles from "./Game.module.scss";
 
 interface GameProps {
@@ -28,8 +29,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
 
   const player = usePlayer({ roomId: roomId, userId: userId });
 
-  const obstructions = player?.obstructions;
-  const obstructionsArr = obstructions ? Object.entries(obstructions) : [];
+  const obstructions: ObstructionsObj | undefined = player?.obstructions;
 
   const [x2, x5, x10] = [
     obstructions?.x2 ? 2 : 1,
@@ -114,7 +114,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
           handleChooseAnswer={handleChooseAnswer}
           selectedAnswer={selectedAnswer}
           answers={answers}
-          obstructionsArr={obstructionsArr}
+          obstructions={obstructions}
         />
       )}
       {stopTimer && (

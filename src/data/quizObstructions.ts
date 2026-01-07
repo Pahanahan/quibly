@@ -1,4 +1,6 @@
-export const quizObstructions = [
+import { QuizObstruction } from "../types/types";
+
+export const quizObstructions: QuizObstruction[] = [
   {
     id: 1,
     name: "fadeIn",
