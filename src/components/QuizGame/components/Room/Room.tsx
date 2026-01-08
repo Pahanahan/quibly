@@ -176,6 +176,10 @@ function Room({ roomId }: RoomProps) {
   };
 
   const disabled = userName.trim().length === 0 || !existsRoomId;
+  // const disabled =
+  //   userName.trim().length === 0 ||
+  //   !existsRoomId ||
+  //   gamePhase !== GamePhase.LOBBY;
 
   const formElement = !player?.ready && !formHidden && (
     <Form
