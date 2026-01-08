@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import Form from "./components/Form/Form";
-import UndefinedRoom from "./components/UndefinedRoom/UndefinedRoom";
+import RoomUnavailable from "./components/RoomUnavavailable/RoomUnavailable";
 import EnterTopic from "./components/EnterTopic/EnterTopic";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
 import Game from "./components/Game/Game";
@@ -175,11 +175,10 @@ function Room({ roomId }: RoomProps) {
     saveToLocalStorage("QuizGameAvatar", randomAvatar);
   };
 
-  const disabled = userName.trim().length === 0 || !existsRoomId;
-  // const disabled =
-  //   userName.trim().length === 0 ||
-  //   !existsRoomId ||
-  //   gamePhase !== GamePhase.LOBBY;
+  const disabled =
+    userName.trim().length === 0 ||
+    !existsRoomId ||
+    gamePhase !== GamePhase.LOBBY;
 
   const formElement = !player?.ready && !formHidden && (
     <Form
@@ -193,7 +192,21 @@ function Room({ roomId }: RoomProps) {
     />
   );
 
-  const undefinedRoom = !existsRoomId && <UndefinedRoom />;
+  const undefinedRoom = !existsRoomId && (
+    <RoomUnavailable
+      title="Комната не найдена!"
+      text="Введите правильный ID комнаты"
+    />
+  );
+
+  const undefinedPlayer = existsRoomId &&
+    !player &&
+    gamePhase !== GamePhase.LOBBY && (
+      <RoomUnavailable
+        title="Игра уже началась"
+        text="Войдите позже или начните игру в другой комнате"
+      />
+    );
 
   const enterTopicElement = player?.ready === "addedTopics" && (
     <EnterTopic roomId={roomId} userId={userId} />
@@ -203,29 +216,29 @@ function Room({ roomId }: RoomProps) {
     gamePhase === GamePhase.LOBBY && <ReadyGame />;
 
   const questionElement = (gamePhase === GamePhase.QUESTION ||
-    gamePhase === GamePhase.ANSWER) && (
-    <Game
-      key={currentQuestionIndex}
-      userId={userId}
-      roomId={roomId}
-      question={question}
-      answers={answers}
-      rightAnswer={rightAnswer}
-      gamePhase={gamePhase}
-    />
-  );
+    gamePhase === GamePhase.ANSWER) &&
+    player && (
+      <Game
+        key={currentQuestionIndex}
+        userId={userId}
+        roomId={roomId}
+        question={question}
+        answers={answers}
+        rightAnswer={rightAnswer}
+        gamePhase={gamePhase}
+      />
+    );
 
-  const obstructionElement = gamePhase === GamePhase.OBSTRUCTION && (
+  const obstructionElement = gamePhase === GamePhase.OBSTRUCTION && player && (
     <ChooseObstruction roomId={roomId} />
   );
 
   const memoriesElement = (gamePhase === GamePhase.MEMORY ||
     gamePhase === GamePhase.MEMORY_CHOOSE ||
-    gamePhase === GamePhase.MEMORY_ANSWER) && (
-    <VisualMemoryGameRoom roomId={roomId} userId={userId} />
-  );
+    gamePhase === GamePhase.MEMORY_ANSWER) &&
+    player && <VisualMemoryGameRoom roomId={roomId} userId={userId} />;
 
-  const endGameElement = gamePhase === GamePhase.GAME_END && (
+  const endGameElement = gamePhase === GamePhase.GAME_END && player && (
     <EndGame setFormHidden={setFormHidden} />
   );
 
@@ -235,6 +248,7 @@ function Room({ roomId }: RoomProps) {
         <div className={styles.room__inner}>
           {formElement}
           {undefinedRoom}
+          {undefinedPlayer}
           {enterTopicElement}
           {readyElement}
           {questionElement}
