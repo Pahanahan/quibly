@@ -13,10 +13,10 @@ const MEMORY_DURATION = 10000;
 const MEMORY_CHOOSE_DURATION = 10000;
 const MEMORY_ANSWER_DURATION = 7000;
 
-// const obstructionRounds = [0, 2, 4, 6, 8, 12, 14, 16];
-// const memoryRound = 10;
-const obstructionRounds = [1, 3, 5];
-const memoryRound = 0;
+const obstructionRounds = [0, 2, 4, 6, 8, 12, 14, 16];
+const memoryRound = 10;
+// const obstructionRounds = [1, 3, 5];
+// const memoryRound = 0;
 
 export const useRoundTimer = (
   roomId: string | null,
