@@ -8,7 +8,7 @@ import { GamePhase, QuizPlayer } from "@/src/types/types";
 
 const QUESTION_DURATION = 10000;
 const ANSWER_DURATION = 7000;
-const OBSTRUCTION_DURATION = 10000;
+const OBSTRUCTION_DURATION = 1000000;
 const MEMORY_DURATION = 10000;
 const MEMORY_CHOOSE_DURATION = 10000;
 const MEMORY_ANSWER_DURATION = 7000;
@@ -36,7 +36,6 @@ export const useRoundTimer = (
         interval = setInterval(() => {
           const dateNow = getDateNow();
           const endTime = startTimeRound + QUESTION_DURATION - dateNow;
-          console.log(endTime);
 
           if (endTime <= 0) {
             editRoom({

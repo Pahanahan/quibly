@@ -52,6 +52,14 @@
   background-color: $bg-error;
 }
 
+@media (max-width: 500px) {
+  .memory {
+    &__item-name {
+      font-size: 16px;
+    }
+  }
+}
+
 @keyframes boomIn {
   0% {
     opacity: 0;

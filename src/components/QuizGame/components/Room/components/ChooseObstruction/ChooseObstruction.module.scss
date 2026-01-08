@@ -54,24 +54,8 @@
       font-size: 20px;
     }
 
-    &__items {
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    &__item {
-      padding: 7px;
-      font-size: 16px;
-    }
-
-    &__players {
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    &__player {
-      padding: 7px;
-      font-size: 16px;
+    &__btn {
+      font-size: 20px;
     }
   }
 }

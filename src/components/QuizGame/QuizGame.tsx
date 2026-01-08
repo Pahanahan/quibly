@@ -81,6 +81,7 @@ function QuizGame() {
 
   const isButtonDisabled =
     players.length < 2 ||
+    // players.length < 1 ||
     players.some((player) => player.ready === "addedTopics");
 
   const newRound = useCallback(() => {

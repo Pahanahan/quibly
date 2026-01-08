@@ -6,7 +6,6 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  margin-bottom: 20px;
 
   &__item {
     padding: 10px;
@@ -24,5 +23,16 @@
 
   &__item--active {
     background-color: $bg-active;
+  }
+}
+
+@media (max-width: 500px) {
+  .obstruction {
+    gap: 10px;
+
+    &__item {
+      padding: 7px 10px;
+      font-size: 16px;
+    }
   }
 }

@@ -12,7 +12,7 @@ interface ChooseObstructionProps {
 }
 
 function ChooseObstruction({ roomId }: ChooseObstructionProps) {
-  const [onFinish, setOnFinish] = useState<boolean>(false);
+  const [useObstruction, setUseObstruction] = useState<boolean>(false);
   const [obstructionPlayer, setObstructionPlayer] = useState({
     obstruction: "",
     rusObstruction: "",
@@ -23,7 +23,9 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
   const [activeBtnObstruction, setActiveBtnObstruction] = useState<
     string | null
   >(null);
-  const [disabled, setDisabled] = useState<boolean>(false);
+
+  const disabled: boolean =
+    !obstructionPlayer.obstruction || !obstructionPlayer.userId;
 
   const handleChoosePlayer = (userId: string, userName: string) => {
     setActiveBtnPlayer(userId);
@@ -47,7 +49,7 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
   };
 
   const handleActiveObstruction = () => {
-    setDisabled(true);
+    setUseObstruction(true);
     editObstructions({
       roomId: roomId,
       player: obstructionPlayer.userId,
@@ -56,25 +58,14 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
     });
   };
 
-  const obstructionDescription = disabled && (
+  const obstructionDescription = useObstruction && (
     <div className={styles.obstruction__descr}>
       Вы применили <span>{obstructionPlayer.rusObstruction}</span> на игроке{" "}
       <span>{obstructionPlayer.userName}</span>
     </div>
   );
 
-  const button = obstructionPlayer.obstruction && obstructionPlayer.userId && (
-    <button
-      onClick={handleActiveObstruction}
-      disabled={disabled}
-      type="button"
-      className={styles.obstruction__btn}
-    >
-      Применить
-    </button>
-  );
-
-  const mainElement = !disabled && (
+  const mainElement = !useObstruction && (
     <>
       <h2 className={styles.obstruction__title}>
         Выберите игрока которому хотите сделать пакость или защиту
@@ -91,18 +82,23 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
           handleChooseObstruction={handleChooseObstruction}
         />
       }
-      {button}
-      <ToolBarGame roomId={roomId} setOnFinish={setOnFinish} />
+      <button
+        onClick={handleActiveObstruction}
+        disabled={disabled}
+        type="button"
+        className={styles.obstruction__btn}
+      >
+        Применить
+      </button>
+      <ToolBarGame roomId={roomId} />
     </>
   );
 
   return (
-    !onFinish && (
-      <div className={styles.obstruction}>
-        {mainElement}
-        {obstructionDescription}
-      </div>
-    )
+    <div className={styles.obstruction}>
+      {mainElement}
+      {obstructionDescription}
+    </div>
   );
 }
 
