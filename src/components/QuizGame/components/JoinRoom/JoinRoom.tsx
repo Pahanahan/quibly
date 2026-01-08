@@ -20,7 +20,6 @@ interface JoinRoomProps {
   roomId: string;
   players: QuizPlayer[];
   disabled: boolean;
-  // setGamePhase: React.Dispatch<React.SetStateAction<GamePhase>>;
   musicState: boolean;
   setMusicState: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -29,7 +28,6 @@ function JoinRoom({
   roomId,
   players,
   disabled,
-  // setGamePhase,
   musicState,
   setMusicState,
 }: JoinRoomProps) {
@@ -58,8 +56,6 @@ function JoinRoom({
       console.warn("Нельзя начать игру - нет roomId");
       return;
     }
-
-    // setGamePhase(GamePhase.QUESTION);
 
     editRoom({ roomId: roomId, key: "gamePhase", value: GamePhase.QUESTION });
     editRoom({ roomId: roomId, key: "startTimeRound", value: Date.now() });

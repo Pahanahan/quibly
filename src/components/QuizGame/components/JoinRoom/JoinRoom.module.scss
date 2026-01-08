@@ -48,7 +48,9 @@
       transform: scale(0.9);
     }
 
-    &:hover:disabled {
+    &:disabled {
+      color: $text-secondary;
+      background-color: $bg-error;
       cursor: not-allowed;
     }
   }
