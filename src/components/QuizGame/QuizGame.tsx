@@ -39,10 +39,7 @@ import styles from "./QuizGame.module.scss";
 
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-  const [gamePhase, setGamePhase] = useState<GamePhase>(GamePhase.LOBBY);
   const [musicState, setMusicState] = useState<boolean>(false);
-
-  console.log(gamePhase);
 
   useMusic(musicState);
 
@@ -67,24 +64,30 @@ function QuizGame() {
   const answers = questions[currentQuestion]?.answers || [];
   const rightAnswer = questions[currentQuestion]?.rightAnswer || "";
 
+  const gamePhase: GamePhase | null = useRoomFields({
+    roomId: roomId,
+    key: "gamePhase",
+  });
+
   const dateNow = getDateNow();
 
-  const startTimeRound: number | null =
+  const startTimeRound =
     useRoomFields({
       roomId: roomId,
       key: "startTimeRound",
     }) || dateNow;
 
+  console.log(gamePhase);
+
   const isButtonDisabled =
-    players.length < 2 ||
+    // players.length < 2 ||
+    players.length < 1 ||
     players.some((player) => player.ready === "addedTopics");
 
   const newRound = useCallback(() => {
     setCurrentQuestion((prev) => {
       const next = prev + 1;
       if (next >= questions.length) {
-        setGamePhase(GamePhase.GAME_END);
-
         editRoom({
           roomId: roomId || null,
           key: "gamePhase",
@@ -119,10 +122,9 @@ function QuizGame() {
 
   useRoundTimer(
     roomId,
-    startTimeRound,
     gamePhase,
-    setGamePhase,
     currentQuestion,
+    startTimeRound,
     newRound,
     players
   );
@@ -132,7 +134,6 @@ function QuizGame() {
       roomId={roomId}
       players={players}
       disabled={isButtonDisabled}
-      setGamePhase={setGamePhase}
       musicState={musicState}
       setMusicState={setMusicState}
     />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import GameQuestion from "./components/GameQuestion/GameQuestion";
 import GameAnswer from "./components/GameAnswer/GameAnswer";
@@ -7,7 +7,7 @@ import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { usePlayer } from "@/src/hooks/usePlayer";
 import { getDateNow } from "@/src/lib/getDateNow";
 
-import { ObstructionsObj } from "@/src/types/types";
+import { GamePhase, ObstructionsObj } from "@/src/types/types";
 import styles from "./Game.module.scss";
 
 interface GameProps {
@@ -16,18 +16,34 @@ interface GameProps {
   question: string;
   answers: string[];
   rightAnswer: string;
+  gamePhase: GamePhase;
 }
 
-function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
+function Game({
+  roomId,
+  userId,
+  question,
+  answers,
+  rightAnswer,
+  gamePhase,
+}: GameProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [rightAnswerState, setRightAnswerState] = useState<
     boolean | "нет ответа"
   >("нет ответа");
   const [score, setScore] = useState<number>(0);
-  const [time, setTime] = useState<number>(100);
-  const [stopTimer, setStopTimer] = useState<boolean>(false);
 
   const player = usePlayer({ roomId: roomId, userId: userId });
+  const scoreRef = useRef(score);
+  const playerScore = useRef(0);
+
+  useEffect(() => {
+    scoreRef.current = score;
+  }, [score]);
+
+  useEffect(() => {
+    playerScore.current = player?.score || 0;
+  }, [player]);
 
   const obstructions: ObstructionsObj | undefined = player?.obstructions;
 
@@ -46,32 +62,17 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
     }) || dateNow;
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      if (stopTimer) return;
+    if (gamePhase !== GamePhase.ANSWER || selectedAnswer === null) return;
 
-      if (time > 0) {
-        const differentTime = (startTime + 10000 - Date.now()) / 100;
-        setTime(differentTime);
-      }
+    const totalScore = scoreRef.current + playerScore.current;
 
-      if (time <= 0) {
-        setStopTimer(true);
-
-        const playerScore = player?.score || 0;
-
-        const totalScore = playerScore + score;
-
-        editPlayer({
-          roomId: roomId,
-          player: userId,
-          key: "score",
-          value: totalScore,
-        });
-      }
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [roomId, userId, startTime, player, score, time, stopTimer]);
+    editPlayer({
+      roomId: roomId,
+      player: userId,
+      key: "score",
+      value: totalScore,
+    });
+  }, [roomId, userId, gamePhase, selectedAnswer]);
 
   const handleChooseAnswer = (answer: string) => {
     setSelectedAnswer(answer);
@@ -107,7 +108,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
 
   return (
     <div className={styles.game}>
-      {!stopTimer && (
+      {gamePhase === GamePhase.QUESTION && (
         <GameQuestion
           roomId={roomId}
           question={question}
@@ -117,7 +118,7 @@ function Game({ roomId, userId, question, answers, rightAnswer }: GameProps) {
           obstructions={obstructions}
         />
       )}
-      {stopTimer && (
+      {gamePhase === GamePhase.ANSWER && (
         <GameAnswer
           rightAnswer={rightAnswer}
           rightAnswerState={rightAnswerState}

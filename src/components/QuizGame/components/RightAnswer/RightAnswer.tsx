@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
 import Image from "next/image";
 
+import { usePlayers } from "@/src/hooks/usePlayers";
 import { avatars } from "@/src/lib/avatars";
 
-import type { QuizPlayer } from "@/src/types/types";
 import styles from "./RightAnswer.module.scss";
 
 interface RightAnswerProps {
@@ -13,28 +12,7 @@ interface RightAnswerProps {
 }
 
 function RightAnswer({ rightAnswer, roomId, title }: RightAnswerProps) {
-  const [players, setPlayers] = useState<QuizPlayer[] | null>(null);
-
-  useEffect(() => {
-    const getRoom = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/rooms/${roomId}.json`
-        );
-
-        if (!response.ok) throw new Error("Ошибка");
-
-        const data = await response.json();
-        const players: QuizPlayer[] = data.players;
-
-        setPlayers(players);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getRoom();
-  }, [roomId]);
+  const players = usePlayers({ roomId: roomId ?? undefined });
 
   const playersScoreElement =
     players &&

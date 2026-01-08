@@ -18,10 +18,7 @@ export function useInitMemories({ roomId }: useInitMemoriesProps) {
         const shuffleQuizMemories: QuizMemories[] =
           shuffleMemories(quizMemories);
 
-        const result = shuffleQuizMemories.map((item) => item.rusName);
-
         const memoryGame = {
-          result: result,
           items: shuffleQuizMemories,
         };
 

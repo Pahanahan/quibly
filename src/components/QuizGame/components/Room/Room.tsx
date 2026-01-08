@@ -52,8 +52,6 @@ function Room({ roomId }: RoomProps) {
       key: "gamePhase",
     }) || null;
 
-  console.log(gamePhase);
-
   const currentQuestionIndex: number | null = useRoomFields({
     roomId: roomId,
     key: "currentQuestionIndex",
@@ -200,7 +198,8 @@ function Room({ roomId }: RoomProps) {
   const readyElement = player?.ready === "ready" &&
     gamePhase === GamePhase.LOBBY && <ReadyGame />;
 
-  const questionElement = gamePhase === GamePhase.QUESTION && (
+  const questionElement = (gamePhase === GamePhase.QUESTION ||
+    gamePhase === GamePhase.ANSWER) && (
     <Game
       key={currentQuestionIndex}
       userId={userId}
@@ -208,6 +207,7 @@ function Room({ roomId }: RoomProps) {
       question={question}
       answers={answers}
       rightAnswer={rightAnswer}
+      gamePhase={gamePhase}
     />
   );
 
@@ -215,7 +215,9 @@ function Room({ roomId }: RoomProps) {
     <ChooseObstruction roomId={roomId} />
   );
 
-  const memoriesElement = gamePhase === GamePhase.MEMORY && (
+  const memoriesElement = (gamePhase === GamePhase.MEMORY ||
+    gamePhase === GamePhase.MEMORY_CHOOSE ||
+    gamePhase === GamePhase.MEMORY_ANSWER) && (
     <VisualMemoryGameRoom roomId={roomId} userId={userId} />
   );
 

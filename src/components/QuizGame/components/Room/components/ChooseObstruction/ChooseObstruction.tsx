@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 import ObstructionElements from "./components/ObstructionElements/ObstructionElements";
+import ToolBarGame from "../ToolBarGame/ToolBarGame";
+import Players from "./components/Players/Players";
 import { editObstructions } from "./editObstructions";
 
 import styles from "./ChooseObstruction.module.scss";
-import ToolBarGame from "../ToolBarGame/ToolBarGame";
-import Players from "./components/Players/Players";
 
 interface ChooseObstructionProps {
   roomId: string;

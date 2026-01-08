@@ -13,7 +13,7 @@ export function usePlayer({ roomId, userId }: UsePalyerProps) {
   const [player, setPlayer] = useState<QuizPlayer>();
 
   useEffect(() => {
-    if (!roomId) return;
+    if (!roomId || !userId) return;
 
     const playersRef = ref(database, `rooms/${roomId}/players/${userId}`);
     const unsub = onValue(playersRef, (snap) => {
