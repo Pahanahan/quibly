@@ -7,7 +7,7 @@
     align-items: center;
     gap: 20px;
     padding: 20px;
-    padding-bottom: 80px;
+    // padding-bottom: 80px;
     border: 2px solid $border-default;
     border-radius: 20px;
     background-color: $bg-main;
@@ -55,25 +55,30 @@
     }
   }
 
-  &__music {
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__button {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     color: $text-main;
     font-size: 20px;
+    height: 42px;
     border: 2px solid $border-default;
     border-radius: 10px;
     background-color: $bg-surface;
     cursor: pointer;
     padding: 5px 10px;
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
     transition: all 0.4s;
   }
 
-  &__music:active {
+  &__button:active {
     transform: scale(0.9);
   }
 

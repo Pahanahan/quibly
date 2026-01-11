@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 
 import QuestionNumber from "./components/QuestionNumber/QuestionNumber";
 import Question from "./components/Question/Question";
@@ -40,6 +40,7 @@ import styles from "./QuizGame.module.scss";
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [musicState, setMusicState] = useState<boolean>(false);
+  const quizGameRef = useRef(null);
 
   useMusic(musicState);
 
@@ -136,6 +137,7 @@ function QuizGame() {
       disabled={isButtonDisabled}
       musicState={musicState}
       setMusicState={setMusicState}
+      quizGameRef={quizGameRef}
     />
   );
 
@@ -178,7 +180,7 @@ function QuizGame() {
   );
 
   return (
-    <div className={styles.quiz}>
+    <div className={styles.quiz} ref={quizGameRef}>
       <div className="container">
         <div className={styles.quiz__inner}>
           {roomConnectElement}

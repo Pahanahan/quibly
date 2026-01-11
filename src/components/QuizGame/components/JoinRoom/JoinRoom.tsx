@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, RefObject } from "react";
 import Image from "next/image";
 import { QRCodeSVG } from "qrcode.react";
 
+import { useFullscreen } from "./useFullscreen";
 import { editRoom } from "@/src/lib/editRoom";
 import { deleteRoom } from "./deleteRoom";
 import {
@@ -22,6 +23,7 @@ interface JoinRoomProps {
   disabled: boolean;
   musicState: boolean;
   setMusicState: React.Dispatch<React.SetStateAction<boolean>>;
+  quizGameRef: RefObject<HTMLDivElement | null>;
 }
 
 function JoinRoom({
@@ -30,7 +32,10 @@ function JoinRoom({
   disabled,
   musicState,
   setMusicState,
+  quizGameRef,
 }: JoinRoomProps) {
+  const isFullscreen = useFullscreen();
+
   const imageSound = musicState ? musicOff : musicOn;
   const soundText = musicState ? "Выключить музыку" : "Включить музыку";
 
@@ -59,6 +64,16 @@ function JoinRoom({
 
     editRoom({ roomId: roomId, key: "gamePhase", value: GamePhase.QUESTION });
     editRoom({ roomId: roomId, key: "startTimeRound", value: Date.now() });
+  };
+
+  const toggleFullscreen = () => {
+    if (!quizGameRef.current) return;
+
+    if (!document.fullscreenElement) {
+      quizGameRef.current.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
   };
 
   const playersElement = players.map((player, i) => {
@@ -100,10 +115,15 @@ function JoinRoom({
           Игроки добавившиеся в игру...
         </div>
         <div className={styles.join__players}>{playersElement}</div>
-        <button onClick={handleSetMusicState} className={styles.join__music}>
-          {soundText}
-          <Image src={imageSound} width={30} height={30} alt="sound" />
-        </button>
+        <div className={styles.join__btns}>
+          <button onClick={toggleFullscreen} className={styles.join__button}>
+            {isFullscreen ? "Выйти из полноэкранного режима" : "На весь экран"}
+          </button>
+          <button onClick={handleSetMusicState} className={styles.join__button}>
+            {soundText}
+            <Image src={imageSound} width={30} height={30} alt="sound" />
+          </button>
+        </div>
       </div>
       <div className={styles.join__spinner}>
         <Image src={spinner} height={50} width={50} alt="spinner" />
