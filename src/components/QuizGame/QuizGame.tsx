@@ -9,18 +9,20 @@ import JoinRoom from "./components/JoinRoom/JoinRoom";
 import Obstruction from "./components/Obstruction/Obstruction";
 import VisualMemoryLevel from "./components/VisualMemoryLevel/VisualMemoryLevel";
 import MemoryChoose from "./components/MemoryChoose/MemoryChoose";
+import Sorting from "./components/Sorting/Sorting";
 import EndGame from "./components/EndGame/EndGame";
 import { useInitRoom } from "./hooks/useInitRoom";
+import { useInitQuestions } from "./hooks/useInitQuestions";
+import { useInitMemories } from "./hooks/useInitMemories";
+import { useInitSortingLevel } from "./hooks/useInitSortingLevel";
+import { useRoundTimer } from "./hooks/useRoundTimer";
 import { usePlayers } from "@/src/hooks/usePlayers";
 import { useQuestions } from "@/src/hooks/useQuestions";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
+import { useTopics } from "./hooks/useTopics";
+import { useMusic } from "./hooks/useMusic";
 import { editRoom } from "@/src/lib/editRoom";
 import { resetCurrentScore } from "./utils/resetCurrentScore";
-import { useMusic } from "./hooks/useMusic";
-import { useTopics } from "./hooks/useTopics";
-import { useInitQuestions } from "./hooks/useInitQuestions";
-import { useRoundTimer } from "./hooks/useRoundTimer";
-import { useInitMemories } from "./hooks/useInitMemories";
 import { getDateNow } from "@/src/lib/getDateNow";
 
 import { GamePhase } from "@/src/types/types";
@@ -61,6 +63,8 @@ function QuizGame() {
 
   useInitMemories({ roomId: initialRoom?.roomId });
 
+  useInitSortingLevel({ roomId: initialRoom?.roomId });
+
   const question = questions[currentQuestion]?.question || "";
   const answers = questions[currentQuestion]?.answers || [];
   const rightAnswer = questions[currentQuestion]?.rightAnswer || "";
@@ -82,7 +86,6 @@ function QuizGame() {
 
   const isButtonDisabled =
     players.length < 2 ||
-    // players.length < 1 ||
     players.some((player) => player.ready === "addedTopics");
 
   const newRound = useCallback(() => {
@@ -175,6 +178,14 @@ function QuizGame() {
     <RightAnswer roomId={roomId} title="Набранные очки в этом раунде" />
   );
 
+  const sortingLevelElement = gamePhase === GamePhase.SORTING && (
+    <Sorting roomId={roomId} />
+  );
+
+  const rightSortingElement = gamePhase === GamePhase.SORTING_ANSWER && (
+    <RightAnswer roomId={roomId} title="Набранные очки в этом раунде" />
+  );
+
   const endGameElement = gamePhase === GamePhase.GAME_END && (
     <EndGame roomId={roomId} />
   );
@@ -190,6 +201,8 @@ function QuizGame() {
           {memoriesElement}
           {memoryChooseElement}
           {rightMemoryElement}
+          {sortingLevelElement}
+          {rightSortingElement}
           {endGameElement}
         </div>
       </div>

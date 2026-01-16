@@ -1,0 +1,23 @@
+@use "../../../../variables" as *;
+
+.dragged {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 100;
+  padding: 10px;
+  border: 2px solid $border-default;
+  border-radius: 10px;
+  background-color: $bg-unselected;
+  text-align: center;
+  font-size: 20px;
+  min-width: 260px;
+}
+
+@media (max-width: 500px) {
+  .dragged {
+    font-size: 16px;
+    padding: 5px;
+  }
+}

@@ -10,6 +10,7 @@ import ReadyGame from "./components/ReadyGame/ReadyGame";
 import Game from "./components/Game/Game";
 import ChooseObstruction from "./components/ChooseObstruction/ChooseObstruction";
 import VisualMemoryGameRoom from "./components/VisualMemoryGameRoom/VisualMemoryGameRoom";
+import SortingGame from "./components/SortingGame/SortingGame";
 import EndGame from "./components/EndGame/EndGame";
 import { generateId } from "@/src/lib/generateId";
 import {
@@ -238,6 +239,16 @@ function Room({ roomId }: RoomProps) {
     gamePhase === GamePhase.MEMORY_ANSWER) &&
     player && <VisualMemoryGameRoom roomId={roomId} userId={userId} />;
 
+  const sortingElement = (gamePhase === GamePhase.SORTING ||
+    gamePhase === GamePhase.SORTING_ANSWER) &&
+    player && (
+      <SortingGame
+        roomId={roomId}
+        userId={userId}
+        currentQuestionIndex={currentQuestionIndex}
+      />
+    );
+
   const endGameElement = gamePhase === GamePhase.GAME_END && player && (
     <EndGame setFormHidden={setFormHidden} />
   );
@@ -254,6 +265,7 @@ function Room({ roomId }: RoomProps) {
           {questionElement}
           {obstructionElement}
           {memoriesElement}
+          {sortingElement}
           {endGameElement}
         </div>
       </div>

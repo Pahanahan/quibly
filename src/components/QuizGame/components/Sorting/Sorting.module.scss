@@ -1,0 +1,33 @@
+@use "../../variables" as *;
+
+.sorting {
+  padding: 20px;
+  border: 2px solid $border-default;
+  border-radius: 20px;
+  background-color: $bg-main;
+  box-shadow: 0 0 10px 0 $shadow-main;
+
+  &__title {
+    font-size: 60px;
+    font-weight: 600;
+    color: $text-main;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  &__item {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid $border-default;
+    border-radius: 10px;
+    font-size: 40px;
+    background-color: $bg-main;
+    color: $text-main;
+    box-shadow: 0 0 10px 0 $shadow-main;
+  }
+}

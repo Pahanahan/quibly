@@ -15,7 +15,6 @@ function VisualMemoryLevel({ roomId }: VisualMemoryLevelProps) {
     key: "memoryGame",
   }) as {
     items: QuizMemories[];
-    result: string[];
   } | null;
 
   if (!memoryGame) return null;

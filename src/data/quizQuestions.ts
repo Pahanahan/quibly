@@ -24418,8 +24418,6 @@ const questions: QuizQuestion[] = [
     answers: ["Кинетическая", "Потенциальная", "Ядерная", "Химическая"],
     rightAnswer: "Кинетическая",
   },
-
-  // HARD (5)
   {
     id: 2446,
     category: "physics",
