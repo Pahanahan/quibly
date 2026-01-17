@@ -21,11 +21,12 @@ import { useQuestions } from "@/src/hooks/useQuestions";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { useTopics } from "./hooks/useTopics";
 import { useMusic } from "./hooks/useMusic";
+import { useSoundMem } from "./hooks/useSoundMem";
 import { editRoom } from "@/src/lib/editRoom";
 import { resetCurrentScore } from "./utils/resetCurrentScore";
 import { getDateNow } from "@/src/lib/getDateNow";
 
-import { GamePhase } from "@/src/types/types";
+import { GamePhase, MemScoreText } from "@/src/types/types";
 import styles from "./QuizGame.module.scss";
 
 ////////////////////////////////////////////////
@@ -42,9 +43,12 @@ import styles from "./QuizGame.module.scss";
 function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [musicState, setMusicState] = useState<boolean>(false);
+  const [memState, setMemState] = useState<boolean>(false);
+  const [memScoreText, setMemScoreText] = useState<MemScoreText>("normal");
   const quizGameRef = useRef(null);
 
   useMusic(musicState);
+  useSoundMem(memState, memScoreText);
 
   const initialRoom = useInitRoom();
   const roomId: string | null = useRoomFields({
@@ -140,6 +144,8 @@ function QuizGame() {
       disabled={isButtonDisabled}
       musicState={musicState}
       setMusicState={setMusicState}
+      memState={memState}
+      setMemState={setMemState}
       quizGameRef={quizGameRef}
     />
   );
@@ -159,6 +165,7 @@ function QuizGame() {
       rightAnswer={rightAnswer}
       roomId={roomId}
       title="Правильный ответ: "
+      setMemScoreText={setMemScoreText}
     />
   );
 
@@ -175,7 +182,11 @@ function QuizGame() {
   );
 
   const rightMemoryElement = gamePhase === GamePhase.MEMORY_ANSWER && (
-    <RightAnswer roomId={roomId} title="Набранные очки в этом раунде" />
+    <RightAnswer
+      roomId={roomId}
+      title="Набранные очки в этом раунде"
+      setMemScoreText={setMemScoreText}
+    />
   );
 
   const sortingLevelElement = gamePhase === GamePhase.SORTING && (
@@ -183,7 +194,11 @@ function QuizGame() {
   );
 
   const rightSortingElement = gamePhase === GamePhase.SORTING_ANSWER && (
-    <RightAnswer roomId={roomId} title="Набранные очки в этом раунде" />
+    <RightAnswer
+      roomId={roomId}
+      title="Набранные очки в этом раунде"
+      setMemScoreText={setMemScoreText}
+    />
   );
 
   const endGameElement = gamePhase === GamePhase.GAME_END && (

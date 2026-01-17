@@ -11,7 +11,7 @@ interface QuestionProps {
 
 function Question({ question, answers }: QuestionProps) {
   useEffect(() => {
-    const music = quizMusic("/quiz-sound/tick-tock-timer.wav", true, 0.7);
+    const music = quizMusic("/quiz-sound/tick-tock-timer.wav", true, 0.5);
 
     music.play();
 

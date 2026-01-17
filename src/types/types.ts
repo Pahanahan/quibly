@@ -94,3 +94,5 @@ export interface QuizSorting {
   question: string;
   variables: Variable[];
 }
+
+export type MemScoreText = "highScore" | "zeroScore" | "normal";

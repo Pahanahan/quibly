@@ -23,6 +23,8 @@ interface JoinRoomProps {
   disabled: boolean;
   musicState: boolean;
   setMusicState: React.Dispatch<React.SetStateAction<boolean>>;
+  memState: boolean;
+  setMemState: React.Dispatch<React.SetStateAction<boolean>>;
   quizGameRef: RefObject<HTMLDivElement | null>;
 }
 
@@ -32,12 +34,15 @@ function JoinRoom({
   disabled,
   musicState,
   setMusicState,
+  memState,
+  setMemState,
   quizGameRef,
 }: JoinRoomProps) {
   const isFullscreen = useFullscreen();
 
   const imageSound = musicState ? musicOff : musicOn;
   const soundText = musicState ? "Выключить музыку" : "Включить музыку";
+  const memText = memState ? "Выключить мемы" : "Включить мемы";
 
   useEffect(() => {
     if (!roomId) return;
@@ -54,6 +59,10 @@ function JoinRoom({
 
   const handleSetMusicState = () => {
     setMusicState(!musicState);
+  };
+
+  const handleSetMemState = () => {
+    setMemState(!memState);
   };
 
   const handleStartGame = () => {
@@ -118,6 +127,9 @@ function JoinRoom({
         <div className={styles.join__btns}>
           <button onClick={toggleFullscreen} className={styles.join__button}>
             {isFullscreen ? "Выйти из полноэкранного режима" : "На весь экран"}
+          </button>
+          <button onClick={handleSetMemState} className={styles.join__button}>
+            {memText}
           </button>
           <button onClick={handleSetMusicState} className={styles.join__button}>
             {soundText}
