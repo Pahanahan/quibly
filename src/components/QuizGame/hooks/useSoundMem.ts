@@ -9,6 +9,7 @@ export const useSoundMem = (
   useEffect(() => {
     const memHighScoreArray = [
       "/quiz-sound-mem/babka_skolko.m4a",
+      "/quiz-sound-mem/genialno_pugovkin.m4a",
       "/quiz-sound-mem/john_siena.m4a",
       "/quiz-sound-mem/mozno_bylo.m4a",
       "/quiz-sound-mem/ostanovites.m4a",
@@ -16,15 +17,19 @@ export const useSoundMem = (
       "/quiz-sound-mem/surprise_motherfucker.m4a",
       "/quiz-sound-mem/taktika_prederzivalsa.m4a",
       "/quiz-sound-mem/vot_eto_povorot.m4a",
+      "/quiz-sound-mem/karlson_suma_soshel.m4a",
     ];
 
     const memZeroScoreArray = [
+      "/quiz-sound-mem/akella_promahnulsa.m4a",
       "/quiz-sound-mem/da_ladno.m4a",
+      "/quiz-sound-mem/delo_to_ziteyskoe.m4a",
+      "/quiz-sound-mem/ispanec_hohotoon.m4a",
       "/quiz-sound-mem/harkiv_mer.m4a",
       "/quiz-sound-mem/pacan_k_uspehu_shel.m4a",
       "/quiz-sound-mem/sovpadenie_ne_dumayu.m4a",
       "/quiz-sound-mem/vse_gavno.m4a",
-      "/quiz-sound-mem/ispanec_hohotoon.m4a",
+      "/quiz-sound-mem/mimino_voprosy_zadayote.m4a",
     ];
 
     const finishArray =
