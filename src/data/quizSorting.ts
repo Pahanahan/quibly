@@ -1,87 +1,3 @@
-// Logic & Math
-// numbers true 10
-// geometry true 2
-// percentages true 2
-// comparisons true 2
-// mathOperations true 7
-// equations true 3
-
-// Logic & Thinking
-// logicOrder true 6
-// causeEffect true 7
-// difficulty true 2
-// patterns true 2
-// rules true 2
-
-// Time & Order
-// time true 3
-// timeline true 8
-// age true 4
-// historicalOrder true 9
-// lifeCycle true 6
-// process true 6
-
-// World & Nature
-// countriesSize true 7
-// population true 10
-// planets true 9
-// distance
-// weather
-// continents
-// oceans
-
-// Science
-// physics
-// chemistryElements
-// chemicalReactions
-// statesOfMatter
-// biology
-// humanBody
-// energy
-
-// IT & Programming
-// dataTypes
-// algorithms
-// codeExecution
-// complexity
-// frontendStack
-// backendStack
-// network
-// httpStatus
-
-// Games
-// gameLevels
-// gameProgression
-// skillsUpgrade
-// rarity
-// loot
-// achievements
-
-// Visual & Design
-// colors
-// colorBrightness
-// designHierarchy
-// fontsWeight
-// uiImportance
-
-// Simple / Universal
-// size
-// weight
-// length
-// speed
-// temperature
-
-// Meta / Special
-// mixed
-// randomLogic
-// trapOrder
-// memorySorting
-// reverseOrder
-
-// Мои темы
-// Сортировка по количеству букв
-// Сортировка по размеру чего нибудь
-
 import { QuizSorting } from "../types/types";
 
 export const quizSorting: QuizSorting[] = [
@@ -1419,6 +1335,713 @@ export const quizSorting: QuizSorting[] = [
       { id: 6, name: "Земля" },
       { id: 7, name: "Венера" },
       { id: 8, name: "Меркурий" },
+    ],
+  },
+  {
+    id: 107,
+    category: "weather",
+    question:
+      "Отсортируйте погодные условия по уровню осадков от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Ясно" },
+      { id: 2, name: "Облачно" },
+      { id: 3, name: "Морось" },
+      { id: 4, name: "Дождь" },
+      { id: 5, name: "Ливень" },
+    ],
+  },
+  {
+    id: 108,
+    category: "weather",
+    question:
+      "Отсортируйте погодные явления по силе ветра от самого слабого к самому сильному",
+    variables: [
+      { id: 1, name: "Штиль" },
+      { id: 2, name: "Лёгкий ветер" },
+      { id: 3, name: "Ветер" },
+      { id: 4, name: "Шквал" },
+      { id: 5, name: "Ураган" },
+    ],
+  },
+  {
+    id: 109,
+    category: "weather",
+    question:
+      "Отсортируйте погодные условия по видимости от наилучшей к наихудшей",
+    variables: [
+      { id: 1, name: "Ясно" },
+      { id: 2, name: "Облачно" },
+      { id: 3, name: "Дождь" },
+      { id: 4, name: "Туман" },
+      { id: 5, name: "Метель" },
+    ],
+  },
+  {
+    id: 110,
+    category: "weather",
+    question:
+      "Отсортируйте погодные явления по количеству солнечного света от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Метель" },
+      { id: 2, name: "Туман" },
+      { id: 3, name: "Облачно" },
+      { id: 4, name: "Переменная облачность" },
+      { id: 5, name: "Ясно" },
+    ],
+  },
+  {
+    id: 111,
+    category: "continents",
+    question: "Отсортируйте континенты по площади от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Австралия" },
+      { id: 2, name: "Европа" },
+      { id: 3, name: "Антарктида" },
+      { id: 4, name: "Южная Америка" },
+      { id: 5, name: "Северная Америка" },
+      { id: 6, name: "Африка" },
+      { id: 7, name: "Азия" },
+    ],
+  },
+  {
+    id: 112,
+    category: "continents",
+    question:
+      "Отсортируйте континенты по численности населения от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Антарктида" },
+      { id: 2, name: "Австралия" },
+      { id: 3, name: "Южная Америка" },
+      { id: 4, name: "Северная Америка" },
+      { id: 5, name: "Европа" },
+      { id: 6, name: "Африка" },
+      { id: 7, name: "Азия" },
+    ],
+  },
+  {
+    id: 113,
+    category: "continents",
+    question:
+      "Отсортируйте континенты по количеству стран от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Антарктида" },
+      { id: 2, name: "Австралия" },
+      { id: 3, name: "Южная Америка" },
+      { id: 4, name: "Северная Америка" },
+      { id: 5, name: "Европа" },
+      { id: 6, name: "Африка" },
+      { id: 7, name: "Азия" },
+    ],
+  },
+  {
+    id: 114,
+    category: "continents",
+    question:
+      "Отсортируйте континенты по разнообразию климатических зон от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Антарктида" },
+      { id: 2, name: "Австралия" },
+      { id: 3, name: "Европа" },
+      { id: 4, name: "Южная Америка" },
+      { id: 5, name: "Африка" },
+      { id: 6, name: "Северная Америка" },
+      { id: 7, name: "Азия" },
+    ],
+  },
+  {
+    id: 115,
+    category: "oceans",
+    question: "Отсортируйте океаны по площади от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Северный Ледовитый океан" },
+      { id: 2, name: "Южный океан" },
+      { id: 3, name: "Индийский океан" },
+      { id: 4, name: "Атлантический океан" },
+      { id: 5, name: "Тихий океан" },
+    ],
+  },
+  {
+    id: 116,
+    category: "oceans",
+    question: "Отсортируйте океаны по площади от наибольшего к наименьшему",
+    variables: [
+      { id: 1, name: "Тихий океан" },
+      { id: 2, name: "Атлантический океан" },
+      { id: 3, name: "Индийский океан" },
+      { id: 4, name: "Южный океан" },
+      { id: 5, name: "Северный Ледовитый океан" },
+    ],
+  },
+  {
+    id: 117,
+    category: "oceans",
+    question:
+      "Отсортируйте океаны по средней глубине от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Северный Ледовитый океан" },
+      { id: 2, name: "Южный океан" },
+      { id: 3, name: "Индийский океан" },
+      { id: 4, name: "Атлантический океан" },
+      { id: 5, name: "Тихий океан" },
+    ],
+  },
+  {
+    id: 118,
+    category: "oceans",
+    question:
+      "Отсортируйте океаны по средней температуре воды от самой холодной к самой тёплой",
+    variables: [
+      { id: 1, name: "Северный Ледовитый океан" },
+      { id: 2, name: "Южный океан" },
+      { id: 3, name: "Атлантический океан" },
+      { id: 4, name: "Индийский океан" },
+      { id: 5, name: "Тихий океан" },
+    ],
+  },
+  {
+    id: 119,
+    category: "oceans",
+    question:
+      "Отсортируйте океаны по солёности воды от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Северный Ледовитый океан" },
+      { id: 2, name: "Тихий океан" },
+      { id: 3, name: "Южный океан" },
+      { id: 4, name: "Индийский океан" },
+      { id: 5, name: "Атлантический океан" },
+    ],
+  },
+  {
+    id: 120,
+    category: "oceans",
+    question:
+      "Отсортируйте океаны по количеству прилегающих материков от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Южный океан" },
+      { id: 2, name: "Северный Ледовитый океан" },
+      { id: 3, name: "Индийский океан" },
+      { id: 4, name: "Атлантический океан" },
+      { id: 5, name: "Тихий океан" },
+    ],
+  },
+  {
+    id: 121,
+    category: "physics",
+    question: "Отсортируйте объекты по объёму от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Стопка" },
+      { id: 2, name: "Стакан" },
+      { id: 3, name: "Ящик" },
+      { id: 4, name: "Комната" },
+      { id: 5, name: "Дом" },
+    ],
+  },
+  {
+    id: 122,
+    category: "physics",
+    question: "Отсортируйте скорости тел от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Черепаха" },
+      { id: 2, name: "Человек" },
+      { id: 3, name: "Велосипед" },
+      { id: 4, name: "Автомобиль" },
+      { id: 5, name: "Самолёт" },
+    ],
+  },
+  {
+    id: 123,
+    category: "physics",
+    question:
+      "Отсортируйте предметы по плотности материала от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Дерево" },
+      { id: 2, name: "Вода" },
+      { id: 3, name: "Сталь" },
+      { id: 4, name: "Медь" },
+      { id: 5, name: "Свинец" },
+    ],
+  },
+  {
+    id: 124,
+    category: "physics",
+    question:
+      "Отсортируйте источники света по интенсивности от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Свеча" },
+      { id: 2, name: "Лампочка 40W" },
+      { id: 3, name: "Лампочка 100W" },
+      { id: 4, name: "Прожектор" },
+      { id: 5, name: "Солнце" },
+    ],
+  },
+  {
+    id: 125,
+    category: "physics",
+    question: "Отсортируйте звуки по громкости от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Шёпот" },
+      { id: 2, name: "Разговор" },
+      { id: 3, name: "Песня" },
+      { id: 4, name: "Крик" },
+      { id: 5, name: "Взрыв" },
+    ],
+  },
+  {
+    id: 126,
+    category: "chemistryElements",
+    question:
+      "Отсортируйте элементы по атомной массе от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Водород (H)" },
+      { id: 2, name: "Гелий (He)" },
+      { id: 3, name: "Литий (Li)" },
+      { id: 4, name: "Бериллий (Be)" },
+      { id: 5, name: "Бор (B)" },
+      { id: 6, name: "Углерод (C)" },
+      { id: 7, name: "Азот (N)" },
+      { id: 8, name: "Кислород (O)" },
+    ],
+  },
+  {
+    id: 127,
+    category: "biology",
+    question: "Отсортируйте животных по массе от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Муха" },
+      { id: 2, name: "Кот" },
+      { id: 3, name: "Собака" },
+      { id: 4, name: "Корова" },
+      { id: 5, name: "Слон" },
+    ],
+  },
+  {
+    id: 128,
+    category: "biology",
+    question:
+      "Отсортируйте животных по продолжительности жизни от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Муха" },
+      { id: 2, name: "Кот" },
+      { id: 3, name: "Собака" },
+      { id: 4, name: "Корова" },
+      { id: 5, name: "Слон" },
+      { id: 6, name: "Гренландский кит" },
+    ],
+  },
+  {
+    id: 129,
+    category: "biology",
+    question: "Отсортируйте растения по высоте от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Травинка" },
+      { id: 2, name: "Куст" },
+      { id: 3, name: "Дуб" },
+      { id: 4, name: "Баобаб" },
+      { id: 5, name: "Секвойя" },
+    ],
+  },
+  {
+    id: 130,
+    category: "biology",
+    question:
+      "Отсортируйте животных по скорости передвижения от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Черепаха" },
+      { id: 2, name: "Кот" },
+      { id: 3, name: "Собака" },
+      { id: 4, name: "Лошадь" },
+      { id: 5, name: "Гепард" },
+    ],
+  },
+  {
+    id: 131,
+    category: "humanBody",
+    question: "Отсортируйте органы по массе от наибольшей к наименьшей",
+    variables: [
+      { id: 1, name: "Печень" },
+      { id: 2, name: "Мозг" },
+      { id: 3, name: "Сердце" },
+      { id: 4, name: "Селезёнка" },
+      { id: 5, name: "Щитовидная железа" },
+    ],
+  },
+  {
+    id: 132,
+    category: "humanBody",
+    question: "Отсортируйте кости по длине от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Фаланга пальца" },
+      { id: 2, name: "Ключица" },
+      { id: 3, name: "Лучевая кость" },
+      { id: 4, name: "Бедренная кость" },
+    ],
+  },
+  {
+    id: 133,
+    category: "colors",
+    question: "Отсортируйте цвета по длине волны от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Фиолетовый" },
+      { id: 2, name: "Синий" },
+      { id: 3, name: "Голубой" },
+      { id: 4, name: "Зелёный" },
+      { id: 5, name: "Жёлтый" },
+      { id: 6, name: "Оранжевый" },
+      { id: 7, name: "Красный" },
+    ],
+  },
+  {
+    id: 134,
+    category: "colors",
+    question: "Отсортируйте цвета по яркости от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Чёрный" },
+      { id: 2, name: "Тёмно-синий" },
+      { id: 3, name: "Красный" },
+      { id: 4, name: "Жёлтый" },
+      { id: 5, name: "Белый" },
+    ],
+  },
+  {
+    id: 135,
+    category: "size",
+    question: "Отсортируйте объекты по размеру от наибольшего к наименьшему",
+    variables: [
+      { id: 1, name: "Дом" },
+      { id: 2, name: "Стол" },
+      { id: 3, name: "Книга" },
+      { id: 4, name: "Ручка" },
+      { id: 5, name: "Спичка" },
+    ],
+  },
+  {
+    id: 136,
+    category: "size",
+    question: "Отсортируйте объекты по диаметру от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Монета" },
+      { id: 2, name: "Тарелка" },
+      { id: 3, name: "Колесо автомобиля" },
+      { id: 4, name: "Колесо грузовика" },
+      { id: 5, name: "Луна" },
+    ],
+  },
+  {
+    id: 137,
+    category: "weight",
+    question: "Отсортируйте предметы по массе от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Перышко" },
+      { id: 2, name: "Яблоко" },
+      { id: 3, name: "Книга" },
+      { id: 4, name: "Стул" },
+      { id: 5, name: "Автомобиль" },
+    ],
+  },
+  {
+    id: 137,
+    category: "weight",
+    question: "Отсортируйте животных по массе от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Муха" },
+      { id: 2, name: "Кошка" },
+      { id: 3, name: "Собака" },
+      { id: 4, name: "Корова" },
+      { id: 5, name: "Слон" },
+    ],
+  },
+  {
+    id: 138,
+    category: "weight",
+    question: "Отсортируйте фрукты и ягоды по массе от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Вишня" },
+      { id: 2, name: "Мандарин" },
+      { id: 3, name: "Яблоко" },
+      { id: 4, name: "Апельсин" },
+      { id: 5, name: "Арбуз" },
+    ],
+  },
+  {
+    id: 139,
+    category: "weight",
+    question:
+      "Отсортируйте предметы домашнего обихода по массе от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Ложка" },
+      { id: 2, name: "Тарелка" },
+      { id: 3, name: "Кастрюля" },
+      { id: 4, name: "Стул" },
+      { id: 5, name: "Холодильник" },
+    ],
+  },
+  {
+    id: 140,
+    category: "weight",
+    question:
+      "Отсортируйте металлы по плотности (массе на объём) от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Алюминий" },
+      { id: 2, name: "Медь" },
+      { id: 3, name: "Железо" },
+      { id: 4, name: "Свинец" },
+      { id: 5, name: "Осмий" },
+    ],
+  },
+  {
+    id: 141,
+    category: "length",
+    question: "Отсортируйте реки по длине от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Сена" },
+      { id: 2, name: "Темза" },
+      { id: 3, name: "Днепр" },
+      { id: 4, name: "Нил" },
+      { id: 5, name: "Амазонка" },
+    ],
+  },
+  {
+    id: 142,
+    category: "temperature",
+    question:
+      "Отсортируйте вещества по температуре кипения от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Азот" },
+      { id: 2, name: "Кислород" },
+      { id: 3, name: "Вода" },
+      { id: 4, name: "Медь" },
+      { id: 5, name: "Железо" },
+    ],
+  },
+  {
+    id: 143,
+    category: "temperature",
+    question:
+      "Отсортируйте планеты Солнечной системы по средней температуре от наибольшей к наименьшей",
+    variables: [
+      { id: 1, name: "Венера" },
+      { id: 2, name: "Меркурий" },
+      { id: 3, name: "Земля" },
+      { id: 4, name: "Марс" },
+      { id: 5, name: "Сатурн" },
+      { id: 6, name: "Уран" },
+      { id: 7, name: "Нептун" },
+    ],
+  },
+  {
+    id: 144,
+    category: "temperature",
+    question:
+      "Отсортируйте температуры в повседневной жизни от наименьшей к наибольшей",
+    variables: [
+      { id: 1, name: "Холодильник" },
+      { id: 2, name: "Комната" },
+      { id: 3, name: "Сауна" },
+      { id: 4, name: "Печь" },
+      { id: 5, name: "Лава" },
+    ],
+  },
+  {
+    id: 145,
+    category: "mixed",
+    question:
+      "Отсортируйте числа и фрукты по количеству от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "1" },
+      { id: 2, name: "2" },
+      { id: 3, name: "Три яблока" },
+      { id: 4, name: "4" },
+      { id: 5, name: "Пять бананов" },
+    ],
+  },
+  {
+    id: 146,
+    category: "mixed",
+    question:
+      "Отсортируйте числа и фрукты по количеству от наибольшего к наименьшему",
+    variables: [
+      { id: 1, name: "5" },
+      { id: 2, name: "Четыре манго" },
+      { id: 3, name: "3" },
+      { id: 4, name: "Два мандарина" },
+      { id: 5, name: "Одина груша" },
+    ],
+  },
+  {
+    id: 147,
+    category: "trapOrder",
+    question:
+      "Отсортируйте объекты по массе от наибольшей к наименьшей (обратите внимание на единицы измерения)",
+    variables: [
+      { id: 1, name: "Масса слона: 5 т" },
+      { id: 2, name: "Масса мяча: 2 кг" },
+      { id: 3, name: "Килограмм: 1 кг" },
+      { id: 4, name: "Граммовка: 500 г" },
+      { id: 5, name: "Масса яйца: 50 г" },
+    ],
+  },
+  {
+    id: 148,
+    category: "trapOrder",
+    question:
+      "Отсортируйте предметы по длине от наименьшей к наибольшей (обратите внимание на сантиметры и метры)",
+    variables: [
+      { id: 1, name: "Карандаш: 15 см" },
+      { id: 2, name: "Линейка: 30 см" },
+      { id: 3, name: "Шнурок: 50 см" },
+      { id: 4, name: "Верёвка: 150 см" },
+      { id: 5, name: "Трос: 2 м" },
+    ],
+  },
+  {
+    id: 149,
+    category: "alphabeticalOrder",
+    question: "Отсортируйте фрукты по алфавиту от A до Я",
+    variables: [
+      { id: 1, name: "Апельсин" },
+      { id: 2, name: "Банан" },
+      { id: 3, name: "Виноград" },
+      { id: 4, name: "Груша" },
+      { id: 5, name: "Яблоко" },
+    ],
+  },
+  {
+    id: 150,
+    category: "alphabeticalOrder",
+    question: "Отсортируйте инструменты по алфавиту от A до Я",
+    variables: [
+      { id: 1, name: "Гаечный ключ" },
+      { id: 2, name: "Молоток" },
+      { id: 3, name: "Ножовка" },
+      { id: 4, name: "Отвёртка" },
+      { id: 5, name: "Плоскогубцы" },
+    ],
+  },
+  {
+    id: 151,
+    category: "alphabeticalOrder",
+    question: "Отсортируйте столовые приборы по алфавиту от A до Я",
+    variables: [
+      { id: 1, name: "Вилка" },
+      { id: 2, name: "Ложка" },
+      { id: 3, name: "Нож" },
+      { id: 4, name: "Палочки" },
+      { id: 5, name: "Чайная ложка" },
+    ],
+  },
+  {
+    id: 152,
+    category: "alphabeticalOrder",
+    question: "Отсортируйте машины по алфавиту от А до Я",
+    variables: [
+      { id: 1, name: "Ауди" },
+      { id: 2, name: "БМВ" },
+      { id: 3, name: "Мерседес" },
+      { id: 4, name: "Тойота" },
+      { id: 5, name: "Форд" },
+    ],
+  },
+  {
+    id: 153,
+    category: "alphabeticalOrder",
+    question: "Отсортируйте погодные явления по алфавиту от A до Я",
+    variables: [
+      { id: 1, name: "Град" },
+      { id: 2, name: "Дождь" },
+      { id: 3, name: "Облачно" },
+      { id: 4, name: "Снег" },
+      { id: 5, name: "Туман" },
+    ],
+  },
+  {
+    id: 154,
+    category: "letterCountOrder",
+    question:
+      "Отсортируйте слова по количеству букв от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Кот" },
+      { id: 2, name: "Пост" },
+      { id: 3, name: "Слово" },
+      { id: 4, name: "Книжка" },
+      { id: 5, name: "Компьютер" },
+    ],
+  },
+  {
+    id: 155,
+    category: "letterCountOrder",
+    question:
+      "Отсортируйте фрукты по количеству букв от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Киви" },
+      { id: 2, name: "Лимон" },
+      { id: 3, name: "Малина" },
+      { id: 4, name: "Клубника" },
+      { id: 5, name: "Грейпфрут" },
+    ],
+  },
+  {
+    id: 156,
+    category: "letterCountOrder",
+    question:
+      "Отсортируйте инструменты по количеству букв от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Пила" },
+      { id: 2, name: "Лобзик" },
+      { id: 3, name: "Молоток" },
+      { id: 4, name: "Отвёртка" },
+      { id: 5, name: "Перфоратор" },
+    ],
+  },
+  {
+    id: 157,
+    category: "letterCountOrder",
+    question:
+      "Отсортируйте машины по количеству букв в названии от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "BMW" },
+      { id: 2, name: "Ford" },
+      { id: 3, name: "Tesla" },
+      { id: 4, name: "Mercedes" },
+      { id: 5, name: "Volkswagen" },
+    ],
+  },
+  {
+    id: 158,
+    category: "letterCountOrder",
+    question:
+      "Отсортируйте страны по количеству букв в названии от наибольшего к наименьшему",
+    variables: [
+      { id: 1, name: "США" },
+      { id: 2, name: "Индия" },
+      { id: 3, name: "Канада" },
+      { id: 4, name: "Филипины" },
+      { id: 5, name: "Финляндия" },
+    ],
+  },
+  {
+    id: 159,
+    category: "letterCountOrder",
+    question:
+      "Отсортируйте предметы на рабочем столе по количеству букв в названии от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Кот" },
+      { id: 2, name: "Лампа" },
+      { id: 3, name: "Монитор" },
+      { id: 4, name: "Нуашники" },
+      { id: 5, name: "Клавиатура" },
+    ],
+  },
+  {
+    id: 160,
+    category: "letterCountOrder",
+    question:
+      "Отсортируйте животных по количеству букв в названии от наименьшего к наибольшему",
+    variables: [
+      { id: 1, name: "Кот" },
+      { id: 2, name: "Слон" },
+      { id: 3, name: "Зебра" },
+      { id: 4, name: "Собака" },
+      { id: 5, name: "Крокодил" },
     ],
   },
 ];
