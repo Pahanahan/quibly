@@ -99,4 +99,8 @@ export const quizCategories = [
     category: "philosophy",
     categoryRus: "Философия",
   },
+  {
+    category: "animal",
+    categoryRus: "Животные",
+  },
 ];

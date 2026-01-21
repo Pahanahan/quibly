@@ -134,7 +134,7 @@ function QuizGame() {
     currentQuestion,
     startTimeRound,
     newRound,
-    players
+    players,
   );
 
   const roomConnectElement = gamePhase === GamePhase.LOBBY && roomId && (
