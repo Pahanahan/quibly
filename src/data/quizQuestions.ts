@@ -47815,7 +47815,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5001,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно как 'король джунглей'?",
     answers: ["Лев", "Слон", "Тигр", "Медведь"],
@@ -47823,7 +47823,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5002,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какой морской млекопитающий умеет петь?",
     answers: ["Кит", "Акула", "Дельфин", "Морж"],
@@ -47831,7 +47831,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5003,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное является самым быстрым на суше?",
     answers: ["Гепард", "Лошадь", "Лев", "Тигр"],
@@ -47839,7 +47839,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5004,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет менять цвет кожи для маскировки?",
     answers: ["Хамелеон", "Ящерица", "Змея", "Лягушка"],
@@ -47847,7 +47847,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5005,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное откладывает яйца, но является млекопитающим?",
     answers: ["Утконос", "Кенгуру", "Слон", "Еж"],
@@ -47855,7 +47855,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5006,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое насекомое производит мед?",
     answers: ["Пчела", "Муравей", "Таракан", "Бабочка"],
@@ -47863,7 +47863,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5007,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное имеет черно-белую окраску и питается бамбуком?",
     answers: ["Панда", "Зебра", "Лемур", "Тигр"],
@@ -47871,7 +47871,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5008,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное является символом мудрости в культуре многих народов?",
@@ -47880,7 +47880,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5009,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное живет в стае и известное своим воем?",
     answers: ["Волк", "Лиса", "Медведь", "Осьминог"],
@@ -47888,7 +47888,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5010,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое морское животное имеет восемь щупалец?",
     answers: ["Осьминог", "Кальмар", "Медуза", "Краб"],
@@ -47896,7 +47896,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5011,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известное своей длинной шеей?",
     answers: ["Жираф", "Лошадь", "Слон", "Верблюд"],
@@ -47904,7 +47904,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5012,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет летать, но не является птицей?",
     answers: ["Летучая мышь", "Кукушка", "Воробей", "Ястреб"],
@@ -47912,7 +47912,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5013,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит дамбы на реках?",
     answers: ["Бобер", "Выдра", "Кастор", "Карп"],
@@ -47920,7 +47920,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5014,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное является символом Австралии?",
     answers: ["Кенгуру", "Коала", "Слон", "Динго"],
@@ -47928,7 +47928,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5015,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное носит свой дом на спине?",
     answers: ["Черепаха", "Лошадь", "Рак", "Краб"],
@@ -47936,7 +47936,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5016,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет прыгать дальше всех на Земле?",
     answers: ["Богомол", "Кенгуру", "Лягушка", "Кролик"],
@@ -47944,7 +47944,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5017,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своей памятью и живет в Африке и Азии?",
     answers: ["Слон", "Лев", "Тигр", "Гиппопотам"],
@@ -47952,7 +47952,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5018,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное умеет издавать ультразвуковые сигналы для ориентации в темноте?",
@@ -47961,7 +47961,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5019,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное считается домашним и мурлыкает?",
     answers: ["Кошка", "Собака", "Хомяк", "Кролик"],
@@ -47969,7 +47969,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5020,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное является крупнейшим на Земле?",
     answers: ["Синий кит", "Слон", "Акула", "Гиппопотам"],
@@ -47977,7 +47977,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5021,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое насекомое откладывает яйца в древесину и разрушает её?",
     answers: ["Термит", "Богомол", "Муравей", "Жук-навозник"],
@@ -47985,7 +47985,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5022,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное умеет менять направление полета в воздухе с помощью хвоста?",
@@ -47994,7 +47994,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5023,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное является символом мудрости в древнегреческой мифологии?",
@@ -48003,7 +48003,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5024,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное умеет крутиться на месте, создавая вихрь воздуха для охоты?",
@@ -48012,7 +48012,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5025,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное имеет хобот?",
     answers: ["Слон", "Морж", "Кабан", "Лось"],
@@ -48020,7 +48020,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5026,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное умеет выживать в засушливых условиях благодаря горбу?",
@@ -48029,7 +48029,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5027,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет летать, но не имеет крыльев?",
     answers: ["Летучая мышь", "Белка-летяга", "Орел", "Птица-носорог"],
@@ -48037,7 +48037,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5028,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное является символом России?",
     answers: ["Медведь", "Кенгуру", "Эму", "Жук-навозник"],
@@ -48045,7 +48045,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5029,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит гнёзда из веток?",
     answers: ["Ласточка", "Курица", "Гусь", "Утка"],
@@ -48053,7 +48053,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5030,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное может спать стоя?",
     answers: ["Лошадь", "Корова", "Слон", "Жираф"],
@@ -48061,7 +48061,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5031,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное умеет прыгать на огромные расстояния и является насекомым?",
@@ -48070,7 +48070,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5032,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное способно менять форму тела, становясь жидким?",
     answers: ["Рак", "Медуза", "Краб", "Морской конёк"],
@@ -48078,7 +48078,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5033,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное имеет панцирь и умеет прятаться в нём при опасности?",
@@ -48087,7 +48087,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5034,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное откладывает яйца и живёт в воде?",
     answers: ["Лягушка", "Бегемот", "Страус", "Рыба"],
@@ -48095,7 +48095,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5035,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своей способностью кататься на воде?",
     answers: ["Выдра", "Бобр", "Тюлень", "Морж"],
@@ -48103,7 +48103,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5036,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное имеет самое большое сердце среди млекопитающих?",
     answers: ["Синий кит", "Слон", "Кит-кашалот", "Гиппопотам"],
@@ -48111,7 +48111,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5037,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно к регенерации целых частей тела?",
     answers: ["Саламандра", "Собака", "Змея", "Лев"],
@@ -48119,7 +48119,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5038,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question:
       "Какое животное способно вращать глазами независимо друг от друга?",
@@ -48128,7 +48128,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5039,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно выживать без воды дольше всех?",
     answers: ["Верблюд", "Слон", "Кенгуру", "Тигр"],
@@ -48136,7 +48136,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5040,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное имеет яд, смертельный для человека?",
     answers: ["Синие кольчатые осьминоги", "Карп", "Ворона", "Сорока"],
@@ -48144,7 +48144,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5041,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное может менять пол в течение жизни?",
     answers: ["Рыбы-клоуны", "Ящерицы", "Черепахи", "Лягушки"],
@@ -48152,7 +48152,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5042,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное умеет спать с одним открытым глазом?",
     answers: ["Дельфин", "Слон", "Лев", "Кенгуру"],
@@ -48160,7 +48160,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5043,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное имеет самое длинное время беременности?",
     answers: ["Слон", "Гепард", "Жираф", "Лошадь"],
@@ -48168,7 +48168,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5044,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное использует эхолокацию для охоты под водой?",
     answers: ["Косатка", "Дельфин", "Кит-кашалот", "Акула"],
@@ -48176,7 +48176,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5045,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное способно жить более 500 лет?",
     answers: ["Моллюск Арктический", "Кит", "Черепаха", "Акула"],
@@ -48184,7 +48184,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5046,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное имеет яд, который может убить 100 человек?",
     answers: ["Синие кольчатые осьминоги", "Кобра", "Скорпион", "Медуза"],
@@ -48192,7 +48192,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5047,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question:
       "Какое насекомое способно переносить собственный вес в 50 раз больше своего?",
@@ -48201,7 +48201,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5048,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно своей способностью делать «мёртвый трюк»?",
@@ -48210,7 +48210,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5049,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своим хохолком на голове?",
     answers: ["Куропатка", "Фазан", "Петух", "Попугай"],
@@ -48218,7 +48218,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5050,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно способностью к имитации человеческой речи?",
@@ -48227,7 +48227,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5051,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное считается символом мудрости в африканской культуре?",
@@ -48236,7 +48236,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5052,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет летать задом наперед?",
     answers: ["Колибри", "Воробей", "Ястреб", "Бабочка"],
@@ -48244,7 +48244,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5053,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет издавать звуки ультразвуком для общения?",
     answers: ["Дельфин", "Кот", "Птица", "Обезьяна"],
@@ -48252,7 +48252,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5054,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное является символом Австралии и прыгает на большие расстояния?",
@@ -48261,7 +48261,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5055,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное имеет самый длинный язык относительно размера тела?",
@@ -48270,7 +48270,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5056,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное использует камни для открытия раковин?",
     answers: ["Выдра", "Морж", "Краб", "Дельфин"],
@@ -48278,7 +48278,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5057,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно тем, что может спать до 22 часов в сутки?",
@@ -48287,7 +48287,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5058,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное является самым большим по массе среди сухопутных?",
@@ -48296,7 +48296,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5059,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное откладывает яйца, но кормит молоком своих детенышей?",
@@ -48305,7 +48305,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5060,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое насекомое известно тем, что умеет строить ульи?",
     answers: ["Пчела", "Муравей", "Шмель", "Жук"],
@@ -48313,7 +48313,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5061,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно своей черно-белой окраской и любит бамбук?",
@@ -48322,7 +48322,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5062,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет плыть и строить дамбы на реках?",
     answers: ["Бобер", "Выдра", "Кастор", "Краб"],
@@ -48330,7 +48330,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5063,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно своей способностью переворачивать камни и ловить насекомых?",
@@ -48339,7 +48339,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5064,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит гнезда из веток на деревьях?",
     answers: ["Журавль", "Медведь", "Кошка", "Мышь"],
@@ -48347,7 +48347,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5065,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своей способностью кататься по воде?",
     answers: ["Выдра", "Бобр", "Тюлень", "Морж"],
@@ -48355,7 +48355,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5066,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное является домашним и мурлыкает?",
     answers: ["Кошка", "Собака", "Кролик", "Хомяк"],
@@ -48363,7 +48363,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5067,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное может спать стоя?",
     answers: ["Лошадь", "Корова", "Слон", "Жираф"],
@@ -48371,7 +48371,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5068,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно способностью к имитации человеческой речи?",
@@ -48380,7 +48380,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5069,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет прыгать дальше всех среди насекомых?",
     answers: ["Кузнечик", "Богомол", "Пчела", "Муха"],
@@ -48388,7 +48388,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5070,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное использует камни для открытия раковин?",
     answers: ["Выдра", "Кит", "Акула", "Дельфин"],
@@ -48396,7 +48396,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5071,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question:
       "Какое животное способно вращать глазами независимо друг от друга?",
@@ -48405,7 +48405,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5072,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно выживать без воды дольше всех?",
     answers: ["Верблюд", "Крыса", "Комар", "Тигр"],
@@ -48413,7 +48413,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5073,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное может менять пол в течение жизни?",
     answers: ["Рыбы-клоуны", "Тигры", "Черепахи", "Бабуины"],
@@ -48421,7 +48421,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5074,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное умеет спать с одним открытым глазом?",
     answers: ["Дельфин", "Баран", "Лев", "Барракуда"],
@@ -48429,7 +48429,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5075,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное имеет самое большое сердце среди млекопитающих?",
     answers: ["Синий кит", "Слон", "Белка", "Гиппопотам"],
@@ -48437,7 +48437,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5076,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно к регенерации целых частей тела?",
     answers: ["Саламандра", "Бобр", "Змея", "Буйвол"],
@@ -48445,7 +48445,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5077,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное имеет самое длинное время беременности?",
     answers: ["Слон", "Волк", "Жираф", "Лошадь"],
@@ -48453,7 +48453,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5078,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное использует эхолокацию для охоты под водой?",
     answers: ["Кит-кашалот", "Голубь", "Косатка", "Варан"],
@@ -48461,7 +48461,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5079,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное способно жить более 500 лет?",
     answers: ["Моллюск Арктический", "Овца", "Черепаха", "Акула"],
@@ -48469,7 +48469,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5080,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question:
       "Какое насекомое способно переносить собственный вес в 50 раз больше своего?",
@@ -48478,7 +48478,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5081,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное делает 'мёртвый трюк', чтобы защититься?",
     answers: ["Опоссум", "Лиса", "Кабан", "Кенгуру"],
@@ -48486,7 +48486,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5082,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное имеет хохолок на голове и красиво поёт?",
     answers: ["Фазан", "Косуля", "Петух", "Жираф"],
@@ -48494,7 +48494,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5083,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит свои гнёзда в воде из веток?",
     answers: ["Бобёр", "Ленивец", "Краб", "Щука"],
@@ -48502,7 +48502,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5084,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известное своей скоростью и охотой на стаде?",
     answers: ["Ленивец", "Гепард", "Тигр", "Зебра"],
@@ -48510,7 +48510,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5085,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет издавать громкий рев и живёт в саванне?",
     answers: ["Лев", "Хорек", "Слон", "Гепард"],
@@ -48518,7 +48518,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5086,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своей способностью откладывать яйца?",
     answers: ["Курица", "Слон", "Кошка", "Собака"],
@@ -48526,7 +48526,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5087,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет лазать по деревьям и висеть вниз головой?",
     answers: ["Летучая мышь", "Слон", "Лиса", "Коала"],
@@ -48534,7 +48534,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5088,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное является символом Китая и питается бамбуком?",
     answers: ["Панда", "Тигр", "Лев", "Лиса"],
@@ -48542,7 +48542,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5089,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое насекомое строит свои колонии из сот?",
     answers: ["Пчела", "Муравей", "Шмель", "Жук"],
@@ -48550,7 +48550,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5090,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет менять цвет для маскировки?",
     answers: ["Хамелеон", "Ящерица", "Змея", "Лягушка"],
@@ -48558,7 +48558,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5091,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное имеет самое сильное сжатие челюстей?",
     answers: ["Крокодил", "Акула", "Лев", "Тигр"],
@@ -48566,7 +48566,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5092,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно к биолюминесценции?",
     answers: ["Морской светлячок", "Дельфин", "Кальмар", "Медуза"],
@@ -48574,7 +48574,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5093,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное может жить при температуре ниже −70°C?",
     answers: ["Полярный медведь", "Дятел", "Слон", "Хомяк"],
@@ -48582,7 +48582,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5094,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное способно вращать головой почти на 360°?",
     answers: ["Сова", "Ястреб", "Ягуар", "Ворона"],
@@ -48590,7 +48590,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5095,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question:
       "Какое животное имеет самую прочную кость черепа относительно размера тела?",
@@ -48599,7 +48599,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5096,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное является самым долгоживущим позвоночным?",
     answers: ["Гренландский кит", "Слон", "Черепаха", "Кит-кашалот"],
@@ -48607,7 +48607,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5097,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своим черно-белым хвостом?",
     answers: ["Скунс", "Ящерица", "Гиббон", "Горилла"],
@@ -48615,7 +48615,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5098,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет нырять на глубину более 500 метров?",
     answers: ["Кит-кашалот", "Дельфин", "Акула", "Морж"],
@@ -48623,7 +48623,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5099,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известное тем, что может замерзнуть и ожить снова?",
@@ -48632,7 +48632,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5100,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своим криком 'Ууу!' ночью?",
     answers: ["Сова", "Ворона", "Чайка", "Сорока"],
@@ -48640,7 +48640,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5101,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своей длинной шеей?",
     answers: ["Жираф", "Слон", "Лев", "Верблюд"],
@@ -48648,7 +48648,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5102,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное живёт в ульях и собирает нектар?",
     answers: ["Пчела", "Муравей", "Шмель", "Жук"],
@@ -48656,7 +48656,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5103,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет летать и ночью охотится на насекомых?",
     answers: ["Летучая мышь", "Курица", "Ястреб", "Воробей"],
@@ -48664,7 +48664,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5104,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет прятаться в панцире?",
     answers: ["Черепаха", "Енот", "Краб", "Ёж"],
@@ -48672,7 +48672,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5105,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет менять цвет кожи для маскировки?",
     answers: ["Хамелеон", "Лягушка", "Змея", "Улитка"],
@@ -48680,7 +48680,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5106,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно тем, что откладывает яйца, но кормит молоком?",
@@ -48689,7 +48689,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5107,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное живёт в Африке, имеет хобот и большие уши?",
     answers: ["Слон", "Мухоед", "Бегемот", "Жираф"],
@@ -48697,7 +48697,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5108,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит дамбы и норы на реках?",
     answers: ["Бобёр", "Мамонт", "Кастор", "Краб"],
@@ -48705,7 +48705,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5109,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своим быстрым бегом и охотой на стаде?",
     answers: ["Гепард", "Мангуст", "Тигр", "Слон"],
@@ -48713,7 +48713,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5110,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет спать стоя?",
     answers: ["Лошадь", "Корова", "Слон", "Жираф"],
@@ -48721,7 +48721,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5111,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известное способностью к имитации человеческой речи?",
@@ -48730,7 +48730,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5112,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное живёт на деревьях и часто висит вниз головой?",
     answers: ["Летучая мышь", "Суслик", "Лиса", "Белка"],
@@ -48738,7 +48738,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5113,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно своей черно-белой окраской и любит бамбук?",
@@ -48747,7 +48747,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5114,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное умеет прыгать на большие расстояния и живёт в Австралии?",
@@ -48756,7 +48756,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5115,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное издаёт громкий рев и живёт в саванне?",
     answers: ["Лев", "Дятел", "Дельфин", "Гепард"],
@@ -48764,7 +48764,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5116,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своим хохолком на голове?",
     answers: ["Фазан", "Куропатка", "Ласка", "Тигр"],
@@ -48772,7 +48772,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5117,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое насекомое строит ульи и собирает нектар?",
     answers: ["Пчела", "Муравей", "Тюлень", "Жук"],
@@ -48780,7 +48780,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5118,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет кататься по воде и ловко плавает?",
     answers: ["Выдра", "Лемур", "Тюлень", "Морж"],
@@ -48788,7 +48788,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5119,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное делает 'мёртвый трюк', чтобы защититься?",
     answers: ["Опоссум", "Овца", "Омар", "Орангутан"],
@@ -48796,7 +48796,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5120,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет менять цвет кожи для маскировки?",
     answers: ["Хамелеон", "Чайка", "Змея", "Панда"],
@@ -48804,7 +48804,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5121,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question:
       "Какое животное способно вращать глазами независимо друг от друга?",
@@ -48813,7 +48813,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5122,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно выживать без воды дольше всех?",
     answers: ["Верблюд", "Ехидна", "Кенгуру", "Тигр"],
@@ -48821,7 +48821,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5123,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное умеет спать с одним открытым глазом?",
     answers: ["Дельфин", "Газель", "Лев", "Кенгуру"],
@@ -48829,7 +48829,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5124,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное может менять пол в течение жизни?",
     answers: ["Рыбы-клоуны", "Норка", "Черепахи", "Заяц"],
@@ -48837,7 +48837,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5125,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное имеет самое большое сердце среди млекопитающих?",
     answers: ["Синий кит", "Слон", "Кот", "Гиппопотам"],
@@ -48845,7 +48845,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5126,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно к регенерации целых частей тела?",
     answers: ["Саламандра", "Акула", "Змея", "Перепел"],
@@ -48853,7 +48853,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5127,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное имеет самое длинное время беременности?",
     answers: ["Слон", "Горилла", "Жираф", "Лошадь"],
@@ -48861,7 +48861,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5128,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное использует эхолокацию для охоты под водой?",
     answers: ["Кит-кашалот", "Кальмар", "Медведь", "Акула"],
@@ -48869,7 +48869,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5129,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное способно жить более 500 лет?",
     answers: ["Моллюск Арктический", "Кит", "Черепаха", "Акула"],
@@ -48877,7 +48877,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5130,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question:
       "Какое насекомое способно переносить вес, в 50 раз превышающий свой?",
@@ -48886,7 +48886,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5131,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своим криком 'Ууу!' ночью?",
     answers: ["Сова", "Ворона", "Морской лев", "Сорока"],
@@ -48894,7 +48894,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5132,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет нырять на глубину более 500 метров?",
     answers: ["Кит-кашалот", "Норка", "Акула", "Морж"],
@@ -48902,7 +48902,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5133,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное может замерзнуть и ожить снова?",
     answers: ["Лягушка", "Черепаха", "Ёж", "Писец"],
@@ -48910,7 +48910,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5134,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно своей способностью к прыжкам на большие расстояния?",
@@ -48919,7 +48919,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5135,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет строить гнёзда из веток?",
     answers: ["Синица", "Морской лев", "Лев", "Бегемот"],
@@ -48927,7 +48927,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5136,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное имеет панцирь для защиты от врагов?",
     answers: ["Черепаха", "Бегемот", "Кабан", "Ёж"],
@@ -48935,7 +48935,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5137,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит дамбы на реках?",
     answers: ["Бобёр", "Шимпанзе", "Змея", "Краб"],
@@ -48943,7 +48943,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5138,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет летать задом наперед?",
     answers: ["Колибри", "Воробей", "Ястреб", "Бабочка"],
@@ -48951,7 +48951,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5139,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное является крупнейшим на суше?",
     answers: ["Слон", "Носорог", "Бегемот", "Жираф"],
@@ -48959,7 +48959,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5140,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное умеет прыгать на огромные расстояния среди насекомых?",
@@ -48968,7 +48968,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5141,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное имеет самое сильное сжатие челюстей?",
     answers: ["Крокодил", "Волк", "Лев", "Тигр"],
@@ -48976,7 +48976,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5142,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно к биолюминесценции?",
     answers: ["Морской светлячок", "Дельфин", "Синица", "Кабан"],
@@ -48984,7 +48984,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5143,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное может жить при температуре ниже −70°C?",
     answers: ["Полярный медведь", "Человек", "Енот", "Страус"],
@@ -48992,7 +48992,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5144,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное способно вращать головой почти на 360°?",
     answers: ["Сова", "Ястреб", "Страус", "Ворона"],
@@ -49000,7 +49000,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5145,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question:
       "Какое животное имеет самую прочную кость черепа относительно размера тела?",
@@ -49009,7 +49009,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5146,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное является самым долгоживущим позвоночным?",
     answers: ["Гренландский кит", "Слон", "Черепаха", "Кит-кашалот"],
@@ -49017,7 +49017,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5147,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное имеет черно-белый хвост и неприятный запах?",
     answers: ["Скунс", "Панда", "Зебра", "Лемур"],
@@ -49025,7 +49025,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5148,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет летать, но не является птицей?",
     answers: ["Летучая мышь", "Белка-летяга", "Голубь", "Колибри"],
@@ -49033,7 +49033,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5149,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит гнёзда в воде из веток?",
     answers: ["Бобёр", "Выдра", "Краб", "Утка"],
@@ -49041,7 +49041,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5150,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своей способностью мурлыкать?",
     answers: ["Кошка", "Гусь", "Кролик", "Хомяк"],
@@ -49049,7 +49049,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5151,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно тем, что умеет прыгать с ветки на ветку?",
@@ -49058,7 +49058,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5152,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое насекомое может летать против ветра с большой скоростью?",
     answers: ["Пчела", "Стрекоза", "Бабочка", "Жук"],
@@ -49066,7 +49066,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5153,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своей способностью строить муравейники?",
     answers: ["Муравей", "Пчела", "Шмель", "Таракан"],
@@ -49074,7 +49074,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5154,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет плавать и обладает панцирем для защиты?",
     answers: ["Черепаха", "Краб", "Выдра", "Бобёр"],
@@ -49082,7 +49082,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5155,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно тем, что светится в темноте?",
     answers: ["Светлячок", "Карп", "Акула", "Таракан"],
@@ -49090,7 +49090,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5156,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное использует лапки для чистки глаз и ушей?",
     answers: ["Кошка", "Собака", "Черепаха", "Журавль"],
@@ -49098,7 +49098,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5157,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно своей способностью к игре с мячом и ловле рыбы в циркулирующей воде?",
@@ -49107,7 +49107,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5158,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное издает громкий звук, который слышен на большие расстояния?",
@@ -49116,7 +49116,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5159,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно тем, что любит лежать в песке и копать норы?",
@@ -49125,7 +49125,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5160,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное использует крылья не только для полёта, но и для охлаждения?",
@@ -49134,7 +49134,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5161,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно своим ночным образом жизни и большими глазами?",
@@ -49143,7 +49143,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5162,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное может крутить туловище и лазать по деревьям с большой скоростью?",
@@ -49152,7 +49152,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5163,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет плести паутину?",
     answers: ["Паук", "Муравей", "Жук", "Бабочка"],
@@ -49160,7 +49160,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5164,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет откладывать яйца и жить в воде?",
     answers: ["Лягушка", "Стрекоза", "Рыба", "Краб"],
@@ -49168,7 +49168,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5165,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное может прыгать выше своего роста?",
     answers: ["Кузнечик", "Черепаха", "Слон", "Бегемот"],
@@ -49176,7 +49176,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5166,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своими полосками на теле?",
     answers: ["Зебра", "Кузнечик", "Панда", "Моль"],
@@ -49184,7 +49184,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5167,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное умеет ловко лазать по деревьям и висеть на ветках?",
@@ -49193,7 +49193,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5168,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное охотится стаей и живет в саванне?",
     answers: ["Гиена", "Лев", "Тигр", "Слон"],
@@ -49201,7 +49201,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5169,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question:
       "Какое животное известно своей способностью прятаться от врагов в песке?",
@@ -49210,7 +49210,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5170,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное использует хобот для питья воды и сбора пищи?",
     answers: ["Слон", "Носорог", "Бегемот", "Жираф"],
@@ -49218,7 +49218,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5171,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question:
       "Какое животное способно вращать глазами независимо друг от друга?",
@@ -49227,7 +49227,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5172,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно менять пол в течение жизни?",
     answers: ["Слон", "Медведь", "Баран", "Рыбы-клоуны"],
@@ -49235,7 +49235,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5173,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное умеет спать с одним открытым глазом?",
     answers: ["Дельфин", "Баран", "Лев", "Кенгуру"],
@@ -49243,7 +49243,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5174,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное имеет самое большое сердце среди млекопитающих?",
     answers: ["Синий кит", "Слон", "Кит-кашалот", "Гиппопотам"],
@@ -49251,7 +49251,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5175,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно к регенерации целых частей тела?",
     answers: ["Саламандра", "Сайгак", "Змея", "Черепаха"],
@@ -49259,7 +49259,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5176,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное имеет самое длинное время беременности?",
     answers: ["Слон", "Гиббон", "Жираф", "Лошадь"],
@@ -49267,7 +49267,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5177,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное использует эхолокацию для охоты под водой?",
     answers: ["Кит-кашалот", "Дельфин", "Медуза", "Акула"],
@@ -49275,7 +49275,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5178,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное способно жить более 500 лет?",
     answers: ["Моллюск Арктический", "Медуза", "Черепаха", "Акула"],
@@ -49283,7 +49283,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5179,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question:
       "Какое насекомое способно переносить вес, в 50 раз превышающий свой?",
@@ -49292,7 +49292,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5180,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит норы и живёт в пустыне?",
     answers: ["Суслик", "Лиса", "Кролик", "Тигр"],
@@ -49300,7 +49300,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5181,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своими черно-белыми полосами на теле?",
     answers: ["Зебра", "Тритон", "Панда", "Носорог"],
@@ -49308,7 +49308,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5182,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное может издавать звук громче 100 дБ?",
     answers: ["Лев", "Кот", "Кит", "Тигр"],
@@ -49316,7 +49316,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5183,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное использует когти для лазания по деревьям?",
     answers: ["Коала", "Кит", "Лиса", "Белка"],
@@ -49324,7 +49324,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5184,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет летать на большие расстояния без отдыха?",
     answers: ["Аист", "Воробей", "Голубь", "Чайка"],
@@ -49332,7 +49332,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5185,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит ульи и собирает мед?",
     answers: ["Пчела", "Муравей", "Шмель", "Бражник"],
@@ -49340,7 +49340,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5186,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известное своим длинным хвостом и прыгучестью?",
     answers: ["Белка", "Обезьяна", "Коала", "Лемур"],
@@ -49348,7 +49348,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5187,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное умеет камуфлироваться под листья и ветки?",
     answers: ["Богомол", "Тигр", "Ящерица", "Лягушка"],
@@ -49356,7 +49356,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5188,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное имеет длинные уши и быстрые прыжки?",
     answers: ["Заяц", "Кролик", "Лиса", "Кенгуру"],
@@ -49364,7 +49364,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5189,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит гнёзда из веток на воде?",
     answers: ["Бобёр", "Кабан", "Краб", "Утка"],
@@ -49372,7 +49372,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5190,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное издает ультразвуковые сигналы для общения?",
     answers: ["Дельфин", "Кит", "Жираф", "Слон"],
@@ -49380,7 +49380,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5191,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное имеет самое сильное сжатие челюстей?",
     answers: ["Крокодил", "Акула", "Лев", "Тигр"],
@@ -49388,7 +49388,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5192,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное способно к биолюминесценции?",
     answers: ["Морской светлячок", "Дельфин", "Кабан", "Норка"],
@@ -49396,7 +49396,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5193,
-    category: "Животные",
+    category: "animal",
     difficulty: "medium",
     question: "Какое животное может жить при температуре ниже −70°C?",
     answers: ["Полярный медведь", "Черепаха", "Рак", "Лама"],
@@ -49404,7 +49404,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5194,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное способно вращать головой почти на 360°?",
     answers: ["Сова", "Ястреб", "Лама", "Ворона"],
@@ -49412,7 +49412,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5195,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question:
       "Какое животное имеет самую прочную кость черепа относительно размера тела?",
@@ -49421,7 +49421,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5196,
-    category: "Животные",
+    category: "animal",
     difficulty: "hard",
     question: "Какое животное является самым долгоживущим позвоночным?",
     answers: ["Гренландский кит", "Слон", "Черепаха", "Тритон"],
@@ -49429,7 +49429,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5197,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное имеет самый маленький размер?",
     answers: ["Выдра", "Слон", "Кит", "Тюлень"],
@@ -49437,7 +49437,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5198,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своим белым окрасом?",
     answers: ["Скунс", "Панда", "Зебра", "Белый медьведь"],
@@ -49445,7 +49445,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5199,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное строит норы и живёт в пустыне?",
     answers: ["Суслик", "Лиса", "Кролик", "Сурикат"],
@@ -49453,7 +49453,7 @@ const questions: QuizQuestion[] = [
   },
   {
     id: 5200,
-    category: "Животные",
+    category: "animal",
     difficulty: "easy",
     question: "Какое животное известно своей способностью к имитации речи?",
     answers: ["Попугай", "Таракан", "Сова", "Воробей"],
