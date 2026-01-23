@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Image from "next/image";
 
 import { usePlayers } from "@/src/hooks/usePlayers";
@@ -41,7 +42,9 @@ function RightAnswer({
     typeOfMem = "zeroScore";
   }
 
-  setMemScoreText(typeOfMem);
+  useEffect(() => {
+    setMemScoreText(typeOfMem);
+  }, [setMemScoreText, typeOfMem]);
 
   const playersScoreElement =
     players &&

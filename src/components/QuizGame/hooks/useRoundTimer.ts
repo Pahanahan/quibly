@@ -256,7 +256,7 @@ export const useRoundTimer = (
     }
 
     return () => {
-      if (interval) clearTimeout(interval);
+      if (interval) clearInterval(interval);
     };
   }, [roomId, gamePhase, currentQuestion, startTimeRound, players, newRound]);
 };
