@@ -7,10 +7,13 @@ import styles from "./ToolBarGame.module.scss";
 
 interface ToolBarGameProp {
   roomId: string;
+  multiplicator: number;
 }
 
-function ToolBarGame({ roomId }: ToolBarGameProp) {
+function ToolBarGame({ roomId, multiplicator }: ToolBarGameProp) {
   const [time, setTime] = useState<number>(100);
+
+  const roundDuration = 10000 * multiplicator;
 
   const dateNow = getDateNow();
 
@@ -22,18 +25,19 @@ function ToolBarGame({ roomId }: ToolBarGameProp) {
 
   useEffect(() => {
     const timeInterval = setInterval(() => {
-      const differentTime = (startTimeRound + 10000 - Date.now()) / 100;
+      const remainingTime = startTimeRound + roundDuration - Date.now();
+      const progress = (remainingTime / roundDuration) * 100;
 
-      setTime(differentTime);
+      setTime(progress);
     }, 100);
 
     return () => clearInterval(timeInterval);
-  }, [startTimeRound, time]);
+  }, [startTimeRound, time, roundDuration]);
 
   return (
     <div className={styles.toolbar}>
       <div
-        style={{ width: `${time - 10}%` }}
+        style={{ width: `${time}%` }}
         className={styles.toolbar__inner}
       ></div>
     </div>

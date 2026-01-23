@@ -45,8 +45,8 @@ function SortingGame({
     currentQuestionIndex && currentQuestionIndex === 6
       ? sortingObj?.items[0]
       : currentQuestionIndex === 12
-      ? sortingObj?.items[1]
-      : sortingObj?.items[2];
+        ? sortingObj?.items[1]
+        : sortingObj?.items[2];
 
   useEffect(() => {
     if (!sortingItem) return;
@@ -56,7 +56,7 @@ function SortingGame({
         sortingItem.variables.map((item, i) => ({
           ...item,
           order: i + 1,
-        }))
+        })),
       );
     }, 0);
   }, [sortingItem]);
@@ -123,7 +123,7 @@ function SortingGame({
 
   const onPointerDown = (
     item: Variable,
-    e: React.PointerEvent<HTMLDivElement>
+    e: React.PointerEvent<HTMLDivElement>,
   ) => {
     setDraggedItem(item);
     setHoveredItem(item);
@@ -160,7 +160,7 @@ function SortingGame({
     if (!targetId) return;
 
     setHoveredItem(
-      sortingItems.find((item) => String(item.id) === targetId) ?? null
+      sortingItems.find((item) => String(item.id) === targetId) ?? null,
     );
   };
 
@@ -200,7 +200,7 @@ function SortingGame({
           <h2 className={styles.sorting__question}>{sortingItem?.question}</h2>
           <div className={styles.sorting__items}>{sortingElements}</div>
           {draggedElement}
-          <ToolBarGame roomId={roomId} />
+          <ToolBarGame roomId={roomId} multiplicator={2} />
         </div>
       )}
       {gamePhase === GamePhase.SORTING_ANSWER && (

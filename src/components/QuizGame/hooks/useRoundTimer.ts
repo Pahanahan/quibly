@@ -6,13 +6,13 @@ import { resetObstructions } from "../utils/resetObstructions";
 
 import { GamePhase, QuizPlayer } from "@/src/types/types";
 
-const QUESTION_DURATION = 10000;
+const QUESTION_DURATION = 11000;
 const ANSWER_DURATION = 7000;
-const OBSTRUCTION_DURATION = 10000;
-const MEMORY_DURATION = 10000;
-const MEMORY_CHOOSE_DURATION = 10000;
+const OBSTRUCTION_DURATION = 11000;
+const MEMORY_DURATION = 11000;
+const MEMORY_CHOOSE_DURATION = 16000;
 const MEMORY_ANSWER_DURATION = 7000;
-const SORTING_DURATION = 10000;
+const SORTING_DURATION = 21000;
 const SORTING_ANSWER_DURATION = 7000;
 
 const obstructionRounds = [0, 2, 4, 8, 16];
@@ -25,7 +25,7 @@ export const useRoundTimer = (
   currentQuestion: number,
   startTimeRound: number,
   newRound: () => void,
-  players: QuizPlayer[]
+  players: QuizPlayer[],
 ) => {
   useEffect(() => {
     if (!roomId) return;

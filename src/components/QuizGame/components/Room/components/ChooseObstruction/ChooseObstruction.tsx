@@ -36,7 +36,7 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
 
   const handleChooseObstruction = (
     obstruction: string,
-    rusObstruction: string
+    rusObstruction: string,
   ) => {
     setActiveBtnObstruction(obstruction);
     setObstructionPlayer((prevState) => {
@@ -90,7 +90,7 @@ function ChooseObstruction({ roomId }: ChooseObstructionProps) {
       >
         Применить
       </button>
-      <ToolBarGame roomId={roomId} />
+      <ToolBarGame roomId={roomId} multiplicator={1} />
     </>
   );
 

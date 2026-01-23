@@ -43,7 +43,7 @@ function VisualMemoryChoose({
       </h2>
       <div className={styles.memory__items}>{memoryElements}</div>
       <div className={styles.memory__items}>{resultMemoryElement}</div>
-      <ToolBarGame roomId={roomId} />
+      <ToolBarGame roomId={roomId} multiplicator={1.5} />
     </div>
   );
 }

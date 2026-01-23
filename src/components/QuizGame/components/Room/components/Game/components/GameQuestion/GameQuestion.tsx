@@ -42,16 +42,18 @@ function GameQuestion({
     obstructions && obstructions.defender
       ? [""]
       : obstructions
-      ? Object.entries(obstructions).map(([key, value]: [string, boolean]) => {
-          return value ? styles[key] : "";
-        })
-      : "";
+        ? Object.entries(obstructions).map(
+            ([key, value]: [string, boolean]) => {
+              return value ? styles[key] : "";
+            },
+          )
+        : "";
 
   return (
     <div className={[styles.game, ...obstructionsCss].join(" ")}>
       <h2 className={styles.game__question}>{question}</h2>
       <div className={styles.game__answers}>{answersElements}</div>
-      <ToolBarGame roomId={roomId} />
+      <ToolBarGame roomId={roomId} multiplicator={1} />
     </div>
   );
 }
