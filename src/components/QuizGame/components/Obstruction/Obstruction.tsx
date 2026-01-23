@@ -1,18 +1,16 @@
 import Image from "next/image";
 
 import ObstructionItem from "./components/ObstructionItem";
-import { usePlayers } from "@/src/hooks/usePlayers";
 import { avatars } from "@/src/lib/avatars";
 
+import { QuizPlayer } from "@/src/types/types";
 import styles from "./Obstruction.module.scss";
 
 interface ObstructionProps {
-  roomId?: string | null;
+  players: QuizPlayer[];
 }
 
-function Obstruction({ roomId }: ObstructionProps) {
-  const players = usePlayers({ roomId: roomId ?? undefined });
-
+function Obstruction({ players }: ObstructionProps) {
   const playersElement = players.map((player) => {
     const obstructions = Object.entries(player.obstructions);
 

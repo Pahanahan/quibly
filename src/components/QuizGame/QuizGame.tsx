@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useMemo, useRef } from "react";
 
 import QuestionNumber from "./components/QuestionNumber/QuestionNumber";
 import Question from "./components/Question/Question";
@@ -42,11 +42,7 @@ function QuizGame() {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [musicState, setMusicState] = useState<boolean>(false);
   const [memState, setMemState] = useState<boolean>(false);
-  const [memScoreText, setMemScoreText] = useState<MemScoreText>("normal");
   const quizGameRef = useRef(null);
-
-  useMusic(musicState);
-  useSoundMem(memState, memScoreText);
 
   const initialRoom = useInitRoom();
   const roomId: string | null = useRoomFields({
@@ -57,6 +53,17 @@ function QuizGame() {
   const topics = useTopics({ roomId: initialRoom?.roomId });
   const players = usePlayers({ roomId: initialRoom?.roomId });
   const questions = useQuestions({ roomId: initialRoom?.roomId });
+
+  const memScoreText: MemScoreText = useMemo(() => {
+    if (!players) return "normal";
+    if (players.some((p) => p.currentScore >= 1000)) return "highScore";
+    if (players.reduce((acc, p) => acc + p.currentScore, 0) === 0)
+      return "zeroScore";
+    return "normal";
+  }, [players]);
+
+  useMusic(musicState);
+  useSoundMem(memState, memScoreText);
 
   useInitQuestions({
     roomId: initialRoom?.roomId,
@@ -87,8 +94,7 @@ function QuizGame() {
   console.log(gamePhase);
 
   const isButtonDisabled =
-    // players.length < 2 ||
-    players.length < 1 ||
+    players.length < 2 ||
     players.some((player) => player.ready === "addedTopics");
 
   useRoundTimer(
@@ -127,14 +133,13 @@ function QuizGame() {
   const rightAnswerElement = gamePhase === GamePhase.ANSWER && (
     <RightAnswer
       rightAnswer={rightAnswer}
-      roomId={roomId}
       title="Правильный ответ: "
-      setMemScoreText={setMemScoreText}
+      players={players}
     />
   );
 
   const obstructionElement = gamePhase === GamePhase.OBSTRUCTION && (
-    <Obstruction roomId={roomId} />
+    <Obstruction players={players} />
   );
 
   const memoriesElement = gamePhase === GamePhase.MEMORY && (
@@ -146,11 +151,7 @@ function QuizGame() {
   );
 
   const rightMemoryElement = gamePhase === GamePhase.MEMORY_ANSWER && (
-    <RightAnswer
-      roomId={roomId}
-      title="Набранные очки в этом раунде"
-      setMemScoreText={setMemScoreText}
-    />
+    <RightAnswer title="Набранные очки в этом раунде" players={players} />
   );
 
   const sortingLevelElement = gamePhase === GamePhase.SORTING && (
@@ -158,11 +159,7 @@ function QuizGame() {
   );
 
   const rightSortingElement = gamePhase === GamePhase.SORTING_ANSWER && (
-    <RightAnswer
-      roomId={roomId}
-      title="Набранные очки в этом раунде"
-      setMemScoreText={setMemScoreText}
-    />
+    <RightAnswer title="Набранные очки в этом раунде" players={players} />
   );
 
   const endGameElement = gamePhase === GamePhase.GAME_END && (

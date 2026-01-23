@@ -1,51 +1,17 @@
-import { useEffect } from "react";
 import Image from "next/image";
 
-import { usePlayers } from "@/src/hooks/usePlayers";
 import { avatars } from "@/src/lib/avatars";
 
-import { MemScoreText } from "@/src/types/types";
+import { QuizPlayer } from "@/src/types/types";
 import styles from "./RightAnswer.module.scss";
 
 interface RightAnswerProps {
   rightAnswer?: string;
-  roomId: string | null;
   title: string;
-  setMemScoreText: React.Dispatch<
-    React.SetStateAction<"highScore" | "zeroScore" | "normal">
-  >;
+  players: QuizPlayer[];
 }
 
-function RightAnswer({
-  rightAnswer,
-  roomId,
-  title,
-  setMemScoreText,
-}: RightAnswerProps) {
-  const players = usePlayers({ roomId: roomId ?? undefined });
-
-  let typeOfMem: MemScoreText = "normal";
-
-  players.forEach((player) => {
-    if (player.currentScore >= 1000) {
-      typeOfMem = "highScore";
-    }
-  });
-
-  let totalScoreZero = 0;
-
-  players.forEach((player) => {
-    totalScoreZero += player.currentScore;
-  });
-
-  if (totalScoreZero === 0) {
-    typeOfMem = "zeroScore";
-  }
-
-  useEffect(() => {
-    setMemScoreText(typeOfMem);
-  }, [setMemScoreText, typeOfMem]);
-
+function RightAnswer({ rightAnswer, title, players }: RightAnswerProps) {
   const playersScoreElement =
     players &&
     Object.entries(players)

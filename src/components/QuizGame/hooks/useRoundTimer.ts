@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { getDateNow } from "@/src/lib/getDateNow";
 import { editRoom } from "@/src/lib/editRoom";
@@ -16,7 +16,7 @@ const MEMORY_ANSWER_DURATION = 7000;
 const SORTING_DURATION = 21000;
 const SORTING_ANSWER_DURATION = 7000;
 
-const obstructionRounds = [0, 2, 4, 8, 16];
+const obstructionRounds = [2, 4, 8, 16];
 const memoryRound = 10;
 const sortingRound = [6, 12, 14];
 
@@ -29,10 +29,14 @@ export const useRoundTimer = (
   setCurrentQuestion: React.Dispatch<React.SetStateAction<number>>,
   questions: QuizQuestion[],
 ) => {
+  const roundLockedRef = useRef(false);
+
   useEffect(() => {
     if (!roomId) return;
 
     const newRound = () => {
+      if (roundLockedRef.current) return;
+      roundLockedRef.current = true;
       setCurrentQuestion((prev) => {
         const next = prev + 1;
         if (next >= questions.length) {
@@ -305,4 +309,10 @@ export const useRoundTimer = (
     questions,
     setCurrentQuestion,
   ]);
+
+  useEffect(() => {
+    if (gamePhase === GamePhase.QUESTION) {
+      roundLockedRef.current = false;
+    }
+  }, [gamePhase]);
 };
