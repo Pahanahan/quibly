@@ -109,6 +109,10 @@ function Room({ roomId }: RoomProps) {
     }
   }, [roomId]);
 
+  useEffect(() => {
+    setFormHidden(gamePhase === GamePhase.GAME_END);
+  }, [gamePhase]);
+
   const joinToRoom = async (id: string) => {
     const playerId = {
       userName: userName,
@@ -137,7 +141,7 @@ function Room({ roomId }: RoomProps) {
       {
         method: "PATCH",
         body: JSON.stringify(playerId),
-      }
+      },
     );
 
     if (!response.ok) throw new Error("Ошибка подключения игрока");
@@ -250,7 +254,7 @@ function Room({ roomId }: RoomProps) {
     );
 
   const endGameElement = gamePhase === GamePhase.GAME_END && player && (
-    <EndGame setFormHidden={setFormHidden} />
+    <EndGame />
   );
 
   return (
