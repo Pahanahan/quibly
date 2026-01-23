@@ -8,13 +8,14 @@ import styles from "./Sorting.module.scss";
 
 interface SortingProps {
   roomId: string | null;
+  currentQuesitonIndex: number;
 }
 
 interface SortingObj {
   items: QuizSorting[];
 }
 
-function Sorting({ roomId }: SortingProps) {
+function Sorting({ roomId, currentQuesitonIndex }: SortingProps) {
   useEffect(() => {
     const music = quizMusic("/quiz-sound/tick-tock-timer.wav", true, 0.7);
 
@@ -34,7 +35,12 @@ function Sorting({ roomId }: SortingProps) {
 
   if (!sortingObj) return null;
 
-  const sortingItem = sortingObj?.items[0];
+  const sortingItem =
+    currentQuesitonIndex === 6
+      ? sortingObj?.items[0]
+      : currentQuesitonIndex === 12
+        ? sortingObj?.items[1]
+        : sortingObj?.items[2];
 
   const sortingElements = sortingItem.variables.map((item) => {
     return (

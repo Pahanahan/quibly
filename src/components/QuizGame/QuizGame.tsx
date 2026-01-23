@@ -155,7 +155,7 @@ function QuizGame() {
   );
 
   const sortingLevelElement = gamePhase === GamePhase.SORTING && (
-    <Sorting roomId={roomId} />
+    <Sorting roomId={roomId} currentQuesitonIndex={currentQuestion} />
   );
 
   const rightSortingElement = gamePhase === GamePhase.SORTING_ANSWER && (
