@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import { getDateNow } from "@/src/lib/getDateNow";
 import { editRoom } from "@/src/lib/editRoom";
 import { resetObstructions } from "../utils/resetObstructions";
+import { resetCurrentScore } from "../utils/resetCurrentScore";
 
-import { GamePhase, QuizPlayer } from "@/src/types/types";
+import { GamePhase, QuizPlayer, QuizQuestion } from "@/src/types/types";
 
 const QUESTION_DURATION = 11000;
 const ANSWER_DURATION = 7000;
@@ -24,11 +25,48 @@ export const useRoundTimer = (
   gamePhase: GamePhase | null,
   currentQuestion: number,
   startTimeRound: number,
-  newRound: () => void,
   players: QuizPlayer[],
+  setCurrentQuestion: React.Dispatch<React.SetStateAction<number>>,
+  questions: QuizQuestion[],
 ) => {
   useEffect(() => {
     if (!roomId) return;
+
+    const newRound = () => {
+      setCurrentQuestion((prev) => {
+        const next = prev + 1;
+        if (next >= questions.length) {
+          editRoom({
+            roomId: roomId || null,
+            key: "gamePhase",
+            value: GamePhase.GAME_END,
+          });
+
+          return prev;
+        }
+
+        editRoom({
+          roomId: roomId || null,
+          key: "currentQuestionIndex",
+          value: next,
+        });
+
+        editRoom({
+          roomId: roomId || null,
+          key: "startTimeRound",
+          value: Date.now(),
+        });
+
+        players.forEach((player) => {
+          resetCurrentScore({
+            roomId: roomId || null,
+            player: player.id,
+          });
+        });
+
+        return next;
+      });
+    };
 
     let interval: ReturnType<typeof setInterval> | null = null;
 
@@ -258,5 +296,13 @@ export const useRoundTimer = (
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [roomId, gamePhase, currentQuestion, startTimeRound, players, newRound]);
+  }, [
+    roomId,
+    gamePhase,
+    currentQuestion,
+    startTimeRound,
+    players,
+    questions,
+    setCurrentQuestion,
+  ]);
 };

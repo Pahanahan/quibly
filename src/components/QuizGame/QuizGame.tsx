@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef } from "react";
 
 import QuestionNumber from "./components/QuestionNumber/QuestionNumber";
 import Question from "./components/Question/Question";
@@ -22,8 +22,6 @@ import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { useTopics } from "./hooks/useTopics";
 import { useMusic } from "./hooks/useMusic";
 import { useSoundMem } from "./hooks/useSoundMem";
-import { editRoom } from "@/src/lib/editRoom";
-import { resetCurrentScore } from "./utils/resetCurrentScore";
 import { getDateNow } from "@/src/lib/getDateNow";
 
 import { GamePhase, MemScoreText } from "@/src/types/types";
@@ -89,52 +87,18 @@ function QuizGame() {
   console.log(gamePhase);
 
   const isButtonDisabled =
-    players.length < 2 ||
+    // players.length < 2 ||
+    players.length < 1 ||
     players.some((player) => player.ready === "addedTopics");
-
-  const newRound = useCallback(() => {
-    setCurrentQuestion((prev) => {
-      const next = prev + 1;
-      if (next >= questions.length) {
-        editRoom({
-          roomId: roomId || null,
-          key: "gamePhase",
-          value: GamePhase.GAME_END,
-        });
-
-        return prev;
-      }
-
-      editRoom({
-        roomId: roomId || null,
-        key: "currentQuestionIndex",
-        value: next,
-      });
-
-      editRoom({
-        roomId: roomId || null,
-        key: "startTimeRound",
-        value: Date.now(),
-      });
-
-      players.forEach((player) => {
-        resetCurrentScore({
-          roomId: roomId || null,
-          player: player.id,
-        });
-      });
-
-      return next;
-    });
-  }, [roomId, questions, players]);
 
   useRoundTimer(
     roomId,
     gamePhase,
     currentQuestion,
     startTimeRound,
-    newRound,
     players,
+    setCurrentQuestion,
+    questions,
   );
 
   const roomConnectElement = gamePhase === GamePhase.LOBBY && roomId && (
