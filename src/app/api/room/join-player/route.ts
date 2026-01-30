@@ -3,7 +3,7 @@ import { ref, set } from "firebase/database";
 
 import { database } from "@/src/lib/firebase";
 
-export async function POST(req: Response) {
+export async function POST(req: Request) {
   try {
     const { roomId, playerData } = await req.json();
 
