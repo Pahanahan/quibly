@@ -4,6 +4,10 @@ export interface QuizMemories {
   rusName: string;
 }
 
+export interface QuizMemoriesItems {
+  items: QuizMemories;
+}
+
 export interface QuizQuestion {
   id: number;
   category: string;
@@ -47,6 +51,8 @@ export interface QuizRoom {
   questions: QuizQuestion[];
   topics: object;
   roomId: string;
+  memoryGame: object;
+  sortingGame: object;
 }
 
 export enum GamePhase {
@@ -93,6 +99,10 @@ export interface QuizSorting {
   category: string;
   question: string;
   variables: Variable[];
+}
+
+export interface QuizSortingItems {
+  items: QuizSorting;
 }
 
 export type MemScoreText = "highScore" | "zeroScore" | "normal";

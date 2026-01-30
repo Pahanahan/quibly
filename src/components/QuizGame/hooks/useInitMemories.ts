@@ -1,37 +1,36 @@
-import { useEffect } from "react";
-import { ref, set } from "firebase/database";
-import { database } from "../../../lib/firebase";
+import { useState, useEffect } from "react";
 
-import { shuffleMemories } from "../utils/shuffleMemories";
-import { quizMemories } from "../../../data/quizMemories";
-
-import { QuizMemories } from "../../../types/types";
+import { QuizMemoriesItems } from "@/src/types/types";
 
 interface useInitMemoriesProps {
   roomId?: string;
 }
 
 export function useInitMemories({ roomId }: useInitMemoriesProps) {
+  const [memories, setMemories] = useState<QuizMemoriesItems | null>(null);
+
   useEffect(() => {
+    if (!roomId) return;
+
     const initMemories = async () => {
       try {
-        const shuffleQuizMemories: QuizMemories[] =
-          shuffleMemories(quizMemories);
+        const res = await fetch("api/room/init-memories", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ roomId }),
+        });
 
-        const memoryGame = {
-          items: shuffleQuizMemories,
-        };
+        if (!res.ok) throw new Error("Failed to init memories");
 
-        await set(ref(database, `rooms/${roomId}/memoryGame`), memoryGame);
-
-        return memoryGame;
+        const data = await res.json();
+        setMemories(data);
       } catch (error) {
         console.error(error);
       }
     };
 
-    if (!roomId) return;
-
     initMemories();
   }, [roomId]);
+
+  return memories;
 }

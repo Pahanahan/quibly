@@ -1,38 +1,36 @@
-import { useEffect } from "react";
-import { ref, set } from "firebase/database";
-import { database } from "../../../lib/firebase";
+import { useState, useEffect } from "react";
 
-import { shuffleSorting } from "../utils/shuffleSorting";
-import { quizSorting } from "@/src/data/quizSorting";
-
-import { QuizSorting } from "@/src/types/types";
+import { QuizSortingItems } from "@/src/types/types";
 
 interface useInitSortingLevelProps {
   roomId?: string;
 }
 
 export function useInitSortingLevel({ roomId }: useInitSortingLevelProps) {
+  const [sortings, setSortings] = useState<QuizSortingItems | null>(null);
+
   useEffect(() => {
+    if (!roomId) return;
+
     const initSortingLevel = async () => {
       try {
-        const shuffleQuizSorting: QuizSorting[] = shuffleSorting(
-          quizSorting
-        ).slice(0, 3);
+        const res = await fetch("api/room/init-sortings", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ roomId }),
+        });
 
-        const sortingGame = {
-          items: shuffleQuizSorting,
-        };
+        if (!res.ok) throw new Error("Failed init sorting level");
 
-        await set(ref(database, `rooms/${roomId}/sortingGame`), sortingGame);
-
-        return sortingGame;
+        const data = await res.json();
+        setSortings(data);
       } catch (error) {
         console.error(error);
       }
     };
 
-    if (!roomId) return;
-
     initSortingLevel();
   }, [roomId]);
+
+  return sortings;
 }
