@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 
 import { QuizSortingItems } from "@/src/types/types";
 
-interface useInitSortingLevelProps {
+interface UseInitSortingLevelProps {
   roomId?: string;
 }
 
-export function useInitSortingLevel({ roomId }: useInitSortingLevelProps) {
+export function useInitSortingLevel({ roomId }: UseInitSortingLevelProps) {
   const [sortings, setSortings] = useState<QuizSortingItems | null>(null);
 
   useEffect(() => {

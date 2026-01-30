@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 
 import { QuizMemoriesItems } from "@/src/types/types";
 
-interface useInitMemoriesProps {
+interface UseInitMemoriesProps {
   roomId?: string;
 }
 
-export function useInitMemories({ roomId }: useInitMemoriesProps) {
+export function useInitMemories({ roomId }: UseInitMemoriesProps) {
   const [memories, setMemories] = useState<QuizMemoriesItems | null>(null);
 
   useEffect(() => {

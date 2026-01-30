@@ -18,6 +18,7 @@ import {
   saveToLocalStorage,
 } from "@/src/lib/getSetlocalStorage";
 import { isValidRoomId } from "./isValidRoomId";
+import { useJoinPlayer } from "./useJoinPlayer";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { useQuestions } from "@/src/hooks/useQuestions";
 import { usePlayer } from "@/src/hooks/usePlayer";
@@ -113,42 +114,6 @@ function Room({ roomId }: RoomProps) {
     setFormHidden(gamePhase === GamePhase.GAME_END);
   }, [gamePhase]);
 
-  const joinToRoom = async (id: string) => {
-    const playerId = {
-      userName: userName,
-      ready: "addedTopics",
-      id: id,
-      currentScore: 0,
-      score: 0,
-      avatar: randomAvatar,
-      obstructions: {
-        x2: false,
-        x5: false,
-        x10: false,
-        fadeIn: false,
-        scale: false,
-        blurIn: false,
-        rotate: false,
-        helicopter: false,
-        pulse: false,
-        shake: false,
-        defender: false,
-      },
-    };
-
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/rooms/${roomId}/players/${playerId.id}.json`,
-      {
-        method: "PATCH",
-        body: JSON.stringify(playerId),
-      },
-    );
-
-    if (!response.ok) throw new Error("Ошибка подключения игрока");
-
-    return await response.json();
-  };
-
   const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
     saveToLocalStorage("QuizGameUserName", e.target.value);
@@ -167,12 +132,19 @@ function Room({ roomId }: RoomProps) {
     }
   };
 
-  const joinGame = (e: React.FormEvent) => {
+  const { joinNewPlayer } = useJoinPlayer();
+
+  const joinGame = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormHidden(true);
     const id = `${userName}${generateId()}`;
     setUserId(id);
-    joinToRoom(id);
+    await joinNewPlayer({
+      roomId: roomId,
+      userId: id,
+      userName: userName,
+      avatar: randomAvatar,
+    });
 
     saveToLocalStorage("QuizGameRoom", roomId);
     saveToLocalStorage("QuizGameUserName", userName);
