@@ -74,4 +74,7 @@ export const translateCategory = (category: string) => {
   if (category === "philosophy") {
     return "Философия";
   }
+  if (category === "animal") {
+    return "Животные";
+  }
 };
