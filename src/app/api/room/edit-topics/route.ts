@@ -7,8 +7,6 @@ export const PATCH = async (req: Request) => {
   try {
     const { roomId, key, value } = await req.json();
 
-    console.log(roomId, key, value);
-
     if (!roomId) {
       return NextResponse.json({ error: "Room not found" }, { status: 400 });
     }
