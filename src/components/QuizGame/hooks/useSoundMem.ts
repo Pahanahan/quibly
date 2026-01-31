@@ -4,7 +4,7 @@ import { quizMusic } from "@/src/lib/quizMusic";
 
 export const useSoundMem = (
   memState: boolean,
-  typeOfMem: "highScore" | "zeroScore" | "normal"
+  typeOfMem: "highScore" | "zeroScore" | "normal",
 ) => {
   useEffect(() => {
     const memHighScoreArray = [
@@ -36,8 +36,8 @@ export const useSoundMem = (
       typeOfMem === "highScore"
         ? memHighScoreArray
         : typeOfMem === "zeroScore"
-        ? memZeroScoreArray
-        : [];
+          ? memZeroScoreArray
+          : [];
 
     const randomMusicIndex = Math.floor(Math.random() * finishArray.length);
 

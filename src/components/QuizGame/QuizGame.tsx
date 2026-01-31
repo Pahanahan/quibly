@@ -54,13 +54,29 @@ function QuizGame() {
   const players = usePlayers({ roomId: initialRoom?.roomId });
   const questions = useQuestions({ roomId: initialRoom?.roomId });
 
+  const gamePhase: GamePhase | null = useRoomFields({
+    roomId: roomId,
+    key: "gamePhase",
+  });
+
   const memScoreText: MemScoreText = useMemo(() => {
-    if (!players) return "normal";
-    if (players.some((p) => p.currentScore >= 1000)) return "highScore";
-    if (players.reduce((acc, p) => acc + p.currentScore, 0) === 0)
+    if (
+      gamePhase === GamePhase.ANSWER &&
+      players.some((p) => p.currentScore >= 1000)
+    ) {
+      return "highScore";
+    } else if (
+      gamePhase === GamePhase.ANSWER &&
+      players.length > 0 &&
+      players.reduce((acc, p) => acc + p.currentScore, 0) === 0
+    ) {
       return "zeroScore";
-    return "normal";
-  }, [players]);
+    } else {
+      return "normal";
+    }
+  }, [players, gamePhase]);
+
+  console.log(memScoreText);
 
   useMusic(musicState);
   useSoundMem(memState, memScoreText);
@@ -77,11 +93,6 @@ function QuizGame() {
   const question = questions[currentQuestion]?.question || "";
   const answers = questions[currentQuestion]?.answers || [];
   const rightAnswer = questions[currentQuestion]?.rightAnswer || "";
-
-  const gamePhase: GamePhase | null = useRoomFields({
-    roomId: roomId,
-    key: "gamePhase",
-  });
 
   const dateNow = getDateNow();
 
