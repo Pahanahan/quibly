@@ -1,10 +1,4 @@
 import { useState, useEffect } from "react";
-import { ref, set } from "firebase/database";
-import { database } from "../../../lib/firebase";
-
-import { useRoomFields } from "@/src/hooks/useRoomFields";
-import { shuffleQuestions } from "../utils/shuffleQuestions";
-import questions from "../../../data/quizQuestions";
 
 import { QuizQuestion } from "../../../types/types";
 
@@ -14,41 +8,31 @@ interface useInitQuestionsProps {
 }
 
 export function useInitQuestions({ roomId, topics }: useInitQuestionsProps) {
-  const [topicsState, setTopicsState] = useState<QuizQuestion[] | undefined>();
-
-  const maxQuestions: number =
-    useRoomFields({
-      roomId: roomId,
-      key: "maxQuestions",
-    }) || 20;
+  const [topicsState, setTopicsState] = useState<QuizQuestion[] | null>(null);
 
   useEffect(() => {
     const initQuestions = async () => {
       try {
-        const quizQuestions = questions.filter((category) =>
-          Object.keys(topics).includes(category.category)
-        );
+        if (!roomId || !topics) return;
 
-        const shuffleQuizQuestions = shuffleQuestions(quizQuestions).slice(
-          0,
-          maxQuestions
-        );
+        const res = await fetch("api/room/init-questions", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ roomId, topics }),
+        });
 
-        await set(
-          ref(database, `rooms/${roomId}/questions`),
-          shuffleQuizQuestions
-        );
+        if (!res.ok) throw new Error("Faild to init questions");
 
-        setTopicsState(shuffleQuizQuestions);
-
-        return shuffleQuizQuestions;
+        const data: QuizQuestion[] = await res.json();
+        setTopicsState(data);
+        return data;
       } catch (error) {
         console.error(error);
       }
     };
 
     initQuestions();
-  }, [roomId, topics, maxQuestions]);
+  }, [roomId, topics]);
 
   return topicsState;
 }
