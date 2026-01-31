@@ -20,6 +20,7 @@ export const useSoundMem = (
       "/quiz-sound-mem/karlson_suma_soshel.m4a",
       "/quiz-sound-mem/this_is_sparta.m4a",
       "/quiz-sound-mem/fatality.m4a",
+      "/quiz-sound-mem/hasta_la_vista.m4a",
     ];
 
     const memZeroScoreArray = [
