@@ -76,8 +76,6 @@ function QuizGame() {
     }
   }, [players, gamePhase]);
 
-  console.log(memScoreText);
-
   useMusic(musicState);
   useSoundMem(memState, memScoreText);
 
