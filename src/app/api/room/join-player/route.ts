@@ -3,7 +3,7 @@ import { ref, set } from "firebase/database";
 
 import { database } from "@/src/lib/firebase";
 
-export async function POST(req: Request) {
+export async function PATCH(req: Request) {
   try {
     const { roomId, playerData } = await req.json();
 

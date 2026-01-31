@@ -42,7 +42,7 @@ export function useJoinPlayer() {
       };
 
       const response = await fetch("/api/room/join-player", {
-        method: "POST",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ roomId, playerData }),
       });

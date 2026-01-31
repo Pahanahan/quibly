@@ -15,7 +15,7 @@ export function useInitMemories({ roomId }: UseInitMemoriesProps) {
     const initMemories = async () => {
       try {
         const res = await fetch("api/room/init-memories", {
-          method: "POST",
+          method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ roomId }),
         });

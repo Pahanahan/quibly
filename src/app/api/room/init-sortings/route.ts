@@ -7,7 +7,7 @@ import { quizSorting } from "@/src/data/quizSorting";
 
 import { QuizSorting } from "@/src/types/types";
 
-export async function POST(req: Request) {
+export async function PATCH(req: Request) {
   try {
     const { roomId } = await req.json();
 

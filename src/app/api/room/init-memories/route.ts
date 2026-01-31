@@ -5,7 +5,7 @@ import { database } from "@/src/lib/firebase";
 import { shuffleMemories } from "@/src/components/QuizGame/utils/shuffleMemories";
 import { quizMemories } from "@/src/data/quizMemories";
 
-export async function POST(req: Request) {
+export async function PATCH(req: Request) {
   try {
     const { roomId } = await req.json();
 

@@ -15,7 +15,7 @@ export function useInitSortingLevel({ roomId }: UseInitSortingLevelProps) {
     const initSortingLevel = async () => {
       try {
         const res = await fetch("api/room/init-sortings", {
-          method: "POST",
+          method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ roomId }),
         });
