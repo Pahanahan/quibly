@@ -8,7 +8,9 @@ interface useInitQuestionsProps {
 }
 
 export function useInitQuestions({ roomId, topics }: useInitQuestionsProps) {
-  const [topicsState, setTopicsState] = useState<QuizQuestion[] | null>(null);
+  const [quesitonState, setQuesitonState] = useState<QuizQuestion[] | null>(
+    null,
+  );
 
   useEffect(() => {
     const initQuestions = async () => {
@@ -18,13 +20,13 @@ export function useInitQuestions({ roomId, topics }: useInitQuestionsProps) {
         const res = await fetch("api/room/init-questions", {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ roomId, topics }),
+          body: JSON.stringify({ roomId }),
         });
 
         if (!res.ok) throw new Error("Faild to init questions");
 
         const data: QuizQuestion[] = await res.json();
-        setTopicsState(data);
+        setQuesitonState(data);
         return data;
       } catch (error) {
         console.error(error);
@@ -34,5 +36,5 @@ export function useInitQuestions({ roomId, topics }: useInitQuestionsProps) {
     initQuestions();
   }, [roomId, topics]);
 
-  return topicsState;
+  return quesitonState;
 }

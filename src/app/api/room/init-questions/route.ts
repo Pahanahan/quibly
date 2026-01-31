@@ -7,7 +7,7 @@ import questions from "@/src/data/quizQuestions";
 
 export async function PATCH(req: Request) {
   try {
-    const { roomId, topics } = await req.json();
+    const { roomId } = await req.json();
 
     const roomRef = ref(database, `rooms/${roomId}`);
     const snap = await get(roomRef);
@@ -18,6 +18,7 @@ export async function PATCH(req: Request) {
 
     const room = snap.val();
     const maxQuestions: number = room.maxQuestions ?? 20;
+    const topics = room.topics ?? {};
 
     const quizQuestions = questions.filter((category) =>
       Object.keys(topics).includes(category.category),
