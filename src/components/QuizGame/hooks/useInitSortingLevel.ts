@@ -22,7 +22,7 @@ export function useInitSortingLevel({ roomId }: UseInitSortingLevelProps) {
 
         if (!res.ok) throw new Error("Failed init sorting level");
 
-        const data = await res.json();
+        const data: QuizSortingItems = await res.json();
         setSortings(data);
       } catch (error) {
         console.error(error);

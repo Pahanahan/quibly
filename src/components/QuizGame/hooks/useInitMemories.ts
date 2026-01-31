@@ -22,7 +22,7 @@ export function useInitMemories({ roomId }: UseInitMemoriesProps) {
 
         if (!res.ok) throw new Error("Failed to init memories");
 
-        const data = await res.json();
+        const data: QuizMemoriesItems = await res.json();
         setMemories(data);
       } catch (error) {
         console.error(error);

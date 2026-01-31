@@ -10,7 +10,7 @@ export function useInitRoom() {
       try {
         const res = await fetch("/api/room/init", { method: "POST" });
 
-        const data = await res.json();
+        const data: QuizRoom = await res.json();
         setRoom(data);
       } catch (error) {
         console.error(error);
