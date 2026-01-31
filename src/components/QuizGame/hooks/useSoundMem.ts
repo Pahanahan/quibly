@@ -18,6 +18,8 @@ export const useSoundMem = (
       "/quiz-sound-mem/taktika_prederzivalsa.m4a",
       "/quiz-sound-mem/vot_eto_povorot.m4a",
       "/quiz-sound-mem/karlson_suma_soshel.m4a",
+      "/quiz-sound-mem/this_is_sparta.m4a",
+      "/quiz-sound-mem/fatality.m4a",
     ];
 
     const memZeroScoreArray = [

@@ -13,7 +13,7 @@ export const useMusic = (musicState: boolean) => {
 
     const randomMusicIndex = Math.floor(Math.random() * 4);
 
-    const music = quizMusic(musics[randomMusicIndex], true, 0.5);
+    const music = quizMusic(musics[randomMusicIndex], true, 0.4);
 
     if (musicState) {
       music.play();
