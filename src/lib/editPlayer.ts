@@ -1,6 +1,3 @@
-import { update, ref } from "firebase/database";
-import { database } from "./firebase";
-
 interface EditPlayerProps {
   roomId: string;
   player: string;
@@ -17,9 +14,13 @@ export const editPlayer = async ({
   if (!roomId) return;
 
   try {
-    await update(ref(database, `rooms/${roomId}/players/${player}`), {
-      [key]: value,
+    const res = await fetch("/api/player/edit-player", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ roomId, player, key, value }),
     });
+
+    if (!res.ok) throw new Error("Failed to edit player");
   } catch (error) {
     console.error(error);
   }
