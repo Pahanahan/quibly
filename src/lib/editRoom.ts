@@ -1,6 +1,3 @@
-import { update, ref } from "firebase/database";
-import { database } from "./firebase";
-
 interface EditRoomProps {
   roomId: string | null;
   key: string;
@@ -11,7 +8,13 @@ export const editRoom = async ({ roomId, key, value }: EditRoomProps) => {
   if (!roomId) return;
 
   try {
-    await update(ref(database, `rooms/${roomId}`), { [key]: value });
+    const res = await fetch("/api/room/edit-room", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ roomId, key, value }),
+    });
+
+    if (!res.ok) throw new Error("Failed edit room");
   } catch (error) {
     console.error(error);
   }
