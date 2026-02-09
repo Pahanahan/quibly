@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { update, ref } from "firebase/database";
+
 import { database } from "@/src/lib/firebase";
 
 export const PATCH = async (req: Request) => {

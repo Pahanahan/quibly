@@ -39,6 +39,7 @@ export const useRoundTimer = (
       roundLockedRef.current = true;
       setCurrentQuestion((prev) => {
         const next = prev + 1;
+
         if (next >= questions.length) {
           editRoom({
             roomId: roomId || null,
@@ -154,12 +155,21 @@ export const useRoundTimer = (
                   player: player.id,
                 });
               });
-              editRoom({
-                roomId: roomId || null,
-                key: "gamePhase",
-                value: GamePhase.QUESTION,
-              });
-              newRound();
+              if (currentQuestion >= questions.length - 1) {
+                editRoom({
+                  roomId: roomId || null,
+                  key: "gamePhase",
+                  value: GamePhase.GAME_END,
+                });
+                return;
+              } else {
+                editRoom({
+                  roomId: roomId || null,
+                  key: "gamePhase",
+                  value: GamePhase.QUESTION,
+                });
+                newRound();
+              }
             }
           }
         }, 500);
