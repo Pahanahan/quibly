@@ -1,5 +1,5 @@
 export const generateId = () => {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTVUYWXZ0123456789";
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTVUYWXZ";
 
   const id = [];
 

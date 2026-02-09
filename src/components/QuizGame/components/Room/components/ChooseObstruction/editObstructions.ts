@@ -1,6 +1,3 @@
-import { update, ref } from "firebase/database";
-import { database } from "@/src/lib/firebase";
-
 interface EditObstructionsProps {
   roomId: string;
   player: string;
@@ -14,16 +11,17 @@ export const editObstructions = async ({
   key,
   value,
 }: EditObstructionsProps) => {
-  if (!roomId) return;
-
   try {
-    await update(
-      ref(database, `rooms/${roomId}/players/${player}/obstructions`),
-      {
-        [key]: value,
-      }
-    );
+    if (!roomId) return;
+
+    const res = await fetch("/api/player/edit-obstruction", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ roomId, player, key, value }),
+    });
+
+    if (!res.ok) throw new Error("Failed edit obstruction in player");
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 };
