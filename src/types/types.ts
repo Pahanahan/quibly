@@ -65,6 +65,8 @@ export enum GamePhase {
   MEMORY_ANSWER = "memoryAnswer",
   SORTING = "sorting",
   SORTING_ANSWER = "sortingAnswer",
+  MOVIES = "movies",
+  MOVIES_ANSWER = "moviesAnswer",
   GAME_END = "end",
 }
 
@@ -104,5 +106,20 @@ export interface QuizSorting {
 export interface QuizSortingItems {
   items: QuizSorting;
 }
+
+export interface QuizMovies {
+  id: number;
+  question: string;
+  answers: [string, string, string, string];
+  rightAnswer: string;
+  srcImage: string;
+}
+
+export type Rounds =
+  | { id: number; type: "question"; dataIndex: number }
+  | { id: number; type: "sorting"; dataIndex: number }
+  | { id: number; type: "memory"; dataIndex: number }
+  | { id: number; type: "movies"; dataIndex: number }
+  | { id: number; type: "obstruction"; dataIndex: number };
 
 export type MemScoreText = "highScore" | "zeroScore" | "normal";

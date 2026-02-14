@@ -41,12 +41,7 @@ function SortingGame({
     items: QuizSorting[];
   } | null;
 
-  const sortingItem =
-    currentQuestionIndex && currentQuestionIndex === 6
-      ? sortingObj?.items[0]
-      : currentQuestionIndex === 12
-        ? sortingObj?.items[1]
-        : sortingObj?.items[2];
+  const sortingItem = sortingObj?.items[currentQuestionIndex || 0];
 
   useEffect(() => {
     if (!sortingItem) return;

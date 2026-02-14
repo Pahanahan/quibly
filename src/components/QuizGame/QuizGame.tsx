@@ -10,16 +10,19 @@ import Obstruction from "./components/Obstruction/Obstruction";
 import VisualMemoryLevel from "./components/VisualMemoryLevel/VisualMemoryLevel";
 import MemoryChoose from "./components/MemoryChoose/MemoryChoose";
 import Sorting from "./components/Sorting/Sorting";
+import Movies from "./components/Movies/Movies";
 import EndGame from "./components/EndGame/EndGame";
 import { useInitRoom } from "./hooks/useInitRoom";
 import { useInitQuestions } from "./hooks/useInitQuestions";
 import { useInitMemories } from "./hooks/useInitMemories";
 import { useInitSortingLevel } from "./hooks/useInitSortingLevel";
+import { useInitMovies } from "./hooks/useInitMovies";
 import { useRoundTimer } from "./hooks/useRoundTimer";
 import { usePlayers } from "@/src/hooks/usePlayers";
 import { useQuestions } from "@/src/hooks/useQuestions";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { useTopics } from "./hooks/useTopics";
+import { useMovies } from "@/src/hooks/useMovies";
 import { useMusic } from "./hooks/useMusic";
 import { useSoundMem } from "./hooks/useSoundMem";
 import { getDateNow } from "@/src/lib/getDateNow";
@@ -53,6 +56,7 @@ function QuizGame() {
   const topics = useTopics({ roomId: initialRoom?.roomId });
   const players = usePlayers({ roomId: initialRoom?.roomId });
   const questions = useQuestions({ roomId: initialRoom?.roomId });
+  const questionMovies = useMovies({ roomId: initialRoom?.roomId });
 
   const gamePhase: GamePhase | null = useRoomFields({
     roomId: roomId,
@@ -83,14 +87,19 @@ function QuizGame() {
     roomId: initialRoom?.roomId,
     topics,
   });
-
   useInitMemories({ roomId: initialRoom?.roomId });
-
   useInitSortingLevel({ roomId: initialRoom?.roomId });
+  useInitMovies({ roomId: initialRoom?.roomId });
 
   const question = questions[currentQuestion]?.question || "";
   const answers = questions[currentQuestion]?.answers || [];
   const rightAnswer = questions[currentQuestion]?.rightAnswer || "";
+
+  const questionMovie = questionMovies[currentQuestion]?.question || "";
+  const answersMovie = questionMovies[currentQuestion]?.answers || [];
+  const rightAnswerMovie = questionMovies[currentQuestion]?.rightAnswer || "";
+  const srcImageMovie =
+    questionMovies[currentQuestion]?.srcImage || "/quiz-movies/000.jpg";
 
   const dateNow = getDateNow();
 
@@ -171,6 +180,22 @@ function QuizGame() {
     <RightAnswer title="Набранные очки в этом раунде" players={players} />
   );
 
+  const moviesLevelElement = gamePhase === GamePhase.MOVIES && (
+    <Movies
+      questionMovie={questionMovie}
+      answersMovie={answersMovie}
+      srcImageMovie={srcImageMovie}
+    />
+  );
+
+  const rightMoviesElement = gamePhase === GamePhase.MOVIES_ANSWER && (
+    <RightAnswer
+      rightAnswer={rightAnswerMovie}
+      title="Правильный ответ: "
+      players={players}
+    />
+  );
+
   const endGameElement = gamePhase === GamePhase.GAME_END && (
     <EndGame roomId={roomId} />
   );
@@ -188,6 +213,8 @@ function QuizGame() {
           {rightMemoryElement}
           {sortingLevelElement}
           {rightSortingElement}
+          {moviesLevelElement}
+          {rightMoviesElement}
           {endGameElement}
         </div>
       </div>

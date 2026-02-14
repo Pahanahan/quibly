@@ -11,6 +11,7 @@ import Game from "./components/Game/Game";
 import ChooseObstruction from "./components/ChooseObstruction/ChooseObstruction";
 import VisualMemoryGameRoom from "./components/VisualMemoryGameRoom/VisualMemoryGameRoom";
 import SortingGame from "./components/SortingGame/SortingGame";
+import MoviesGame from "./components/MoviesGame/MoviesGame";
 import EndGame from "./components/EndGame/EndGame";
 import { generateId } from "@/src/lib/generateId";
 import {
@@ -21,6 +22,7 @@ import { isValidRoomId } from "./isValidRoomId";
 import { useJoinPlayer } from "./useJoinPlayer";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { useQuestions } from "@/src/hooks/useQuestions";
+import { useMovies } from "@/src/hooks/useMovies";
 import { usePlayer } from "@/src/hooks/usePlayer";
 import { quizAvatars } from "@/src/data/quizAvatars";
 
@@ -59,6 +61,7 @@ function Room({ roomId }: RoomProps) {
     key: "currentQuestionIndex",
   });
   const questions = useQuestions({ roomId: roomId });
+  const questionMovies = useMovies({ roomId: roomId });
 
   const player = usePlayer({ roomId: roomId, userId: userId });
 
@@ -75,6 +78,26 @@ function Room({ roomId }: RoomProps) {
   const rightAnswer =
     currentQuestionIndex !== null
       ? questions[currentQuestionIndex]?.rightAnswer
+      : "";
+
+  const questionMovie =
+    currentQuestionIndex !== null
+      ? questionMovies[currentQuestionIndex]?.question
+      : "";
+
+  const answersMovie =
+    currentQuestionIndex !== null
+      ? questionMovies[currentQuestionIndex]?.answers
+      : [];
+
+  const rightAnswerMovie =
+    currentQuestionIndex !== null
+      ? questionMovies[currentQuestionIndex]?.rightAnswer
+      : "";
+
+  const srcImageMovie =
+    currentQuestionIndex !== null
+      ? questionMovies[currentQuestionIndex]?.srcImage
       : "";
 
   useEffect(() => {
@@ -225,6 +248,20 @@ function Room({ roomId }: RoomProps) {
       />
     );
 
+  const moviesElement = (gamePhase === GamePhase.MOVIES ||
+    gamePhase === GamePhase.MOVIES_ANSWER) &&
+    player && (
+      <MoviesGame
+        roomId={roomId}
+        userId={userId}
+        questionMovie={questionMovie}
+        answersMovie={answersMovie}
+        rightAnswerMovie={rightAnswerMovie}
+        srcImageMovie={srcImageMovie}
+        gamePhase={gamePhase}
+      />
+    );
+
   const endGameElement = gamePhase === GamePhase.GAME_END && player && (
     <EndGame />
   );
@@ -242,6 +279,7 @@ function Room({ roomId }: RoomProps) {
           {obstructionElement}
           {memoriesElement}
           {sortingElement}
+          {moviesElement}
           {endGameElement}
         </div>
       </div>

@@ -35,12 +35,7 @@ function Sorting({ roomId, currentQuesitonIndex }: SortingProps) {
 
   if (!sortingObj) return null;
 
-  const sortingItem =
-    currentQuesitonIndex === 6
-      ? sortingObj?.items[0]
-      : currentQuesitonIndex === 12
-        ? sortingObj?.items[1]
-        : sortingObj?.items[2];
+  const sortingItem = sortingObj?.items[currentQuesitonIndex];
 
   const sortingElements = sortingItem.variables.map((item) => {
     return (
