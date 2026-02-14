@@ -16,6 +16,10 @@
     margin-bottom: 20px;
   }
 
+  &__answer-text {
+    animation: opacityAnimate 1s 6.5s forwards;
+  }
+
   &__players {
     display: flex;
     flex-direction: column;
@@ -128,5 +132,14 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes opacityAnimate {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

@@ -36,8 +36,6 @@ export const useRoundTimer = (
 ) => {
   const roundLockedRef = useRef(false);
 
-  console.log(currentQuestion);
-
   useEffect(() => {
     if (!roomId) return;
 

@@ -43,7 +43,9 @@ function RightAnswer({ rightAnswer, title, players }: RightAnswerProps) {
     <div className={styles.right}>
       <div className={styles.right__answer}>
         <span>{title}</span>
-        {rightAnswer && rightAnswer}
+        <span className={styles["right__answer-text"]}>
+          {rightAnswer && rightAnswer}
+        </span>
       </div>
       <div className={styles.right__players}>{playersScoreElement}</div>
     </div>
