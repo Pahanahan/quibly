@@ -1031,6 +1031,56 @@ const quizMovies: QuizMovies[] = [
     rightAnswer: "Гроздья гнева",
     srcImage: "/quiz-movies/101.jpg",
   },
+  {
+    id: 102,
+    question: "Как называется фильм?",
+    answers: [
+      "Цирк",
+      "Золотая лихорадка",
+      "Новое время",
+      "Огни большого города",
+    ],
+    rightAnswer: "Цирк",
+    srcImage: "/quiz-movies/102.jpg",
+  },
+  {
+    id: 103,
+    question: "Как называется фильм?",
+    answers: ["Рататуй", "Кухня монстров", "Король Лев", "В поисках Дори"],
+    rightAnswer: "Рататуй",
+    srcImage: "/quiz-movies/103.jpg",
+  },
+  {
+    id: 104,
+    question: "Как называется фильм?",
+    answers: [
+      "Мой слуга Годфри",
+      "Благодарный слуга",
+      "Слуга по контракту",
+      "Смешанные чувства",
+    ],
+    rightAnswer: "Мой слуга Годфри",
+    srcImage: "/quiz-movies/104.jpg",
+  },
+  {
+    id: 105,
+    question: "Как называется фильм?",
+    answers: ["Богемская рапсодия", "Рокетмен", "Ла-Ла Ленд", "Высотка"],
+    rightAnswer: "Богемская рапсодия",
+    srcImage: "/quiz-movies/105.jpg",
+  },
+  {
+    id: 106,
+    question: "Как называется фильм?",
+    answers: [
+      "Граф Монте-Кристо",
+      "Три мушкетера",
+      "Д'Артаньян и три мушкетёра",
+      "Сокровище нации",
+    ],
+    rightAnswer: "Граф Монте-Кристо",
+    srcImage: "/quiz-movies/106.jpg",
+  },
 ];
 
 export default quizMovies;
