@@ -6,6 +6,7 @@ import ToolBarGame from "../ToolBarGame/ToolBarGame";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { usePlayer } from "@/src/hooks/usePlayer";
 import { editPlayer } from "@/src/lib/editPlayer";
+import { quizRounds } from "@/src/data/quizRounds";
 
 import { GamePhase, QuizSorting, Variable } from "@/src/types/types";
 import styles from "./SortingGame.module.scss";
@@ -13,14 +14,10 @@ import styles from "./SortingGame.module.scss";
 interface SortingGameProps {
   roomId: string;
   userId: string;
-  currentQuestionIndex: number | null;
+  currentRound: number | null;
 }
 
-function SortingGame({
-  roomId,
-  userId,
-  currentQuestionIndex,
-}: SortingGameProps) {
+function SortingGame({ roomId, userId, currentRound }: SortingGameProps) {
   const [sortingItems, setSortingItems] = useState<Variable[]>([]);
   const [draggedItem, setDraggedItem] = useState<Variable | null>(null);
   const [hoveredItem, setHoveredItem] = useState<Variable | null>(null);
@@ -41,7 +38,8 @@ function SortingGame({
     items: QuizSorting[];
   } | null;
 
-  const sortingItem = sortingObj?.items[currentQuestionIndex || 0];
+  const sortingItem =
+    sortingObj?.items[quizRounds[currentRound || 0]?.dataIndex || 0];
 
   useEffect(() => {
     if (!sortingItem) return;

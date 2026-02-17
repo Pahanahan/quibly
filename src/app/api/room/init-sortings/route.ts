@@ -20,7 +20,7 @@ export async function PATCH(req: Request) {
 
     const shuffleQuizSorting: QuizSorting[] = shuffleSorting(quizSorting).slice(
       0,
-      20,
+      5,
     );
 
     const sortingGame = {

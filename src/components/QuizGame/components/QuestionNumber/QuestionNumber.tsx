@@ -3,19 +3,13 @@ import { translateCategory } from "./translateCategory";
 import styles from "./QuestionNumber.module.scss";
 
 interface QuestionNumberProps {
-  currentQuestion: number;
   category: string;
 }
 
-function QuestionNumber({ currentQuestion, category }: QuestionNumberProps) {
+function QuestionNumber({ category }: QuestionNumberProps) {
   const categoryRus = translateCategory(category) || "";
 
-  return (
-    <div className={styles.title}>
-      <div>Вопрос №{currentQuestion + 1}</div>
-      <div>Категория: {categoryRus}</div>
-    </div>
-  );
+  return <div className={styles.title}>Категория: {categoryRus}</div>;
 }
 
 export default QuestionNumber;

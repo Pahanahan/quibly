@@ -2,20 +2,21 @@ import { useEffect } from "react";
 
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { quizMusic } from "@/src/lib/quizMusic";
+import { quizRounds } from "@/src/data/quizRounds";
 
 import { QuizSorting } from "@/src/types/types";
 import styles from "./Sorting.module.scss";
 
 interface SortingProps {
   roomId: string | null;
-  currentQuesitonIndex: number;
+  currentRound: number;
 }
 
 interface SortingObj {
   items: QuizSorting[];
 }
 
-function Sorting({ roomId, currentQuesitonIndex }: SortingProps) {
+function Sorting({ roomId, currentRound }: SortingProps) {
   useEffect(() => {
     const music = quizMusic("/quiz-sound/tick-tock-timer.wav", true, 0.7);
 
@@ -35,7 +36,8 @@ function Sorting({ roomId, currentQuesitonIndex }: SortingProps) {
 
   if (!sortingObj) return null;
 
-  const sortingItem = sortingObj?.items[currentQuesitonIndex];
+  const sortingItem =
+    sortingObj?.items[quizRounds[currentRound || 0]?.dataIndex || 0];
 
   const sortingElements = sortingItem.variables.map((item) => {
     return (

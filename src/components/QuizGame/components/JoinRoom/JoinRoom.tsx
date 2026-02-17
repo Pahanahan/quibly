@@ -71,7 +71,7 @@ function JoinRoom({
       return;
     }
 
-    editRoom({ roomId: roomId, key: "gamePhase", value: GamePhase.QUESTION });
+    editRoom({ roomId: roomId, key: "gamePhase", value: GamePhase.INTRO });
     editRoom({ roomId: roomId, key: "startTimeRound", value: Date.now() });
   };
 

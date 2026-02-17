@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useRef } from "react";
 
+import Intro from "./components/Intro/Intro";
 import QuestionNumber from "./components/QuestionNumber/QuestionNumber";
 import Question from "./components/Question/Question";
 import RightAnswer from "./components/RightAnswer/RightAnswer";
@@ -26,6 +27,7 @@ import { useMovies } from "@/src/hooks/useMovies";
 import { useMusic } from "./hooks/useMusic";
 import { useSoundMem } from "./hooks/useSoundMem";
 import { getDateNow } from "@/src/lib/getDateNow";
+import { quizRounds } from "@/src/data/quizRounds";
 
 import { GamePhase, MemScoreText } from "@/src/types/types";
 import styles from "./QuizGame.module.scss";
@@ -42,7 +44,7 @@ import styles from "./QuizGame.module.scss";
 ////////////////////////////////////////////////
 
 function QuizGame() {
-  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+  const [currentRound, setCurrentRound] = useState<number>(0);
   const [musicState, setMusicState] = useState<boolean>(false);
   const [memState, setMemState] = useState<boolean>(false);
   const quizGameRef = useRef(null);
@@ -91,15 +93,24 @@ function QuizGame() {
   useInitSortingLevel({ roomId: initialRoom?.roomId });
   useInitMovies({ roomId: initialRoom?.roomId });
 
-  const question = questions[currentQuestion]?.question || "";
-  const answers = questions[currentQuestion]?.answers || [];
-  const rightAnswer = questions[currentQuestion]?.rightAnswer || "";
+  const question =
+    questions[quizRounds[currentRound]?.dataIndex || 0]?.question || "";
+  const answers =
+    questions[quizRounds[currentRound]?.dataIndex || 0]?.answers || [];
+  const rightAnswer =
+    questions[quizRounds[currentRound]?.dataIndex || 0]?.rightAnswer || "";
+  const category =
+    questions[quizRounds[currentRound]?.dataIndex || 0]?.category || "";
 
-  const questionMovie = questionMovies[currentQuestion]?.question || "";
-  const answersMovie = questionMovies[currentQuestion]?.answers || [];
-  const rightAnswerMovie = questionMovies[currentQuestion]?.rightAnswer || "";
+  const questionMovie =
+    questionMovies[quizRounds[currentRound]?.dataIndex || 0]?.question || "";
+  const answersMovie =
+    questionMovies[quizRounds[currentRound]?.dataIndex || 0]?.answers || [];
+  const rightAnswerMovie =
+    questionMovies[quizRounds[currentRound]?.dataIndex || 0]?.rightAnswer || "";
   const srcImageMovie =
-    questionMovies[currentQuestion]?.srcImage || "/quiz-movies/000.jpg";
+    questionMovies[quizRounds[currentRound]?.dataIndex || 0]?.srcImage ||
+    "/quiz-movies/000.jpg";
 
   const dateNow = getDateNow();
 
@@ -118,11 +129,10 @@ function QuizGame() {
   useRoundTimer(
     roomId,
     gamePhase,
-    currentQuestion,
+    currentRound,
     startTimeRound,
     players,
-    setCurrentQuestion,
-    questions,
+    setCurrentRound,
   );
 
   const roomConnectElement = gamePhase === GamePhase.LOBBY && roomId && (
@@ -138,12 +148,13 @@ function QuizGame() {
     />
   );
 
+  const introElement = gamePhase === GamePhase.INTRO && (
+    <Intro currentRound={currentRound} />
+  );
+
   const questionTitleAndAnswers = gamePhase === GamePhase.QUESTION && (
     <>
-      <QuestionNumber
-        currentQuestion={currentQuestion}
-        category={questions[currentQuestion].category}
-      />
+      <QuestionNumber category={category} />
       <Question question={question} answers={answers} />
     </>
   );
@@ -173,7 +184,7 @@ function QuizGame() {
   );
 
   const sortingLevelElement = gamePhase === GamePhase.SORTING && (
-    <Sorting roomId={roomId} currentQuesitonIndex={currentQuestion} />
+    <Sorting roomId={roomId} currentRound={currentRound} />
   );
 
   const rightSortingElement = gamePhase === GamePhase.SORTING_ANSWER && (
@@ -205,6 +216,7 @@ function QuizGame() {
       <div className="container">
         <div className={styles.quiz__inner}>
           {roomConnectElement}
+          {introElement}
           {questionTitleAndAnswers}
           {rightAnswerElement}
           {obstructionElement}

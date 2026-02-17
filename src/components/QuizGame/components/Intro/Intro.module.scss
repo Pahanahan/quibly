@@ -1,0 +1,44 @@
+@use "../../variables" as *;
+
+.intro {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid $border-default;
+  border-radius: 20px;
+  background-color: $bg-main;
+  box-shadow: 0 0 10px 0 $shadow-main;
+
+  animation: forthcoming 2.3s forwards;
+
+  &__round {
+    font-size: 160px;
+    font-weight: 700;
+    color: $text-main;
+    padding-right: 30px;
+  }
+
+  &__title {
+    font-size: 160px;
+    font-weight: 700;
+    color: $text-main;
+  }
+}
+
+@keyframes forthcoming {
+  0% {
+    transform: scale(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(0.75);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}

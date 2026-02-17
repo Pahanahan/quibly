@@ -41,7 +41,7 @@ export interface QuizPlayer {
 
 export interface QuizRoom {
   createDate: string;
-  currentQuestionIndex: number;
+  currentRound: number;
   gamePhase: GamePhase;
   startTimeRound: number;
   maxPlayers: number;
@@ -57,6 +57,7 @@ export interface QuizRoom {
 
 export enum GamePhase {
   LOBBY = "lobby",
+  INTRO = "intro",
   QUESTION = "question",
   ANSWER = "answer",
   OBSTRUCTION = "obstruction",

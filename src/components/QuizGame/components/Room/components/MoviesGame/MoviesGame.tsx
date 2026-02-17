@@ -17,7 +17,7 @@ interface MoviesGameProps {
   answersMovie: string[];
   rightAnswerMovie: string;
   srcImageMovie: string;
-  gamePhase: string | null;
+  gamePhase: GamePhase;
 }
 
 function MoviesGame({

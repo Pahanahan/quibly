@@ -17,7 +17,7 @@ export async function PATCH(req: Request) {
     }
 
     const room = snap.val();
-    const maxQuestions: number = room.maxQuestions ?? 20;
+    const maxQuestions: number = room.maxQuestions ?? 11;
     const topics = room.topics ?? {};
 
     const quizQuestions = questions.filter((category) =>

@@ -7,6 +7,7 @@ import Form from "./components/Form/Form";
 import RoomUnavailable from "./components/RoomUnavavailable/RoomUnavailable";
 import EnterTopic from "./components/EnterTopic/EnterTopic";
 import ReadyGame from "./components/ReadyGame/ReadyGame";
+import RoomIntro from "./components/RoomIntro/RoomIntro";
 import Game from "./components/Game/Game";
 import ChooseObstruction from "./components/ChooseObstruction/ChooseObstruction";
 import VisualMemoryGameRoom from "./components/VisualMemoryGameRoom/VisualMemoryGameRoom";
@@ -25,6 +26,7 @@ import { useQuestions } from "@/src/hooks/useQuestions";
 import { useMovies } from "@/src/hooks/useMovies";
 import { usePlayer } from "@/src/hooks/usePlayer";
 import { quizAvatars } from "@/src/data/quizAvatars";
+import { quizRounds } from "@/src/data/quizRounds";
 
 import { GamePhase } from "@/src/types/types";
 import styles from "./Room.module.scss";
@@ -56,9 +58,9 @@ function Room({ roomId }: RoomProps) {
       key: "gamePhase",
     }) || null;
 
-  const currentQuestionIndex: number | null = useRoomFields({
+  const currentRound: number | null = useRoomFields({
     roomId: roomId,
-    key: "currentQuestionIndex",
+    key: "currentRound",
   });
   const questions = useQuestions({ roomId: roomId });
   const questionMovies = useMovies({ roomId: roomId });
@@ -66,38 +68,39 @@ function Room({ roomId }: RoomProps) {
   const player = usePlayer({ roomId: roomId, userId: userId });
 
   const question =
-    currentQuestionIndex !== null
-      ? questions[currentQuestionIndex]?.question
+    currentRound !== null
+      ? questions[quizRounds[currentRound || 0]?.dataIndex || 0]?.question
       : "";
 
   const answers =
-    currentQuestionIndex !== null
-      ? questions[currentQuestionIndex]?.answers
+    currentRound !== null
+      ? questions[quizRounds[currentRound || 0]?.dataIndex || 0]?.answers
       : [];
 
   const rightAnswer =
-    currentQuestionIndex !== null
-      ? questions[currentQuestionIndex]?.rightAnswer
+    currentRound !== null
+      ? questions[quizRounds[currentRound || 0]?.dataIndex || 0]?.rightAnswer
       : "";
 
   const questionMovie =
-    currentQuestionIndex !== null
-      ? questionMovies[currentQuestionIndex]?.question
+    currentRound !== null
+      ? questionMovies[quizRounds[currentRound || 0]?.dataIndex || 0]?.question
       : "";
 
   const answersMovie =
-    currentQuestionIndex !== null
-      ? questionMovies[currentQuestionIndex]?.answers
+    currentRound !== null
+      ? questionMovies[quizRounds[currentRound || 0]?.dataIndex || 0]?.answers
       : [];
 
   const rightAnswerMovie =
-    currentQuestionIndex !== null
-      ? questionMovies[currentQuestionIndex]?.rightAnswer
+    currentRound !== null
+      ? questionMovies[quizRounds[currentRound || 0]?.dataIndex || 0]
+          ?.rightAnswer
       : "";
 
   const srcImageMovie =
-    currentQuestionIndex !== null
-      ? questionMovies[currentQuestionIndex]?.srcImage
+    currentRound !== null
+      ? questionMovies[quizRounds[currentRound || 0]?.dataIndex || 0]?.srcImage
       : "";
 
   useEffect(() => {
@@ -215,11 +218,14 @@ function Room({ roomId }: RoomProps) {
   const readyElement = player?.ready === "ready" &&
     gamePhase === GamePhase.LOBBY && <ReadyGame />;
 
+  const introElement = gamePhase === GamePhase.INTRO && player && (
+    <RoomIntro currentRound={currentRound} />
+  );
+
   const questionElement = (gamePhase === GamePhase.QUESTION ||
     gamePhase === GamePhase.ANSWER) &&
     player && (
       <Game
-        key={currentQuestionIndex}
         userId={userId}
         roomId={roomId}
         question={question}
@@ -244,7 +250,7 @@ function Room({ roomId }: RoomProps) {
       <SortingGame
         roomId={roomId}
         userId={userId}
-        currentQuestionIndex={currentQuestionIndex}
+        currentRound={currentRound}
       />
     );
 
@@ -275,6 +281,7 @@ function Room({ roomId }: RoomProps) {
           {undefinedPlayer}
           {enterTopicElement}
           {readyElement}
+          {introElement}
           {questionElement}
           {obstructionElement}
           {memoriesElement}
