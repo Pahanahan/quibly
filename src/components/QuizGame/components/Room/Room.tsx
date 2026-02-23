@@ -13,6 +13,7 @@ import ChooseObstruction from "./components/ChooseObstruction/ChooseObstruction"
 import VisualMemoryGameRoom from "./components/VisualMemoryGameRoom/VisualMemoryGameRoom";
 import SortingGame from "./components/SortingGame/SortingGame";
 import MoviesGame from "./components/MoviesGame/MoviesGame";
+import MusicsGame from "./components/MusicsGame/MusicsGame";
 import EndGame from "./components/EndGame/EndGame";
 import { generateId } from "@/src/lib/generateId";
 import {
@@ -24,6 +25,7 @@ import { useJoinPlayer } from "./useJoinPlayer";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { useQuestions } from "@/src/hooks/useQuestions";
 import { useMovies } from "@/src/hooks/useMovies";
+import { useMusics } from "@/src/hooks/useMusics";
 import { usePlayer } from "@/src/hooks/usePlayer";
 import { quizAvatars } from "@/src/data/quizAvatars";
 import { quizRounds } from "@/src/data/quizRounds";
@@ -64,6 +66,7 @@ function Room({ roomId }: RoomProps) {
   });
   const questions = useQuestions({ roomId: roomId });
   const questionMovies = useMovies({ roomId: roomId });
+  const questionMusics = useMusics({ roomId: roomId });
 
   const player = usePlayer({ roomId: roomId, userId: userId });
 
@@ -101,6 +104,22 @@ function Room({ roomId }: RoomProps) {
   const srcImageMovie =
     currentRound !== null
       ? questionMovies[quizRounds[currentRound || 0]?.dataIndex || 0]?.srcImage
+      : "";
+
+  const questionMusic =
+    currentRound !== null
+      ? questionMusics[quizRounds[currentRound || 0]?.dataIndex || 0]?.question
+      : "";
+
+  const answersMusic =
+    currentRound !== null
+      ? questionMusics[quizRounds[currentRound || 0]?.dataIndex || 0]?.answers
+      : [];
+
+  const rightAnswerMusic =
+    currentRound !== null
+      ? questionMusics[quizRounds[currentRound || 0]?.dataIndex || 0]
+          ?.rightAnswer
       : "";
 
   useEffect(() => {
@@ -268,6 +287,19 @@ function Room({ roomId }: RoomProps) {
       />
     );
 
+  const musicsElement = (gamePhase === GamePhase.MUSICS ||
+    gamePhase === GamePhase.MUSICS_ANSWER) &&
+    player && (
+      <MusicsGame
+        roomId={roomId}
+        userId={userId}
+        questionMusic={questionMusic}
+        answersMusic={answersMusic}
+        rightAnswerMusic={rightAnswerMusic}
+        gamePhase={gamePhase}
+      />
+    );
+
   const endGameElement = gamePhase === GamePhase.GAME_END && player && (
     <EndGame />
   );
@@ -287,6 +319,7 @@ function Room({ roomId }: RoomProps) {
           {memoriesElement}
           {sortingElement}
           {moviesElement}
+          {musicsElement}
           {endGameElement}
         </div>
       </div>

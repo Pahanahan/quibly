@@ -11,6 +11,7 @@ interface QuizRounds {
 enum IntroTitles {
   QUESTION = "Вопрос",
   MOVIES = "Угадай фильм",
+  MUSICS = "Угадай мелодию",
   OBSTRUCTION = "Создай игроку препятствие",
   SORTING = "Сортировка",
   MEMORY = "Уровень на память",
@@ -29,6 +30,8 @@ const SORTING_DURATION = 21000;
 const SORTING_ANSWER_DURATION = 7000;
 const MOVIES_DURATION = 11000;
 const MOVIES_ANSWER_DURATION = 7000;
+const MUSICS_DURATION = 21000;
+const MUSICS_ANSWER_DURATION = 7000;
 
 export const quizRounds: QuizRounds[] = [
   {
@@ -575,29 +578,47 @@ export const quizRounds: QuizRounds[] = [
 // Массив для быстрого тестирования
 
 // export const quizRounds: QuizRounds[] = [
+//   // {
+//   //   gamePhase: GamePhase.INTRO,
+//   //   round: 1,
+//   //   duration: INTRO_DURATION,
+//   //   displayTitle: IntroTitles.QUESTION,
+//   // },
+//   // {
+//   //   gamePhase: GamePhase.QUESTION,
+//   //   round: 1,
+//   //   duration: QUESTION_DURATION,
+//   //   dataIndex: 0,
+//   // },
+//   // {
+//   //   gamePhase: GamePhase.ANSWER,
+//   //   round: 1,
+//   //   duration: ANSWER_DURATION,
+//   //   dataIndex: 0,
+//   // },
 //   {
 //     gamePhase: GamePhase.INTRO,
 //     round: 1,
 //     duration: INTRO_DURATION,
-//     displayTitle: "Вопрос",
+//     displayTitle: IntroTitles.MUSICS,
 //   },
 //   {
-//     gamePhase: GamePhase.QUESTION,
+//     gamePhase: GamePhase.MUSICS,
 //     round: 1,
-//     duration: QUESTION_DURATION,
+//     duration: MUSICS_DURATION,
 //     dataIndex: 0,
 //   },
 //   {
-//     gamePhase: GamePhase.ANSWER,
+//     gamePhase: GamePhase.MUSICS_ANSWER,
 //     round: 1,
-//     duration: ANSWER_DURATION,
+//     duration: MUSICS_ANSWER_DURATION,
 //     dataIndex: 0,
 //   },
 //   {
 //     gamePhase: GamePhase.INTRO,
 //     round: 2,
 //     duration: INTRO_DURATION,
-//     displayTitle: "Угадай фильм",
+//     displayTitle: IntroTitles.MOVIES,
 //   },
 //   {
 //     gamePhase: GamePhase.MOVIES,
@@ -615,7 +636,7 @@ export const quizRounds: QuizRounds[] = [
 //     gamePhase: GamePhase.INTRO,
 //     round: 3,
 //     duration: INTRO_DURATION,
-//     displayTitle: "Создай игроку препятствие",
+//     displayTitle: IntroTitles.OBSTRUCTION,
 //   },
 //   {
 //     gamePhase: GamePhase.OBSTRUCTION,
@@ -626,7 +647,7 @@ export const quizRounds: QuizRounds[] = [
 //     gamePhase: GamePhase.INTRO,
 //     round: 4,
 //     duration: INTRO_DURATION,
-//     displayTitle: "Вопрос",
+//     displayTitle: IntroTitles.QUESTION,
 //   },
 //   {
 //     gamePhase: GamePhase.QUESTION,
@@ -644,7 +665,7 @@ export const quizRounds: QuizRounds[] = [
 //     gamePhase: GamePhase.INTRO,
 //     round: 5,
 //     duration: INTRO_DURATION,
-//     displayTitle: "Раунд на память",
+//     displayTitle: IntroTitles.MEMORY,
 //   },
 //   {
 //     gamePhase: GamePhase.MEMORY,
@@ -665,7 +686,7 @@ export const quizRounds: QuizRounds[] = [
 //     gamePhase: GamePhase.INTRO,
 //     round: 6,
 //     duration: INTRO_DURATION,
-//     displayTitle: "Сортировка",
+//     displayTitle: IntroTitles.SORTING,
 //   },
 //   {
 //     gamePhase: GamePhase.SORTING,
@@ -683,7 +704,7 @@ export const quizRounds: QuizRounds[] = [
 //     gamePhase: GamePhase.INTRO,
 //     round: 6,
 //     duration: INTRO_DURATION,
-//     displayTitle: "Конец игры",
+//     displayTitle: IntroTitles.GAME_END,
 //   },
 //   {
 //     gamePhase: GamePhase.GAME_END,
