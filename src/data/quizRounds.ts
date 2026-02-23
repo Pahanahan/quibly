@@ -103,7 +103,7 @@ export const quizRounds: QuizRounds[] = [
     gamePhase: GamePhase.INTRO,
     round: 4,
     duration: INTRO_DURATION,
-    displayTitle: IntroTitles.MOVIES,
+    displayTitle: IntroTitles.MUSICS,
   },
   {
     gamePhase: GamePhase.MUSICS,
@@ -557,6 +557,12 @@ export const quizRounds: QuizRounds[] = [
     round: 25,
     duration: ANSWER_DURATION,
     dataIndex: 10,
+  },
+  {
+    gamePhase: GamePhase.INTRO,
+    round: 25,
+    duration: INTRO_DURATION,
+    displayTitle: IntroTitles.GAME_END,
   },
   {
     gamePhase: GamePhase.GAME_END,
