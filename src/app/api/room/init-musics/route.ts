@@ -13,7 +13,7 @@ export const PATCH = async (req: Request) => {
       return NextResponse.json({ error: "Not found room" }, { status: 400 });
     }
 
-    const shuffleQuizMusics = shuffleMusics(quizMusics).slice(0, 7);
+    const shuffleQuizMusics = shuffleMusics(quizMusics).slice(0, 4);
 
     await set(ref(database, `rooms/${roomId}/musicsGame`), shuffleQuizMusics);
 
