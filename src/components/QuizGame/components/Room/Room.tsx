@@ -14,6 +14,7 @@ import VisualMemoryGameRoom from "./components/VisualMemoryGameRoom/VisualMemory
 import SortingGame from "./components/SortingGame/SortingGame";
 import MoviesGame from "./components/MoviesGame/MoviesGame";
 import MusicsGame from "./components/MusicsGame/MusicsGame";
+import WordsGame from "./components/WordsGame/WordsGame";
 import EndGame from "./components/EndGame/EndGame";
 import { generateId } from "@/src/lib/generateId";
 import {
@@ -300,6 +301,12 @@ function Room({ roomId }: RoomProps) {
       />
     );
 
+  const wordsElement = (gamePhase === GamePhase.WORDS ||
+    gamePhase === GamePhase.WORDS_ANSWER) &&
+    player && (
+      <WordsGame roomId={roomId} userId={userId} currentRound={currentRound} />
+    );
+
   const endGameElement = gamePhase === GamePhase.GAME_END && player && (
     <EndGame />
   );
@@ -320,6 +327,7 @@ function Room({ roomId }: RoomProps) {
           {sortingElement}
           {moviesElement}
           {musicsElement}
+          {wordsElement}
           {endGameElement}
         </div>
       </div>

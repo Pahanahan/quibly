@@ -28,6 +28,16 @@
   }
 }
 
+@media (max-width: 500px) {
+  .right {
+    padding: 10px;
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+}
+
 @keyframes boomIn {
   0% {
     opacity: 0;
@@ -60,15 +70,5 @@
 
   100% {
     transform: scale(1) translateX(0);
-  }
-}
-
-@media (max-width: 500px) {
-  .right {
-    padding: 10px;
-
-    h2 {
-      font-size: 20px;
-    }
   }
 }

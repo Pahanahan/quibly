@@ -1,0 +1,124 @@
+@use "../../../../variables" as *;
+
+.words-question {
+  padding: 20px;
+  background-color: $bg-main;
+  border: 2px solid #000;
+  border-radius: 20px;
+
+  &__title {
+    font-size: 30px;
+    text-align: center;
+    padding: 10px 20px;
+    border: 2px solid $border-default;
+    border-radius: 10px;
+    background-color: $bg-unselected;
+  }
+
+  &__letters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  &__letter {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 16px;
+    border: 2px solid $border-default;
+    border-radius: 10px;
+    width: 90%;
+
+    background-color: $bg-unselected;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__letter--active {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 16px;
+    border: 2px solid $border-default;
+    border-radius: 10px;
+    width: 90%;
+
+    background-color: $bg-active;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__error {
+    text-align: center;
+    color: $text-wrong;
+    margin-bottom: 10px;
+  }
+
+  &__btn {
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+    border: 2px solid $border-default;
+    border-radius: 10px;
+    background-color: $bg-unselected;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__list-item {
+    font-size: 30px;
+
+    span {
+      color: $text-right;
+    }
+  }
+}
+
+.chosen {
+  background-color: $bg-active;
+}
+
+@media (max-width: 500px) {
+  .words-question {
+    &__title {
+      font-size: 20px;
+    }
+
+    &__letters {
+      gap: 5px;
+    }
+
+    &__letter {
+      padding: 10px;
+      font-size: 20px;
+    }
+
+    &__letter--active {
+      padding: 10px;
+      font-size: 20px;
+    }
+  }
+}

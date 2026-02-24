@@ -1,6 +1,6 @@
 @use "../../../../variables" as *;
 
-.movies-answer {
+.words-answer {
   margin: 0 10px;
   padding: 20px;
   background-color: $bg-main;
@@ -14,17 +14,15 @@
     font-weight: 600;
     text-align: center;
   }
+}
 
-  &__message--right {
-    font-size: 16px;
-    text-align: center;
-    color: $text-right;
-  }
+@media (max-width: 500px) {
+  .words-answer {
+    padding: 10px;
 
-  &__message--wrong {
-    font-size: 16px;
-    text-align: center;
-    color: $text-wrong;
+    h2 {
+      font-size: 20px;
+    }
   }
 }
 
@@ -60,15 +58,5 @@
 
   100% {
     transform: scale(1) translateX(0);
-  }
-}
-
-@media (max-width: 500px) {
-  .movies-answer {
-    padding: 10px;
-
-    h2 {
-      font-size: 20px;
-    }
   }
 }

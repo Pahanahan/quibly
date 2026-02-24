@@ -70,6 +70,8 @@ export enum GamePhase {
   MOVIES_ANSWER = "moviesAnswer",
   MUSICS = "musics",
   MUSICS_ANSWER = "musicsAnswer",
+  WORDS = "words",
+  WORDS_ANSWER = "wordsAnswer",
   GAME_END = "end",
 }
 
@@ -131,6 +133,14 @@ export interface QuizMusics {
   answers: [string, string, string, string];
   rightAnswer: string;
   srcMusic: string;
+}
+
+export interface QuizWords {
+  id: number;
+  title: string;
+  word: string;
+  isValidWords: string[];
+  letters?: string[];
 }
 
 export type Rounds =

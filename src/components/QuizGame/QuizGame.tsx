@@ -13,6 +13,7 @@ import MemoryChoose from "./components/MemoryChoose/MemoryChoose";
 import Sorting from "./components/Sorting/Sorting";
 import Movies from "./components/Movies/Movies";
 import Musics from "./components/Musics/Musics";
+import Words from "./components/Words/Words";
 import EndGame from "./components/EndGame/EndGame";
 import { useInitRoom } from "./hooks/useInitRoom";
 import { useInitQuestions } from "./hooks/useInitQuestions";
@@ -20,6 +21,7 @@ import { useInitMemories } from "./hooks/useInitMemories";
 import { useInitSortingLevel } from "./hooks/useInitSortingLevel";
 import { useInitMovies } from "./hooks/useInitMovies";
 import { useInitMusics } from "./hooks/useInitMusics";
+import { useInitWords } from "./hooks/useInitWords";
 import { useRoundTimer } from "./hooks/useRoundTimer";
 import { usePlayers } from "@/src/hooks/usePlayers";
 import { useQuestions } from "@/src/hooks/useQuestions";
@@ -31,6 +33,37 @@ import { useMusic } from "./hooks/useMusic";
 import { useSoundMem } from "./hooks/useSoundMem";
 import { getDateNow } from "@/src/lib/getDateNow";
 import { quizRounds } from "@/src/data/quizRounds";
+// import { cleanedDictionary } from "@/src/data/cleanedDictionary";
+
+// console.log(cleanedDictionary.filter((w) => w.length === 6));
+
+// function filterByLetter(word: string, dictionary: string[]) {
+//   const results: string[] = [];
+//   const letters = [...word.split("")];
+
+//   dictionary.forEach((w) => {
+//     const temp = [...letters];
+//     let canMake = true;
+
+//     for (const char of w) {
+//       const index = temp.indexOf(char);
+//       if (index === -1) {
+//         canMake = false;
+//         break;
+//       }
+//       temp.splice(index, 1);
+//     }
+
+//     if (canMake && w.length <= word.length) {
+//       results.push(w);
+//     }
+//   });
+
+//   return results;
+// }
+
+// const rabota = filterByLetter("ампула", cleanedDictionary);
+// console.log(rabota);
 
 import { GamePhase, MemScoreText } from "@/src/types/types";
 import styles from "./QuizGame.module.scss";
@@ -97,6 +130,7 @@ function QuizGame() {
   useInitSortingLevel({ roomId: initialRoom?.roomId });
   useInitMovies({ roomId: initialRoom?.roomId });
   useInitMusics({ roomId: initialRoom?.roomId });
+  useInitWords({ roomId: initialRoom?.roomId });
 
   const question =
     questions[quizRounds[currentRound]?.dataIndex || 0]?.question || "";
@@ -237,6 +271,14 @@ function QuizGame() {
     />
   );
 
+  const wordLevelElement = gamePhase === GamePhase.WORDS && (
+    <Words roomId={roomId} currentRound={currentRound} />
+  );
+
+  const rightWordsElement = gamePhase === GamePhase.WORDS_ANSWER && (
+    <RightAnswer title="Набранные очки в этом раунде" players={players} />
+  );
+
   const endGameElement = gamePhase === GamePhase.GAME_END && (
     <EndGame roomId={roomId} />
   );
@@ -259,6 +301,8 @@ function QuizGame() {
           {rightMoviesElement}
           {musicLevelElement}
           {rightMusicElement}
+          {wordLevelElement}
+          {rightWordsElement}
           {endGameElement}
         </div>
       </div>
