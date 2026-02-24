@@ -292,7 +292,7 @@ export const quizRounds: QuizRounds[] = [
   {
     gamePhase: GamePhase.WORDS,
     round: 13,
-    duration: QUESTION_DURATION,
+    duration: WORDS_DURATION,
     dataIndex: 1,
   },
   {
