@@ -62,8 +62,7 @@ import { quizRounds } from "@/src/data/quizRounds";
 //   return results;
 // }
 
-// const rabota = filterByLetter("ампула", cleanedDictionary);
-// console.log(rabota);
+// console.log(filterByLetter("диплом", cleanedDictionary));
 
 import { GamePhase, MemScoreText } from "@/src/types/types";
 import styles from "./QuizGame.module.scss";
