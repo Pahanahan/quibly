@@ -33,36 +33,6 @@ import { useMusic } from "./hooks/useMusic";
 import { useSoundMem } from "./hooks/useSoundMem";
 import { getDateNow } from "@/src/lib/getDateNow";
 import { quizRounds } from "@/src/data/quizRounds";
-// import { cleanedDictionary } from "@/src/data/cleanedDictionary";
-
-// console.log(cleanedDictionary.filter((w) => w.length === 6));
-
-// function filterByLetter(word: string, dictionary: string[]) {
-//   const results: string[] = [];
-//   const letters = [...word.split("")];
-
-//   dictionary.forEach((w) => {
-//     const temp = [...letters];
-//     let canMake = true;
-
-//     for (const char of w) {
-//       const index = temp.indexOf(char);
-//       if (index === -1) {
-//         canMake = false;
-//         break;
-//       }
-//       temp.splice(index, 1);
-//     }
-
-//     if (canMake && w.length <= word.length) {
-//       results.push(w);
-//     }
-//   });
-
-//   return results;
-// }
-
-// console.log(filterByLetter("диплом", cleanedDictionary));
 
 import { GamePhase, MemScoreText } from "@/src/types/types";
 import styles from "./QuizGame.module.scss";

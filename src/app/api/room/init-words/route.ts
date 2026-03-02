@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { ref, set } from "firebase/database";
 
 import { database } from "@/src/lib/firebase";
-import { shuffleWords } from "@/src/components/QuizGame/utils/shuffleWords";
+import { getRandomLevels } from "@/src/server/getRandomLevels";
 import { quizWords } from "@/src/data/quizWords";
 
 export const PATCH = async (req: Request) => {
@@ -13,11 +13,11 @@ export const PATCH = async (req: Request) => {
       return NextResponse.json({ error: "Not found room" }, { status: 400 });
     }
 
-    const shuffleQuizWords = shuffleWords(quizWords).slice(0, 4);
+    const randomLevels = getRandomLevels(quizWords, 4);
 
-    await set(ref(database, `rooms/${roomId}/wordsGame`), shuffleQuizWords);
+    await set(ref(database, `rooms/${roomId}/wordsGame`), randomLevels);
 
-    return NextResponse.json(shuffleQuizWords);
+    return NextResponse.json(randomLevels);
   } catch (error) {
     console.error(error);
     return NextResponse.json(
