@@ -17,6 +17,13 @@ function MusicsGameQuestion({
   selectedAnswer,
   answersMusic,
 }: MusicsGameQuestionProps) {
+  const equalizerItems = Array.from({ length: 16 }).map((_, index) => (
+    <span
+      key={index}
+      className={styles['musics-question__equalizer-bar']}
+    />
+  ));
+
   const answerElements = answersMusic.map((answer) => {
     const activeAnswer = answer === selectedAnswer;
 
@@ -36,6 +43,7 @@ function MusicsGameQuestion({
   return (
     <div className={styles["musics-question"]}>
       <h2 className={styles["musics-question__question"]}>{questionMusic}</h2>
+      <div className={styles['musics-question__equalizer']}>{equalizerItems}</div>
       <div className={styles["musics-question__answers"]}>{answerElements}</div>
       <ToolBarGame roomId={roomId} multiplicator={2} />
     </div>

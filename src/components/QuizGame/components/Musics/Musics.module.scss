@@ -15,6 +15,37 @@
     animation: scaleIn 0.6s ease forwards;
   }
 
+  &__equalizer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    height: 60px;
+    margin-bottom: 30px;
+  }
+
+  &__equalizer-bar {
+    width: 6px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, $text-main, lighten($text-main, 15%));
+    animation: equalizerWave 0.9s ease-in-out infinite;
+    transform-origin: bottom center;
+
+    &:nth-child(odd) {
+      animation-duration: 0.7s;
+    }
+
+    &:nth-child(3n) {
+      animation-duration: 1s;
+    }
+
+    @for $i from 1 through 16 {
+      &:nth-child(#{$i}) {
+        animation-delay: $i * 0.04s;
+      }
+    }
+  }
+
   &__answers {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -58,5 +89,23 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes equalizerWave {
+  0% {
+    height: 20%;
+  }
+  25% {
+    height: 80%;
+  }
+  50% {
+    height: 40%;
+  }
+  75% {
+    height: 90%;
+  }
+  100% {
+    height: 20%;
   }
 }
