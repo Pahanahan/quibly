@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { quizMusic } from "@/src/lib/quizMusic";
 
-export const useMusic = (musicState: boolean) => {
+export const useMusic = (musicState: 'play' | 'stop' | 'pause') => {
   useEffect(() => {
     const musics = [
       "/quiz-sound/jazz_in_paris.mp3",
@@ -15,14 +15,18 @@ export const useMusic = (musicState: boolean) => {
 
     const music = quizMusic(musics[randomMusicIndex], true, 0.2);
 
-    if (musicState) {
+    if (musicState === 'play') {
       music.play();
 
       return () => {
         music.stop();
       };
-    } else {
+    } 
+    if (musicState === 'stop') {
       music.stop();
+    } 
+    if (musicState === 'pause'){
+      music.pause();
     }
   }, [musicState]);
 };

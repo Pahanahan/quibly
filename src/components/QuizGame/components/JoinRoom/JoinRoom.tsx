@@ -21,8 +21,8 @@ interface JoinRoomProps {
   roomId: string;
   players: QuizPlayer[];
   disabled: boolean;
-  musicState: boolean;
-  setMusicState: React.Dispatch<React.SetStateAction<boolean>>;
+  musicState: 'play' | 'stop' | 'pause';
+  setMusicState: React.Dispatch<React.SetStateAction<'play' | 'stop' | 'pause'>>;
   memState: boolean;
   setMemState: React.Dispatch<React.SetStateAction<boolean>>;
   quizGameRef: RefObject<HTMLDivElement | null>;
@@ -40,8 +40,8 @@ function JoinRoom({
 }: JoinRoomProps) {
   const isFullscreen = useFullscreen();
 
-  const imageSound = musicState ? musicOff : musicOn;
-  const soundText = musicState ? "Выключить музыку" : "Включить музыку";
+  const imageSound = musicState === 'play' ? musicOff : musicState === 'stop' ? musicOn : musicOff;
+  const soundText = musicState === 'play' ? "Выключить музыку" : musicState === 'stop' ? "Включить музыку" : 'Пауза';
   const memText = memState ? "Выключить мемы" : "Включить мемы";
 
   useEffect(() => {
@@ -58,7 +58,15 @@ function JoinRoom({
   }, [roomId]);
 
   const handleSetMusicState = () => {
-    setMusicState(!musicState);
+    setMusicState((prevState) => {
+      if (prevState === 'play') {
+        return 'stop';
+      } else if (prevState === 'stop') {
+        return 'play';
+      } else {
+        return 'pause';
+      }
+    });
   };
 
   const handleSetMemState = () => {

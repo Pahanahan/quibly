@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { useMusicRound } from "./useMusicRound";
 
 import styles from "./Musics.module.scss";
@@ -6,9 +8,16 @@ interface MusicsProps {
   questionMusic: string;
   answersMusic: string[];
   srcMusic: string;
+  musicState?: 'play' | 'stop' | 'pause';
+  setMusicState?: React.Dispatch<React.SetStateAction<'play' | 'stop' | 'pause'>>;
 }
 
-function Musics({ questionMusic, answersMusic, srcMusic }: MusicsProps) {
+function Musics({ questionMusic, answersMusic, srcMusic, musicState, setMusicState }: MusicsProps) {
+  useEffect(() => {
+    if (setMusicState && musicState === 'play') {
+      setMusicState('pause');
+    }
+  }, [musicState])
   useMusicRound(srcMusic);
 
   const answers = answersMusic.map((item) => {

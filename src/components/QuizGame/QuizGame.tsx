@@ -50,7 +50,7 @@ import styles from "./QuizGame.module.scss";
 
 function QuizGame() {
   const [currentRound, setCurrentRound] = useState<number>(0);
-  const [musicState, setMusicState] = useState<boolean>(false);
+  const [musicState, setMusicState] = useState<'play' | 'stop' | 'pause'>('stop');
   const [memState, setMemState] = useState<boolean>(false);
   const quizGameRef = useRef(null);
 
@@ -229,6 +229,8 @@ function QuizGame() {
       questionMusic={questionMusic}
       answersMusic={answersMusic}
       srcMusic={srcMusic}
+      musicState={musicState}
+      setMusicState={setMusicState}
     />
   );
 
@@ -237,6 +239,8 @@ function QuizGame() {
       rightAnswer={rightAnswerMusic}
       title="Правильный ответ: "
       players={players}
+      musicState={musicState}
+      setMusicState={setMusicState}
     />
   );
 

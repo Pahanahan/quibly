@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Image from "next/image";
 
 import { avatars } from "@/src/lib/avatars";
@@ -9,9 +10,18 @@ interface RightAnswerProps {
   rightAnswer?: string;
   title: string;
   players: QuizPlayer[];
+  musicState?: 'play' | 'stop' | 'pause';
+  setMusicState?: React.Dispatch<React.SetStateAction<'play' | 'stop' | 'pause'>>;
 }
 
-function RightAnswer({ rightAnswer, title, players }: RightAnswerProps) {
+function RightAnswer({ rightAnswer, title, players, musicState, setMusicState }: RightAnswerProps) {
+  useEffect(() => {
+    if (setMusicState && musicState === 'pause') {
+      setMusicState('play');
+    } 
+  }, [musicState]);
+
+
   const playersScoreElement =
     players &&
     Object.entries(players)
