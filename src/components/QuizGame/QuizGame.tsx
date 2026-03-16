@@ -50,7 +50,9 @@ import styles from "./QuizGame.module.scss";
 
 function QuizGame() {
   const [currentRound, setCurrentRound] = useState<number>(0);
-  const [musicState, setMusicState] = useState<'play' | 'stop' | 'pause'>('stop');
+  const [musicState, setMusicState] = useState<"play" | "stop" | "pause">(
+    "stop",
+  );
   const [memState, setMemState] = useState<boolean>(false);
   const quizGameRef = useRef(null);
 

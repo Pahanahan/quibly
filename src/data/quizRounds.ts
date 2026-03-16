@@ -20,7 +20,7 @@ enum IntroTitles {
   GAME_END = "Конец игры",
 }
 
-const INTRO_DURATION = 2000;
+const INTRO_DURATION = 3000;
 const QUESTION_DURATION = 11000;
 const ANSWER_DURATION = 7000;
 const OBSTRUCTION_DURATION = 11000;
@@ -148,6 +148,12 @@ export const quizRounds: QuizRounds[] = [
     gamePhase: GamePhase.OBSTRUCTION,
     round: 6,
     duration: OBSTRUCTION_DURATION,
+  },
+  {
+    gamePhase: GamePhase.INTRO,
+    round: 6,
+    duration: INTRO_DURATION,
+    displayTitle: IntroTitles.QUESTION,
   },
   {
     gamePhase: GamePhase.QUESTION,
