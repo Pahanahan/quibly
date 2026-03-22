@@ -97,7 +97,7 @@ function WordsGame({ roomId, userId, currentRound }: WordsGameProps) {
       setError("Такое слово уже есть!");
     } else if (!isValidWords.includes(str)) {
       setSelectedIndexes([]);
-      setError("Такого слова не существует!");
+      setError("В нашем словаре такого слова нет!");
     }
   };
 
