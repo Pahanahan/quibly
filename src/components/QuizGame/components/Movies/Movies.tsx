@@ -33,14 +33,16 @@ function Movies({ questionMovie, answersMovie, srcImageMovie }: MoviesProps) {
   return (
     <div className={styles.movies}>
       <h2 className={styles.movies__title}>{questionMovie}</h2>
-      <Image
+      <div className={styles.movies__box}>
+        <Image
         className={styles.movies__image}
         src={srcImageMovie}
         width={900}
         height={600}
         alt="movie"
-      />
-      <div className={styles.movies__answers}>{answersElements}</div>
+        />
+        <div className={styles.movies__answers}>{answersElements}</div>
+      </div>
     </div>
   );
 }
