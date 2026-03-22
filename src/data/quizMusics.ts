@@ -641,7 +641,7 @@ export const quizMusics: QuizMusics[] = [
       "Снег кружится",
     ],
     rightAnswer: "Бологое",
-    srcMusic: "/quiz-musics/0061_Vesjolye_rebyata_Bologoe.m4a",
+    srcMusic: "/quiz-musics/0061_Veselye_rebyata_Bologoe.m4a",
   },
   {
     id: 62,
