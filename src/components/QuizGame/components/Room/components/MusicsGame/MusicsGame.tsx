@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 import MusicsGameQuestion from "./components/MusicsGameQuestion/MusicsGameQuestion";
 import MusicsGameAnswer from "./components/MusicsGameAnswer/MusicsGameAnswer";
 import { editPlayer } from "@/src/lib/editPlayer";
+import { editScore } from "@/src/lib/editScore";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
-import { usePlayer } from "@/src/hooks/usePlayer";
 import { getDateNow } from "@/src/lib/getDateNow";
 
 import { GamePhase } from "@/src/types/types";
@@ -33,18 +33,6 @@ function MusicsGame({
   >("нет ответа");
   const [score, setScore] = useState<number>(0);
 
-  const player = usePlayer({ roomId: roomId, userId: userId });
-  const scoreRef = useRef(score);
-  const playerScore = useRef(0);
-
-  useEffect(() => {
-    scoreRef.current = score;
-  }, [score]);
-
-  useEffect(() => {
-    playerScore.current = player?.score || 0;
-  }, [player]);
-
   const dateNow = getDateNow();
 
   const startTime: number =
@@ -54,18 +42,15 @@ function MusicsGame({
     }) || dateNow;
 
   useEffect(() => {
-    if (gamePhase !== GamePhase.MUSICS_ANSWER || selectedAnswer === null)
-      return;
+    if (gamePhase !== GamePhase.MUSICS_ANSWER) return;
+    if (score === 0) return;
 
-    const totalScore = scoreRef.current + playerScore.current;
-
-    editPlayer({
+    editScore({
       roomId: roomId,
-      player: userId,
-      key: "score",
-      value: totalScore,
+      userId: userId,
+      score: score,
     });
-  }, [roomId, userId, gamePhase, selectedAnswer]);
+  }, [gamePhase, roomId, userId, score]);
 
   const handleChooseAnswer = (answer: string) => {
     setSelectedAnswer(answer);

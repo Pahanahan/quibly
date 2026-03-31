@@ -1,11 +1,10 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 import WordsGameQuestion from "./components/WordsGameQuestion/WordsGameQuestion";
 import WordsGameAnswer from "./components/WordsGameAnswer/WordsGameAnswer";
 import { useWords } from "@/src/hooks/useWords";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
-import { usePlayer } from "@/src/hooks/usePlayer";
-import { editPlayer } from "@/src/lib/editPlayer";
+import { editScore } from "@/src/lib/editScore";
 import { quizRounds } from "@/src/data/quizRounds";
 
 import { GamePhase } from "@/src/types/types";
@@ -28,23 +27,8 @@ function WordsGame({ roomId, userId, currentRound }: WordsGameProps) {
       key: "gamePhase",
     }) || null;
 
-  const player = usePlayer({ roomId: roomId, userId: userId });
-  const playerScore = player?.score || 0;
-  const score = 0;
-
-  const scoreRef = useRef(score);
-  const playerScoreRef = useRef(playerScore);
-
   useEffect(() => {
-    scoreRef.current = score;
-  }, [score]);
-
-  useEffect(() => {
-    playerScoreRef.current = playerScore;
-  }, [playerScore]);
-
-  const calculateScore = useCallback(() => {
-    scoreRef.current = answers.reduce((acc, answer) => {
+    const score = answers.reduce((acc, answer) => {
       if (answer.length === 3) return acc + 100;
       if (answer.length === 4) return acc + 150;
       if (answer.length === 5) return acc + 200;
@@ -52,27 +36,15 @@ function WordsGame({ roomId, userId, currentRound }: WordsGameProps) {
       return acc;
     }, 0);
 
-    const totalScore = playerScoreRef.current + scoreRef.current;
+    if (gamePhase !== GamePhase.WORDS_ANSWER) return;
+    if (score === 0) return;
 
-    editPlayer({
+    editScore({
       roomId: roomId,
-      player: userId,
-      key: "currentScore",
-      value: scoreRef.current,
+      userId: userId,
+      score: score,
     });
-    editPlayer({
-      roomId: roomId,
-      player: userId,
-      key: "score",
-      value: totalScore,
-    });
-  }, [answers, roomId, userId]);
-
-  useEffect(() => {
-    if (gamePhase !== GamePhase.WORDS_ANSWER) {
-      calculateScore();
-    }
-  }, [gamePhase, calculateScore]);
+  }, [gamePhase, roomId, userId, answers]);
 
   const words = useWords({ roomId: roomId });
 

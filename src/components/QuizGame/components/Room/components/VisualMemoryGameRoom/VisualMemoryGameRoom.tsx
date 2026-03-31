@@ -1,11 +1,10 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 import VisualMemoryStart from "./components/VisualMemoryStart/VisualMemoryStart";
 import VisualMemoryChoose from "./components/VisualMemoryChoose/VisualMemoryChoose";
 import VisualMemoryResult from "./components/VisualMemoryResult/VisualMemoryResult";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
-import { usePlayer } from "@/src/hooks/usePlayer";
-import { editPlayer } from "@/src/lib/editPlayer";
+import { editScore } from "@/src/lib/editScore";
 import { quizMemories } from "@/src/data/quizMemories";
 
 import { QuizMemories, GamePhase } from "@/src/types/types";
@@ -33,8 +32,6 @@ function VisualMemoryGameRoom({ roomId, userId }: VisualMemoryGameRoomProps) {
     key: "gamePhase",
   });
 
-  const player = usePlayer({ roomId: roomId, userId: userId });
-  const playerScore = player?.score || 0;
   let score = 0;
 
   resultMemory.forEach((obj, i) => {
@@ -43,36 +40,16 @@ function VisualMemoryGameRoom({ roomId, userId }: VisualMemoryGameRoomProps) {
     }
   });
 
-  const scoreRef = useRef(score);
-  const playerScoreRef = useRef(playerScore);
-
   useEffect(() => {
-    scoreRef.current = score;
-  }, [score]);
+    if (gamePhase !== GamePhase.MEMORY_ANSWER) return;
+    if (score === 0) return;
 
-  useEffect(() => {
-    playerScoreRef.current = playerScore;
-  }, [playerScore]);
-
-  useEffect(() => {
-    if (gamePhase !== GamePhase.MEMORY_ANSWER || resultMemory.length === 0)
-      return;
-
-    const totalScore = playerScoreRef.current + scoreRef.current;
-
-    editPlayer({
+    editScore({
       roomId: roomId,
-      player: userId,
-      key: "currentScore",
-      value: scoreRef.current,
+      userId: userId,
+      score: score,
     });
-    editPlayer({
-      roomId: roomId,
-      player: userId,
-      key: "score",
-      value: totalScore,
-    });
-  }, [roomId, userId, gamePhase, resultMemory.length]);
+  }, [gamePhase, roomId, userId, score]);
 
   if (!memoryGame) return null;
 

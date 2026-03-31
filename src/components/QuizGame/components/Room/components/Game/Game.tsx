@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 import GameQuestion from "./components/GameQuestion/GameQuestion";
 import GameAnswer from "./components/GameAnswer/GameAnswer";
 import { editPlayer } from "@/src/lib/editPlayer";
+import { editScore } from "@/src/lib/editScore";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
 import { usePlayer } from "@/src/hooks/usePlayer";
 import { getDateNow } from "@/src/lib/getDateNow";
@@ -34,16 +35,6 @@ function Game({
   const [score, setScore] = useState<number>(0);
 
   const player = usePlayer({ roomId: roomId, userId: userId });
-  const scoreRef = useRef(score);
-  const playerScore = useRef(0);
-
-  useEffect(() => {
-    scoreRef.current = score;
-  }, [score]);
-
-  useEffect(() => {
-    playerScore.current = player?.score || 0;
-  }, [player]);
 
   const obstructions: ObstructionsObj | undefined = player?.obstructions;
 
@@ -62,17 +53,15 @@ function Game({
     }) || dateNow;
 
   useEffect(() => {
-    if (gamePhase !== GamePhase.ANSWER || selectedAnswer === null) return;
+    if (gamePhase !== GamePhase.ANSWER) return;
+    if (score === 0) return;
 
-    const totalScore = scoreRef.current + playerScore.current;
-
-    editPlayer({
+    editScore({
       roomId: roomId,
-      player: userId,
-      key: "score",
-      value: totalScore,
+      userId: userId,
+      score: score,
     });
-  }, [roomId, userId, gamePhase, selectedAnswer]);
+  }, [gamePhase, roomId, userId, score]);
 
   const handleChooseAnswer = (answer: string) => {
     setSelectedAnswer(answer);

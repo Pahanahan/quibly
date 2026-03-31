@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 import SortingDragged from "./components/SortingDragged/SortingDragged";
 import SortingAnswer from "./components/SortingAnswer/SortingAnswer";
 import ToolBarGame from "../ToolBarGame/ToolBarGame";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
-import { usePlayer } from "@/src/hooks/usePlayer";
-import { editPlayer } from "@/src/lib/editPlayer";
+import { editScore } from "@/src/lib/editScore";
 import { quizRounds } from "@/src/data/quizRounds";
 
 import { GamePhase, QuizSorting, Variable } from "@/src/types/types";
@@ -54,8 +53,6 @@ function SortingGame({ roomId, userId, currentRound }: SortingGameProps) {
     }, 0);
   }, [sortingItem]);
 
-  const player = usePlayer({ roomId: roomId, userId: userId });
-  const playerScore = player?.score || 0;
   let score = 0;
 
   sortingItems.forEach((item) => {
@@ -64,35 +61,16 @@ function SortingGame({ roomId, userId, currentRound }: SortingGameProps) {
     }
   });
 
-  const scoreRef = useRef(score);
-  const playerScoreRef = useRef(playerScore);
-
-  useEffect(() => {
-    scoreRef.current = score;
-  }, [score]);
-
-  useEffect(() => {
-    playerScoreRef.current = playerScore;
-  }, [playerScore]);
-
   useEffect(() => {
     if (gamePhase !== GamePhase.SORTING_ANSWER) return;
+    if (score === 0) return;
 
-    const totalScore = playerScoreRef.current + scoreRef.current;
-
-    editPlayer({
+    editScore({
       roomId: roomId,
-      player: userId,
-      key: "currentScore",
-      value: scoreRef.current,
+      userId: userId,
+      score: score,
     });
-    editPlayer({
-      roomId: roomId,
-      player: userId,
-      key: "score",
-      value: totalScore,
-    });
-  }, [gamePhase, roomId, userId]);
+  }, [gamePhase, roomId, userId, score]);
 
   if (!sortingObj) return null;
 
