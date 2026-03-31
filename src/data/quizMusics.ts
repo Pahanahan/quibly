@@ -747,4 +747,289 @@ export const quizMusics: QuizMusics[] = [
     srcMusic:
       "/quiz-musics/0070_Vesjolye_rebyata_Rozovye_rozy_Svetke_Sokolovojj.m4a",
   },
+  {
+    id: 71,
+    question: "Угадай мелодию",
+    answers: ["Чистые пруды", "Перемен!", "Я хочу быть с тобой", "Город золотой"],
+    rightAnswer: "Чистые пруды",
+    srcMusic: "/quiz-musics/0071_Igor_Talkov_CHistye_prudy.m4a",
+  },
+  {
+    id: 72,
+    question: "Угадай мелодию",
+    answers: ["Группа крови", "Пачка сигарет", "Звезда по имени Солнце", "Перемен!"],
+    rightAnswer: "Группа крови",
+    srcMusic: "/quiz-musics/0072_Viktor_Cojj_Gruppa_krovi.m4a",
+  },
+  {
+    id: 73,
+    question: "Угадай мелодию",
+    answers: ["Букет", "Листья жёлтые", "Остров детства", "Родительский дом"],
+    rightAnswer: "Букет",
+    srcMusic: "/quiz-musics/0073_Aleksandr_Barygin_Buket.m4a",
+  },
+  {
+    id: 74,
+    question: "Угадай мелодию",
+    answers: ["Зеленоглазое такси", "Город детства", "Снег кружится", "Яблони в цвету"],
+    rightAnswer: "Зеленоглазое такси",
+    srcMusic: "/quiz-musics/0074_Mikhail_Boyarskijj_Zelenoglazoe_taksi.m4a",
+  },
+  {
+    id: 75,
+    question: "Угадай мелодию",
+    answers: ["Было, но прошло", "Лаванда", "Белая зима", "Музыка нас связала"],
+    rightAnswer: "Было, но прошло",
+    srcMusic: "/quiz-musics/0075_Sofiya_Rotaru_Bylo_no_proshlo.m4a",
+  },
+  {
+    id: 76,
+    question: "Угадай мелодию",
+    answers: [
+      "Around My Heart",
+      "Maria Magdalena",
+      "Self Control",
+      "Cheri Cheri Lady",
+    ],
+    rightAnswer: "Around My Heart",
+    srcMusic: "/quiz-musics/0076_Sandra_Around_My_Heart.m4a",
+  },
+  {
+    id: 77,
+    question: "Угадай мелодию",
+    answers: [
+      "Listen to Your Heart",
+      "It Must Have Been Love",
+      "Eternal Flame",
+      "Total Eclipse of the Heart",
+    ],
+    rightAnswer: "Listen to Your Heart",
+    srcMusic: "/quiz-musics/0077_Roxette_Listen_to_your_heart.m4a",
+  },
+  {
+    id: 78,
+    question: "Угадай мелодию",
+    answers: ["The Race", "Chase", "Axel F", "Popcorn"],
+    rightAnswer: "The Race",
+    srcMusic: "/quiz-musics/0078_Yello_The_Race.m4a",
+  },
+  {
+    id: 79,
+    question: "Угадай мелодию",
+    answers: ["Moscow Calling", "Wind of Change", "Still Loving You", "Rock You Like a Hurricane"],
+    rightAnswer: "Moscow Calling",
+    srcMusic: "/quiz-musics/0079_Gorky_Park_Moscow_Calling.m4a",
+  },
+  {
+    id: 80,
+    question: "Угадай мелодию",
+    answers: ["Voyage, Voyage", "Self Control", "Blue Monday", "Sweet Dreams (Are Made of This)"],
+    rightAnswer: "Voyage, Voyage",
+    srcMusic: "/quiz-musics/0080_Desireless_Voyage_Voyage.m4a",
+  },
+  {
+    id: 81,
+    question: "Угадай мелодию",
+    answers: ["Последнее письмо", "Крылья", "Гудбай, Америка", "Скованные одной цепью"],
+    rightAnswer: "Последнее письмо",
+    srcMusic: "/quiz-musics/0081_Nautilus_Pompilius_Poslednee_pismo.m4a",
+  },
+  {
+    id: 82,
+    question: "Угадай мелодию",
+    answers: ["Белые розы", "Розовый вечер", "Седая ночь", "Детство"],
+    rightAnswer: "Белые розы",
+    srcMusic: "/quiz-musics/0082_YUrijj_SHatunov_Belye_rozy.m4a",
+  },
+  {
+    id: 83,
+    question: "Угадай мелодию",
+    answers: ["Фантазёр", "Маруся", "Поздняя встреча", "Папиросы"],
+    rightAnswer: "Фантазёр",
+    srcMusic: "/quiz-musics/0083_YAroslav_Evdakimov_phantazjor.m4a",
+  },
+  {
+    id: 84,
+    question: "Угадай мелодию",
+    answers: ["Ice Ice Baby", "Can't Touch This", "Baby Got Back", "Gin and Juice"],
+    rightAnswer: "Ice Ice Baby",
+    srcMusic: "/quiz-musics/0084_Vanilla_Ice_Ice_Ice_Baby.m4a",
+  },
+  {
+    id: 85,
+    question: "Угадай мелодию",
+    answers: [
+      "Звезда по имени Солнце",
+      "Пачка сигарет",
+      "Кукушка",
+      "Перемен!",
+    ],
+    rightAnswer: "Звезда по имени Солнце",
+    srcMusic: "/quiz-musics/0085_Viktor_Cojj_Zvezda_po_imeni_Solnce.m4a",
+  },
+  {
+    id: 86,
+    question: "Угадай мелодию",
+    answers: ["Музыка нас связала", "Лаванда", "Белые розы", "Voyage, Voyage"],
+    rightAnswer: "Музыка нас связала",
+    srcMusic: "/quiz-musics/0086_Mirazh_Muzika_nas_svyazala.m4a",
+  },
+  {
+    id: 87,
+    question: "Угадай мелодию",
+    answers: ["Lambada", "La Isla Bonita", "Bamboléo", "Vamos a la Playa"],
+    rightAnswer: "Lambada",
+    srcMusic: "/quiz-musics/0087_Kaoma_Lambada.m4a",
+  },
+  {
+    id: 88,
+    question: "Угадай мелодию",
+    answers: ["Fire", "The Logical Song", "How Much Is the Fish?", "Rhythm Is a Dancer"],
+    rightAnswer: "Fire",
+    srcMusic: "/quiz-musics/0088_Scooter_Fire.m4a",
+  },
+  {
+    id: 89,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "Выпал снег",
+      "Музыка нас связала",
+      "Белые розы",
+      "Лето"
+    ],
+    rightAnswer: "Выпал снег",
+    srcMusic: "0089_Svetlana_Razyna_Vypal_sneg.m4a"
+  },
+  {
+    id: 90,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "Хочу перемен!",
+      "Группа крови",
+      "Пачка сигарет",
+      "Звезда по имени Солнце"
+    ],
+    rightAnswer: "Хочу перемен!",
+    srcMusic: "0090_Viktor_Cojj_KHochu_peremen.m4a"
+  },
+  {
+    id: 91,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "Пачка сигарет",
+      "Кукушка",
+      "Когда твоя девушка больна",
+      "Закрой за мной дверь, я ухожу"
+    ],
+    rightAnswer: "Пачка сигарет",
+    srcMusic: "0091_Viktor_Cojj_Pachka_sigaret.m4a"
+  },
+  {
+    id: 92,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "Wind of Change",
+      "Still Loving You",
+      "Send Me an Angel",
+      "Holiday"
+    ],
+    rightAnswer: "Wind of Change",
+    srcMusic: "0092_Scorpions_Wind_Of_Change.m4a"
+  },
+  {
+    id: 93,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "Thunderstruck",
+      "Back in Black",
+      "Highway to Hell",
+      "T.N.T."
+    ],
+    rightAnswer: "Thunderstruck",
+    srcMusic: "0093_ACDC_Thunderstruck.m4a"
+  },
+  {
+    id: 94,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "Кукушка",
+      "Группа крови",
+      "Спокойная ночь",
+      "Печаль"
+    ],
+    rightAnswer: "Кукушка",
+    srcMusic: "0094_Viktor_Cojj_Kookooshka.m4a"
+  },
+  {
+    id: 95,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "Жёлтые тюльпаны",
+      "Маленькая страна",
+      "Дельфин и русалка",
+      "Синие лебеди"
+    ],
+    rightAnswer: "Жёлтые тюльпаны",
+    srcMusic: "0095_Natasha_Koroleva_ZHjoltye_Tyulpany.m4a"
+  },
+  {
+    id: 96,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "На белом покрывале января",
+      "Белые розы",
+      "Седая ночь",
+      "Розовый вечер"
+    ],
+    rightAnswer: "На белом покрывале января",
+    srcMusic: "0096_Vasyuta_Sergejj_Na_belom_pokryvale_yanvarya.m4a"
+  },
+  {
+    id: 97,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "Девочка моя синеглазая",
+      "Золотые купола",
+      "Облако волос",
+      "Вечерок-вечерочек"
+    ],
+    rightAnswer: "Девочка моя синеглазая",
+    srcMusic: "0097_ZHenya_Belousov_Devochka_moya_sineglazaya.m4a"
+  },
+  {
+    id: 98,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "London Goodbye",
+      "Paris, Paris",
+      "San Francisco",
+      "Ciao, Bambino"
+    ],
+    rightAnswer: "London Goodbye",
+    srcMusic: "0098_Kar_men_Londongoodbye.m4a"
+  },
+  {
+    id: 99,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "U Can't Touch This",
+      "Pray",
+      "Have You Seen Her",
+      "2 Legit 2 Quit"
+    ],
+    rightAnswer: "U Can't Touch This",
+    srcMusic: "0099_MC_Hammer_U_Cant_Touch_This.m4a"
+  },
+  {
+    id: 100,
+    question: "Угадай песню по мелодии",
+    answers: [
+      "Ты не ангел, но для меня",
+      "Мир без тебя",
+      "Белая черёмуха",
+      "Звёздная ночь"
+    ],
+    rightAnswer: "Ты не ангел, но для меня",
+    srcMusic: "0100_Aleksejj_Glyzin_Ti_ne_angel_no_dlya_menya.m4a"
+  }
 ];
