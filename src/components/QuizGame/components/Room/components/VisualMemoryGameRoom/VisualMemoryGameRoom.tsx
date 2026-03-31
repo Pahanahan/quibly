@@ -4,6 +4,7 @@ import VisualMemoryStart from "./components/VisualMemoryStart/VisualMemoryStart"
 import VisualMemoryChoose from "./components/VisualMemoryChoose/VisualMemoryChoose";
 import VisualMemoryResult from "./components/VisualMemoryResult/VisualMemoryResult";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
+import { editPlayer } from "@/src/lib/editPlayer";
 import { editScore } from "@/src/lib/editScore";
 import { quizMemories } from "@/src/data/quizMemories";
 
@@ -43,6 +44,13 @@ function VisualMemoryGameRoom({ roomId, userId }: VisualMemoryGameRoomProps) {
   useEffect(() => {
     if (gamePhase !== GamePhase.MEMORY_ANSWER) return;
     if (score === 0) return;
+
+    editPlayer({
+      roomId: roomId,
+      player: userId,
+      key: "currentScore",
+      value: score,
+    });
 
     editScore({
       roomId: roomId,

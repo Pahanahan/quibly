@@ -4,6 +4,7 @@ import SortingDragged from "./components/SortingDragged/SortingDragged";
 import SortingAnswer from "./components/SortingAnswer/SortingAnswer";
 import ToolBarGame from "../ToolBarGame/ToolBarGame";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
+import { editPlayer } from "@/src/lib/editPlayer";
 import { editScore } from "@/src/lib/editScore";
 import { quizRounds } from "@/src/data/quizRounds";
 
@@ -64,6 +65,13 @@ function SortingGame({ roomId, userId, currentRound }: SortingGameProps) {
   useEffect(() => {
     if (gamePhase !== GamePhase.SORTING_ANSWER) return;
     if (score === 0) return;
+
+    editPlayer({
+      roomId: roomId,
+      player: userId,
+      key: "currentScore",
+      value: score,
+    });
 
     editScore({
       roomId: roomId,

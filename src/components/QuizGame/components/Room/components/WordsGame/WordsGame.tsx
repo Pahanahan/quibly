@@ -4,6 +4,7 @@ import WordsGameQuestion from "./components/WordsGameQuestion/WordsGameQuestion"
 import WordsGameAnswer from "./components/WordsGameAnswer/WordsGameAnswer";
 import { useWords } from "@/src/hooks/useWords";
 import { useRoomFields } from "@/src/hooks/useRoomFields";
+import { editPlayer } from "@/src/lib/editPlayer";
 import { editScore } from "@/src/lib/editScore";
 import { quizRounds } from "@/src/data/quizRounds";
 
@@ -38,6 +39,13 @@ function WordsGame({ roomId, userId, currentRound }: WordsGameProps) {
 
     if (gamePhase !== GamePhase.WORDS_ANSWER) return;
     if (score === 0) return;
+
+    editPlayer({
+      roomId: roomId,
+      player: userId,
+      key: "currentScore",
+      value: score,
+    });
 
     editScore({
       roomId: roomId,
