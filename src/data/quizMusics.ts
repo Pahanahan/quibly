@@ -713,12 +713,7 @@ export const quizMusics: QuizMusics[] = [
   {
     id: 68,
     question: "Угадай мелодию",
-    answers: [
-      "Яблоки на снегу",
-      "Зимний сад",
-      "Листья жёлтые",
-      "Снег идёт",
-    ],
+    answers: ["Яблоки на снегу", "Зимний сад", "Листья жёлтые", "Снег идёт"],
     rightAnswer: "Яблоки на снегу",
     srcMusic: "/quiz-musics/0068_Mikhail_Muromov_YAbloki_na_snegu.m4a",
   },
@@ -750,14 +745,24 @@ export const quizMusics: QuizMusics[] = [
   {
     id: 71,
     question: "Угадай мелодию",
-    answers: ["Чистые пруды", "Перемен!", "Я хочу быть с тобой", "Город золотой"],
+    answers: [
+      "Чистые пруды",
+      "Перемен!",
+      "Я хочу быть с тобой",
+      "Город золотой",
+    ],
     rightAnswer: "Чистые пруды",
     srcMusic: "/quiz-musics/0071_Igor_Talkov_CHistye_prudy.m4a",
   },
   {
     id: 72,
     question: "Угадай мелодию",
-    answers: ["Группа крови", "Пачка сигарет", "Звезда по имени Солнце", "Перемен!"],
+    answers: [
+      "Группа крови",
+      "Пачка сигарет",
+      "Звезда по имени Солнце",
+      "Перемен!",
+    ],
     rightAnswer: "Группа крови",
     srcMusic: "/quiz-musics/0072_Viktor_Cojj_Gruppa_krovi.m4a",
   },
@@ -771,7 +776,12 @@ export const quizMusics: QuizMusics[] = [
   {
     id: 74,
     question: "Угадай мелодию",
-    answers: ["Зеленоглазое такси", "Город детства", "Снег кружится", "Яблони в цвету"],
+    answers: [
+      "Зеленоглазое такси",
+      "Город детства",
+      "Снег кружится",
+      "Яблони в цвету",
+    ],
     rightAnswer: "Зеленоглазое такси",
     srcMusic: "/quiz-musics/0074_Mikhail_Boyarskijj_Zelenoglazoe_taksi.m4a",
   },
@@ -816,21 +826,36 @@ export const quizMusics: QuizMusics[] = [
   {
     id: 79,
     question: "Угадай мелодию",
-    answers: ["Moscow Calling", "Wind of Change", "Still Loving You", "Rock You Like a Hurricane"],
+    answers: [
+      "Moscow Calling",
+      "Wind of Change",
+      "Still Loving You",
+      "Rock You Like a Hurricane",
+    ],
     rightAnswer: "Moscow Calling",
     srcMusic: "/quiz-musics/0079_Gorky_Park_Moscow_Calling.m4a",
   },
   {
     id: 80,
     question: "Угадай мелодию",
-    answers: ["Voyage, Voyage", "Self Control", "Blue Monday", "Sweet Dreams (Are Made of This)"],
+    answers: [
+      "Voyage, Voyage",
+      "Self Control",
+      "Blue Monday",
+      "Sweet Dreams (Are Made of This)",
+    ],
     rightAnswer: "Voyage, Voyage",
     srcMusic: "/quiz-musics/0080_Desireless_Voyage_Voyage.m4a",
   },
   {
     id: 81,
     question: "Угадай мелодию",
-    answers: ["Последнее письмо", "Крылья", "Гудбай, Америка", "Скованные одной цепью"],
+    answers: [
+      "Последнее письмо",
+      "Крылья",
+      "Гудбай, Америка",
+      "Скованные одной цепью",
+    ],
     rightAnswer: "Последнее письмо",
     srcMusic: "/quiz-musics/0081_Nautilus_Pompilius_Poslednee_pismo.m4a",
   },
@@ -851,19 +876,19 @@ export const quizMusics: QuizMusics[] = [
   {
     id: 84,
     question: "Угадай мелодию",
-    answers: ["Ice Ice Baby", "Can't Touch This", "Baby Got Back", "Gin and Juice"],
+    answers: [
+      "Ice Ice Baby",
+      "Can't Touch This",
+      "Baby Got Back",
+      "Gin and Juice",
+    ],
     rightAnswer: "Ice Ice Baby",
     srcMusic: "/quiz-musics/0084_Vanilla_Ice_Ice_Ice_Baby.m4a",
   },
   {
     id: 85,
     question: "Угадай мелодию",
-    answers: [
-      "Звезда по имени Солнце",
-      "Пачка сигарет",
-      "Кукушка",
-      "Перемен!",
-    ],
+    answers: ["Звезда по имени Солнце", "Пачка сигарет", "Кукушка", "Перемен!"],
     rightAnswer: "Звезда по имени Солнце",
     srcMusic: "/quiz-musics/0085_Viktor_Cojj_Zvezda_po_imeni_Solnce.m4a",
   },
@@ -884,21 +909,21 @@ export const quizMusics: QuizMusics[] = [
   {
     id: 88,
     question: "Угадай мелодию",
-    answers: ["Fire", "The Logical Song", "How Much Is the Fish?", "Rhythm Is a Dancer"],
+    answers: [
+      "Fire",
+      "The Logical Song",
+      "How Much Is the Fish?",
+      "Rhythm Is a Dancer",
+    ],
     rightAnswer: "Fire",
     srcMusic: "/quiz-musics/0088_Scooter_Fire.m4a",
   },
   {
     id: 89,
     question: "Угадай песню по мелодии",
-    answers: [
-      "Выпал снег",
-      "Музыка нас связала",
-      "Белые розы",
-      "Лето"
-    ],
+    answers: ["Выпал снег", "Музыка нас связала", "Белые розы", "Лето"],
     rightAnswer: "Выпал снег",
-    srcMusic: "0089_Svetlana_Razyna_Vypal_sneg.m4a"
+    srcMusic: "/quiz-musics/0089_Svetlana_Razyna_Vypal_sneg.m4a",
   },
   {
     id: 90,
@@ -907,10 +932,10 @@ export const quizMusics: QuizMusics[] = [
       "Хочу перемен!",
       "Группа крови",
       "Пачка сигарет",
-      "Звезда по имени Солнце"
+      "Звезда по имени Солнце",
     ],
     rightAnswer: "Хочу перемен!",
-    srcMusic: "0090_Viktor_Cojj_KHochu_peremen.m4a"
+    srcMusic: "/quiz-musics/0090_Viktor_Cojj_KHochu_peremen.m4a",
   },
   {
     id: 91,
@@ -919,10 +944,10 @@ export const quizMusics: QuizMusics[] = [
       "Пачка сигарет",
       "Кукушка",
       "Когда твоя девушка больна",
-      "Закрой за мной дверь, я ухожу"
+      "Закрой за мной дверь, я ухожу",
     ],
     rightAnswer: "Пачка сигарет",
-    srcMusic: "0091_Viktor_Cojj_Pachka_sigaret.m4a"
+    srcMusic: "/quiz-musics/0091_Viktor_Cojj_Pachka_sigaret.m4a",
   },
   {
     id: 92,
@@ -931,34 +956,24 @@ export const quizMusics: QuizMusics[] = [
       "Wind of Change",
       "Still Loving You",
       "Send Me an Angel",
-      "Holiday"
+      "Holiday",
     ],
     rightAnswer: "Wind of Change",
-    srcMusic: "0092_Scorpions_Wind_Of_Change.m4a"
+    srcMusic: "/quiz-musics/0092_Scorpions_Wind_Of_Change.m4a",
   },
   {
     id: 93,
     question: "Угадай песню по мелодии",
-    answers: [
-      "Thunderstruck",
-      "Back in Black",
-      "Highway to Hell",
-      "T.N.T."
-    ],
+    answers: ["Thunderstruck", "Back in Black", "Highway to Hell", "T.N.T."],
     rightAnswer: "Thunderstruck",
-    srcMusic: "0093_ACDC_Thunderstruck.m4a"
+    srcMusic: "/quiz-musics/0093_ACDC_Thunderstruck.m4a",
   },
   {
     id: 94,
     question: "Угадай песню по мелодии",
-    answers: [
-      "Кукушка",
-      "Группа крови",
-      "Спокойная ночь",
-      "Печаль"
-    ],
+    answers: ["Кукушка", "Группа крови", "Спокойная ночь", "Печаль"],
     rightAnswer: "Кукушка",
-    srcMusic: "0094_Viktor_Cojj_Kookooshka.m4a"
+    srcMusic: "/quiz-musics/0094_Viktor_Cojj_Kookooshka.m4a",
   },
   {
     id: 95,
@@ -967,10 +982,10 @@ export const quizMusics: QuizMusics[] = [
       "Жёлтые тюльпаны",
       "Маленькая страна",
       "Дельфин и русалка",
-      "Синие лебеди"
+      "Синие лебеди",
     ],
     rightAnswer: "Жёлтые тюльпаны",
-    srcMusic: "0095_Natasha_Koroleva_ZHjoltye_Tyulpany.m4a"
+    srcMusic: "/quiz-musics/0095_Natasha_Koroleva_ZHjoltye_Tyulpany.m4a",
   },
   {
     id: 96,
@@ -979,10 +994,11 @@ export const quizMusics: QuizMusics[] = [
       "На белом покрывале января",
       "Белые розы",
       "Седая ночь",
-      "Розовый вечер"
+      "Розовый вечер",
     ],
     rightAnswer: "На белом покрывале января",
-    srcMusic: "0096_Vasyuta_Sergejj_Na_belom_pokryvale_yanvarya.m4a"
+    srcMusic:
+      "/quiz-musics/0096_Vasyuta_Sergejj_Na_belom_pokryvale_yanvarya.m4a",
   },
   {
     id: 97,
@@ -991,10 +1007,10 @@ export const quizMusics: QuizMusics[] = [
       "Девочка моя синеглазая",
       "Золотые купола",
       "Облако волос",
-      "Вечерок-вечерочек"
+      "Вечерок-вечерочек",
     ],
     rightAnswer: "Девочка моя синеглазая",
-    srcMusic: "0097_ZHenya_Belousov_Devochka_moya_sineglazaya.m4a"
+    srcMusic: "/quiz-musics/0097_ZHenya_Belousov_Devochka_moya_sineglazaya.m4a",
   },
   {
     id: 98,
@@ -1003,10 +1019,10 @@ export const quizMusics: QuizMusics[] = [
       "London Goodbye",
       "Paris, Paris",
       "San Francisco",
-      "Ciao, Bambino"
+      "Ciao, Bambino",
     ],
     rightAnswer: "London Goodbye",
-    srcMusic: "0098_Kar_men_Londongoodbye.m4a"
+    srcMusic: "/quiz-musics/0098_Kar_men_Londongoodbye.m4a",
   },
   {
     id: 99,
@@ -1015,10 +1031,10 @@ export const quizMusics: QuizMusics[] = [
       "U Can't Touch This",
       "Pray",
       "Have You Seen Her",
-      "2 Legit 2 Quit"
+      "2 Legit 2 Quit",
     ],
     rightAnswer: "U Can't Touch This",
-    srcMusic: "0099_MC_Hammer_U_Cant_Touch_This.m4a"
+    srcMusic: "/quiz-musics/0099_MC_Hammer_U_Cant_Touch_This.m4a",
   },
   {
     id: 100,
@@ -1027,9 +1043,9 @@ export const quizMusics: QuizMusics[] = [
       "Ты не ангел, но для меня",
       "Мир без тебя",
       "Белая черёмуха",
-      "Звёздная ночь"
+      "Звёздная ночь",
     ],
     rightAnswer: "Ты не ангел, но для меня",
-    srcMusic: "0100_Aleksejj_Glyzin_Ti_ne_angel_no_dlya_menya.m4a"
-  }
+    srcMusic: "/quiz-musics/0100_Aleksejj_Glyzin_Ti_ne_angel_no_dlya_menya.m4a",
+  },
 ];
