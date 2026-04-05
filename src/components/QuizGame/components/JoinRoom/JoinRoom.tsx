@@ -21,8 +21,10 @@ interface JoinRoomProps {
   roomId: string;
   players: QuizPlayer[];
   disabled: boolean;
-  musicState: 'play' | 'stop' | 'pause';
-  setMusicState: React.Dispatch<React.SetStateAction<'play' | 'stop' | 'pause'>>;
+  musicState: "play" | "stop" | "pause";
+  setMusicState: React.Dispatch<
+    React.SetStateAction<"play" | "stop" | "pause">
+  >;
   memState: boolean;
   setMemState: React.Dispatch<React.SetStateAction<boolean>>;
   quizGameRef: RefObject<HTMLDivElement | null>;
@@ -40,8 +42,18 @@ function JoinRoom({
 }: JoinRoomProps) {
   const isFullscreen = useFullscreen();
 
-  const imageSound = musicState === 'play' ? musicOff : musicState === 'stop' ? musicOn : musicOff;
-  const soundText = musicState === 'play' ? "Выключить музыку" : musicState === 'stop' ? "Включить музыку" : 'Пауза';
+  const imageSound =
+    musicState === "play"
+      ? musicOff
+      : musicState === "stop"
+        ? musicOn
+        : musicOff;
+  const soundText =
+    musicState === "play"
+      ? "Выключить музыку"
+      : musicState === "stop"
+        ? "Включить музыку"
+        : "Пауза";
   const memText = memState ? "Выключить мемы" : "Включить мемы";
 
   useEffect(() => {
@@ -59,12 +71,12 @@ function JoinRoom({
 
   const handleSetMusicState = () => {
     setMusicState((prevState) => {
-      if (prevState === 'play') {
-        return 'stop';
-      } else if (prevState === 'stop') {
-        return 'play';
+      if (prevState === "play") {
+        return "stop";
+      } else if (prevState === "stop") {
+        return "play";
       } else {
-        return 'pause';
+        return "pause";
       }
     });
   };
@@ -144,9 +156,6 @@ function JoinRoom({
             <Image src={imageSound} width={30} height={30} alt="sound" />
           </button>
         </div>
-      </div>
-      <div className={styles.join__spinner}>
-        <Image src={spinner} height={50} width={50} alt="spinner" />
       </div>
     </div>
   );

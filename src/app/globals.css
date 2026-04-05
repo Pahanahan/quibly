@@ -1,5 +1,5 @@
 :root {
-  --color-background: #fff7e6;
+  --color-background: #000000;
   --color-foreground: #000000;
 
   --font-sans: var(--font-inter-sans);
@@ -20,6 +20,10 @@ body {
   font-weight: 400;
 
   margin: 0;
+
+  background-image: url("/quiz-backgrounds/bg3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container {
@@ -28,12 +32,13 @@ body {
   padding: 0 10px;
 }
 
-.loading {
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
-  font-weight: 600;
-  margin-top: 100px;
+  padding: 0 10px;
+  margin: 0 auto;
 }
