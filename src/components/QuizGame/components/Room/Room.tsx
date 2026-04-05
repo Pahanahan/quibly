@@ -172,7 +172,7 @@ function Room({ roomId }: RoomProps) {
 
     setRoomIdState(newRoomId);
     if (newRoomId.length > 0) {
-      router.push(`/quiz/${newRoomId}`);
+      router.push(`/${newRoomId}`);
     } else {
       return;
     }

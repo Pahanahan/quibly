@@ -9,8 +9,9 @@ export const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Quibly",
-  description: "Quibly games",
+  title: "Викторина онлайн",
+  description:
+    "Многопользовательская онлайн-викторина с вопросами и вариантами ответов. Проверяй знания и соревнуйся с друзьями.",
 };
 
 export default function RootLayout({

@@ -1,9 +1,5 @@
-import Games from "../components/Games/Games";
+import QuizGame from "../components/QuizGame/QuizGame";
 
 export default function Home() {
-  return (
-    <div>
-      <Games />
-    </div>
-  );
+  return <QuizGame />;
 }

@@ -5,13 +5,6 @@
   --font-sans: var(--font-inter-sans);
 }
 
-/* @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #000000;
-
-  --font-sans: var(--font-inter-sans);
-} */
-
 html,
 body {
   height: 100%;

@@ -142,8 +142,7 @@ function QuizGame() {
   console.log(gamePhase);
 
   const isButtonDisabled =
-    // players.length < 2 ||
-    players.length < 1 ||
+    players.length < 2 ||
     players.some((player) => player.ready === "addedTopics");
 
   useRoundTimer(

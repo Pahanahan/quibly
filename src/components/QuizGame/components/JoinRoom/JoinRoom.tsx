@@ -112,13 +112,13 @@ function JoinRoom({
       <div className={styles.join__inner}>
         <div className={styles.join__site}>
           Зайдите на сайт:{" "}
-          <span>{`${process.env.NEXT_PUBLIC_BASE_URL}/quiz/${roomId}`}</span>
+          <span>{`${process.env.NEXT_PUBLIC_BASE_URL}/${roomId}`}</span>
         </div>
         <div className={styles.join__room}>
           Введите id комнаты: <span>{roomId}</span>
         </div>
         <QRCodeSVG
-          value={`${process.env.NEXT_PUBLIC_BASE_URL}/quiz/${roomId}`}
+          value={`${process.env.NEXT_PUBLIC_BASE_URL}/${roomId}`}
           size={300}
         />
         <button
