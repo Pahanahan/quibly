@@ -4,21 +4,20 @@ const baseWidth = 1280;
 const baseHeight = 720;
 
 export function useScale() {
-  const getScale = () => {
-    const scaleX = window.innerWidth / baseWidth;
-    const scaleY = window.innerHeight / baseHeight;
-    return Math.min(scaleX, scaleY);
-  };
-
-  const [scale, setScale] = useState<number>(getScale());
+  const [scale, setScale] = useState<number>(1);
 
   useEffect(() => {
-    const handleResize = () => {
+    const getScale = () => {
       const scaleX = window.innerWidth / baseWidth;
       const scaleY = window.innerHeight / baseHeight;
-
-      setScale(Math.min(scaleX, scaleY));
+      return Math.min(scaleX, scaleY);
     };
+
+    const handleResize = () => {
+      setScale(getScale());
+    };
+
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 

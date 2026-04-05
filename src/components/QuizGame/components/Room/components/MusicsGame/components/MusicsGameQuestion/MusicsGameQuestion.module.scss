@@ -1,4 +1,5 @@
-@use '../../../../_variables' as *;
+@use "sass:color";
+@use "../../../../_variables" as *;
 
 .musics-question {
   padding: 20px;
@@ -27,7 +28,11 @@
   &__equalizer-bar {
     width: 6px;
     border-radius: 999px;
-    background: linear-gradient(180deg, $text-main, lighten($text-main, 15%));
+    background: linear-gradient(
+      180deg,
+      $text-main,
+      color.adjust($text-main, $lightness: 15%)
+    );
     animation: equalizerWave 0.9s ease-in-out infinite;
     transform-origin: bottom center;
 
@@ -105,4 +110,3 @@
     height: 20%;
   }
 }
-
