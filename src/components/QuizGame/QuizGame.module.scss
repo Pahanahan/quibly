@@ -1,12 +1,9 @@
 .quiz {
+  background-image: url("/quiz-backgrounds/bg3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100%;
-
-  h2 {
-    background-color: #fff;
-    color: red;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #000;
-    border-radius: 20px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

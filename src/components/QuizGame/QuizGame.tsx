@@ -31,7 +31,6 @@ import { useMovies } from "@/src/hooks/useMovies";
 import { useMusics } from "@/src/hooks/useMusics";
 import { useMusic } from "./hooks/useMusic";
 import { useSoundMem } from "./hooks/useSoundMem";
-import { useScale } from "./hooks/useScale";
 import { getDateNow } from "@/src/lib/getDateNow";
 import { quizRounds } from "@/src/data/quizRounds";
 
@@ -73,8 +72,6 @@ function QuizGame() {
     roomId: roomId,
     key: "gamePhase",
   });
-
-  const scale = useScale();
 
   const memScoreText: MemScoreText = useMemo(() => {
     if (
@@ -262,39 +259,27 @@ function QuizGame() {
   );
 
   return (
-    <div
-      className={styles.quiz}
-      ref={quizGameRef}
-      style={{ transform: `scale(${scale})` }}
-    >
-      <div className="wrapper">
-        {scale >= 0.78 && (
-          <div className={styles.quiz__inner}>
-            {roomConnectElement}
-            {introElement}
-            {questionTitleAndAnswers}
-            {rightAnswerElement}
-            {obstructionElement}
-            {memoriesElement}
-            {memoryChooseElement}
-            {rightMemoryElement}
-            {sortingLevelElement}
-            {rightSortingElement}
-            {moviesLevelElement}
-            {rightMoviesElement}
-            {musicLevelElement}
-            {rightMusicElement}
-            {wordLevelElement}
-            {rightWordsElement}
-            {endGameElement}
-          </div>
-        )}
-        {scale < 0.78 && (
-          <h2>
-            Игра не поддерживает небольшие экраны! Используйте экран с шириной
-            не менее 1000 пикселей
-          </h2>
-        )}
+    <div className={styles.quiz} ref={quizGameRef}>
+      <div className="container">
+        <div className={styles.quiz__inner}>
+          {roomConnectElement}
+          {introElement}
+          {questionTitleAndAnswers}
+          {rightAnswerElement}
+          {obstructionElement}
+          {memoriesElement}
+          {memoryChooseElement}
+          {rightMemoryElement}
+          {sortingLevelElement}
+          {rightSortingElement}
+          {moviesLevelElement}
+          {rightMoviesElement}
+          {musicLevelElement}
+          {rightMusicElement}
+          {wordLevelElement}
+          {rightWordsElement}
+          {endGameElement}
+        </div>
       </div>
     </div>
   );
