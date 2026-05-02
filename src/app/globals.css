@@ -23,7 +23,31 @@ body {
 }
 
 .container {
-  max-width: 1380px;
+  max-width: 7660px;
   margin: 0 auto;
   padding: 0 10px;
+}
+
+@media (max-width: 5100px) {
+  .container {
+    max-width: 3820px;
+  }
+}
+
+@media (max-width: 3820px) {
+  .container {
+    max-width: 2540px;
+  }
+}
+
+@media (max-width: 2540px) {
+  .container {
+    max-width: 1900px;
+  }
+}
+
+@media (max-width: 1900px) {
+  .container {
+    max-width: 1260px;
+  }
 }

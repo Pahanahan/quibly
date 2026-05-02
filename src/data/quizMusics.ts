@@ -1048,4 +1048,11 @@ export const quizMusics: QuizMusics[] = [
     rightAnswer: "Ты не ангел, но для меня",
     srcMusic: "/quiz-musics/0100_Aleksejj_Glyzin_Ti_ne_angel_no_dlya_menya.m4a",
   },
+  {
+    id: 101,
+    question: "Угадай песню по мелодии",
+    answers: ["Моя любовь", "Чистые пруды", "Россия", "Я вернусь"],
+    rightAnswer: "Моя любовь",
+    srcMusic: "0101_Igor_Talkov_Moya_lyubov.m4a",
+  },
 ];
